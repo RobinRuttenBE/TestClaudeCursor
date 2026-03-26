@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silk Collectie Lancering — Campaign Flowchart</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f3f6;
+            margin: 0;
+            padding: 2rem;
+            color: #1b073d;
+        }
+        h1 {
+            color: #6b3fb9;
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        .chart-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(107, 63, 185, 0.08);
+            overflow-x: auto;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Silk Collectie Lancering — Campaign Flowchart</h1>
+    <p class="subtitle">Sempertex Europe | Funnel: Awareness → Consideration → Purchase → Satisfaction</p>
+    <div class="chart-container">
+        <pre class="mermaid">
+graph TD
+    %% ===== ENTRY POINTS =====
+    E1([IG Organisch])
+    E2([Meta Ads - Cold])
+    E3([YouTube])
+    E4([TikTok Organisch])
+    E5([Email Lijst])
+    E6([LinkedIn])
+
+    %% ===== AWARENESS =====
+    subgraph AWARENESS["✨ AWARENESS — Teasing & Reveal"]
+        direction TB
+        A1["IG Stories: Sneak Peeks\nHidden Colours, Countdown"]
+        A2["IG Reel: Colour Reveal\nTrending Audio"]
+        A3["TikTok: Satisfying\nFirst Inflate Video"]
+        A4["Meta Video Ads:\n10+ Hook Varianten\nDemonstration Format"]
+        A5["YouTube: Long Form\nSilk Tutorial + Showcase"]
+        A6["LinkedIn: Product\nInnovatie Story — B2B"]
+        A7["Email Blast:\nLaunch Aankondiging"]
+    end
+
+    E1 --> A1
+    E1 --> A2
+    E4 --> A3
+    E2 --> A4
+    E3 --> A5
+    E6 --> A6
+    E5 --> A7
+
+    A1 --> A2
+
+    %% ===== DECISION: ENGAGED? =====
+    A2 --> D1{"Engaged?\nKlikt / Kijkt >75%"}
+    A3 --> D1
+    A4 --> D1
+    A5 --> D1
+    A7 --> D1
+
+    %% ===== CONSIDERATION =====
+    subgraph CONSIDERATION["💜 CONSIDERATION — Verdieping & Overtuiging"]
+        direction TB
+        C1["Retargeting Ads:\nTestimonials Artiesten\nmet Silk Designs"]
+        C2["IG Carrousel:\nKleurcombinaties\nSilk + Andere Finishes"]
+        C3["YouTube: X Ways to\nUse Silk in Your Designs"]
+        C4["Email: What Artists\nAre Creating + Gallery"]
+        C5["Artiest Spotlights:\nEarly Adopters"]
+    end
+
+    D1 -->|Ja| C1
+    D1 -->|Nee| RT1
+
+    C1 --> C5
+    C2 --> C5
+    C3 --> C4
+
+    %% ===== DECISION: INTERESTED? =====
+    C5 --> D2{"Bezoekt\nProduct Page?"}
+    C4 --> D2
+    C1 --> D2
+
+    %% ===== PURCHASE =====
+    subgraph PURCHASE["🛒 PURCHASE — Conversie"]
+        direction TB
+        P1["Product Page:\nsempertexeurope.com"]
+        P2["Bundel Aanbod:\nSilk Collection Pack"]
+        P3["Email: Still Thinking?\nHere is Why Decorators Love It"]
+        P4["Wholesaler Push:\nMateriaal naar Distributeurs"]
+    end
+
+    D2 -->|Ja| P1
+    D2 -->|Nee| RT2
+    P1 --> D3{"Koopt?"}
+    P2 --> D3
+    P3 --> P1
+
+    %% ===== DECISION: PURCHASED? =====
+    D3 -->|Nee| RT3
+    P4 -.->|"Via wholesaler"| D3
+
+    %% ===== SATISFACTION =====
+    subgraph SATISFACTION["⭐ SATISFACTION — Retention & Community"]
+        direction TB
+        S1["Email: Show Us\nWhat You Created"]
+        S2["IG Repost:\nArtiestenwerk met Silk"]
+        S3["Review Verzoek"]
+        S4["Email Wave 2:\nMissed the Launch?\nSilk is Now in Stock"]
+        S5["Upsell: Volgende\nKleur Launch / Events"]
+    end
+
+    D3 ==>|Ja| S1
+    S1 --> S2
+    S1 --> S3
+    S2 --> S5
+    S3 --> S4
+    S4 --> S5
+
+    %% ===== RETARGETING LOOPS =====
+    RT1["Retarget:\nVideo Viewers >50%"]
+    RT2["Retarget:\nEmail Openers\ndie niet klikten"]
+    RT3["Retarget:\nAbandoned Cart /\nPage Viewers"]
+
+    RT1 -.->|"Andere hook"| A4
+    RT2 -.->|"Reminder email"| C4
+    RT3 -.->|"Urgentie ad"| P3
+
+    %% ===== EMAIL FLOW =====
+    subgraph EMAILFLOW["📧 EMAIL FLOWS"]
+        direction TB
+        EF1["W-1: Teaser\nSomething new is coming"]
+        EF2["Launch: Reveal\n+ Key Features + Shop"]
+        EF3["Launch +2: Social Proof\nEerste Artiest Reacties"]
+        EF4["Launch +5: Educatie\n3 Ways to Use Silk"]
+        EF5["Launch +10: Reminder\nHave You Tried Silk Yet?"]
+        EF6["Launch +21: Restock\n+ Artiest Spotlights"]
+        EF1 --> EF2 --> EF3 --> EF4 --> EF5 --> EF6
+    end
+
+    E5 --> EF1
+    EF2 --> A7
+    EF3 --> C4
+    EF5 --> P3
+
+    %% ===== STYLING =====
+    classDef awareness fill:#f1d9ff,stroke:#6b3fb9,color:#1b073d
+    classDef consideration fill:#6b3fb9,stroke:#1b073d,color:#ffffff
+    classDef purchase fill:#cd0b5c,stroke:#1b073d,color:#ffffff
+    classDef satisfaction fill:#ffdb5a,stroke:#1b073d,color:#1b073d
+    classDef decision fill:#1b073d,stroke:#6b3fb9,color:#ffffff
+    classDef retarget fill:#f5f3f6,stroke:#999,color:#666,stroke-dasharray: 5 5
+    classDef entry fill:#ffffff,stroke:#6b3fb9,color:#6b3fb9
+    classDef email fill:#fbfaf3,stroke:#6b3fb9,color:#1b073d
+
+    class A1,A2,A3,A4,A5,A6,A7 awareness
+    class C1,C2,C3,C4,C5 consideration
+    class P1,P2,P3,P4 purchase
+    class S1,S2,S3,S4,S5 satisfaction
+    class D1,D2,D3 decision
+    class RT1,RT2,RT3 retarget
+    class E1,E2,E3,E4,E5,E6 entry
+    class EF1,EF2,EF3,EF4,EF5,EF6 email
+        </pre>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#6b3fb9',
+                primaryTextColor: '#1b073d',
+                primaryBorderColor: '#6b3fb9',
+                lineColor: '#6b3fb9',
+                secondaryColor: '#f1d9ff',
+                tertiaryColor: '#fbfaf3',
+                fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif',
+                fontSize: '13px'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 16,
+                nodeSpacing: 30,
+                rankSpacing: 50,
+                useMaxWidth: false
+            }
+        });
+    </script>
+</body>
+</html>
