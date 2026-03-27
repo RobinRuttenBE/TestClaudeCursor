@@ -183,7 +183,12 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(gh auth:*)",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "Bash(claude:*)",
+      "Bash(bun:*)",
+      "Bash(bash)",
+      "Bash(~/.bun/bin/bun --version)",
+      "mcp__imessage__tool_check_imessage_availability"
     ]
   }
 }
