@@ -195,7 +195,8 @@
       "Bash(/opt/homebrew/bin/tmux capture-pane:*)",
       "Bash(/opt/homebrew/bin/tmux send-keys:*)",
       "Bash(CLAUDE_BYPASS_PERMISSIONS=1 /opt/homebrew/bin/tmux new-session -d -s imessage \"/Users/robinrutten/.local/bin/claude --channels plugin:imessage@claude-plugins-official --dangerously-skip-permissions\" 2>&1)",
-      "Bash(/opt/homebrew/bin/tmux kill-session:*)"
+      "Bash(/opt/homebrew/bin/tmux kill-session:*)",
+      "Bash(ffmpeg -version)"
     ]
   }
 }
