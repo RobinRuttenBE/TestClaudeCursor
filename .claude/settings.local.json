@@ -188,7 +188,14 @@
       "Bash(bun:*)",
       "Bash(bash)",
       "Bash(~/.bun/bin/bun --version)",
-      "mcp__imessage__tool_check_imessage_availability"
+      "mcp__imessage__tool_check_imessage_availability",
+      "Bash(/opt/homebrew/bin/tmux new-session:*)",
+      "Bash(/opt/homebrew/bin/tmux list-sessions:*)",
+      "Read(//tmp/**)",
+      "Bash(/opt/homebrew/bin/tmux capture-pane:*)",
+      "Bash(/opt/homebrew/bin/tmux send-keys:*)",
+      "Bash(CLAUDE_BYPASS_PERMISSIONS=1 /opt/homebrew/bin/tmux new-session -d -s imessage \"/Users/robinrutten/.local/bin/claude --channels plugin:imessage@claude-plugins-official --dangerously-skip-permissions\" 2>&1)",
+      "Bash(/opt/homebrew/bin/tmux kill-session:*)"
     ]
   }
 }
