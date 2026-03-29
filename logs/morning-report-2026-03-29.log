@@ -1,0 +1,14 @@
+=== Morning Report gestart: Sun Mar 29 09:07:39 CEST 2026 ===
+[1/5] Claude Code /ads-report uitvoeren...
+[2/5] Ads report ontvangen (977 bytes)
+[3/5] Claude Code /ads-auto-optimize uitvoeren...
+[4/5] Auto-optimize ontvangen (510 bytes)
+[5/5] Email versturen...
+/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:246: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+Email verstuurd! Message ID: 19d392556274b645
+=== Morning Report afgerond: Sun Mar 29 12:30:42 CEST 2026 ===
