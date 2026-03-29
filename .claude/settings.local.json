@@ -200,7 +200,10 @@
       "mcp__posthog__projects-get",
       "mcp__posthog__event-definitions-list",
       "mcp__posthog__query-run",
-      "mcp__pipeboard-meta-ads__get_ad_accounts"
+      "mcp__pipeboard-meta-ads__get_ad_accounts",
+      "Bash(mkdir -p /Users/robinrutten/TestClaudeCursor/skills/daily-sybb-report)",
+      "Bash(mkdir -p /Users/robinrutten/TestClaudeCursor/output/reports/daily)",
+      "Bash(mkdir -p /Users/robinrutten/TestClaudeCursor/output/reports/weekly)"
     ]
   }
 }

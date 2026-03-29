@@ -91,6 +91,28 @@ Ballontechnieken & productkennis. **Raadpleeg bij elke content-taak die techniek
 - Transcripts: `Kennis/content/transcripts/`
 - Meeting summaries: `Kennis/content/meeting-summaries/`
 
+### SYBB Daily Report Skill
+- Locatie: `skills/daily-sybb-report/SKILL.md`
+- Trigger: automatisch bij laptop wake (daily report flow) of handmatig via "SYBB rapport", "hoe doet SYBB het?", "landing page performance"
+- **Data bronnen:**
+  - Meta Ads MCP (Pipeboard): campagne `2026: SYBB`
+  - PostHog MCP: project "Default project", site startyourballoonbusiness.com
+- **UTM conventie:** lowercase, format `utm_source=meta`, `utm_medium=cpc`, `utm_campaign=sybb`, `utm_content=hXX_bX_ctaX`, `utm_term=batch_X`
+- **KPI Targets:**
+
+| KPI | Target 30d | Target 90d |
+|-----|-----------|-----------|
+| LP Bounce Rate | <55% | <40% |
+| LP Conversie Rate | >5% | >8% |
+| Avg Scroll Depth | >60% | >75% |
+| CTA Click Rate | >4% | >6% |
+| Meta CPC | <€0.50 | <€0.40 |
+| Time on Page | meten | >90s |
+
+- **Output:**
+  - Dagelijks: `output/reports/daily/YYYY-MM-DD_sybb_report.md`
+  - Wekelijks: `output/reports/weekly/YYYY-WXX_sybb_summary.md`
+
 ---
 
 ## Assets

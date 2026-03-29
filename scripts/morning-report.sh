@@ -35,10 +35,26 @@ REPORT=$("$CLAUDE" -p "/ads-report" \
     exit 1
 }
 
-echo "[2/5] Ads report ontvangen ($(echo "$REPORT" | wc -c | tr -d ' ') bytes)" >> "$LOG_FILE" 2>&1
+echo "[2/7] Ads report ontvangen ($(echo "$REPORT" | wc -c | tr -d ' ') bytes)" >> "$LOG_FILE" 2>&1
 
-# --- Stap 2: /ads-auto-optimize ---
-echo "[3/5] Claude Code /ads-auto-optimize uitvoeren..." >> "$LOG_FILE" 2>&1
+# --- Stap 2: SYBB Daily Report ---
+echo "[3/7] Claude Code SYBB daily report uitvoeren..." >> "$LOG_FILE" 2>&1
+
+SYBB_PROMPT="Genereer het dagelijkse SYBB rapport voor gisteren. Haal Meta Ads data op voor campagne \"2026: SYBB\" via de Meta Ads MCP. Haal PostHog data op voor startyourballoonbusiness.com via de PostHog MCP. Combineer beide databronnen en volg de rapportstructuur uit skills/daily-sybb-report/SKILL.md. Sla het rapport op in output/reports/daily/$(date -v-1d +%Y-%m-%d)_sybb_report.md."
+
+SYBB_REPORT=$("$CLAUDE" -p "$SYBB_PROMPT" \
+    --output-format text \
+    --max-turns 30 \
+    --dangerously-skip-permissions \
+    2>> "$LOG_FILE") || {
+    SYBB_REPORT="⚠️ SYBB Daily Report kon niet worden gegenereerd. Check logs: ${LOG_FILE}"
+    echo "[WARN] SYBB daily report failed, continuing" >> "$LOG_FILE" 2>&1
+}
+
+echo "[4/7] SYBB report ontvangen ($(echo "$SYBB_REPORT" | wc -c | tr -d ' ') bytes)" >> "$LOG_FILE" 2>&1
+
+# --- Stap 3: /ads-auto-optimize ---
+echo "[5/7] Claude Code /ads-auto-optimize uitvoeren..." >> "$LOG_FILE" 2>&1
 
 OPTIMIZE=$("$CLAUDE" -p "/ads-auto-optimize" \
     --output-format text \
@@ -50,12 +66,16 @@ OPTIMIZE=$("$CLAUDE" -p "/ads-auto-optimize" \
     echo "[WARN] /ads-auto-optimize failed, continuing with report only" >> "$LOG_FILE" 2>&1
 }
 
-echo "[4/5] Auto-optimize ontvangen ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes)" >> "$LOG_FILE" 2>&1
+echo "[6/7] Auto-optimize ontvangen ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes)" >> "$LOG_FILE" 2>&1
 
-# --- Stap 3: Combineer en verstuur ---
-echo "[5/5] Email versturen..." >> "$LOG_FILE" 2>&1
+# --- Stap 4: Combineer en verstuur ---
+echo "[7/7] Email versturen..." >> "$LOG_FILE" 2>&1
 
 FULL_REPORT="${REPORT}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${SYBB_REPORT}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -68,7 +88,7 @@ Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en be
 
 "$PYTHON" "$SEND_SCRIPT" \
     "$RECIPIENT" \
-    "📊 Dagelijks Meta Ads Rapport + Auto-Optimize — ${TODAY}" \
+    "📊 Dagelijks Meta Ads + SYBB Rapport — ${TODAY}" \
     "$FULL_REPORT" \
     >> "$LOG_FILE" 2>&1
 
