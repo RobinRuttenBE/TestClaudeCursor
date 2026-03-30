@@ -84,6 +84,15 @@ Ballontechnieken & productkennis. **Raadpleeg bij elke content-taak die techniek
 
 ## Tools & Integraties
 
+### Morning Report (`/morning-report`)
+- Command: `.claude/commands/morning-report.md`
+- Script: `scripts/morning-report.sh` (draait via launchd om 08:00, email via `scripts/send-gmail.py`)
+- **6 secties:** Agenda, Emails, Drive, Meta Ads SYBB, PostHog Landing Page, Excel Tracker update
+- **Data bronnen:** Google Calendar, Gmail, Drive, Meta Ads MCP (Pipeboard), PostHog MCP
+- **PostHog metrics:** pageviews, bounce rate, scroll depth (25/50/75/100%), sessie duur, CTA clicks, session recordings
+- **Cross-referencing:** combineert Meta Ads + PostHog data om ad-pagina mismatches te detecteren
+- **Output:** rapport in console + opslaan in `output/reports/daily/YYYY-MM-DD_sybb_report.md` + Excel tracker update
+
 ### Fireflies.ai (meeting transcripts)
 - Documentatie: `Kennis/tools/fireflies-integratie.md`
 - Script: `scripts/fireflies_fetch.py`
@@ -112,6 +121,17 @@ Ballontechnieken & productkennis. **Raadpleeg bij elke content-taak die techniek
 - **Output:**
   - Dagelijks: `output/reports/daily/YYYY-MM-DD_sybb_report.md`
   - Wekelijks: `output/reports/weekly/YYYY-WXX_sybb_summary.md`
+
+### Meta Ads Tracker Excel Formatting Skill
+- Locatie: `skills/meta-ads-tracker-excel/SKILL.md`
+- Trigger: bij genereren/updaten van `Meta_Ads_Tracker_Sempertex.xlsx` of schrijven naar Google Sheet tracker
+- **Bestanden:**
+  - Excel: `Meta_Ads_Tracker_Sempertex.xlsx`
+  - Google Sheet: `1kMtMXBYxFYStVxop_yjkWaB5mfh7Y2tgmpYcjf2ytHs`
+- **5 sheets:** Dashboard, Weekly Report, Ad Master List, Campaign Overview, UTM & Pixel Reference
+- **Formatting:** Arial 10, zebra striping, conditional formatting (CPC >€0.50, CTR <1%, ROAS <1x), currency €#,##0.00
+- **PostHog kolommen (Y-AC):** Bounce Rate, Scroll Depth, Session Duration, CTA Click Rate, /booking Visits. Match via `utm_content`.
+- **Implementatie:** altijd openpyxl, nooit pandas voor formatting. Run `scripts/recalc.py` na save.
 
 ---
 
