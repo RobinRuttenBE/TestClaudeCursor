@@ -209,7 +209,12 @@
       "Bash(grep -r \"posthog_api_key\\\\|posthog.*token\\\\|ph_.*\" /Users/robinrutten --include=.env* --include=*.json)",
       "mcp__posthog__query-generate-hogql-from-question",
       "Bash(bash -n /Users/robinrutten/TestClaudeCursor/scripts/morning-report.sh)",
-      "Bash(/usr/bin/python3 scripts/send-gmail.py \\\\\n    \"robin.rutten2@gmail.com\" \\\\\n    \"Test: Dagelijks Meta Ads + SYBB Rapport — 31-03-2026\" \\\\\n    \"Dit is een test van het morning report systeem.\n\n---\n\nMeta Ads: Campagne '2026: SYBB' staat op PAUSED sinds 8 maart.\nLifetime spend: €1.323,83 | 189K impressions | 9.965 clicks | CTR 5,27% | CPC €0,13\n\n---\n\nPostHog: Alleen Wix editor traffic gedetecteerd afgelopen 7 dagen. Geen extern verkeer.\n\n---\n\nAuto-optimize: Geen actieve campagnes, geen optimalisatie nodig.\n\n---\n\nDit rapport is automatisch gegenereerd door Claude Code.\nVoorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.\")"
+      "Bash(/usr/bin/python3 scripts/send-gmail.py \\\\\n    \"robin.rutten2@gmail.com\" \\\\\n    \"Test: Dagelijks Meta Ads + SYBB Rapport — 31-03-2026\" \\\\\n    \"Dit is een test van het morning report systeem.\n\n---\n\nMeta Ads: Campagne '2026: SYBB' staat op PAUSED sinds 8 maart.\nLifetime spend: €1.323,83 | 189K impressions | 9.965 clicks | CTR 5,27% | CPC €0,13\n\n---\n\nPostHog: Alleen Wix editor traffic gedetecteerd afgelopen 7 dagen. Geen extern verkeer.\n\n---\n\nAuto-optimize: Geen actieve campagnes, geen optimalisatie nodig.\n\n---\n\nDit rapport is automatisch gegenereerd door Claude Code.\nVoorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.\")",
+      "Bash(rm -f .git/index.lock)",
+      "Bash(git reset:*)",
+      "Bash(rm -f .git/index .git/index.lock)",
+      "Bash(git read-tree:*)",
+      "Bash(git push:*)"
     ]
   }
 }

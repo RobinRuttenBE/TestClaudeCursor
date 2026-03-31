@@ -1375,3 +1375,5 @@ After doing this, you may fix the identity used for this commit with:
  create mode 100644 Output/Reports/Daily/2026-03-31_sybb_report.md
 To https://github.com/RobinRuttenBE/TestClaudeCursor.git
    201056a..769fee1  main -> main
+fatal: .git/index: index file smaller than expected
+fatal: 'git status --porcelain=2' failed in submodule remotion-stx
