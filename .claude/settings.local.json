@@ -203,7 +203,10 @@
       "mcp__pipeboard-meta-ads__get_ad_accounts",
       "Bash(mkdir -p /Users/robinrutten/TestClaudeCursor/skills/daily-sybb-report)",
       "Bash(mkdir -p /Users/robinrutten/TestClaudeCursor/output/reports/daily)",
-      "Bash(mkdir -p /Users/robinrutten/TestClaudeCursor/output/reports/weekly)"
+      "Bash(mkdir -p /Users/robinrutten/TestClaudeCursor/output/reports/weekly)",
+      "Bash(find /Users/robinrutten/TestClaudeCursor -type f \\\\\\(-name *.json -o -name .env* \\\\\\))",
+      "Bash(grep -r \"posthog\\\\|PostHog\" /Users/robinrutten/TestClaudeCursor --include=*.md --include=*.txt --include=*.json)",
+      "Bash(grep -r \"posthog_api_key\\\\|posthog.*token\\\\|ph_.*\" /Users/robinrutten --include=.env* --include=*.json)"
     ]
   }
 }
