@@ -217,7 +217,8 @@
       "Bash(git push:*)",
       "Bash(osascript:*)",
       "Skill(update-config)",
-      "mcp__claude_ai_Gmail__gmail_get_profile"
+      "mcp__claude_ai_Gmail__gmail_get_profile",
+      "mcp__posthog__query-trends"
     ]
   }
 }
