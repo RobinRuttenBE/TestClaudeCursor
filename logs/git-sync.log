@@ -2398,8 +2398,8 @@ After doing this, you may fix the identity used for this commit with:
  1 file changed, 17 insertions(+)
 To https://github.com/RobinRuttenBE/TestClaudeCursor.git
    3cf5bc4..a63687b  main -> main
-[main fd0b10c] Auto-sync: 2026-04-02 00:51
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+[main e7920f2] Auto-sync: 2026-04-02 08:25
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2412,11 +2412,14 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   a63687b..fd0b10c  main -> main
-[main 18e3c7a] Auto-sync: 2026-04-02 10:55
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
+ 1 file changed, 19 insertions(+)
+ create mode 100644 logs/morning-report-2026-04-02.log
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   5a9fa8b..e7920f2  main -> main
+[main f538e1f] Auto-sync: 2026-04-02 08:55
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2429,17 +2432,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 2c9b548] Auto-sync: 2026-04-02 11:25
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
+ 1 file changed, 20 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   e7920f2..f538e1f  main -> main
+[main ee3a6b4] Auto-sync: 2026-04-02 09:25
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2452,17 +2451,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 92c6ca3] Auto-sync: 2026-04-02 11:55
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   f538e1f..ee3a6b4  main -> main
+[main f5a9ee7] Auto-sync: 2026-04-02 09:55
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2475,17 +2470,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 62e64ed] Auto-sync: 2026-04-02 12:25
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   ee3a6b4..f5a9ee7  main -> main
+[main 05522b1] Auto-sync: 2026-04-02 10:25
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2498,17 +2489,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 7a81e32] Auto-sync: 2026-04-02 12:55
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   f5a9ee7..05522b1  main -> main
+[main d9984ac] Auto-sync: 2026-04-02 10:55
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2521,17 +2508,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 2f30c9b] Auto-sync: 2026-04-02 14:23
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   05522b1..d9984ac  main -> main
+[main c62849a] Auto-sync: 2026-04-02 11:25
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2544,17 +2527,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main b146c3f] Auto-sync: 2026-04-02 15:41
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   d9984ac..c62849a  main -> main
+[main 1a08614] Auto-sync: 2026-04-02 11:55
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2567,17 +2546,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 4 files changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 51b6162] Auto-sync: 2026-04-02 19:05
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   c62849a..1a08614  main -> main
+[main 2a967a3] Auto-sync: 2026-04-02 12:25
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2590,10 +2565,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-fatal: unable to access 'https://github.com/RobinRuttenBE/TestClaudeCursor.git/': Could not resolve host: github.com
-[main 58c6d82] Auto-sync: 2026-04-02 19:35
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   1a08614..2a967a3  main -> main
+[main 3e8183a] Auto-sync: 2026-04-02 12:55
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2606,17 +2584,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 16 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 6ec9443] Auto-sync: 2026-04-02 20:05
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   2a967a3..3e8183a  main -> main
+[main 88a1b48] Auto-sync: 2026-04-02 13:25
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2629,17 +2603,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main adf7bec] Auto-sync: 2026-04-02 20:35
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   3e8183a..88a1b48  main -> main
+[main 24b8149] Auto-sync: 2026-04-02 13:55
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2652,17 +2622,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main e6e2bba] Auto-sync: 2026-04-02 21:05
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   88a1b48..24b8149  main -> main
+[main d6d7c56] Auto-sync: 2026-04-02 14:25
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2675,17 +2641,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main d8866ac] Auto-sync: 2026-04-02 21:35
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   24b8149..d6d7c56  main -> main
+[main 936332f] Auto-sync: 2026-04-02 14:55
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2698,17 +2660,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 73c6f82] Auto-sync: 2026-04-02 23:46
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 2 files changed, 23 insertions(+), 1 deletion(-)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   d6d7c56..936332f  main -> main
+[main 2c93809] Auto-sync: 2026-04-02 15:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2721,17 +2679,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 34bb0a2] Auto-sync: 2026-04-03 00:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 2 files changed, 21 insertions(+), 1 deletion(-)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   936332f..2c93809  main -> main
+[main 7e33d22] Auto-sync: 2026-04-02 15:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2744,17 +2698,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 2c56a1c] Auto-sync: 2026-04-03 00:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   2c93809..7e33d22  main -> main
+[main 7624551] Auto-sync: 2026-04-02 16:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2767,17 +2717,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 8580be5] Auto-sync: 2026-04-03 01:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   7e33d22..7624551  main -> main
+[main 2f7dc57] Auto-sync: 2026-04-02 16:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2790,17 +2736,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main b61d0ba] Auto-sync: 2026-04-03 02:26
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   7624551..2f7dc57  main -> main
+[main 56517e6] Auto-sync: 2026-04-02 17:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2813,17 +2755,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 532e302] Auto-sync: 2026-04-03 02:56
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   2f7dc57..56517e6  main -> main
+[main c4ca5b8] Auto-sync: 2026-04-02 17:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2836,17 +2774,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 39dd439] Auto-sync: 2026-04-03 11:46
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   56517e6..c4ca5b8  main -> main
+[main 64a1275] Auto-sync: 2026-04-02 18:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2859,11 +2793,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 2 files changed, 55 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   c38dbd0..39dd439  main -> main
-[main 6faf162] Auto-sync: 2026-04-03 12:16
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   c4ca5b8..64a1275  main -> main
+[main fc2f552] Auto-sync: 2026-04-02 18:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2876,11 +2812,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 7 files changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   39dd439..6faf162  main -> main
-[main 3fec1b4] Auto-sync: 2026-04-03 12:46
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   64a1275..fc2f552  main -> main
+[main fb0874e] Auto-sync: 2026-04-02 19:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2893,11 +2831,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   6faf162..3fec1b4  main -> main
-[main a02b84e] Auto-sync: 2026-04-03 13:23
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   fc2f552..fb0874e  main -> main
+[main 991c5f4] Auto-sync: 2026-04-02 19:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2910,11 +2850,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   3fec1b4..a02b84e  main -> main
-[main f7a26fc] Auto-sync: 2026-04-03 13:53
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   fb0874e..991c5f4  main -> main
+[main bd58e57] Auto-sync: 2026-04-02 20:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2927,11 +2869,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   a02b84e..f7a26fc  main -> main
-[main 3564598] Auto-sync: 2026-04-03 14:23
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   991c5f4..bd58e57  main -> main
+[main 9b16e12] Auto-sync: 2026-04-02 20:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2944,11 +2888,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 3 files changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   f7a26fc..3564598  main -> main
-[main 4d0a169] Auto-sync: 2026-04-03 14:53
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   bd58e57..9b16e12  main -> main
+[main 338748a] Auto-sync: 2026-04-02 21:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2961,11 +2907,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   3564598..4d0a169  main -> main
-[main 7e5beec] Auto-sync: 2026-04-03 15:23
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   9b16e12..338748a  main -> main
+[main a08aa7b] Auto-sync: 2026-04-02 21:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2978,11 +2926,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 4 files changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   4d0a169..7e5beec  main -> main
-[main cc528b5] Auto-sync: 2026-04-03 15:53
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   338748a..a08aa7b  main -> main
+[main 91ba73e] Auto-sync: 2026-04-02 22:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -2995,11 +2945,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   7e5beec..cc528b5  main -> main
-[main 87417bf] Auto-sync: 2026-04-03 16:23
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   a08aa7b..91ba73e  main -> main
+[main f9486d7] Auto-sync: 2026-04-02 22:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3012,11 +2964,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   cc528b5..87417bf  main -> main
-[main e4b36c8] Auto-sync: 2026-04-03 16:54
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   91ba73e..f9486d7  main -> main
+[main 77db4d5] Auto-sync: 2026-04-02 23:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3029,11 +2983,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   87417bf..e4b36c8  main -> main
-[main b10e06b] Auto-sync: 2026-04-03 17:24
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   f9486d7..77db4d5  main -> main
+[main 801d7ad] Auto-sync: 2026-04-02 23:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3046,11 +3002,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   e4b36c8..b10e06b  main -> main
-[main 19a8517] Auto-sync: 2026-04-03 17:54
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   77db4d5..801d7ad  main -> main
+[main 8143682] Auto-sync: 2026-04-03 00:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3063,11 +3021,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   b10e06b..19a8517  main -> main
-[main 8e26c53] Auto-sync: 2026-04-03 18:24
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   801d7ad..8143682  main -> main
+[main b766fa5] Auto-sync: 2026-04-03 00:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3080,11 +3040,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   19a8517..8e26c53  main -> main
-[main 939f234] Auto-sync: 2026-04-03 18:54
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   8143682..b766fa5  main -> main
+[main 6e5edee] Auto-sync: 2026-04-03 01:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3097,11 +3059,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   8e26c53..939f234  main -> main
-[main 9784657] Auto-sync: 2026-04-03 19:24
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   b766fa5..6e5edee  main -> main
+[main 0ee615c] Auto-sync: 2026-04-03 01:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3114,11 +3078,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   939f234..9784657  main -> main
-[main d033142] Auto-sync: 2026-04-03 19:54
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   6e5edee..0ee615c  main -> main
+[main 683207b] Auto-sync: 2026-04-03 02:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3131,11 +3097,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   9784657..d033142  main -> main
-[main cd30aab] Auto-sync: 2026-04-03 20:24
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   0ee615c..683207b  main -> main
+[main 28e9f20] Auto-sync: 2026-04-03 02:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3148,11 +3116,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   d033142..cd30aab  main -> main
-[main 5bfc39c] Auto-sync: 2026-04-03 20:54
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   683207b..28e9f20  main -> main
+[main a239594] Auto-sync: 2026-04-03 03:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3165,11 +3135,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   cd30aab..5bfc39c  main -> main
-[main a30543f] Auto-sync: 2026-04-03 21:24
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   28e9f20..a239594  main -> main
+[main baa467a] Auto-sync: 2026-04-03 03:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3182,11 +3154,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   5bfc39c..a30543f  main -> main
-[main b1318a6] Auto-sync: 2026-04-03 21:54
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   a239594..baa467a  main -> main
+[main 2786daa] Auto-sync: 2026-04-03 04:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -3199,6 +3173,275 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   a30543f..b1318a6  main -> main
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   baa467a..2786daa  main -> main
+[main 86017e2] Auto-sync: 2026-04-03 04:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   2786daa..86017e2  main -> main
+[main e27b165] Auto-sync: 2026-04-03 05:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   86017e2..e27b165  main -> main
+[main 23041c6] Auto-sync: 2026-04-03 05:56
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   e27b165..23041c6  main -> main
+[main 3752b11] Auto-sync: 2026-04-03 06:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   23041c6..3752b11  main -> main
+[main 619332f] Auto-sync: 2026-04-03 06:57
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   3752b11..619332f  main -> main
+[main fb198d0] Auto-sync: 2026-04-03 07:27
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   619332f..fb198d0  main -> main
+[main 7b24fb9] Auto-sync: 2026-04-03 07:57
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   fb198d0..7b24fb9  main -> main
+[main 829868f] Auto-sync: 2026-04-03 08:27
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 57 insertions(+)
+ create mode 100644 logs/morning-report-2026-04-03.log
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   75430ea..829868f  main -> main
+[main f7e5199] Auto-sync: 2026-04-03 08:57
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 20 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   829868f..f7e5199  main -> main
+[main 1a1c7dd] Auto-sync: 2026-04-03 09:27
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   f7e5199..1a1c7dd  main -> main
+[main d3b1f60] Auto-sync: 2026-04-03 09:57
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   1a1c7dd..d3b1f60  main -> main
+[main 3b2ffcb] Auto-sync: 2026-04-03 10:27
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   d3b1f60..3b2ffcb  main -> main
+[main 741190f] Auto-sync: 2026-04-03 10:57
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   3b2ffcb..741190f  main -> main
+[main 78c77c1] Auto-sync: 2026-04-03 11:27
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   741190f..78c77c1  main -> main
