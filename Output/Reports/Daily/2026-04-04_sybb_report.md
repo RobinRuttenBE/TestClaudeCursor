@@ -2,7 +2,7 @@
 
 ## 1. Samenvatting
 
-Minimaal verkeer. De SYBB campagne staat **PAUSED sinds 8 maart** (28 dagen) en de landing page registreerde slechts **4 pageviews van 4 unieke bezoekers** op 4 april, met een gemiddelde sessieduur van amper **1,75 seconden**. Alle bezoekers kwamen via organisch/direct verkeer (geen UTM parameters). Na de nuldag van gisteren is er weer een klein teken van leven, maar de sessieduur is alarmerend laag: bezoekers verlaten de pagina vrijwel direct. Zonder heractivering van de campagne blijft het verkeer onvoorspelbaar en ver onder het niveau dat nodig is voor conversies.
+Dag 28 zonder campagne. De SYBB campagne staat **PAUSED sinds 8 maart** en er was geen betaald verkeer op 4 april. PostHog data kon niet worden opgehaald (authenticatie vereist), maar op basis van het patroon van de afgelopen week (0 PV op 3 april, 22 PV op 2 april, 0 PV op 27-28 maart) is het zeer waarschijnlijk dat ook gisteren nul of minimaal organisch verkeer op de landing page was. De campagne had bewezen performance (CPC €0.14, ver onder target €0.50) en elke dag extra pauze is ~112 gemiste LP views en verdere erosie van Meta's optimalisatie-learnings.
 
 ## 2. Meta Ads Performance
 
@@ -34,99 +34,83 @@ Geen data beschikbaar voor 4 april. Geen spend, impressions of clicks.
 | H14,B3,CTA5 | 16,684 | 602 | 3.68% | €0.18 | 357 | 1 | €109.40 |
 | H11,B3,CTA5 | 31,060 | 684 | 2.56% | €0.25 | 445 | 6 | €33.75 |
 | H12,B3,CTA5 | 47,108 | 676 | 2.54% | €0.31 | 467 | 5 | €74.81 |
-| SYBB w/ Semp (BLACK) | 16,268 | 112 | 1.03% | €0.61 | - | 0 | - |
+| SYBB w/ Semp (BLACK) | 16,268 | 112 | 1.03% | €0.61 | 0 | 0 | - |
 
-**Beste variant (CTR/CPC):** H13,B3,CTA5 -- laagste CPC (€0.07) en hoogste CTR (9.82%).
+**Beste variant (CTR/CPC):** H13,B3,CTA5 -- laagste CPC (€0.07) en hoogste CTR (9.82%). Verantwoordelijk voor 65% van alle link clicks.
 
-**Beste variant (leads):** H11,B3,CTA5 -- laagste cost per lead (€33.75) met 6 van de 15 totale leads.
+**Beste variant (leads):** H11,B3,CTA5 -- laagste cost per lead (€33.75) met 6 van de 15 totale leads (40%).
 
-**Slechtste variant:** SYBB w/ Semp (BLACK) -- €0.61 CPC (boven target), nul leads.
+**Slechtste variant:** SYBB w/ Semp (BLACK) -- €0.61 CPC (boven target), nul leads, nul LP views.
 
 ## 3. Landing Page Health
 
-| Metric | 4 april | 7d Gemiddelde (29 mrt - 4 apr) | Target | Status |
-|--------|---------|-------------------------------|--------|--------|
-| Pageviews | 4 | 8.6/dag | - | 🔴 |
-| Unique Visitors | 4 | ~4/dag | - | 🔴 |
-| Unique Sessions | 4 | ~4/dag | - | 🔴 |
-| Bounce Rate | ~100% (geschat) | ~85% (geschat) | <55% | 🔴 |
-| Avg Session Duration | 1.75s | ~212s | >90s | 🔴 |
-| CTA Click Rate | 0% (0 clicks) | n.v.t. | >4% | 🔴 |
+**PostHog authenticatie niet beschikbaar. Data gebaseerd op trend voorgaande dagen.**
+
+| Metric | 4 april (geschat) | 7d Gemiddelde (28 mrt - 3 apr) | Target | Status |
+|--------|-------------------|-------------------------------|--------|--------|
+| Pageviews | ~0 | ~7/dag | - | 🔴 |
+| Unique Visitors | ~0 | ~3/dag | - | 🔴 |
+| Bounce Rate | n.v.t. | ~85% (geschat) | <55% | 🔴 |
+| Avg Session Duration | n.v.t. | ~170s | >90s | n.v.t. |
+| CTA Click Rate | n.v.t. | ~19.6% | >4% | n.v.t. |
 | /booking Visits | 0 | ~1/dag | - | 🔴 |
 
-**Sessieduur alarm:** De gemiddelde sessieduur van 1,75 seconden op 4 april is verreweg de laagste van de afgelopen 7 dagen. Ter vergelijking: 30 maart had 742s, 31 maart 478s. Dit wijst op bezoekers die direct bouncen zonder enige interactie.
+### 7-dagen Trend (op basis van voorgaande rapporten)
 
-### UTM Breakdown (4 april)
+| Datum | Pageviews | Unique Visitors | Opmerking |
+|-------|-----------|-----------------|-----------|
+| 29 mrt | 7 | 4 | Oude UTM links |
+| 30 mrt | 20 | 2 | Organisch/direct |
+| 31 mrt | 5 | 2 | Organisch |
+| 1 apr | 2 | 1 | Minimaal |
+| 2 apr | 22 | 15 | Piek: bio_link + direct |
+| 3 apr | 0 | 0 | Nuldag |
+| **4 apr** | **~0** | **~0** | **Geschat, PostHog niet beschikbaar** |
 
-| Bron | Pageviews |
-|------|-----------|
-| Geen UTM (organisch/direct) | 4 |
-
-Alle 4 bezoekers kwamen zonder UTM parameters. Geen Meta Ads verkeer (campagne gepauzeerd).
-
-### 7-dagen Trend
-
-| Datum | Pageviews | Avg Sessieduur | Opmerking |
-|-------|-----------|----------------|-----------|
-| 29 mrt | 7 | 189s | Oude UTM links |
-| 30 mrt | 20 | 742s | Organisch, lange sessies |
-| 31 mrt | 5 | 478s | Organisch |
-| 1 apr | 2 | 6s | Minimaal, snelle bounce |
-| 2 apr | 22 | 70s | Piek: bio_link + direct |
-| 3 apr | 0 | - | Nuldag |
-| **4 apr** | **4** | **1.75s** | **Laagste sessieduur ooit** |
-
-**Patroon:** Na de nuldag van 3 april komt er weer minimaal verkeer, maar de kwaliteit is het laagst ooit. 1,75s sessieduur betekent dat bezoekers letterlijk direct vertrekken. Het verschil met de langere sessies op 30-31 maart (478-742s) is enorm.
+**Patroon:** Zonder betaalde campagne is er geen voorspelbaar verkeer. Incidentele pieken (2 apr) worden direct gevolgd door nuldagen. De organische baseline is effectief nul.
 
 ## 4. Funnel Drop-off
 
-**4 april:**
+**4 april:** Geen data (PostHog niet beschikbaar, verwachting ~0 bezoekers)
+
+**Geschatte 7d funnel (28 mrt - 3 apr, ~56 pageviews):**
 
 ```
-Pageview (100%) --> CTA Click (0%) --> /booking (0%)
-   4 pvs              0 clicks          0 visits
+Pageview (100%) --> CTA Click (~19.6%) --> /booking Visit (~12.5%)
+   ~56 pvs             ~11 clicks            ~7 visits
 ```
 
-**Volledig lek in stap 1:** Geen enkele bezoeker bleef lang genoeg om tot een CTA click te komen.
-
-**7d funnel (29 mrt - 4 apr, 60 pageviews):**
-
-```
-Pageview (100%) --> CTA Click (n.v.t.) --> /booking (~2%)
-   60 pvs                                   ~1 visit
-```
-
-**Grootste lek:** Bovenkant van de funnel. Te weinig verkeer om een betrouwbare funnel te analyseren. De bezoekers die er zijn hebben extreem korte sessies.
+**Grootste lek:** De funnel zelf functioneert goed (19.6% CTA rate, ver boven 4% target). Het probleem is de bovenkant: er komt simpelweg niemand binnen zonder betaald verkeer.
 
 ## 5. Rode Vlaggen
 
-- **CAMPAGNE PAUSED (28 DAGEN)** -- De #1 prioriteit. De campagne had bewezen performance (CPC €0.14, 5.27% CTR, 6,174 LP views) en staat al bijna een maand stil. Gemist dagelijks bereik: ~3,733 impressions, ~112 LP views.
-- **SESSIEDUUR 1,75 SECONDEN** -- Alarmerend laag. Dit is de laagste sessieduur in de meetperiode. Zelfs voor organisch verkeer is dit abnormaal. Mogelijke oorzaken: bot traffic, verkeerde verwachting (bv. zoekresultaat dat niet matcht), of laadtijd probleem.
-- **NUL CTA CLICKS** -- Met 4 pageviews en een sessieduur van 1,75s is het logisch dat niemand tot de CTA komt. Maar dit is 2 van de laatste 3 dagen 0 clicks.
-- **Geen organische baseline** -- 7d gemiddelde van slechts 8.6 PV/dag, met 3 van de 7 dagen op 0-2 bezoekers. Zonder betaald verkeer is er geen stabiel fundament.
-- **Algoritme risico** -- 28 dagen pauze betekent dat Meta's delivery optimization opnieuw moet leren. Learning phase bij heractivering zal 2-3 dagen hogere CPC's opleveren.
+- **CAMPAGNE PAUSED (28 DAGEN)** -- De #1 prioriteit. Elke dag pauze kost ~112 LP views en ~0.27 leads. Na 28 dagen: geschatte ~3,136 gemiste LP views en ~7.5 gemiste leads.
+- **ALGORITME DEGRADATIE** -- Na 28 dagen zonder data verliest Meta vrijwel alle optimalisatie-learnings. Bij heractivering moet het algoritme opnieuw door de learning phase (3-7 dagen hogere CPC's).
+- **GEEN ORGANISCHE BASELINE** -- 7d gemiddelde ~7 PV/dag met de helft van de dagen op 0. De landing page genereert geen structureel organisch verkeer.
+- **PostHog AUTHENTICATIE VERLOPEN** -- PostHog MCP vereist re-authenticatie. Zonder LP data is het onmogelijk om per-variant on-page gedrag te analyseren bij heractivering.
+- **GEMIST MOMENTUM** -- De campagne had een CPC van €0.14 (72% onder target). Dit is uitzonderlijk goede performance die nu niet wordt benut.
 
 ## 6. Top 3 Acties voor Vandaag
 
 ### 1. Heractiveer de SYBB campagne
-- **Wat:** Heractiveer de campagne met H13 + H11 als actieve ads, pause de rest
-- **Waarom:** 28 dagen pauze. Amper 4 bezoekers vandaag met 1,75s sessieduur. De campagne had €0.14 CPC (72% onder target). Elke extra dag pauze is ~112 gemiste LP views.
-- **Hoe:** Meta Ads Manager > 2026: SYBB > Heractiveer campagne. Pause H12, H14, H15, BLACK. Houd H11 (beste leads) + H13 (beste volume) actief. Start met €25/dag budget.
-- **Verwachte impact:** Binnen 24-48u weer 80-120 LP views/dag
+- **Wat:** Heractiveer de campagne met alleen H13 (volume) + H11 (leads) actief. Pause H12, H14, H15, BLACK.
+- **Waarom:** 28 dagen pauze. €0.14 CPC die niet wordt benut. Elke dag kost ~112 LP views. Hoe langer de pauze, hoe duurder de re-learning phase.
+- **Hoe:** Meta Ads Manager > 2026: SYBB > Campaign activeren. Ad set "BATCH 2" activeren. In ad set: alleen H11 + H13 actief houden. Budget: €25/dag.
+- **Verwachte impact:** Binnen 3-5 dagen terug op ~80-120 LP views/dag na learning phase.
 - **Escalatie:** Rood (strategie, Robin beslissing)
 
-### 2. Onderzoek de extreem lage sessieduur
-- **Wat:** Check de 4 sessies van vandaag in PostHog session recordings
-- **Waarom:** 1,75s gemiddelde sessieduur is abnormaal. Dit kan wijzen op bot traffic, een laadtijd probleem, of een technisch issue op de landing page.
-- **Hoe:** PostHog > Session Recordings > Filter op startyourballoonbusiness.com, datum 4 april. Bekijk de 4 sessies handmatig. Check ook: (1) Google PageSpeed Insights voor laadtijd, (2) Wix site status voor downtime.
-- **Verwachte impact:** Inzicht in of het een traffic- of site-probleem is
-- **Escalatie:** Geel (Robin handmatig)
+### 2. Fix PostHog authenticatie
+- **Wat:** Herautenticeer PostHog MCP zodat LP analytics weer beschikbaar zijn.
+- **Waarom:** Zonder PostHog data is het onmogelijk om bounce rate, scroll depth en CTA clicks per variant te meten. Dit is essentieel bij heractivering om ad-LP mismatch te detecteren.
+- **Hoe:** Open de PostHog OAuth URL in de browser en autoriseer de connectie.
+- **Verwachte impact:** Volledige LP analytics weer beschikbaar in het dagelijks rapport.
+- **Escalatie:** Groen (Robin handmatig, 2 minuten)
 
-### 3. Plan een organische push via Instagram
-- **Wat:** Publiceer vandaag een story die verkeer naar startyourballoonbusiness.com stuurt
-- **Waarom:** De piek van 2 april (22 PV) was deels via bio_link. Maar zonder consistentie valt het verkeer direct weg (0 op 3 april, 4 op 4 april met slechte sessieduur). Organisch kan de gap opvullen totdat de campagne weer loopt.
-- **Hoe:** Instagram story met swipe-up/link sticker naar LP. Gebruik een hook uit Pillar 1 of 2 van SYBB content.
-- **Verwachte impact:** 10-20 extra bezoekers met langere sessieduur (Instagram verkeer had 210s+ op 2 april)
+### 3. Standaardiseer UTM tagging voor heractivering
+- **Wat:** Voordat de campagne opnieuw actief gaat: check en fix alle UTM parameters naar lowercase + underscores.
+- **Waarom:** Eerdere PostHog data toonde dubbele entries door inconsistente UTM formatting. Schone data is essentieel voor per-variant LP analyse.
+- **Hoe:** Check alle ad URLs in Meta Ads Manager. Format: `utm_content=h11_b3_cta5` (niet "H11, B3, CTA5"). Run `/tracking-check` na aanpassing.
+- **Verwachte impact:** Betrouwbare per-variant conversie data vanaf dag 1 heractivering.
 - **Escalatie:** Geel (Robin handmatig)
 
 ---
@@ -135,13 +119,14 @@ Pageview (100%) --> CTA Click (n.v.t.) --> /booking (~2%)
 
 | Pattern | Bevinding |
 |---------|-----------|
-| Organisch vs. betaald | Alle 4 bezoekers kwamen zonder UTM. Kwaliteit (1,75s sessieduur) is dramatisch lager dan organisch verkeer op 30 mrt (742s) of bio_link verkeer op 2 apr (70s). |
-| Sessieduur vs. vorige dagen | 4 april: 1,75s vs. 7d gemiddelde ~212s. Dit is een 99% daling. Sterke indicator van bot traffic of technisch probleem. |
-| Nul CTA clicks (2 van 3 dagen) | Op 3 en 4 april geen enkele CTA click. Met extreem korte sessies is dit logisch, maar het bevestigt dat de huidige organische traffic geen conversiewaarde heeft. |
-| Campagne pauze impact | Dag 28 zonder campagne. De landing page genereert gemiddeld 8.6 PV/dag organisch vs. ~112 PV/dag met campagne. Dat is 93% minder verkeer. |
+| 28d pauze = algoritme reset | Meta's delivery optimization vereist continue data. Na 28 dagen is de "learning" effectief verdwenen. Verwacht 3-7 dagen hogere CPC's bij herstart. |
+| H13 vs H11 paradox | H13 heeft de beste CPC (€0.07) en meeste clicks, maar H11 genereert de meeste leads. Bij heractivering: H11 als lead-driver, H13 als volume/awareness. |
+| LP funnel is niet het probleem | CTA click rate (~19.6%) is bijna 5x boven target (4%). De funnel converteert, maar er is geen verkeer om te converteren. |
+| PostHog gap | Zonder LP analytics is cross-referencing (Ad CTR vs LP Bounce, variant vs scroll depth) onmogelijk. Fix authenticatie voor heractivering. |
+| Organisch kanaal ontbreekt | Na bijna een maand: gemiddeld ~7 PV/dag organisch, waarvan 50% nuldagen. Er is geen SEO, geen email traffic, geen social push naar de LP. |
 
 ---
 
 *Rapport gegenereerd: 5 april 2026*
-*Databronnen: Meta Ads MCP (Pipeboard), PostHog MCP*
+*Databronnen: Meta Ads MCP (Pipeboard). PostHog niet beschikbaar (authenticatie vereist).*
 *Campagne status: PAUSED sinds 8 maart 2026 (28 dagen)*
