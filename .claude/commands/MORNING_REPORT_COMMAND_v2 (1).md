@@ -62,8 +62,8 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 | LP Views | X | X | ↑/↓/→ | — | — |
 
 ### 🎬 Ad Variant Performance
-| Ad (utm_content) | Spend | Clicks | CTR | CPC | LP Views | Leads | LP Bounce | LP Scroll 50%+ | Flag |
-|-------------------|-------|--------|-----|-----|----------|-------|-----------|----------------|------|
+| Ad (utm_content) | Spend | Clicks | CTR | CPC | LP Views | IC (InitCheckout) | ATC (AddToCart) | Purchases | LP Bounce | LP Scroll 50%+ | Flag |
+|-------------------|-------|--------|-----|-----|----------|-------|-----------|---------|-----------|----------------|------|
 [per ad variant, zowel Meta als PostHog data gecombineerd]
 
 **Beste variant:** [welke en waarom]
@@ -89,6 +89,7 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 | Scroll 75% | X% | >40% | 🟢/🟡/🔴 |
 | Scroll 100% | X% | >20% | 🟢/🟡/🔴 |
 | CTA Click Rate | X% | >4% | 🟢/🟡/🔴 |
+(alleen tonen als PostHog custom events geconfigureerd zijn, anders: "Niet geconfigureerd")
 
 **Session recordings:** X nieuwe opnames
 
@@ -98,11 +99,35 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 3. [Actie]
 ```
 
-## Regels
+## Data Integriteit Regels (KRITIEK)
+
+### Geen interpretatie — exacte event namen
+- Gebruik NOOIT het woord "leads" tenzij er een echt lead formulier is ingevuld
+- Meta's "Gestart betaalproces" = InitiateCheckout, NIET een lead
+- Rapporteer altijd de exacte Meta event naam: ViewContent, AddToCart, InitiateCheckout, Purchase
+- "Results" in Meta Ads Manager = het conversie-event van de campagne (momenteel: InitiateCheckout). Benoem dit expliciet.
+- Lifetime "leads" bestaan niet — het waren InitiateCheckout events
+
+### Databron verplicht bij elk datapunt
+- Elk getal moet een bron hebben: (Meta Ads MCP), (PostHog), of (GA4)
+- Als een getal berekend/afgeleid is, vermeld de berekening
+- Meng NOOIT Meta ad metrics met LP metrics zonder expliciete markering
+
+### Minimum data drempels
+- PostHog LP metrics (bounce, scroll, sessie duur): toon ALLEEN als er minimaal 50 sessies zijn. Anders: "Onvoldoende data (X sessies)"
+- CTA click rate op LP: toon ALLEEN als PostHog custom events geconfigureerd zijn. Anders: "Niet geconfigureerd"
+- Meld altijd het aantal sessies/datapunten waarop een metric gebaseerd is
+
+### Geen verzonnen metrics
+- Rapporteer NOOIT een metric die niet direct uit een MCP tool komt
+- Als je een metric niet kunt ophalen, zeg "Data niet beschikbaar" — verzin geen schattingen
+- "CTA Click Rate" = PostHog click events op de LP, NIET Meta ad CTR
+
+## Algemene Regels
 - Schrijf in het Nederlands
 - Wees bondig — geen fluff, geen disclaimers
 - Toon ALLE actieve ads, ook als ze geen delivery krijgen
 - Vergelijk altijd met 7-daags gemiddelde
 - Rode vlaggen triggers: CPC >€0.50, CTR <1%, bounce >70%, scroll <50% bij >60% bezoekers, frequency >3, 0 delivery op actieve ads, click→LP view drop >20%
 - Sla het rapport op in output/reports/daily/
-- Als PostHog geen data heeft (bv. net geïnstalleerd), vermeld dit en toon alleen Meta Ads data
+- Als PostHog geen data heeft, vermeld dit en toon alleen Meta Ads data
