@@ -218,7 +218,10 @@
       "Bash(osascript:*)",
       "Skill(update-config)",
       "mcp__claude_ai_Gmail__gmail_get_profile",
-      "mcp__posthog__query-trends"
+      "mcp__posthog__query-trends",
+      "Bash(sips -g hasAlpha \"/Users/robinrutten/TestClaudeCursor/remotion-stx/public/images/Silk range.png\")",
+      "Bash(sips -g pixelWidth -g pixelHeight -g hasAlpha \"/Users/robinrutten/TestClaudeCursor/remotion-stx/public/images/Silk range_alpha.png\")",
+      "Bash(sips -g pixelWidth -g pixelHeight -g hasAlpha \"/Users/robinrutten/TestClaudeCursor/remotion-stx/public/images/Audrey twisting tip 2.png\")"
     ]
   }
 }

@@ -1838,6 +1838,496 @@ gap: 64,
 
 ---
 
+### TYPE: labeled-photo-carousel
+
+**WANNEER:** Spreker noemt een serie projecten, design types of voorbeelden waarvan elk een eigen titel/label heeft (bijv. "number stack, corporate design 1, corporate design 2"). Sequentiële carousel waar elke foto met label binnenglijdt, even blijft staan en weer wegglijdt voordat de volgende komt.
+
+**LAYOUT:** Linksonder, 5% van de rand. Kaart blijft op één positie staan; alle foto's verschijnen op dezelfde plek. Video blijft volledig zichtbaar (geen panel, geen shift).
+
+```
+Positie: left 5%, bottom 5%
+Kaart breedte: 836px (~22% van 3840px)
+Kaart hoogte: 836px (vierkant)
+Label boven kaart, gap 28px
+transformOrigin: "bottom left"
+```
+
+**STRUCTUUR:** Verticaal stack per item: geel label blok bovenaan, photo card eronder. Beide bewegen samen als één unit.
+
+```
+┌──────────────────────┐
+│   Number Stack       │  ← Geel label blok, dark purple tekst
+└──────────────────────┘
+┌──────────────────────┐
+│                      │
+│                      │
+│      Foto            │  ← Vierkante photo card,
+│   (objectFit: cover) │     paarse rand met neon glow
+│                      │
+│                      │
+└──────────────────────┘
+```
+
+**BEVAT:**
+
+#### Yellow label blok (bovenaan)
+- Achtergrond: `BRAND.colors.secondary.yellow` (#ffdb5a)
+- Padding: `26px 56px`
+- borderRadius: 18
+- boxShadow: depth + subtiele yellow glow puls
+  ```tsx
+  boxShadow: `
+    0 12px 32px rgba(0,0,0,0.45),
+    0 0 ${50 * glowPulse}px ${yellow}55
+  `
+  ```
+- Tekst:
+  - Font: Rethink Sans Extra Bold (800), 76px
+  - Kleur: `BRAND.colors.secondary.darkPurple` (#1b073d)
+  - letterSpacing: 2, lineHeight: 1, whiteSpace: nowrap
+  - Geen text shadow nodig (hoog contrast)
+
+#### Photo card (onderaan)
+- width: 836px, height: 836px (vierkant)
+- borderRadius: 36
+- border: `12px solid ${purple}` (`BRAND.colors.primary.purple`, #6b3fb9)
+- backgroundColor: `BRAND.colors.secondary.darkPurple` (val-back als img laadt)
+- overflow: hidden
+- Neon glow box-shadow met pulse:
+  ```tsx
+  boxShadow: `
+    0 0 ${88 * glowPulse}px ${purple}cc,
+    0 0 ${44 * glowPulse}px ${purple}aa,
+    0 0 ${176 * glowPulse}px ${purple}55,
+    0 24px 70px rgba(0,0,0,0.65)
+  `
+  ```
+- Img: `width: 100%, height: 100%, objectFit: cover`
+
+#### Container (label + card)
+```tsx
+position: "absolute",
+left: "5%",
+bottom: "5%",
+display: "flex",
+flexDirection: "column",
+alignItems: "flex-start",
+gap: 28,
+transform: `translate(${translateX}px, ${floatY}px) scale(${cardScale})`,
+transformOrigin: "bottom left",
+```
+
+#### Animaties
+
+**Swipe in van links:**
+```tsx
+const inX = interpolate(
+  frame,
+  [inFrame, inFrame + 12], // 12 frames = 0.4s
+  [M3_OFFSCREEN_X, 0],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.cubic),
+  },
+);
+
+// M3_OFFSCREEN_X = -(card_width + 600) → ver genoeg uit beeld
+// inclusief het label dat boven uitsteekt
+```
+
+**Swipe out naar links:**
+```tsx
+const outX = interpolate(
+  frame,
+  [outFrame, outFrame + 9], // 9 frames = 0.3s
+  [0, M3_OFFSCREEN_X],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.in(Easing.cubic),
+  },
+);
+
+const translateX = frame < outFrame ? inX : outX;
+```
+
+**Entry scale pop (weight bij landing):**
+```tsx
+const entryScale = interpolate(
+  frame,
+  [inFrame, inFrame + 14],
+  [0.92, 1],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.cubic),
+  },
+);
+```
+
+**Exit scale (subtle shrink):**
+```tsx
+const exitScale = interpolate(
+  frame,
+  [outFrame, outFrame + 9],
+  [1, 0.94],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.in(Easing.cubic),
+  },
+);
+
+const cardScale = frame < outFrame ? entryScale : exitScale;
+```
+
+**Float Y (loopend, zichtbaar op 4K):**
+```tsx
+const localFrame = frame - inFrame;
+const floatY = Math.sin(localFrame * 0.05) * 28;
+```
+
+**Neon glow puls (loopend):**
+```tsx
+const glowPulse = 0.8 + Math.sin(localFrame * 0.08) * 0.2;
+// Bereik: 0.6 → 1.0
+```
+
+#### Animatie Samenvatting
+
+| Element | Type | Easing / Spring config |
+|---------|------|------------------------|
+| Swipe in van links | interpolate | `Easing.out(Easing.cubic)` over 12 frames |
+| Swipe out naar links | interpolate | `Easing.in(Easing.cubic)` over 9 frames |
+| Entry scale pop | interpolate | `Easing.out(Easing.cubic)` 0.92→1 over 14 frames |
+| Exit scale shrink | interpolate | `Easing.in(Easing.cubic)` 1→0.94 over 9 frames |
+| Float Y loop | sin wave | freq 0.05, amplitude 28px |
+| Neon glow puls | sin wave | freq 0.08, amplitude ±0.2 op base 0.8 |
+
+> **Belangrijke regels:**
+> - Geen `<Sequence>` wrapping om de cards. Sequences resetten de lokale frame naar 0, waardoor checks op globale `inFrame` waarden (zoals 720) altijd falen. Render de showcase component **direct** in de main `<AbsoluteFill>` zodat `useCurrentFrame()` globale frames teruggeeft.
+> - Alle 5 transforms (inX/outX, entry/exit scale, floatY) op één container — niet op kind elementen verspreiden.
+> - `M3_OFFSCREEN_X` moet groter zijn dan de card-breedte alleen, want het label kan zijwaarts uitsteken bij grote tekst. Gebruik `-(card_width + 600)` als veilige marge.
+
+#### Timing per kaart
+
+| Constante | Frames | Tijd | Beschrijving |
+|-----------|--------|------|-------------|
+| `M3_SWIPE_IN_FRAMES` | 12 | 0.4s | Swipe in duur |
+| `M3_SWIPE_OUT_FRAMES` | 9 | 0.3s | Swipe out duur |
+| Hold tussen in en out | variabel | 3-4s | Per kaart configureerbaar |
+| Gap tussen opeenvolgende kaarten | 6 | 0.2s | Mini ademruimte |
+
+#### Sound Design
+
+| Actie | Geluid | Volume | Pad |
+|-------|--------|--------|-----|
+| Swipe in (snap) | Transition snap | 0.55 | `sound-effects/oxidvideos-transition-sfx-2-409073.mp3` |
+| Swipe out (whoosh) | Whoosh end | 0.45 | `sound-effects/soundreality-whoosh-end-384629.mp3` |
+
+> SFX `<Sequence>` start 1 frame vóór de visuele move (`from={photo.inFrame - 1}`) voor correcte ear-eye sync. Snap whoosh past beter dan een trage cinematic whoosh — sneller en scherper voor snelle slide-in.
+
+#### Kleuren Samenvatting
+
+| Element | Kleur | BRAND referentie | HEX |
+|---------|-------|-----------------|-----|
+| Label achtergrond | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Label tekst | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Card border | Purple | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Card backgroundColor | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Glow kleur | Purple | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Label glow accent | Yellow @ alpha 55 | `BRAND.colors.secondary.yellow` | #ffdb5a |
+
+**TRANSITIE:** Card group (label + photo) glijdt met scale-pop in van links, houdt 3-4s vast met float + glow puls, glijdt weg naar links met subtle shrink. Geen video shift. Geen panel. De photo card blijft op één positie — alleen de inhoud verandert per kaart.
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part2-overlays.tsx` (`Moment3PhotoCard` + `Moment3DesignShowcase` componenten)
+
+**REGISTRATIE:** Moment 3 in Composition `Audrey-Robin-Part-2`. Cards staan **direct** in `<AbsoluteFill>`, niet in een `<Sequence>` wrapper. SFX wel in eigen `<Sequence from={photo.inFrame - 1}>`.
+
+---
+
+### TYPE: stacked-product-showcase
+
+**WANNEER:** Spreker presenteert een productlijn of design serie waar je meerdere foto's wilt tonen die thematisch bij één titel horen. Bijvoorbeeld: een product range + voorbeeld design, of een collectie + toepassing. Eén titel boven, twee of meer photo cards verticaal gestapeld.
+
+**LAYOUT:** Linkerkant van het scherm, verticaal gecentreerd. Verticale stack met vaste paddingLeft van 5%. Kaders matchen de **echte aspect ratio** van de foto's — niet geforceerd vierkant.
+
+```
+Positie: paddingLeft 5%, vertical center (flex column, justifyContent: center)
+Card width: 520px (vast)
+Card height: berekend per foto via Math.round(width * h/w)
+Title block boven Group 1
+Gap tussen Group 1 en Group 2: 40px
+Gap title ↔ photo binnen Group 1: 26px
+```
+
+**STRUCTUUR:** Twee verticaal gestapelde groepen:
+
+```
+┌─────────────────────────┐
+│  Silk Range             │  ← Geel title block, dark purple tekst
+└─────────────────────────┘
+┌─────────────────────────┐
+│                         │
+│                         │
+│   Range product foto    │  ← Card 1, paarse rand,
+│   (aspect-correct)      │     hoogte berekend uit aspect ratio
+│                         │
+│                         │
+└─────────────────────────┘
+
+         (gap 40px)
+
+┌─────────────────────────┐
+│                         │
+│                         │
+│   Design foto           │  ← Card 2, paarse rand,
+│   (aspect-correct)      │     hoogte berekend uit aspect ratio
+│                         │
+│                         │
+└─────────────────────────┘
+```
+
+**BEVAT:**
+
+#### Yellow title block (bovenaan)
+- Achtergrond: `BRAND.colors.secondary.yellow`
+- Padding: `28px 64px`
+- borderRadius: 22
+- boxShadow: depth + subtiele yellow glow puls
+  ```tsx
+  boxShadow: `
+    0 14px 44px rgba(0,0,0,0.5),
+    0 0 ${60 * glowPulse}px ${yellow}55
+  `
+  ```
+- Tekst:
+  - Font: Rethink Sans Extra Bold (800), **108px** (boven 4K threshold van 96)
+  - Kleur: `BRAND.colors.secondary.darkPurple`
+  - letterSpacing: 4, lineHeight: 1, whiteSpace: nowrap
+
+#### Photo cards (aspect-correct)
+
+**Aspect ratio rule:** Vóór het bouwen, lees de echte pixel dimensies van elke foto en bereken de card hoogte:
+
+```tsx
+const M4_CARD_WIDTH = 520;
+const M4_RANGE_HEIGHT = Math.round(M4_CARD_WIDTH * (1024 / 761));  // 700
+const M4_DESIGN_HEIGHT = Math.round(M4_CARD_WIDTH * (1440 / 1080)); // 693
+```
+
+Zo blijft de kader altijd in sync met de foto en hoeft `objectFit: cover` niet te croppen.
+
+**Base card style:**
+```tsx
+const baseCardStyle: React.CSSProperties = {
+  width: M4_CARD_WIDTH,
+  borderRadius: 32,
+  border: `12px solid ${purple}`,
+  boxShadow: `
+    0 0 ${80 * glowPulse}px ${purple}cc,
+    0 0 ${40 * glowPulse}px ${purple}aa,
+    0 0 ${160 * glowPulse}px ${purple}55,
+    0 24px 70px rgba(0,0,0,0.65)
+  `,
+  overflow: "hidden",
+  backgroundColor: BRAND.colors.secondary.darkPurple,
+};
+```
+
+Per card override `height` via prop. Zelfde border + glow stijl als labeled-photo-carousel maar zonder de extra borderRadius/border verschillen.
+
+#### Wit-naar-lavender achtergrond preprocessing
+
+Wanneer een product foto een witte achtergrond heeft die je wilt vervangen door een brand kleur (bijv. `BRAND.colors.primary.lavender` #f1d9ff): **niet** `mix-blend-mode: multiply` gebruiken — dat tint ook de ballonnen zelf.
+
+In plaats daarvan: pre-processing script om witte pixels écht transparant te maken:
+
+```js
+// Eénmalig draaien om _alpha variant aan te maken
+const sharp = require('sharp');
+sharp('public/images/Silk range.png')
+  .ensureAlpha()
+  .raw()
+  .toBuffer({ resolveWithObject: true })
+  .then(({ data, info }) => {
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i], g = data[i+1], b = data[i+2];
+      // Threshold: bijna-witte pixels worden volledig transparant
+      if (r > 240 && g > 240 && b > 240) {
+        data[i+3] = 0;
+      }
+    }
+    return sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } })
+      .png()
+      .toFile('public/images/Silk range_alpha.png');
+  });
+```
+
+Daarna in de card:
+```tsx
+<div style={{
+  ...baseCardStyle,
+  backgroundColor: BRAND.colors.primary.lavender, // toont door transparante pixels
+}}>
+  <Img
+    src={staticFile("images/Silk range_alpha.png")}
+    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+  />
+</div>
+```
+
+Bewaar zowel de originele als de `_alpha.png` variant; gebruik origineel waar geen kleur-replacement nodig is.
+
+#### Container
+
+```tsx
+<AbsoluteFill style={{
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "flex-start",
+  paddingLeft: "5%",
+  gap: 40,
+}}>
+```
+
+#### Animaties
+
+**Pop in (single spring met natuurlijke overshoot):**
+```tsx
+const popIn = spring({
+  frame: frame - inFrame,
+  fps,
+  config: { damping: 10, mass: 0.55, stiffness: 145 },
+});
+```
+
+> Geen interpolate-overshoot keyframes combineren met spring — dat geeft dubbele bounce. Single spring met deze config produceert een natuurlijke overshoot tot ~1.08 die settled op 1.0.
+
+**Pop out (keyframe interpolate):**
+```tsx
+const popOut = interpolate(
+  frame,
+  [outStart, outStart + 3, outStart + 9],
+  [1, 1.05, 0],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.in(Easing.cubic),
+  },
+);
+
+const scale = frame < outStart ? popIn : popOut;
+```
+
+Switch op `outStart` is naadloos omdat popIn dan al settled op 1 is en popOut start op 1.
+
+**Float Y (loopend, met phase offset per card):**
+```tsx
+const float1 = Math.sin((frame - rangeIn) * 0.05) * 28;
+const float2 = Math.sin((frame - designIn) * 0.05 + 1.2) * 28;
+```
+
+Phase offset (`+1.2`) op tweede card voorkomt dat ze in unison drijven.
+
+**Glow puls (gedeeld over alle elementen):**
+```tsx
+const glowPulse = 0.85 + Math.sin(frame * 0.07) * 0.15;
+// Bereik: 0.7 → 1.0
+```
+
+**Helper functie voor pop scale (gedeeld door title + cards):**
+```tsx
+const computeM4PopScale = (
+  frame: number,
+  fps: number,
+  inFrame: number,
+  outStart: number,
+  outDuration: number,
+) => {
+  const popIn = spring({
+    frame: frame - inFrame,
+    fps,
+    config: { damping: 10, mass: 0.55, stiffness: 145 },
+  });
+  const popOut = interpolate(
+    frame,
+    [outStart, outStart + 3, outStart + outDuration],
+    [1, 1.05, 0],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.in(Easing.cubic),
+    },
+  );
+  return frame < outStart ? popIn : popOut;
+};
+```
+
+> Naam met `compute*` prefix — niet `use*` — want het is geen React hook (geen useState/useEffect). De `use*` naam zou React's exhaustive deps lint triggeren.
+
+#### Animatie Samenvatting
+
+| Element | Type | Easing / Spring config |
+|---------|------|------------------------|
+| Pop in (title + cards) | spring | `{ damping: 10, mass: 0.55, stiffness: 145 }` |
+| Pop out (synced) | interpolate | keyframes `[1, 1.05, 0]` over 9 frames, `Easing.in(Easing.cubic)` |
+| Float Y (per card) | sin wave | freq 0.05, amplitude 28px, phase offset op tweede card |
+| Glow puls | sin wave | freq 0.07, amplitude ±0.15 op base 0.85 |
+| Title transformOrigin | — | "left center" — schaal vanaf links |
+| Card transformOrigin | — | "left center" |
+
+#### Timing
+
+| Constante | Frame | Tijd | Beschrijving |
+|-----------|-------|------|-------------|
+| Title in | inFrame | 0:00 (relatief) | Eerste pop-in |
+| Card 1 in | +9 | +0.3s | Range photo pop-in |
+| Card 2 in | +18 | +0.6s | Design photo pop-in |
+| Hold | tot outStart | 4-5s typisch | Statisch met float + glow |
+| Pop out start | outStart | — | Synced exit voor alle 3 |
+| Pop out duur | 9 frames | 0.3s | Allemaal samen weg |
+
+#### Sound Design
+
+| Actie | Geluid | Volume | Pad |
+|-------|--------|--------|-----|
+| Title pop in | Pop | 0.55 | `sound-effects/soundreality-pop-423717.mp3` |
+| Card 1 pop in | Pop | 0.5 | `sound-effects/soundreality-pop-423717.mp3` |
+| Card 2 pop in | Pop | 0.5 | `sound-effects/soundreality-pop-423717.mp3` |
+| Synced pop out | Pop | 0.5 | `sound-effects/soundreality-pop-423717.mp3` |
+
+> Title iets luider (0.55) dan de cards (0.5) voor optische emphasis. Synced pop out gebruikt één pop SFX voor alle 3 elementen samen — voelt als een coherente "groep verdwijnt".
+
+#### Kleuren Samenvatting
+
+| Element | Kleur | BRAND referentie | HEX |
+|---------|-------|-----------------|-----|
+| Title block achtergrond | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Title tekst | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Card border | Purple | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Card glow | Purple | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Card backgroundColor (algemeen) | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Card backgroundColor (wit-vervanging) | Lavender | `BRAND.colors.primary.lavender` | #f1d9ff |
+| Title yellow glow accent | Yellow @ alpha 55 | `BRAND.colors.secondary.yellow` | #ffdb5a |
+
+#### Regels
+
+- **Geen magenta** (`BRAND.colors.primary.magenta` / #cd0b5c) in dit type. Title blijft strikt geel met dark purple tekst voor consistente "highlight" branding.
+- **Aspect ratio matchen**: lees pixel dimensies vóór het bouwen via `sips -g pixelWidth -g pixelHeight`. Gebruik `Math.round(width * h/w)` voor card hoogte.
+- **Witte achtergrond vervangen**: nooit `mix-blend-mode: multiply` — gebruik altijd het sharp pre-processing script om transparante alpha variant te genereren.
+- **Geen `<Sequence>` wrapper** rond de showcase component zelf — render direct in `<AbsoluteFill>` zodat globale frames werken.
+
+**TRANSITIE:** Stagger pop-ins met spring (title → card 1 → card 2 met 0.3s tussen elk), 4-5s hold met float + glow puls, synced pop-out met scale 1 → 1.05 → 0. Cards blijven op één plek — geen slide.
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part2-overlays.tsx` (`Moment4SilkRange` component + `computeM4PopScale` helper)
+
+**REGISTRATIE:** Moment 4 in Composition `Audrey-Robin-Part-2`. Render direct in `<AbsoluteFill>`, SFX in eigen `<Sequence>` blokken op het hoofdniveau.
+
+---
+
 ## 9. ACHTERGROND MUZIEK
 
 ### Standaard Track
