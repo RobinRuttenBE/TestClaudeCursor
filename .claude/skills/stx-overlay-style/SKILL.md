@@ -2328,6 +2328,574 @@ const computeM4PopScale = (
 
 ---
 
+### TYPE: gradient-info-card
+
+**WANNEER:** Spreker introduceert een specifiek product, concept of feature dat een **dedicated branded info-block** verdient — geen tip-overlay (te klein), geen lavender info-card (te licht voor product-positioning), maar een **prominente kaart met Sempertex gradient achtergrond**. Geschikt voor uitleg van waarom een product belangrijk is, met een korte body tekst van 20-40 woorden.
+
+> **Verschilt van existing `info-card` type**: gradient-info-card heeft een **donkere Sempertex gradient achtergrond met witte body tekst** in plaats van lavender achtergrond met dark purple tekst. Geen teleprompter scroll. Statisch tekst die de hele duur staat.
+
+**LAYOUT:** Floating kaart linkerkant, verticaal gecentreerd. Video van spreker blijft volledig zichtbaar (geen video shift). Kaart bedekt ~30% van het scherm.
+
+```
+Positie: left 5%, top 50% met translateY(-50%) voor verticale centrering
+Breedte: 1100px (~29% van 3840px) — auto height op basis van content
+Border-radius: 32px
+4px purple alpha border voor definition tegen drukke video
+Overflow: hidden
+transformOrigin: "left center"
+```
+
+**STRUCTUUR:** Verticale stack met twee elementen:
+
+```
+┌─────────────────────────────────────┐
+│                                     │
+│   ┌──────────────────┐              │
+│   │  Ultra Pumps     │  ← Geel highlight blok,
+│   └──────────────────┘     dark purple ExtraBold
+│                                     │
+│   Using the Ultra Pump can make    │  ← Body tekst (Lato Bold wit)
+│   your work go 50% faster at        │     op gradient achtergrond
+│   events. Meaning you can take      │
+│   on more clients in the same       │
+│   time period.                      │
+│                                     │
+│        [particles drift]            │
+└─────────────────────────────────────┘
+```
+
+**BEVAT:**
+
+#### Achtergrond Stack (van onder naar boven)
+
+1. **Sempertex gradient** — radial purple ellipse + linear purple → darkPurple
+   ```tsx
+   background: `
+     radial-gradient(ellipse 80% 60% at 50% 40%, ${purple} 0%, transparent 70%),
+     linear-gradient(160deg, ${purple} 0%, ${darkPurple} 100%)
+   `
+   ```
+   Diagonaal (160°) in plaats van 180° geeft subtiel meer leven dan een rechte verticale verloop.
+
+2. **Particles** — lavender, contained binnen de kaart via `position: absolute, inset: 0` op een wrapper
+   ```tsx
+   <Particles
+     count={18}
+     color={BRAND.colors.primary.lavender}  // #f1d9ff
+     maxOpacity={0.25}
+     speedMultiplier={1.2}
+     seed={73}
+   />
+   ```
+
+3. **Border + glow shadow** — purple alpha border op de kaart container voor edge definition
+   ```tsx
+   border: `4px solid ${purple}aa`  // alpha aa = ~67%
+   ```
+
+#### Yellow title block
+
+- Achtergrond: `BRAND.colors.secondary.yellow`
+- Padding: `26px 64px`
+- borderRadius: 20
+- boxShadow: `0 12px 32px rgba(0,0,0,0.4)` (depth voor floating gevoel boven gradient)
+- Tekst:
+  - Font: Rethink Sans Extra Bold (800), 108px
+  - Kleur: `BRAND.colors.secondary.darkPurple` — **NIET wit**
+  - letterSpacing: 3, lineHeight: 1, whiteSpace: nowrap
+  - Geen text shadow, geen stroke (hoog contrast op geel)
+
+> **Belangrijke regel:** Gele blokken in dit type altijd met **dark purple tekst**. Wit-op-geel heeft slechte contrast en breekt visuele consistency met andere yellow blocks in branded overlays. Een text-stroke patch werkt deels maar verliest zichtbaarheid op mobile downscale.
+
+#### Body tekst
+
+- Font: **Lato Bold** (700), 64px
+- Kleur: `BRAND.colors.neutral.white`
+- letterSpacing: 0.5, lineHeight: 1.4
+- textShadow: `0 4px 16px rgba(0,0,0,0.55)` (cruciaal — body staat direct op gradient)
+- maxWidth: `100%` (vult de content padding)
+
+> **Belangrijke regel:** Body op `fontWeight: 700` (Bold), niet Regular. Lato Regular (400) is onder de video text threshold en verliest leesbaarheid bij mobile downscale. De BRAND fonts.body verwijst naar "Lato" als family — gebruik weight 700 voor body in dit type.
+
+#### Content container
+
+```tsx
+position: "relative",
+padding: "72px 80px",
+display: "flex",
+flexDirection: "column",
+alignItems: "flex-start",
+gap: 48,
+```
+
+#### Animaties
+
+**Pop in (single spring met natural overshoot):**
+```tsx
+const popIn = spring({
+  frame: localFrame,
+  fps,
+  config: { damping: 10, mass: 0.55, stiffness: 145 },
+});
+// Natuurlijke overshoot tot ~1.08
+```
+
+**Pop out (keyframe interpolate, 0.3s):**
+```tsx
+const exitScale = interpolate(
+  localFrame,
+  [
+    M_DURATION - M_EXIT_FRAMES,
+    M_DURATION - M_EXIT_FRAMES + 3,
+    M_DURATION,
+  ],
+  [1, 1.05, 0],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.in(Easing.cubic),
+  },
+);
+
+const scale = localFrame >= M_DURATION - M_EXIT_FRAMES ? exitScale : popIn;
+```
+
+> Switch op `outStart` is naadloos: popIn settled op 1, exitScale start op 1. Single spring → keyframe-interpolate transitie heeft geen jump.
+
+**Subtle breathe (continu):**
+```tsx
+const breathe = 1 + Math.sin(localFrame * 0.04) * 0.005;
+// Amplitude 0.5%
+```
+
+**Pulserende glow (continu):**
+```tsx
+const glowOpacity = interpolate(
+  Math.sin(localFrame * 0.06),
+  [-1, 1],
+  [0.2, 0.45],
+);
+const glowShadow = `
+  0 16px 60px rgba(0,0,0,0.5),
+  0 0 60px rgba(107, 63, 185, ${glowOpacity}),
+  0 0 120px rgba(107, 63, 185, ${glowOpacity * 0.5})
+`;
+```
+
+Krachtigere glow dan tip-overlay omdat de kaart groter is en meer zichtbare presence nodig heeft.
+
+**Gecombineerde transform:**
+```tsx
+transform: `translateY(-50%) scale(${scale * breathe})`,
+transformOrigin: "left center",
+```
+
+`translateY(-50%)` voor verticale centrering. `transformOrigin: left center` zodat de scale niet visueel naar links beweegt — schaalt vanaf de linker rand waar de kaart verankerd is.
+
+#### Animatie Samenvatting
+
+| Element | Type | Easing / Spring config |
+|---------|------|------------------------|
+| Pop in | spring | `{ damping: 10, mass: 0.55, stiffness: 145 }` |
+| Pop out | interpolate | keyframes `[1, 1.05, 0]` over 9 frames, `Easing.in(Easing.cubic)` |
+| Breathe | sin wave | freq 0.04, amplitude ±0.005 (0.5%) |
+| Glow puls | sin wave | freq 0.06, opacity 0.2 → 0.45 |
+| Particles | drift loop | 18 particles, lavender, speed 1.2 |
+| Subtle gradient | static | radial + 160° linear |
+
+#### Timing
+
+| Constante | Frames | Tijd | Beschrijving |
+|-----------|--------|------|-------------|
+| Pop in spring settle | ~25 | ~0.8s | Spring tot rust |
+| Hold | tot exit | varieert | Body tekst leestijd |
+| `M_EXIT_FRAMES` | 9 | 0.3s | Pop-out duur |
+| Total duur | 240-300 | 8-10s | Afhankelijk van body lengte |
+
+#### Leestijd berekenen
+
+Voor body tekst lengte → minimum hold tijd:
+- Gemiddelde leessnelheid: 220 wpm = 3.7 wps
+- Pop in/out overhead: ~1.1s (25 frames in + 9 frames out)
+- **Formule:** `M_DURATION ≥ (woorden / 3.7 * 30) + 34`
+
+Voorbeelden:
+- 20 woorden → minimum 197 frames (~6.6s) → kies 240 frames (8s)
+- 27 woorden → minimum 253 frames (~8.4s) → kies 270 frames (9s)
+- 35 woorden → minimum 318 frames (~10.6s) → kies 330 frames (11s)
+
+#### Sound Design
+
+| Actie | Geluid | Volume | Pad |
+|-------|--------|--------|-----|
+| Pop in | Pop | 0.5 | `sound-effects/soundreality-pop-423717.mp3` |
+| Pop out | Pop | 0.5 | `sound-effects/soundreality-pop-423717.mp3` |
+
+> Volume 0.5 (luider dan tip-overlay's 0.2) omdat de kaart groter is en meer impact heeft. Beide pop SFX zelfde sample voor coherente in-out matching.
+
+#### Kleuren Samenvatting
+
+| Element | Kleur | BRAND referentie | HEX |
+|---------|-------|-----------------|-----|
+| Gradient top | Purple | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Gradient bottom | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Title block achtergrond | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Title tekst | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Body tekst | White | `BRAND.colors.neutral.white` | #ffffff |
+| Particles | Lavender | `BRAND.colors.primary.lavender` | #f1d9ff |
+| Border | Purple @ alpha aa | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Glow | Purple | `rgb(107, 63, 185)` (RGB voor opacity interp) | #6b3fb9 |
+
+#### Regels
+
+- **Yellow title block tekst altijd dark purple**, nooit wit (slechte contrast).
+- **Body altijd Lato Bold (700)**, nooit Regular (400) — onder video text threshold.
+- **Card width 1100px** is een goede default voor 4K landscape. Voor portrait formaten naar verhouding aanpassen.
+- **Verticale centrering via `top: 50%, translateY(-50%)`** — niet via flex parent, want dan moet de kaart in een container die de hele scherm beslaat.
+- **Particles binnen de kaart** met `position: absolute, inset: 0` op een wrapper div, anders breekt overflow hidden niet en floaten ze buiten de kaart edges.
+- **Body leestijd verifiëren** met de woordentelling formule. 27 woorden in 7s is te krap (290 wpm) — minimaal 9s.
+
+**TRANSITIE:** Single spring pop-in (left center origin), continue breathe + glow + particles tijdens hold, keyframe interpolate pop-out met overshoot 1.05 → 0. Geen slide, geen fade.
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part2-overlays.tsx` (`Moment8InfoCard` component)
+
+**REGISTRATIE:** Moment 8 in Composition `Audrey-Robin-Part-2`. Render direct in `<AbsoluteFill>`, SFX in `<Sequence>` blokken op het hoofdniveau.
+
+---
+
+### TYPE: typewriter-quote-card
+
+**WANNEER:** Spreker maakt een memorabele uitspraak die letterlijk gequoteerd verdient te worden — een persoonlijke wijsheid, levensles, branchevisie. Geen tip, geen product info, maar een **woordelijke quote met attribution**. Gebruikt typewriter effect voor dramatic reveal en grote decoratieve aanhalingstekens voor "this is a quotation" framing.
+
+> **Verschilt van andere card types**: warme licht palette (lavender → yellow) in plaats van Sempertex purple gradient. Geen Lato body, alleen Rethink Sans Bold (Italic voor quote zelf). Twee decoratieve quote glyphs (U+201C / U+201D) op 280px als visueel framework. Continu floating + sway motion. Swipe up (niet pop) als exit.
+
+**LAYOUT:** Floating kaart linksboven het scherm. Video van spreker blijft volledig zichtbaar. Card heeft een eigen "personality" door de constante motion — drijft langzaam op en neer met subtiele tilt.
+
+```
+Positie: top 5%, left 5%
+Breedte: 1200px (~31% van 3840px) — auto height op basis van content
+Border-radius: 32px
+5px dark purple solid border voor edge definition tegen video
+Overflow: hidden
+transformOrigin: "top left"
+```
+
+**STRUCTUUR:** Verticale stack:
+
+```
+┌──────────────────────────────────┐
+│                                  │
+│   AUDREY PARSONS                 │  ← Naam (uppercase, donker paars)
+│   ━━━━━━━━━━                     │  ← Dark purple accent line
+│                                  │
+│   "                              │  ← Decoratieve open quote (280px)
+│      You never lose,             │  ← Quote tekst (italic, typewriter)
+│      you always learn._          │  ← Cursor knipper tijdens typen
+│                          "       │  ← Decoratieve close quote (280px)
+│                                  │
+│        [particles drift]         │
+└──────────────────────────────────┘
+```
+
+**BEVAT:**
+
+#### Achtergrond Stack
+
+1. **Lavender → yellow gradient** met radial highlights voor warmte en depth
+   ```tsx
+   background: `
+     radial-gradient(ellipse 70% 50% at 30% 30%, ${lavender} 0%, transparent 60%),
+     radial-gradient(ellipse 60% 50% at 80% 80%, ${yellow}cc 0%, transparent 65%),
+     linear-gradient(160deg, ${lavender} 0%, ${yellow} 100%)
+   `
+   ```
+
+2. **Particles** — purple, lage opacity (0.18) want palette is licht
+   ```tsx
+   <Particles
+     count={14}
+     color={BRAND.colors.primary.purple}  // #6b3fb9
+     maxOpacity={0.18}
+     speedMultiplier={1}
+     seed={210}
+   />
+   ```
+
+3. **Border** — 5px solid darkPurple voor edge definition (geen alpha — moet stevig staan tegen video)
+
+4. **Glow shadow** — yellow tint in plaats van purple voor warmer palette
+   ```tsx
+   const glowShadow = `
+     0 18px 60px rgba(0,0,0,0.45),
+     0 0 60px rgba(255, 219, 90, ${glowOpacity}),
+     0 0 120px rgba(255, 219, 90, ${glowOpacity * 0.5})
+   `;
+   ```
+
+#### Name section
+
+- Tekst: bijvoorbeeld `"AUDREY PARSONS"` (gebruik UPPERCASE via `textTransform`)
+- Font: Rethink Sans Extra Bold (800), 76px
+- Kleur: `BRAND.colors.secondary.darkPurple`
+- letterSpacing: 5, lineHeight: 1
+- Geen text shadow nodig (hoog contrast op licht palette)
+
+**Accent line onder de naam:**
+- Width: 220px, height: 8px
+- backgroundColor: `darkPurple` (zelfde kleur als naam)
+- borderRadius: 4
+
+#### Quote section
+
+Container met `position: relative` en grote padding voor de decoratieve quotes:
+
+```tsx
+position: "relative",
+width: "100%",
+paddingLeft: 110,    // ruimte voor open quote glyph
+paddingRight: 80,    // ruimte voor close quote glyph
+paddingTop: 30,
+paddingBottom: 50,
+minHeight: 280,      // reserve plek zodat layout niet springt tijdens typewriter
+```
+
+**Decoratieve open quote** (`"` U+201C):
+```tsx
+<div
+  style={{
+    position: "absolute",
+    top: -40,
+    left: -20,
+    fontFamily: BRAND.fonts.title,
+    fontWeight: 800,
+    fontSize: 280,
+    color: darkPurple,
+    lineHeight: 1,
+    userSelect: "none",
+  }}
+>
+  "
+</div>
+```
+
+**Quote tekst zelf:**
+- Font: Rethink Sans **Bold Italic** (`fontWeight: 700, fontStyle: "italic"`)
+- fontSize: 100px
+- Kleur: `darkPurple`
+- letterSpacing: 0.5, lineHeight: 1.2
+- Typewriter mechanisme (zie hieronder)
+
+**Decoratieve close quote** (`"` U+201D):
+```tsx
+<div
+  style={{
+    position: "absolute",
+    bottom: -120,
+    right: 0,
+    fontFamily: BRAND.fonts.title,
+    fontWeight: 800,
+    fontSize: 280,
+    color: darkPurple,
+    lineHeight: 1,
+    userSelect: "none",
+  }}
+>
+  "
+</div>
+```
+
+> **Belangrijke regel:** Beide quote glyphs zijn **niet getypewriterd** — ze staan vanaf de pop-in al in beeld. Alleen de quote tekst zelf typt in. Dit framet visueel "dit is een citaat" voordat de tekst verschijnt.
+
+#### Typewriter mechanisme
+
+```tsx
+const M_TYPE_START = 15;     // 0.5s na pop in
+const M_TYPE_DURATION = 60;  // 2s typewriter duur
+const M_TYPE_END = M_TYPE_START + M_TYPE_DURATION;
+
+const typeProgress = interpolate(
+  localFrame,
+  [M_TYPE_START, M_TYPE_END],
+  [0, QUOTE.length],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  },
+);
+const visibleChars = Math.floor(typeProgress);
+const visibleText = QUOTE.slice(0, visibleChars);
+```
+
+> **Belangrijke regel:** **Geen easing** op `interpolate` voor typewriter — letters moeten constant tempo verschijnen. Easing maakt het tempo onnatuurlijk traag of snel.
+
+**Knipperende cursor** (zichtbaar tijdens typen + 30 frames erna):
+```tsx
+const showCursor =
+  localFrame >= M_TYPE_START &&
+  localFrame < M_TYPE_END + 30 &&
+  Math.floor(localFrame / 8) % 2 === 0;
+
+// Cursor element
+{showCursor && (
+  <span
+    style={{
+      display: "inline-block",
+      width: 5,
+      height: "0.9em",
+      backgroundColor: darkPurple,
+      marginLeft: 6,
+      verticalAlign: "text-bottom",
+    }}
+  />
+)}
+```
+
+Cursor blink frequency: `Math.floor(localFrame / 8) % 2` = 8 frames aan / 8 frames uit = ~1.9 Hz blink rate (natuurlijk).
+
+#### Animaties
+
+**Pop in (single spring):**
+```tsx
+const popIn = spring({
+  frame: localFrame,
+  fps,
+  config: { damping: 10, mass: 0.55, stiffness: 145 },
+});
+```
+
+**Continue float Y (zichtbaar drijvend):**
+```tsx
+const floatY = Math.sin(localFrame * 0.045) * 18;
+```
+
+> Dit is **prominenter** dan de breathe op andere card types. De quote card moet "leven" tijdens de hold, niet stilstaan.
+
+**Continue gentle sway rotation:**
+```tsx
+const sway = Math.sin(localFrame * 0.03) * 0.5;  // ±0.5 graden
+```
+
+Subtiele tilt links/rechts, lagere frequentie dan floatY → out-of-sync motion voelt organischer.
+
+**Subtle breathe:**
+```tsx
+const breathe = 1 + Math.sin(localFrame * 0.04) * 0.006;
+```
+
+**Pulserende glow** (yellow tint):
+```tsx
+const glowOpacity = interpolate(
+  Math.sin(localFrame * 0.06),
+  [-1, 1],
+  [0.25, 0.5],
+);
+```
+
+**Swipe up uit beeld** (exit):
+```tsx
+const swipeUpY = interpolate(
+  localFrame,
+  [M_SWIPE_UP_START, M_SWIPE_UP_START + M_SWIPE_UP_FRAMES],
+  [0, -(height + 200)],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.in(Easing.cubic),
+  },
+);
+```
+
+`-(height + 200)` zorgt dat de kaart volledig uit beeld is, ook met de extra ruimte voor de close quote glyph.
+
+**Gecombineerde transform:**
+```tsx
+transform: `
+  translateY(${swipeUpY + floatY}px)
+  rotate(${sway}deg)
+  scale(${popIn * breathe})
+`,
+transformOrigin: "top left",
+```
+
+#### Animatie Samenvatting
+
+| Element | Type | Easing / Spring config |
+|---------|------|------------------------|
+| Pop in | spring | `{ damping: 10, mass: 0.55, stiffness: 145 }` |
+| Float Y (continu) | sin wave | freq 0.045, amplitude ±18px |
+| Sway rotate (continu) | sin wave | freq 0.03, amplitude ±0.5° |
+| Breathe (continu) | sin wave | freq 0.04, amplitude ±0.006 (0.6%) |
+| Glow puls (yellow) | sin wave | freq 0.06, opacity 0.25 → 0.5 |
+| Typewriter | interpolate | **geen easing** (linear), clamps |
+| Cursor blink | floor mod | 8 frames on / 8 frames off |
+| Swipe up exit | interpolate | `Easing.in(Easing.cubic)` over 12 frames |
+
+> **Out-of-sync motion regel:** floatY (freq 0.045) en sway (freq 0.03) draaien op verschillende frequenties zodat ze nooit in lockstep zijn. Dit voelt organischer dan synchroon bewegen.
+
+#### Timing
+
+| Constante | Frame (lokaal) | Tijd | Beschrijving |
+|-----------|---------------|------|-------------|
+| Pop in start | 0 | 0:00 | Spring start |
+| Spring settled | ~25 | ~0.8s | Pop tot rust |
+| `M_TYPE_START` | 15 | 0.5s | Typewriter begint typen |
+| `M_TYPE_END` | 75 | 2.5s | Typewriter klaar |
+| Cursor blink end | 105 | 3.5s | Cursor verdwijnt 30 frames na typing end |
+| Hold | 105-168 | 3.5s-5.6s | Statische read time |
+| `M_SWIPE_UP_START` | 168 | 5.6s | Swipe up begint |
+| Swipe up duur | 12 | 0.4s | Tot off-screen |
+| End | 180 | 6.0s | Moment einde |
+
+**Typewriter snelheid:** Voor 33-char quote in 60 frames = ~16.5 cps. Voor langere quotes verhoog `M_TYPE_DURATION` proportioneel:
+- 20 chars → 36 frames (1.2s)
+- 33 chars → 60 frames (2s)
+- 50 chars → 90 frames (3s)
+
+#### Sound Design
+
+| Actie | Geluid | Volume | Pad |
+|-------|--------|--------|-----|
+| Pop in | Pop | 0.5 | `sound-effects/soundreality-pop-423717.mp3` |
+| Typewriter (zacht tikken) | Keyboard ASMR | 0.35 | `sound-effects/dragon-studio-typing-keyboard-asmr-356116.mp3` |
+| Swipe up | Whoosh end | 0.55 | `sound-effects/soundreality-whoosh-end-384629.mp3` |
+
+Typing audio start exact bij `M_TYPE_START` met `durationInFrames={M_TYPE_DURATION}` zodat hij stopt op het moment dat de tekst klaar is. Geen losse SFX per letter — één continue keyboard sample dekt de hele typewriter periode.
+
+#### Kleuren Samenvatting
+
+| Element | Kleur | BRAND referentie | HEX |
+|---------|-------|-----------------|-----|
+| Gradient top-left | Lavender | `BRAND.colors.primary.lavender` | #f1d9ff |
+| Gradient bottom-right | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Yellow accent radial | Yellow @ alpha cc | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Border | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Naam tekst | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Naam underline | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Quote tekst | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Quote glyphs (open/close) | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Cursor | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Particles | Purple | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Glow shadow | Yellow | `rgb(255, 219, 90)` (RGB voor opacity interp) | #ffdb5a |
+
+#### Regels
+
+- **Geen Sempertex purple gradient als achtergrond** — dit type heeft een licht (lavender + yellow) palette voor warmte en kontrast met andere card types die wel donker zijn.
+- **Alle tekst Rethink Sans** — geen Lato body. Quote staat in `Rethink Sans Bold Italic` (700 + italic) voor een echte "quotation" feel.
+- **Quote glyphs zijn statisch**, niet getypewriterd. Ze framen visueel het tekstvak vanaf de pop-in.
+- **Continue motion is groter dan andere cards** — floatY ±18px en sway ±0.5° (niet alleen breathe). Het voelt anders aan dan een statische info card.
+- **Glow tint matcht palette** — yellow glow in plaats van purple, anders botst het met de warme achtergrond.
+- **Border 5px solid darkPurple** — geen alpha. Dit type heeft een lichte achtergrond dus de border moet stevig contrast geven tegen het video achtergrondbeeld.
+- **Render direct in `<AbsoluteFill>`** — niet in `<Sequence>` wrapper, want het component checkt globale frames voor visibility.
+- **Cursor verdwijnt 30 frames na typing end** — niet meteen, geeft de kijker tijd om "dit is klaar" te registreren.
+
+**TRANSITIE:** Pop in (single spring), continue floating + sway + breathe + cursor blink tijdens hold, swipe up (Easing.in cubic) als exit. Geen pop-out — de kaart vliegt letterlijk omhoog uit beeld.
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part2-overlays.tsx` (`Moment10QuoteCard` component)
+
+**REGISTRATIE:** Moment 10 in Composition `Audrey-Robin-Part-2`. Render direct in `<AbsoluteFill>`, SFX in `<Sequence>` blokken op het hoofdniveau (pop, typing, swipe up).
+
+---
+
 ## 9. ACHTERGROND MUZIEK
 
 ### Standaard Track
