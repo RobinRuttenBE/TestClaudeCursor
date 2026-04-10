@@ -1636,6 +1636,208 @@ Lavender achtergrond consistent met youtube-subscribe type. IG/FB iconen behoude
 
 ---
 
+### TYPE: part-intro
+
+**WANNEER:** Begin van een nieuwe video die deel is van een serie (Part 2, Part 3, etc.). Toont serie-context, video-onderwerp en cross-promotie naar de vorige aflevering. Vervangt de video volledig in de eerste 5 seconden voor maximale scroll-stop.
+
+**LAYOUT:** Fullscreen overlay over de hele video. Geen panel, geen video shift. Video loopt eronder maar is volledig bedekt tot de swipe-out. Verticale layout, alles gecentreerd.
+
+```
+┌─────────────────────────────────────┐
+│                                     │
+│   HOW TO BECOME A BALLOON ARTIST    │  ← Header (wit)
+│                                     │
+│   ┌─────────────────────────────┐   │
+│   │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│   │
+│   │░░░░░░░░PART 2░░░░░░░░░░░░░░░│   │  ← Geel highlight blok,
+│   │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│   │     dark purple tekst
+│   └─────────────────────────────┘   │
+│                                     │
+│   ▶  Watch Part 1 on YouTube...     │  ← Subtitle (wit) + YT icoon
+│                                     │
+│         @sempertexeurope            │  ← Handle (wit)
+│         ━━━━━━━━━━━━━━━              │  ← Gele branding streep
+│                                     │
+└─────────────────────────────────────┘
+```
+
+**BEVAT:**
+
+#### Achtergrond Stack (van onder naar boven, allemaal `<AbsoluteFill>`)
+
+1. **Base gradient** — radial purple ellipse + linear purple→darkPurple
+   ```tsx
+   background: `
+     radial-gradient(ellipse 80% 60% at 50% 45%, ${BRAND.colors.primary.purple} 0%, transparent 70%),
+     linear-gradient(180deg, ${BRAND.colors.primary.purple} 0%, ${BRAND.colors.secondary.darkPurple} 100%)
+   `
+   ```
+
+2. **Roterende conic gradient** — diepe ambient draaiing, `mixBlendMode: screen`, opacity 0.85
+   ```tsx
+   const conicAngle = (frame * 0.6) % 360;
+   background: `conic-gradient(from ${conicAngle}deg at 50% 50%, ${purple}00, ${magenta}22, ${lavender}1a, ${purple}00, ${yellow}14, ${purple}00)`
+   ```
+
+3. **Drie driftende blobs** (magenta, lavender, yellow accent) — sin/cos paden, `mixBlendMode: screen`
+   ```tsx
+   const blob1X = 50 + Math.sin(frame * 0.025) * 18;
+   const blob1Y = 45 + Math.cos(frame * 0.022) * 14;
+   const blob2X = 30 + Math.cos(frame * 0.018) * 22;
+   const blob2Y = 60 + Math.sin(frame * 0.024) * 16;
+   const blob3X = 75 + Math.sin(frame * 0.02 + 1.5) * 16;
+   const blob3Y = 35 + Math.cos(frame * 0.019 + 1) * 18;
+   ```
+   Blob 1 (magenta): `radial-gradient(ellipse 45% 40% at ${blob1X}% ${blob1Y}%, ${magenta}3a 0%, transparent 65%)`
+   Blob 2 (lavender): `radial-gradient(ellipse 38% 32% at ${blob2X}% ${blob2Y}%, ${lavender}28 0%, transparent 60%)`
+   Blob 3 (yellow): `radial-gradient(ellipse 30% 26% at ${blob3X}% ${blob3Y}%, ${yellow}1f 0%, transparent 55%)`
+
+4. **Sweeping diagonal light streak** — één pass over 5s, hoek 105°
+   ```tsx
+   const streakX = interpolate(frame, [0, 150], [-30, 130], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+   background: `linear-gradient(105deg, transparent ${streakX - 8}%, ${lavender}22 ${streakX}%, ${white}10 ${streakX + 2}%, transparent ${streakX + 10}%)`
+   ```
+
+5. **Particles** — twee lagen voor diepte
+   - Layer 1: 45 lavender particles, `speedMultiplier: 1.8`, `maxOpacity: 0.35`, seed 42
+   - Layer 2: 20 yellow particles, `speedMultiplier: 0.9`, `maxOpacity: 0.28`, seed 117
+
+6. **Vignette** — randen donkerder voor focus naar centrum
+   ```tsx
+   background: `radial-gradient(ellipse 90% 70% at 50% 50%, transparent 50%, rgba(0,0,0,0.35) 100%)`
+   ```
+
+#### Header (boven het titelblok)
+- Tekst: bijvoorbeeld `"HOW TO BECOME A BALLOON ARTIST"`
+- Font: Rethink Sans Bold (700), 110px
+- Kleur: wit (`BRAND.colors.neutral.white`)
+- letterSpacing: 6, lineHeight: 1
+- textShadow: `0 4px 20px rgba(0,0,0,0.55)`
+- whiteSpace: nowrap, textAlign: center
+- Pop-in: spring `{ damping: 12, mass: 0.5, stiffness: 140 }`
+
+#### Geel highlight blok met titel
+- Achtergrond: `BRAND.colors.secondary.yellow`
+- Padding: `40px 140px 56px` (extra bottom voor optisch midden door descenders)
+- boxShadow: `0 24px 80px rgba(0,0,0,0.45)`
+- Wipe reveal van links naar rechts via `clipPath: inset(0 ${100 - blockReveal}% 0 0)`
+- Titel binnenin: Rethink Sans Extra Bold (800), 540px, dark purple (`BRAND.colors.secondary.darkPurple`), letterSpacing 14, lineHeight 1, whiteSpace nowrap
+- Pop-in: spring `{ damping: 10, mass: 0.55, stiffness: 145 }` met natuurlijke overshoot
+- Wipe reveal duur: 14 frames (~0.47s), easing `Easing.out(Easing.cubic)`
+- Breathing tijdens hold: `1 + Math.sin((frame - breatheStart) * 0.06) * 0.012` (start 20 frames na pop-in)
+
+#### Subtitle row (YouTube cross-promo)
+- Layout: horizontale flex, gap 36
+- Linker icoon: rode YouTube SVG, size 120px (rood `#FF0000` is intentioneel — platform brand kleur)
+- Tekst: bijvoorbeeld `"Watch Part 1 on our YouTube channel"`
+- Font: Lato Bold (700), 110px
+- Kleur: wit
+- letterSpacing: 1, textShadow: `0 4px 16px rgba(0,0,0,0.5)`
+- Pop-in: spring `{ damping: 11, mass: 0.5, stiffness: 140 }`
+
+#### Handle + gele branding streep
+- Handle tekst: bijvoorbeeld `"@sempertexeurope"`
+- Font: Rethink Sans Bold (700), 96px
+- Kleur: wit (NIET geel — geel is gereserveerd voor highlight blok en accent line)
+- letterSpacing: 2, textShadow: `0 4px 20px rgba(0,0,0,0.55)`
+- Branding streep eronder:
+  - Width: 720px, height: 10px
+  - Backgroundcolor: `BRAND.colors.secondary.yellow`
+  - borderRadius: 5
+  - boxShadow: `0 0 24px ${yellow}80` (subtiele glow)
+  - Expand-from-center via `clipPath: inset(0 ${(100 - lineWidth) / 2}% 0 ${(100 - lineWidth) / 2}%)`
+- Streep expand: 16 frames, easing `Easing.out(Easing.cubic)`, start 6 frames na handle pop-in
+- Container gap tussen handle en streep: 24px
+- Hele blok pop-in: spring `{ damping: 11, mass: 0.5, stiffness: 140 }`
+
+#### Content container
+```tsx
+display: "flex",
+flexDirection: "column",
+alignItems: "center",
+justifyContent: "center",
+gap: 64,
+```
+
+#### Animaties Samenvatting
+
+| Element | Type | Easing / Spring config |
+|---------|------|------------------------|
+| Header pop in | spring | `{ damping: 12, mass: 0.5, stiffness: 140 }` |
+| Title pop in | spring (overshoot) | `{ damping: 10, mass: 0.55, stiffness: 145 }` |
+| Yellow block wipe reveal | interpolate | `Easing.out(Easing.cubic)` over 14 frames |
+| Subtitle pop in | spring | `{ damping: 11, mass: 0.5, stiffness: 140 }` |
+| Handle pop in | spring | `{ damping: 11, mass: 0.5, stiffness: 140 }` |
+| Branding line expand | interpolate | `Easing.out(Easing.cubic)` over 16 frames |
+| Title breathing | sin wave | amplitude 0.012, frequentie 0.06 |
+| Conic background rotate | linear | `(frame * 0.6) % 360` graden/frame |
+| Blob drift | sin/cos | freq 0.018-0.025, amplitude 14-22% |
+| Light streak sweep | interpolate | linear over 150 frames, één pass |
+| Swipe out | interpolate | `Easing.inOut(Easing.cubic)`, 15 frames, translateX → `width * 1.2` |
+
+> **Belangrijke regel:** Gebruik één enkele spring voor pop-ins met natuurlijke overshoot. Combineer NOOIT een springy spring met een keyframe overshoot in interpolate (`[0, 0.55, 1] → [0, 1.1, 1]`) — dat veroorzaakt dubbele bounce wobble.
+
+#### Timing
+
+| Constante | Frame | Tijd | Beschrijving |
+|-----------|-------|------|-------------|
+| `M1_HEADER_IN` | 6 | 0:00.2 | Header pop-in start |
+| `M1_TITLE_IN` | 18 | 0:00.6 | PART X + geel blok wipe reveal |
+| `M1_SUBTITLE_IN` | 33 | 0:01.1 | Subtitle + YouTube icoon |
+| `M1_HANDLE_IN` | 48 | 0:01.6 | Handle + branding streep |
+| Hold | 48-135 | 1.6-4.5s | Statisch met breathing + bewegende achtergrond |
+| `M1_SWIPE_OUT_START` | 135 | 0:04.5 | Swipe rechts uit beeld |
+| `M1_SWIPE_OUT_DURATION` | 15 | ~0.5s | Duur van swipe |
+| `M1_END_FRAME` | 150 | 0:05 | Overlay verdwenen, video volledig zichtbaar |
+
+> Stagger tussen elementen: ~12-15 frames (~0.4-0.5s). Eerste pop-in bij frame 6 (0.2s) voor sterke scroll-stop — vermijdt 0.5s "leeg" gradient bij start.
+
+#### Sound Design
+
+| Actie | Geluid | Volume | Pad |
+|-------|--------|--------|-----|
+| Header pop in | Soft pop | 0.45 | `sound-effects/soundreality-pop-423717.mp3` |
+| Title pop in | Soft pop | 0.55 | `sound-effects/soundreality-pop-423717.mp3` |
+| Subtitle pop in | Soft pop | 0.5 | `sound-effects/soundreality-pop-423717.mp3` |
+| Handle pop in | Soft pop | 0.5 | `sound-effects/soundreality-pop-423717.mp3` |
+| Swipe out | Whoosh | 0.55 | `sound-effects/dragon-studio-simple-whoosh-382724.mp3` |
+
+> Whoosh start 2 frames vóór de visuele swipe (`from={M1_SWIPE_OUT_START - 2}`) voor correcte ear-eye sync. Title pop heeft iets hoger volume (0.55) dan de andere voor optische emphasis op het hoofdelement.
+
+#### Kleuren Samenvatting
+
+| Element | Kleur | BRAND referentie | HEX |
+|---------|-------|-----------------|-----|
+| Base gradient top | Purple | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Base gradient bottom | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Highlight blok achtergrond | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| PART X tekst | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Header tekst | White | `BRAND.colors.neutral.white` | #ffffff |
+| Subtitle tekst | White | `BRAND.colors.neutral.white` | #ffffff |
+| Handle tekst | White | `BRAND.colors.neutral.white` | #ffffff |
+| Branding streep | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Blob 1 | Magenta @ alpha 3a | `BRAND.colors.primary.magenta` | #cd0b5c |
+| Blob 2 | Lavender @ alpha 28 | `BRAND.colors.primary.lavender` | #f1d9ff |
+| Blob 3 | Yellow @ alpha 1f | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Particles layer 1 | Lavender | `BRAND.colors.primary.lavender` | #f1d9ff |
+| Particles layer 2 | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| YouTube icoon | YouTube Red | hardcoded (platform brand) | #FF0000 |
+
+#### Regels voor kleurgebruik
+
+- **Geel** alleen voor: highlight blok achter PART X titel, branding streep onder handle, subtle blob accent, particle layer 2. NIET voor tekst.
+- **Wit** voor alle leesbare tekst (header, subtitle, handle).
+- **Dark purple** voor de PART X tekst binnen het gele blok (maximaal contrast).
+- Achtergrond mag nooit pure zwart zijn — altijd purple variants voor brand consistency.
+
+**TRANSITIE:** Stagger pop-ins van boven naar onder met spring + wipe reveal op het highlight blok. Continue achtergrondbeweging via roterende conic, driftende blobs, sweeping streak en particles. Swipe-out naar rechts (`Easing.inOut(Easing.cubic)`) voor de hele content stack inclusief achtergrond, zodat de onderliggende video schoon zichtbaar wordt.
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part2-overlays.tsx` (`Moment1PartIntro` component)
+
+**REGISTRATIE:** Moment 1 in Composition `Audrey-Robin-Part-2` in `remotion-stx/src/Root.tsx`
+
+---
+
 ## 9. ACHTERGROND MUZIEK
 
 ### Standaard Track
