@@ -2896,6 +2896,451 @@ Typing audio start exact bij `M_TYPE_START` met `durationInFrames={M_TYPE_DURATI
 
 ---
 
+### TYPE: stacked-product-comparison
+
+**WANNEER:** Spreker vergelijkt twee of meer producten naast elkaar — bijvoorbeeld "Ultra Hand Pump vs Dual Action Pump". Verschilt van `stacked-product-showcase` (één titel + meerdere product cards) doordat **elk product zijn eigen titel heeft**. Gebruikt voor side-by-side vergelijkingen van producten uit dezelfde categorie.
+
+> **Verschilt van `stacked-product-showcase`**: meerdere `(title + photo card)` paren in plaats van één gedeelde titel. Right-side aligned standaard. Synchroon swipe out, gestaggerde swipe in.
+
+**LAYOUT:** Rechterkant van het scherm, verticaal gecentreerd. Twee tot drie product groepen verticaal gestapeld, elk met eigen yellow title block en aspect-correct photo card.
+
+```
+Positie: paddingRight 5%, top 50% (verticaal centered via flex)
+Card width: 460px (vast)
+Card height: berekend per foto via aspect ratio
+Container alignItems: flex-end
+Gap tussen groepen: 56px
+Gap title ↔ card: 26px
+```
+
+**STRUCTUUR:** Verticale stack, elk product is een eigen group:
+
+```
+                          ┌──────────────────────┐
+                          │   Ultra Hand Pump    │  ← Group 1: title
+                          └──────────────────────┘
+                          ┌──────────────────────┐
+                          │                      │
+                          │   Foto product 1     │  ← Group 1: card
+                          │   (aspect-correct)   │
+                          │                      │
+                          └──────────────────────┘
+
+                                  (gap 56px)
+
+                          ┌──────────────────────┐
+                          │  Dual Action Pump    │  ← Group 2: title
+                          └──────────────────────┘
+                          ┌──────────────────────┐
+                          │                      │
+                          │   Foto product 2     │  ← Group 2: card
+                          │                      │
+                          └──────────────────────┘
+```
+
+**BEVAT:**
+
+#### Yellow title block (per product)
+
+- Achtergrond: `BRAND.colors.secondary.yellow`
+- Padding: `24px 56px`
+- borderRadius: 20
+- boxShadow: depth + subtiele yellow glow puls
+- Tekst:
+  - Font: Rethink Sans Extra Bold (800), 88px
+  - Kleur: `BRAND.colors.secondary.darkPurple` (NIET wit)
+  - letterSpacing: 3, lineHeight: 1, whiteSpace: nowrap
+
+#### Photo card (per product)
+
+- width: 460px (vast)
+- height: berekend per foto via `Math.round(width * h/w)`
+- borderRadius: 28
+- border: `12px solid ${purple}` (`BRAND.colors.primary.purple`)
+- backgroundColor: `BRAND.colors.primary.lavender` voor witte achtergrond vervanging (gebruik `_alpha.png` variant van foto via sharp preprocessing)
+- Neon glow box-shadow met pulse (zelfde formule als labeled-photo-carousel)
+- objectFit: `cover`
+
+#### Container
+
+```tsx
+<AbsoluteFill style={{
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "flex-end",
+  paddingRight: "5%",
+  gap: 56,
+}}>
+```
+
+**Per group container:**
+```tsx
+<div style={{
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-end",
+  gap: 26,
+  transform: `translate(${translateX}px, ${floatY}px) scale(${cardScale})`,
+  transformOrigin: "right center",
+}}>
+```
+
+#### Animaties
+
+**Swipe in van rechts (gestaggerd per product):**
+```tsx
+const M_SWIPE_FRAMES = 12; // 0.4s
+const M_OFFSCREEN_X = M_CARD_WIDTH + 600; // positief = naar rechts uit beeld
+
+const inX = interpolate(
+  frame,
+  [product.inFrame, product.inFrame + M_SWIPE_FRAMES],
+  [M_OFFSCREEN_X, 0],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.cubic),
+  },
+);
+```
+
+**Synced swipe out naar rechts (alle producten samen):**
+```tsx
+const outX = interpolate(
+  frame,
+  [M_OUT_START, M_OUT_START + M_SWIPE_FRAMES],
+  [0, M_OFFSCREEN_X],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.in(Easing.cubic),
+  },
+);
+
+const translateX = frame < M_OUT_START ? inX : outX;
+```
+
+**Entry scale pop (per product, 0.92 → 1):**
+```tsx
+const entryScale = interpolate(
+  frame,
+  [product.inFrame, product.inFrame + 14],
+  [0.92, 1],
+  { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) },
+);
+```
+
+**Exit scale (1 → 0.94):**
+```tsx
+const exitScale = interpolate(
+  frame,
+  [M_OUT_START, M_OUT_START + M_SWIPE_FRAMES],
+  [1, 0.94],
+  { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic) },
+);
+
+const cardScale = frame < M_OUT_START ? entryScale : exitScale;
+```
+
+**Float Y per product met phase offset:**
+```tsx
+const floatY = Math.sin((frame - product.inFrame) * 0.05 + floatPhase) * 28;
+// floatPhase = i * 1.3 voor desync tussen producten
+```
+
+**Glow puls:**
+```tsx
+const glowPulse = 0.85 + Math.sin(frame * 0.07) * 0.15;
+```
+
+#### Animatie Samenvatting
+
+| Element | Type | Easing / Spring config |
+|---------|------|------------------------|
+| Swipe in (per product) | interpolate | `Easing.out(Easing.cubic)` 12 frames |
+| Swipe out (synced) | interpolate | `Easing.in(Easing.cubic)` 12 frames |
+| Entry scale pop | interpolate | `Easing.out(Easing.cubic)` 0.92→1 over 14 frames |
+| Exit scale | interpolate | `Easing.in(Easing.cubic)` 1→0.94 over 12 frames |
+| Float Y (loopend) | sin wave | freq 0.05, amplitude 28px, phase offset per product |
+| Glow puls | sin wave | freq 0.07, amplitude ±0.15 op base 0.85 |
+
+#### Timing
+
+| Constante | Frames | Tijd | Beschrijving |
+|-----------|--------|------|-------------|
+| Product 1 in | inFrame | 0:00 | Eerste swipe in |
+| Product 2 in | inFrame + 12 | +0.4s | Stagger 12 frames |
+| Hold | tot outStart | 4-6s | Met float + glow |
+| Synced exit | outStart | — | Alle producten tegelijk |
+
+#### Sound Design
+
+| Actie | Geluid | Volume | Pad |
+|-------|--------|--------|-----|
+| Swipe in (per product) | Snap whoosh | 0.55 | `sound-effects/oxidvideos-transition-sfx-2-409073.mp3` |
+| Synced swipe out | Whoosh end | 0.5 | `sound-effects/soundreality-whoosh-end-384629.mp3` |
+
+#### Kleuren Samenvatting
+
+Identiek aan `stacked-product-showcase` — yellow title blocks met dark purple tekst, purple card borders, lavender card backgrounds (voor wit-vervanging via alpha PNG preprocessing).
+
+**TRANSITIE:** Per product gestaggerde swipe in van rechts met scale pop, hold met float + glow, synced swipe out naar rechts.
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part2-overlays.tsx` (`Moment5PumpComparison` + `Moment5PumpProduct` componenten)
+
+**REGISTRATIE:** Moment 5 in Composition `Audrey-Robin-Part-2`. Render direct in `<AbsoluteFill>`, SFX per product in `<Sequence>` blokken.
+
+---
+
+### TYPE: end-screen-teaser
+
+**WANNEER:** Aan het **einde** van een serie video — teaser voor de volgende aflevering. Bijvoorbeeld "PART 3 OUT NEXT WEEK" na de afsluiting van Part 2. Verschilt van `part-intro` doordat het aan het einde komt en met een **trage opacity fade-in over de video** verschijnt in plaats van staggered pop-ins. Loopt door tot het einde van de compositie en kan de compositie zelfs verlengen.
+
+> **Verschilt van `part-intro`**:
+> - Slow opacity fade-in (0 → 1 over 75 frames / 2.5s) in plaats van pop-in stagger
+> - Geen swipe-out — overlay blijft tot einde compositie
+> - Music boost ramp gesynced met visual fade-in
+> - Color grade op de **onderliggende video** (de hele video, niet alleen tijdens M13)
+> - Composition `durationInFrames` mag verlengd worden voor extra hold tijd na video einde
+
+**LAYOUT:** Fullscreen overlay, dezelfde achtergrond stack als `part-intro`. Tekst gecentreerd: yellow highlight blok met "PART X" + "OUT NEXT WEEK" subtitel.
+
+```
+Position: AbsoluteFill (volledig scherm)
+Content: flex column center, gap 64
+Yellow title block met "PART X" 360px Extra Bold
+"OUT NEXT WEEK" 220px wit Extra Bold
+Yellow accent line 800x12 onder de tekst
+```
+
+**BEVAT:**
+
+#### Achtergrond Stack
+
+Identiek aan `part-intro` — base Sempertex gradient + animated radial shift + roterende conic + drijvende blobs (magenta + lavender + yellow accent) + sweeping diagonal light streak + particles + vignette. Zie `part-intro` documentatie voor exacte formules.
+
+> **Belangrijk:** De drijvende blobs en sweeping streak geven de achtergrond meer leven dan een statische gradient — zonder deze voelt het end screen "dood" tijdens de hold.
+
+#### Yellow title block met "PART X"
+
+```tsx
+<div style={{
+  transform: `scale(${textScale * breathe})`,
+  opacity: textOpacity,
+  backgroundColor: yellow,
+  padding: "32px 96px 44px",
+  borderRadius: 24,
+  boxShadow: `
+    0 24px 80px rgba(0,0,0,0.5),
+    0 0 80px ${yellow}55
+  `,
+}}>
+  <div style={{
+    fontFamily: BRAND.fonts.title,
+    fontWeight: 800,
+    fontSize: 360,
+    color: darkPurple,
+    letterSpacing: 12,
+    lineHeight: 1,
+    whiteSpace: "nowrap",
+  }}>
+    PART 3
+  </div>
+</div>
+```
+
+#### "OUT NEXT WEEK" subtitle
+
+```tsx
+<div style={{
+  transform: `scale(${textScale * breathe})`,
+  opacity: textOpacity,
+  fontFamily: BRAND.fonts.title,
+  fontWeight: 800,
+  fontSize: 220,
+  color: white,
+  letterSpacing: 8,
+  textShadow: "0 6px 28px rgba(0,0,0,0.6)",
+  whiteSpace: "nowrap",
+}}>
+  OUT NEXT WEEK
+</div>
+```
+
+#### Yellow accent line
+
+```tsx
+<div style={{
+  width: 800,
+  height: 12,
+  backgroundColor: yellow,
+  borderRadius: 6,
+  boxShadow: `0 0 24px ${yellow}aa`,
+  opacity: textOpacity,
+  transform: `scaleX(${textScale})`,
+}} />
+```
+
+#### Animaties
+
+**Slow overlay opacity fade-in (2.5s):**
+```tsx
+const M_FADE_IN_FRAMES = 75; // 2.5s
+
+const overlayOpacity = interpolate(
+  localFrame,
+  [0, M_FADE_IN_FRAMES],
+  [0, 1],
+  {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.inOut(Easing.cubic),
+  },
+);
+```
+
+**Text scale + opacity in (start 1s na fade in begin):**
+```tsx
+const M_TEXT_DELAY = 30;
+const M_TEXT_SCALE_IN = 30;
+
+const textScale = interpolate(
+  localFrame,
+  [M_TEXT_DELAY, M_TEXT_DELAY + M_TEXT_SCALE_IN],
+  [0.95, 1],
+  { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) },
+);
+
+const textOpacity = interpolate(
+  localFrame,
+  [M_TEXT_DELAY, M_TEXT_DELAY + M_TEXT_SCALE_IN],
+  [0, 1],
+  { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+);
+```
+
+**Continue breathing op tekst tijdens hold:**
+```tsx
+const breatheStart = M_TEXT_DELAY + M_TEXT_SCALE_IN + 10;
+const breathe = localFrame > breatheStart
+  ? 1 + Math.sin((localFrame - breatheStart) * 0.05) * 0.012
+  : 1;
+```
+
+#### Music boost ramp (gesynced met fade-in)
+
+In de background music `volume` callback:
+
+```tsx
+const M_BOOST_START = M_START_FRAME;
+const M_BOOST_DURATION = 75; // synced met fade in
+const M_BOOST_VOLUME = 0.32; // ~-10dB
+const M_END_FADE_OUT_FRAMES = 45; // 1.5s short fade out (NIET de standaard 5s)
+
+volume={(f) => {
+  const fadeOutStart = TOTAL_DURATION_FRAMES - M_END_FADE_OUT_FRAMES;
+
+  // 1. Final fade out vanaf boost peak
+  if (f >= fadeOutStart) {
+    const fadeProgress = Math.min(1, (f - fadeOutStart) / M_END_FADE_OUT_FRAMES);
+    return M_BOOST_VOLUME * (1 - fadeProgress);
+  }
+
+  // 2. Boost ramp gesynced met visual fade-in
+  if (f >= M_BOOST_START) {
+    const boostProgress = Math.min(1, (f - M_BOOST_START) / M_BOOST_DURATION);
+    return MUSIC_TARGET_VOLUME + (M_BOOST_VOLUME - MUSIC_TARGET_VOLUME) * boostProgress;
+  }
+
+  // 3. Default volume tijdens rest van video
+  return MUSIC_TARGET_VOLUME;
+}}
+```
+
+> **Belangrijke regel:** De originele 5s fade-out conflict met de boost ramp. Verkort de fade-out naar **1.5s (45 frames)** zodat de boost peak ~3-5 seconden vast kan houden voordat de fade-out begint. Anders verdwijnt het hele "louder bij end screen" effect direct.
+
+#### Color grade op video
+
+```tsx
+<div
+  style={{
+    position: "absolute",
+    inset: 0,
+    filter: "contrast(1.08) saturate(1.15)",
+  }}
+>
+  <OffthreadVideo src={staticFile(videoSrc)} />
+</div>
+```
+
+Wrap de OffthreadVideo in een div met CSS filter voor subtiele grade. Aanrader om dit voor de **hele compositie** toe te passen, niet alleen tijdens M13.
+
+#### Composition extension voor hold na video einde
+
+Als je het end screen wilt laten doorlopen NA het einde van de originele video:
+
+1. Pas `Root.tsx` `durationInFrames` aan: oude video duur + `extraFrames` (bv +90 = 3s extra)
+2. Update `TOTAL_DURATION_FRAMES` constante in het overlay bestand
+3. De `<OffthreadVideo>` toont automatisch niets (zwart) na het einde — maar het end screen overlay covert het
+
+#### Animatie Samenvatting
+
+| Element | Type | Easing / Spring config |
+|---------|------|------------------------|
+| Slow fade in | interpolate | `Easing.inOut(Easing.cubic)` over 75 frames |
+| Text scale in | interpolate | `Easing.out(Easing.cubic)` 0.95→1 over 30 frames |
+| Text opacity in | interpolate | linear over 30 frames |
+| Breathing | sin wave | freq 0.05, amplitude ±0.012 |
+| Drijvende blobs | sin/cos | zelfde formules als part-intro |
+| Conic rotate | linear | `(localFrame * 0.5) % 360` |
+| Sweeping streak | interpolate | linear over volledige M13 duur |
+
+#### Timing
+
+| Constante | Frame (lokaal) | Tijd | Beschrijving |
+|-----------|----------------|------|-------------|
+| Fade in start | 0 | 0:00 | Overlay opacity 0 → 1 begint |
+| Text delay | 30 | 1.0s | Text scale-in begint |
+| Text scale-in eind | 60 | 2.0s | Text fully visible |
+| Fade in eind | 75 | 2.5s | Overlay fully opaque |
+| Hold | 75 → end | varieert | Statisch met breathing + bg motion |
+| Composition end | TOTAL_DURATION | — | Geen swipe-out |
+
+#### Sound Design
+
+**Geen losse SFX** voor het end screen zelf — alleen de music boost ramp doet het werk. Een SFX op de fade-in zou de subtiele "fade up" feel verstoren.
+
+#### Kleuren Samenvatting
+
+| Element | Kleur | BRAND referentie | HEX |
+|---------|-------|-----------------|-----|
+| Gradient top | Purple | `BRAND.colors.primary.purple` | #6b3fb9 |
+| Gradient bottom | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Title block achtergrond | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Title tekst (PART X) | Dark Purple | `BRAND.colors.secondary.darkPurple` | #1b073d |
+| Subtitle (OUT NEXT WEEK) | White | `BRAND.colors.neutral.white` | #ffffff |
+| Accent line | Yellow | `BRAND.colors.secondary.yellow` | #ffdb5a |
+| Drijvende blobs | Magenta + Lavender + Yellow | (zie part-intro) | — |
+| Particles | Lavender | `BRAND.colors.primary.lavender` | #f1d9ff |
+
+#### Regels
+
+- **Slow fade in essentieel** — geen pop-in. De dramatic reveal is de kern van het type.
+- **Music boost moet matchen** met de fade in duur (zelfde aantal frames).
+- **End fade-out korter dan standaard** — anders verdwijnt de boost peak direct.
+- **Drijvende blobs + sweeping streak** zijn cruciaal voor "leven" tijdens de hold (geen statische gradient).
+- **Color grade op hele video**, niet alleen tijdens M13 — anders pop-effect bij activering.
+- **Geen swipe-out** — het end screen blijft tot einde compositie.
+
+**TRANSITIE:** Slow opacity fade-in (2.5s `Easing.inOut(Easing.cubic)`), text scale-in 1s na start (0.95 → 1), continue breathing + background motion tijdens hold, geen exit.
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part2-overlays.tsx` (`Moment13EndScreen` component)
+
+**REGISTRATIE:** Moment 13 in Composition `Audrey-Robin-Part-2`. Render direct in `<AbsoluteFill>`. Music boost handled in de M2 background music `volume` callback. Composition `durationInFrames` mag verlengd worden voor hold tijd na video einde.
+
+---
+
 ## 9. ACHTERGROND MUZIEK
 
 ### Standaard Track
