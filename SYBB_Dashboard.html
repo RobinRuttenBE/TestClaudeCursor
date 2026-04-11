@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYBB Dashboard — Sempertex Europe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--purple-dark:#1b073d;--purple-main:#6b3fb9;--purple-light:#f1d9ff;--purple-bg:#f8f4ff;--yellow:#ffdb5a;--yellow-light:#fff8e0;--warning:#cd0b5c;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2;--bg:#faf9fc;--white:#fff;--border:#e8e0f0;--text:#1b073d;--text-muted:#6b6480;--text-light:#9b8fb5}
+body{font-family:'Rethink Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.sidebar{background:var(--purple-dark);padding:24px 0;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar .logo{padding:0 20px 24px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:16px}
+.sidebar .logo h2{font-size:15px;font-weight:800;color:var(--purple-light)}
+.sidebar .logo span{font-size:11px;color:rgba(255,255,255,0.4)}
+.sidebar nav{padding:0 12px}
+.sidebar .ns{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.3);padding:16px 8px 8px;font-weight:600}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;font-weight:500;transition:all 0.15s;cursor:pointer}
+.sidebar a:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9)}
+.sidebar a.active{background:var(--purple-main);color:white;font-weight:700}
+.main{padding:28px 32px;max-width:1200px}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
+.ph h1{font-size:24px;font-weight:800;color:var(--purple-dark)}
+.ph .sub{font-size:13px;color:var(--text-muted);margin-top:4px}
+.db{background:var(--purple-light);color:var(--purple-main);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700}
+.alerts{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.alert{padding:12px 16px;border-radius:10px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:10px;border-left:4px solid}
+.alert.critical{background:var(--red-light);border-color:var(--warning);color:#991b1b}
+.alert.warning{background:var(--yellow-light);border-color:var(--yellow);color:#92400e}
+.kg{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:28px}
+.kc{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;transition:box-shadow 0.2s}
+.kc:hover{box-shadow:0 4px 12px rgba(107,63,185,0.1)}
+.kc .l{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);font-weight:600;margin-bottom:6px}
+.kc .v{font-size:22px;font-weight:800;color:var(--purple-dark)}
+.kc .s{font-size:11px;margin-top:4px;font-weight:600}
+.kc .s.ok{color:var(--green)}.kc .s.bad{color:var(--red)}.kc .s.warn{color:#b45309}
+.kc .src{font-size:9px;color:var(--text-light);margin-top:2px;font-style:italic}
+.sec{margin-bottom:28px}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.st{font-size:15px;font-weight:700;color:var(--purple-dark)}
+.sb{background:var(--purple-light);color:var(--purple-main);font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--white);border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+thead th{background:var(--purple-dark);color:var(--purple-light);font-size:11px;text-transform:uppercase;letter-spacing:0.8px;padding:12px;text-align:center;font-weight:700}
+thead th:first-child{text-align:left;padding-left:16px}
+tbody td{padding:10px 12px;text-align:center;font-size:13px;font-weight:500;border-bottom:1px solid var(--border)}
+tbody td:first-child{text-align:left;font-weight:700;color:var(--purple-dark);padding-left:16px}
+tbody tr:nth-child(even){background:var(--purple-bg)}tbody tr:hover{background:var(--purple-light)}
+.f{font-size:11px;text-align:left!important;font-weight:600}
+.f.good{color:var(--green)}.f.bad{color:var(--red)}.f.warn{color:#b45309}
+.f.na{color:var(--text-light);font-style:italic}
+.bc{background:var(--green-light);color:var(--green);font-size:10px;padding:3px 8px;border-radius:6px;font-weight:700}
+.be{background:var(--yellow-light);color:#92400e;font-size:10px;padding:3px 8px;border-radius:6px;font-weight:700}
+.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ac{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;border-top:3px solid var(--purple-main)}
+.ac .n{font-size:28px;font-weight:800;color:var(--purple-light)}
+.ac .t{font-size:14px;font-weight:700;color:var(--purple-dark);margin:4px 0 8px}
+.ac .d{font-size:12px;color:var(--text-muted);line-height:1.6}
+.ac .p{margin-top:12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.ac .p.high{color:var(--warning)}.ac .p.med{color:#b45309}
+.page{display:none}.page.active{display:block}
+.ft{text-align:center;color:var(--text-light);font-size:11px;padding:20px 0;margin-top:20px;border-top:1px solid var(--border)}
+.es{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:40px;text-align:center;color:var(--text-muted)}
+.es .ei{font-size:32px;margin-bottom:12px}
+.es .et{font-size:15px;font-weight:700;color:var(--purple-dark)}
+.es .ed{font-size:13px;margin-top:6px}
+.note{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:8px;padding:10px 14px;font-size:12px;color:#92400e;margin-top:8px;font-style:italic}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.sidebar{display:none}.kg{grid-template-columns:repeat(3,1fr)}.ag{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+<div class="sidebar">
+<div class="logo"><h2>SYBB Dashboard</h2><span>Sempertex Europe</span></div>
+<nav>
+<div class="ns">Overzicht</div>
+<a class="active" onclick="showPage('daily')" id="nav-daily"><span>📊</span> Dagelijks Rapport</a>
+<a onclick="showPage('weekly')" id="nav-weekly"><span>📅</span> Wekelijks Overzicht</a>
+<a onclick="showPage('monthly')" id="nav-monthly"><span>📈</span> Maandelijks Overzicht</a>
+<div class="ns">Analyse</div>
+<a onclick="showPage('ads')" id="nav-ads"><span>🎬</span> Ad Performance</a>
+<a onclick="showPage('lp')" id="nav-lp"><span>🌐</span> Landing Page Health</a>
+<a onclick="showPage('funnel')" id="nav-funnel"><span>🔄</span> Funnel Analyse</a>
+<div class="ns">Referentie</div>
+<a onclick="showPage('targets')" id="nav-targets"><span>🎯</span> KPI Targets</a>
+<a onclick="showPage('history')" id="nav-history"><span>📋</span> Rapport Geschiedenis</a>
+</nav>
+</div>
+<div class="main">
+
+<!-- DAILY -->
+<div class="page active" id="page-daily">
+<div class="ph"><div><h1>Dagelijks Rapport</h1><div class="sub">Campaign: 2026: SYBB · Ad Set: BATCH 2 · Budget: €100/dag</div></div><div class="db">11 April 2026 (Dag 2)</div></div>
+
+<div class="alerts">
+<div class="alert critical"><span>🚨</span>H14 consumeert 59.5% budget (€111) met 0 conversies. H11 is de winnaar: enige hook met IC (2x) en ATC (2x). Pauzeer H14.</div>
+<div class="alert critical"><span>🚨</span>Campagne besteedt slechts €62/dag over 3 actieve dagen budget (6%). Check audience size en bid strategy.</div>
+<div class="alert warning"><span>⚠️</span>DATA CHECK: Vergelijk alle cijfers in dit dashboard met Meta Ads Manager en Wix Analytics. Bij afwijkingen geldt de bron (Meta/Wix) als waarheid.</div>
+<div class="alert warning"><span>⚠️</span>Mobile PageSpeed: 24/100. Fix vandaag: verwijder Visitor Analytics, POWr, ongebruikte fonts.</div>
+<div class="alert warning"><span>⚠️</span>Ad set split werkt! Alle 5 hooks krijgen nu delivery. H11 = sterkste conversie signaal.</div>
+</div>
+
+<div class="kg">
+<div class="kc"><div class="l">Spend</div><div class="v">€187,05</div><div class="s warn">€62/dag over 3 actieve dagen</div><div class="src">Meta Ads MCP · 30d</div></div>
+<div class="kc"><div class="l">Impressions</div><div class="v">23.749</div><div class="s ok">Reach: 15.451</div><div class="src">Meta Ads MCP</div></div>
+<div class="kc"><div class="l">Link Clicks</div><div class="v">262</div><div class="s ok">→ 56 LP views</div><div class="src">Meta Ads MCP</div></div>
+<div class="kc"><div class="l">CTR</div><div class="v">2,1%</div><div class="s ok">Target: >1%</div><div class="src">Meta Ads MCP</div></div>
+<div class="kc"><div class="l">CPC</div><div class="v">€0,37</div><div class="s ok">Target: <€0.50</div><div class="src">Meta Ads MCP</div></div>
+<div class="kc"><div class="l">LP Bounce</div><div class="v">85%</div><div class="s bad">Target: &lt;55%</div><div class="src">PostHog · 488 sessies</div></div>
+</div>
+
+<div class="note">PostHog data beschikbaar: 488 sessies, 621 pageviews (7d). UTM inconsistentie: oude ads gebruiken komma/hoofdletters, nieuwe lowercase/underscores — fix de oude UTMs in Meta Ads Manager.</div>
+
+<div class="sec" style="margin-top:20px">
+<div class="sh"><div class="st">Ad Performance — Huidige Run</div><div class="sb">Meta Ads MCP · Laatste 30 dagen</div></div>
+<table>
+<thead><tr><th>Ad Variant</th><th>Status</th><th>Spend</th><th>Impressions</th><th>Clicks</th><th>CTR</th><th>CPC</th><th>LP Views</th><th>IC</th><th>ATC</th><th>Purchase</th><th>Flag</th></tr></thead>
+<tbody>
+<tr><td>H14,B3,CTA5</td><td>Active ✅</td><td>€187,05</td><td>23.749</td><td>80</td><td>1,5%</td><td>€0,41</td><td>56</td><td>—</td><td>—</td><td>0</td><td class="f warn">Enige ad met delivery</td></tr>
+<tr><td>H13,B3,CTA5</td><td>Active ✅</td><td>€14,74</td><td>1.669</td><td>33</td><td>2,0%</td><td>€0,45</td><td>11</td><td>0</td><td>0</td><td>0</td><td class="f warn">Hoogste CPC — watchlist</td></tr>
+<tr><td style="color:var(--green);font-weight:800">H11,B3,CTA5</td><td>Active ✅</td><td>€16,16</td><td>1.674</td><td>45</td><td>2,7%</td><td>€0,36</td><td>22</td><td>2</td><td>2</td><td>0</td><td class="f good">🏆 WINNAAR — 2 IC + 2 ATC</td></tr>
+<tr><td>H15,B3,CTA5</td><td>Active ✅</td><td>€7,77</td><td>1.003</td><td>24</td><td>2,4%</td><td>€0,32</td><td>4</td><td>0</td><td>0</td><td>0</td><td class="f good">Laagste CPC — meer budget geven</td></tr>
+<tr><td>H12,B3,CTA5</td><td>Active ✅</td><td>€20,44</td><td>2.945</td><td>61</td><td>2,1%</td><td>€0,34</td><td>23</td><td>2</td><td>0</td><td>0</td><td class="f good">2 ATC — potentieel</td></tr>
+</tbody>
+</table>
+<div class="note">IC = InitiateCheckout (gestart betaalproces) · ATC = AddToCart · "—" = geen data beschikbaar. Alle event data via Meta Ads MCP.</div>
+</div>
+
+<div class="sec">
+<div class="sh"><div class="st">Lifetime Performance</div><div class="sb">Meta Ads MCP · 70-20-10 Classificatie</div></div>
+<table>
+<thead><tr><th>Ad Variant</th><th>Impressions</th><th>CTR</th><th>CPC</th><th>LP Views</th><th>IC</th><th>ATC</th><th>Purchases</th><th>Spend</th><th>Classificatie</th></tr></thead>
+<tbody>
+<tr><td>H13,B3,CTA5</td><td>60.073</td><td style="color:var(--green);font-weight:800">9,8%</td><td style="color:var(--green);font-weight:800">€0,07</td><td>4.063</td><td>3</td><td>2</td><td>0</td><td>€421,28</td><td><span class="bc">70% CORE 🏆</span></td></tr>
+<tr><td>H15,B3,CTA5</td><td>34.142</td><td>4,3%</td><td>€0,15</td><td>842</td><td>1</td><td>1</td><td>0</td><td>€216,64</td><td><span class="bc">70% CORE</span></td></tr>
+<tr><td>H11,B3,CTA5</td><td>31.060</td><td>2,6%</td><td>€0,25</td><td>445</td><td>—</td><td>—</td><td>0</td><td>€202,48</td><td><span class="bc">70% CORE</span></td></tr>
+<tr><td>H14,B3,CTA5</td><td>28.937</td><td>2,8%</td><td>€0,23</td><td>431</td><td>—</td><td>—</td><td>0</td><td>€188,98</td><td><span class="be">20% EMERGING</span></td></tr>
+<tr><td>H12,B3,CTA5</td><td>47.168</td><td>2,5%</td><td>€0,31</td><td>467</td><td>2</td><td>5</td><td>0</td><td>€374,64</td><td><span class="be">20% EMERGING</span></td></tr>
+</tbody>
+</table>
+<div class="note">IC/ATC data uit het eerdere Meta rapport (10 mrt - 8 apr). 0 purchases over de volledige looptijd. "—" = event niet geregistreerd voor die variant.</div>
+</div>
+
+<div class="sec">
+<div class="sh"><div class="st">KPI Health Check</div></div>
+<table>
+<thead><tr><th>KPI</th><th>Huidig</th><th>Target</th><th>Status</th><th>Bron</th></tr></thead>
+<tbody>
+<tr><td>CPC</td><td>€0,41</td><td>< €0,50</td><td class="f good">✅ OK</td><td>Meta Ads MCP</td></tr>
+<tr><td>CTR</td><td>1,5%</td><td>> 1%</td><td class="f good">✅ OK</td><td>Meta Ads MCP</td></tr>
+<tr><td>Frequency</td><td>1,18</td><td>< 3,5</td><td class="f good">✅ OK</td><td>Meta Ads MCP</td></tr>
+<tr><td>CPM</td><td>€6,01</td><td>< €15</td><td class="f good">✅ OK</td><td>Meta Ads MCP</td></tr>
+<tr><td>LP Bounce Rate</td><td>85,0%</td><td>&lt; 55%</td><td class="f bad">🔴 CRITICAL</td><td>PostHog · 488 sessies</td></tr>
+<tr><td>LP Sessie Duur</td><td>41s (mediaan: 0s)</td><td>&gt; 90s</td><td class="f bad">🔴 CRITICAL</td><td>PostHog · 488 sessies</td></tr>
+<tr><td>CTA Click Rate (LP)</td><td>—</td><td>> 4%</td><td class="f na">Niet geconfigureerd</td><td>PostHog · custom events nodig</td></tr>
+<tr><td>Click → LP View</td><td>70%</td><td>> 85%</td><td class="f bad">🔴 30% DROP-OFF</td><td>Meta Ads MCP (80 clicks → 56 LPV)</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec">
+<div class="st" style="margin-bottom:14px">🎯 Top 3 Acties</div>
+<div class="ag">
+<div class="ac"><div class="n">01</div><div class="t">Pauzeer H14</div><div class="d">€111 spend, 0 conversies. Budget waste. Verschuif naar H11 (2 IC, 2 ATC) en H12 (4 ATC). Dit is de hoogste impact actie.</div><div class="p high">HOOG — Vandaag</div></div>
+<div class="ac"><div class="n">02</div><div class="t">Fix LP Speed + Underspend</div><div class="d">Mobile PageSpeed 24/100. Verwijder: Visitor Analytics, POWr countdown, ongebruikte fonts. Check ook audience size — €6/dag van €100 is 6% benutting.</div><div class="p high">HOOG — Vandaag</div></div>
+<div class="ac"><div class="n">03</div><div class="t">PostHog Custom Events</div><div class="d">Configureer CTA click tracking op de LP zodat we weten welke buttons worden geklikt. Zonder dit missen we cruciale conversie data.</div><div class="p med">MEDIUM — Deze week</div></div>
+</div>
+</div>
+<div class="ft">SYBB Performance Dashboard · Sempertex Europe · Laatste update: 11 april 2026</div>
+</div>
+
+<!-- WEEKLY -->
+<div class="page" id="page-weekly"><div class="ph"><div><h1>Wekelijks Overzicht</h1><div class="sub">Week-over-week performance</div></div></div><div class="es"><div class="ei">📅</div><div class="et">Nog geen wekelijkse data</div><div class="ed">Na 7 dagen data verschijnt hier de week-over-week vergelijking.</div></div></div>
+
+<!-- MONTHLY -->
+<div class="page" id="page-monthly"><div class="ph"><div><h1>Maandelijks Overzicht</h1><div class="sub">Maandelijkse trends</div></div></div><div class="es"><div class="ei">📈</div><div class="et">Nog geen maandelijkse data</div><div class="ed">Na 30 dagen verschijnt hier de maandelijkse analyse.</div></div></div>
+
+<!-- ADS -->
+<div class="page" id="page-ads"><div class="ph"><div><h1>Ad Performance Detail</h1><div class="sub">Creative breakdown</div></div></div>
+<div class="sec"><div class="sh"><div class="st">Creative Performance — April 1-9</div><div class="sb">Meta Ads Manager</div></div>
+<table><thead><tr><th>Creative</th><th>Reach</th><th>Impressions</th><th>Frequency</th><th>Spend</th></tr></thead>
+<tbody>
+<tr><td>Your chance awaits! (H14)</td><td>10.793</td><td>13.587</td><td>1,26</td><td>€96,11</td></tr>
+<tr><td>And you're invited!</td><td>362</td><td>582</td><td>1,61</td><td>€8,20</td></tr>
+<tr><td>Your chance to do the same</td><td>12</td><td>13</td><td>1,08</td><td>€0,19</td></tr>
+<tr style="font-weight:800;background:var(--purple-light)"><td>TOTAAL</td><td>10.903</td><td>14.168</td><td>1,30</td><td>€104,30</td></tr>
+</tbody></table>
+<div class="note">Data uit Meta Ads Manager draaitabel. Advertentiemateriaal weergave, april 1-9 2026.</div>
+</div></div>
+
+<!-- LP -->
+<div class="page" id="page-lp"><div class="ph"><div><h1>Landing Page Health</h1><div class="sub">PostHog analytics — startyourballoonbusiness.com</div></div></div><div class="sec"><div class="sh"><div class="st">LP Overview — 7 dagen</div><div class="sb">PostHog · 488 sessies</div></div>
+<table><thead><tr><th>Metric</th><th>Waarde</th><th>Target</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Totaal Sessies</td><td>488</td><td>—</td><td class="f good">Voldoende data</td></tr>
+<tr><td>Pageviews</td><td>621</td><td>—</td><td>—</td></tr>
+<tr><td>Bounce Rate</td><td>85,0%</td><td>&lt; 55%</td><td class="f bad">🔴 CRITICAL</td></tr>
+<tr><td>Avg Sessie Duur</td><td>41s</td><td>&gt; 90s</td><td class="f bad">🔴 CRITICAL</td></tr>
+<tr><td>Mediaan Sessie Duur</td><td>0s</td><td>—</td><td class="f bad">Meeste bezoekers vertrekken direct</td></tr>
+<tr><td>Scroll ≥25%</td><td>48,6%</td><td>&gt; 80%</td><td class="f bad">🔴 51% ziet alleen hero</td></tr>
+<tr><td>Scroll ≥50%</td><td>45,8%</td><td>&gt; 60%</td><td class="f bad">🔴</td></tr>
+<tr><td>Scroll ≥75%</td><td>40,8%</td><td>&gt; 40%</td><td class="f good">✅ OK</td></tr>
+<tr><td>Scroll 100%</td><td>22,5%</td><td>&gt; 20%</td><td class="f good">✅ OK</td></tr>
+<tr><td>Session Recordings</td><td>323</td><td>—</td><td class="f good">66% coverage</td></tr>
+</tbody></table></div>
+<div class="sec"><div class="sh"><div class="st">Bounce Rate per Ad Variant (UTM)</div><div class="sb">PostHog · 435 sessies met UTM</div></div>
+<table><thead><tr><th>utm_content</th><th>Sessies</th><th>Pageviews</th><th>Bounces</th><th>Bounce Rate</th><th>Notitie</th></tr></thead>
+<tbody>
+<tr><td>H14,B3,CTA5 (oud format)</td><td>151</td><td>189</td><td>128</td><td>84,8%</td><td class="f warn">⚠️ Fix UTM format</td></tr>
+<tr><td>h11_b3_cta5</td><td>61</td><td>73</td><td>56</td><td>91,8%</td><td class="f bad">Hoogste bounce</td></tr>
+<tr><td>h13_b3_cta5</td><td>56</td><td>64</td><td>51</td><td>91,1%</td><td class="f bad">Hoge bounce</td></tr>
+<tr><td>h12_b3_cta5</td><td>50</td><td>66</td><td>41</td><td>82,0%</td><td class="f good">Laagste bounce (nieuw)</td></tr>
+<tr><td>h15_b3_cta5</td><td>48</td><td>65</td><td>40</td><td>83,3%</td><td>—</td></tr>
+<tr><td>h14_b3_cta5 (nieuw format)</td><td>31</td><td>33</td><td>29</td><td>93,6%</td><td class="f bad">Slechtste bounce</td></tr>
+<tr><td>H12,B3,CTA5 (oud format)</td><td>22</td><td>29</td><td>16</td><td>72,7%</td><td class="f good">🏆 Beste bounce rate</td></tr>
+<tr><td>bio_link</td><td>9</td><td>11</td><td>7</td><td>77,8%</td><td>Social bio traffic</td></tr>
+</tbody></table>
+<div class="note">⚠️ UTM inconsistentie: H14,B3,CTA5 en h14_b3_cta5 zijn dezelfde ad maar worden apart geteld. Fix alle UTMs naar lowercase/underscore format in Meta Ads Manager.</div>
+</div></div>
+
+<!-- FUNNEL -->
+<div class="page" id="page-funnel"><div class="ph"><div><h1>Funnel Analyse</h1><div class="sub">Ad click → LP → CTA → Booking → Purchase</div></div></div>
+<div class="es"><div class="ei">🔄</div><div class="et">Funnel data wordt verzameld</div><div class="ed">Stappen: Impression → Click → LP View → Scroll 50%+ → CTA Click → /booking → InitiateCheckout → Purchase. PostHog custom events en pixel tracking moeten geconfigureerd worden.</div></div>
+<div class="sec" style="margin-top:20px"><div class="st">Bekende Funnel Data (Meta Ads MCP)</div>
+<table><thead><tr><th>Stap</th><th>Aantal</th><th>Drop-off</th><th>Bron</th></tr></thead>
+<tbody>
+<tr><td>Impressions</td><td>23.749</td><td>—</td><td>Meta Ads MCP</td></tr>
+<tr><td>Link Clicks</td><td>80</td><td>99,2%</td><td>Meta Ads MCP</td></tr>
+<tr><td>LP Views</td><td>56</td><td>30%</td><td>Meta Ads MCP</td></tr>
+<tr><td>Scroll 50%+</td><td>—</td><td>—</td><td class="f na">PostHog · niet beschikbaar</td></tr>
+<tr><td>CTA Click</td><td>—</td><td>—</td><td class="f na">PostHog · niet geconfigureerd</td></tr>
+<tr><td>/booking views</td><td>—</td><td>—</td><td class="f na">PostHog · niet beschikbaar</td></tr>
+<tr><td>InitiateCheckout</td><td>0 (huidige run)</td><td>—</td><td>Meta Pixel</td></tr>
+<tr><td>Purchase</td><td>0</td><td>—</td><td>Meta Pixel</td></tr>
+</tbody></table></div></div>
+
+<!-- TARGETS -->
+<div class="page" id="page-targets"><div class="ph"><div><h1>KPI Targets</h1><div class="sub">SYBB campagne doelstellingen</div></div></div>
+<div class="sec"><table><thead><tr><th>KPI</th><th>Target 30d</th><th>Target 90d</th><th>Meetinstrument</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>LP Bounce Rate</td><td>< 55%</td><td>< 40%</td><td>PostHog</td><td class="f na">Wacht op data</td></tr>
+<tr><td>LP Conversie Rate</td><td>> 5%</td><td>> 8%</td><td>PostHog Funnel</td><td class="f na">Wacht op data</td></tr>
+<tr><td>Avg Scroll Depth</td><td>> 60%</td><td>> 75%</td><td>PostHog</td><td class="f na">Wacht op data</td></tr>
+<tr><td>CTA Click Rate (LP)</td><td>> 4%</td><td>> 6%</td><td>PostHog Events</td><td class="f na">Niet geconfigureerd</td></tr>
+<tr><td>Meta CPC</td><td>< €0,50</td><td>< €0,40</td><td>Meta Ads MCP</td><td class="f good">✅ €0,41</td></tr>
+<tr><td>Meta CTR</td><td>> 1%</td><td>> 2%</td><td>Meta Ads MCP</td><td class="f good">✅ 1,5%</td></tr>
+<tr><td>Click → LP View</td><td>> 85%</td><td>> 90%</td><td>Meta Ads MCP</td><td class="f bad">🔴 70%</td></tr>
+<tr><td>Cost per Purchase</td><td>Meten</td><td>Optimaliseren</td><td>Meta Pixel</td><td class="f na">0 purchases</td></tr>
+</tbody></table></div></div>
+
+<!-- HISTORY -->
+<div class="page" id="page-history"><div class="ph"><div><h1>Rapport Geschiedenis</h1><div class="sub">Dagelijkse data per dag</div></div></div>
+<div class="sec"><table><thead><tr><th>Datum</th><th>Spend</th><th>Clicks</th><th>CTR</th><th>CPC</th><th>LP Views</th><th>IC</th><th>Purchases</th><th>Bron</th><th>Notities</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:700">9 apr 2026</td><td>€187,05</td><td>80</td><td>1,5%</td><td>€0,41</td><td>56</td><td>0</td><td>0</td><td>Meta Ads MCP</td><td class="f warn">Dag 1 — alleen H14 delivery</td></tr>
+</tbody></table>
+<div class="note">IC = InitiateCheckout. Nieuwe dagen worden hier toegevoegd. PostHog LP metrics worden toegevoegd zodra er voldoende data is (50+ sessies).</div>
+</div></div>
+
+</div></div>
+<script>function showPage(n){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));document.getElementById('page-'+n).classList.add('active');document.getElementById('nav-'+n).classList.add('active')}</script>
+</body></html>
