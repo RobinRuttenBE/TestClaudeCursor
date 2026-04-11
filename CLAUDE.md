@@ -85,13 +85,13 @@ Ballontechnieken & productkennis. **Raadpleeg bij elke content-taak die techniek
 ## Tools & Integraties
 
 ### Morning Report (`/morning-report`)
-- Command: `.claude/commands/morning-report.md`
-- Script: `scripts/morning-report.sh` (draait via launchd om 08:00, email via `scripts/send-gmail.py`)
-- **6 secties:** Agenda, Emails, Drive, Meta Ads SYBB, PostHog Landing Page, Excel Tracker update
-- **Data bronnen:** Google Calendar, Gmail, Drive, Meta Ads MCP (Pipeboard), PostHog MCP
+- Command: `.claude/commands/MORNING_REPORT_COMMAND_v2 (1).md`
+- Script: `scripts/morning-report.sh` (draait via launchd om 08:00, email delivery via `scripts/send-gmail.py`)
+- **Secties:** Meta Ads SYBB performance, PostHog Landing Page health, cross-reference analyse, top acties
+- **Data bronnen:** Meta Ads MCP (Pipeboard) en PostHog MCP. GEEN Google Calendar, Gmail, Drive of Sheets als databron.
 - **PostHog metrics:** pageviews, bounce rate, scroll depth (25/50/75/100%), sessie duur, CTA clicks, session recordings
 - **Cross-referencing:** combineert Meta Ads + PostHog data om ad-pagina mismatches te detecteren
-- **Output:** rapport in console + opslaan in `output/reports/daily/YYYY-MM-DD_sybb_report.md` + Excel tracker update
+- **Output:** rapport in console + opslaan in `output/reports/daily/YYYY-MM-DD_sybb_report.md`
 
 ### Fireflies.ai (meeting transcripts)
 - Documentatie: `Kennis/tools/fireflies-integratie.md`

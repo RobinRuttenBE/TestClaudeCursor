@@ -102,16 +102,21 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 ## Data Integriteit Regels (KRITIEK)
 
 ### Geen interpretatie — exacte event namen
-- Gebruik NOOIT het woord "leads" tenzij er een echt lead formulier is ingevuld
+- Gebruik NOOIT het woord "leads". Gebruik de exacte Meta event namen: InitiateCheckout, AddToCart, Purchase
 - Meta's "Gestart betaalproces" = InitiateCheckout, NIET een lead
-- Rapporteer altijd de exacte Meta event naam: ViewContent, AddToCart, InitiateCheckout, Purchase
 - "Results" in Meta Ads Manager = het conversie-event van de campagne (momenteel: InitiateCheckout). Benoem dit expliciet.
-- Lifetime "leads" bestaan niet — het waren InitiateCheckout events
+- Lifetime "leads" bestaan niet, het waren InitiateCheckout events
 
 ### Databron verplicht bij elk datapunt
-- Elk getal moet een bron hebben: (Meta Ads MCP), (PostHog), of (GA4)
+- Elk datapunt moet een bron vermelden: (Meta Ads MCP) of (PostHog MCP)
 - Als een getal berekend/afgeleid is, vermeld de berekening
 - Meng NOOIT Meta ad metrics met LP metrics zonder expliciete markering
+
+### Gemiddelde spend berekening
+- Bereken gemiddelde spend ALLEEN over ACTIEVE dagen (dagen met spend > €0)
+- Tel gepauzeerde dagen (spend = €0) NIET mee in het gemiddelde
+- Vermeld altijd expliciet: "Gemiddelde spend: €X/dag over Y actieve dagen" — niet over de volledige 30d window
+- Dit geldt voor alle spend-gemiddelden: campagne, adset, en ad niveau
 
 ### Minimum data drempels
 - PostHog LP metrics (bounce, scroll, sessie duur): toon ALLEEN als er minimaal 50 sessies zijn. Anders: "Onvoldoende data (X sessies)"
