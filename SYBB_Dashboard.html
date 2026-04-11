@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYBB Dashboard — Sempertex Europe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--purple-dark:#1b073d;--purple-main:#6b3fb9;--purple-light:#f1d9ff;--purple-bg:#f8f4ff;--yellow:#ffdb5a;--yellow-light:#fff8e0;--warning:#cd0b5c;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2;--bg:#faf9fc;--white:#fff;--border:#e8e0f0;--text:#1b073d;--text-muted:#6b6480;--text-light:#9b8fb5}
+body{font-family:'Rethink Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.sidebar{background:var(--purple-dark);padding:24px 0;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar .logo{padding:0 20px 24px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:16px}
+.sidebar .logo h2{font-size:15px;font-weight:800;color:var(--purple-light)}
+.sidebar .logo span{font-size:11px;color:rgba(255,255,255,0.4)}
+.sidebar nav{padding:0 12px}
+.sidebar .ns{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.3);padding:16px 8px 8px;font-weight:600}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;font-weight:500;transition:all 0.15s;cursor:pointer}
+.sidebar a:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9)}
+.sidebar a.active{background:var(--purple-main);color:white;font-weight:700}
+.main{padding:28px 32px;max-width:1200px;overflow-y:auto}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
+.ph h1{font-size:24px;font-weight:800;color:var(--purple-dark)}
+.ph .sub{font-size:13px;color:var(--text-muted);margin-top:4px}
+.db{background:var(--purple-light);color:var(--purple-main);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700}
+.alerts{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.alert{padding:12px 16px;border-radius:10px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:10px;border-left:4px solid}
+.alert.critical{background:var(--red-light);border-color:var(--warning);color:#991b1b}
+.alert.warning{background:var(--yellow-light);border-color:var(--yellow);color:#92400e}
+.alert.info{background:#e0f2fe;border-color:#0284c7;color:#075985}
+.kg{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:28px}
+.kc{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.kc .l{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);font-weight:600;margin-bottom:6px}
+.kc .v{font-size:22px;font-weight:800;color:var(--purple-dark)}
+.kc .trend{font-size:11px;margin-top:4px;font-weight:700}
+.kc .trend.up{color:var(--green)}.kc .trend.down{color:var(--red)}.kc .trend.flat{color:var(--text-muted)}
+.kc .s{font-size:11px;margin-top:2px;font-weight:600}
+.kc .s.ok{color:var(--green)}.kc .s.bad{color:var(--red)}.kc .s.warn{color:#b45309}.kc .s.na{color:var(--text-light)}
+.kc .src{font-size:9px;color:var(--text-light);margin-top:2px;font-style:italic}
+.sec{margin-bottom:28px}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.st{font-size:15px;font-weight:700;color:var(--purple-dark)}
+.sb{background:var(--purple-light);color:var(--purple-main);font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--white);border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+thead th{background:var(--purple-dark);color:var(--purple-light);font-size:11px;text-transform:uppercase;letter-spacing:0.8px;padding:12px;text-align:center;font-weight:700}
+thead th:first-child{text-align:left;padding-left:16px}
+tbody td{padding:10px 12px;text-align:center;font-size:13px;font-weight:500;border-bottom:1px solid var(--border)}
+tbody td:first-child{text-align:left;font-weight:700;color:var(--purple-dark);padding-left:16px}
+tbody tr:nth-child(even){background:var(--purple-bg)}tbody tr:hover{background:var(--purple-light)}
+tbody tr.clickable{cursor:pointer}tbody tr.clickable:hover{background:var(--yellow-light)}
+.f{font-size:11px;text-align:left!important;font-weight:600}
+.f.good{color:var(--green)}.f.bad{color:var(--red)}.f.warn{color:#b45309}.f.na{color:var(--text-light);font-style:italic}
+.bc{background:var(--green-light);color:var(--green);font-size:10px;padding:3px 8px;border-radius:6px;font-weight:700}
+.be{background:var(--yellow-light);color:#92400e;font-size:10px;padding:3px 8px;border-radius:6px;font-weight:700}
+.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ac{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;border-top:3px solid var(--purple-main)}
+.ac .n{font-size:28px;font-weight:800;color:var(--purple-light)}
+.ac .t{font-size:14px;font-weight:700;color:var(--purple-dark);margin:4px 0 8px}
+.ac .d{font-size:12px;color:var(--text-muted);line-height:1.6}
+.ac .p{margin-top:12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.ac .p.high{color:var(--warning)}.ac .p.medium{color:#b45309}
+.day-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.day-tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--text-muted);transition:all 0.15s}
+.day-tab:hover{border-color:var(--purple-main);color:var(--purple-main)}
+.day-tab.active{background:var(--purple-main);color:white;border-color:var(--purple-main)}
+.page{display:none}.page.active{display:block}
+.ft{text-align:center;color:var(--text-light);font-size:11px;padding:20px 0;margin-top:20px;border-top:1px solid var(--border)}
+.es{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:40px;text-align:center;color:var(--text-muted)}
+.note{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:8px;padding:10px 14px;font-size:12px;color:#92400e;margin-top:8px;font-style:italic}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.sidebar{display:none}.kg{grid-template-columns:repeat(3,1fr)}.ag{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script>
+const DAYS=[{date:"2026-04-09",label:"9 apr",dayNum:1,source:"Meta Ads MCP",campaign:{spend:62.28,impressions:10365,clicks:80,ctr:1.5,cpc:0.41,cpm:6.01,reach:8801,frequency:1.18,lpViews:56,atc:0,ic:0,purchases:0},ads:[{name:"H14,B3,CTA5",adset:"BATCH 2",status:"active",spend:62.28,impressions:10365,clicks:80,ctr:1.5,cpc:0.41,lpViews:56,atc:0,ic:0,purchases:0,flag:"Enige ad met delivery"},{name:"H13,B3,CTA5",adset:"—",status:"none",spend:0,impressions:0,clicks:0,ctr:0,cpc:0,lpViews:0,atc:0,ic:0,purchases:0,flag:"Geen delivery"},{name:"H11,B3,CTA5",adset:"—",status:"none",spend:0,impressions:0,clicks:0,ctr:0,cpc:0,lpViews:0,atc:0,ic:0,purchases:0,flag:"Geen delivery"},{name:"H15,B3,CTA5",adset:"—",status:"none",spend:0,impressions:0,clicks:0,ctr:0,cpc:0,lpViews:0,atc:0,ic:0,purchases:0,flag:"Geen delivery"},{name:"H12,B3,CTA5",adset:"—",status:"none",spend:0,impressions:0,clicks:0,ctr:0,cpc:0,lpViews:0,atc:0,ic:0,purchases:0,flag:"Geen delivery"}],posthog:null,alerts:[{type:"critical",text:"4 van 5 ads krijgen ZERO delivery — alleen H14 draait."},{type:"warning",text:"PostHog net geïnstalleerd — nog geen LP data."}],actions:[{title:"Fix Delivery",desc:"Split hooks in aparte ad sets.",priority:"high"},{title:"LP Speed Check",desc:"Test mobile PageSpeed.",priority:"high"},{title:"UTMs Fixen",desc:"Alle UTMs naar lowercase/underscores.",priority:"medium"}],notes:"Dag 1 — alleen H14 delivery",activeDays:1,avgSpendPerActiveDay:62.28},{date:"2026-04-11",label:"11 apr",dayNum:2,source:"Meta Ads MCP + PostHog",campaign:{spend:187.05,impressions:23749,clicks:262,ctr:2.1,cpc:0.37,cpm:7.88,reach:15451,frequency:1.54,lpViews:183,atc:6,ic:2,purchases:0},activeDays:3,avgSpendPerActiveDay:62.35,ads:[{name:"H14,B3,CTA5",adset:"BATCH 2 (orig)",status:"active",spend:111.24,impressions:15242,clicks:279,ctr:1.8,cpc:0.40,lpViews:102,atc:0,ic:0,purchases:0,flag:"59% budget, 0 conversies — PAUZEREN"},{name:"H12,B3,CTA5",adset:"Kopie 2",status:"active",spend:20.44,impressions:2945,clicks:61,ctr:2.1,cpc:0.34,lpViews:23,atc:2,ic:0,purchases:0,flag:"2 ATC — potentieel"},{name:"H11,B3,CTA5",adset:"Kopie 1",status:"active",spend:16.16,impressions:1674,clicks:45,ctr:2.7,cpc:0.36,lpViews:22,atc:2,ic:2,purchases:0,flag:"🏆 WINNAAR — 2 IC + 2 ATC"},{name:"H13,B3,CTA5",adset:"Kopie 3",status:"active",spend:14.74,impressions:1669,clicks:33,ctr:2.0,cpc:0.45,lpViews:11,atc:0,ic:0,purchases:0,flag:"Hoogste CPC — watchlist"},{name:"H15,B3,CTA5",adset:"Kopie 4",status:"active",spend:7.77,impressions:1003,clicks:24,ctr:2.4,cpc:0.32,lpViews:4,atc:0,ic:0,purchases:0,flag:"Laagste CPC — meer budget"}],posthog:{sessions:488,pageviews:621,bounceRate:85.0,avgSessionDuration:41,medianSessionDuration:0,scroll25:48.6,scroll50:45.8,scroll75:40.8,scroll100:22.5,scrollSessions:142,recordings:323,recordingCoverage:66.2,perUtm:[{utm:"H14,B3,CTA5 (oud)",sessions:151,bounceRate:84.8},{utm:"h11_b3_cta5",sessions:61,bounceRate:91.8},{utm:"h13_b3_cta5",sessions:56,bounceRate:91.1},{utm:"h12_b3_cta5",sessions:50,bounceRate:82.0},{utm:"h15_b3_cta5",sessions:48,bounceRate:83.3},{utm:"h14_b3_cta5 (nieuw)",sessions:31,bounceRate:93.6},{utm:"H12,B3,CTA5 (oud)",sessions:22,bounceRate:72.7},{utm:"bio_link",sessions:9,bounceRate:77.8}]},alerts:[{type:"critical",text:"LP bounce rate 85% (PostHog, 488 sessies). Meer dan helft scrollt niet voorbij hero."},{type:"critical",text:"H14: €111 spend, 0 conversies. Pauzeer en verschuif naar H11/H12."},{type:"info",text:"Ad set split werkt! Alle 5 hooks krijgen delivery. H11 = sterkste conversie signaal."},{type:"warning",text:"Spend: €62/dag over 3 actieve dagen (62% van €100 budget)."}],actions:[{title:"Pauzeer H14",desc:"€111 spend, 0 conversies. Budget naar H11 (2 IC, 2 ATC) en H12 (4 ATC).",priority:"high"},{title:"Fix LP Speed",desc:"Mobile PageSpeed 24/100. Verwijder Visitor Analytics, POWr, ongebruikte fonts.",priority:"high"},{title:"PostHog CTA Events",desc:"CTA click tracking configureren. 51% verlaat de hero zonder te scrollen.",priority:"medium"}],notes:"Dag 2 — alle hooks delivery, H11 winnaar, PostHog live"}];
+const LIFETIME=[{name:"H13,B3,CTA5",impressions:"60.073",ctr:9.8,cpc:0.07,lpViews:4063,ic:3,atc:2,purchases:0,spend:421.28,cls:"70% CORE 🏆"},{name:"H15,B3,CTA5",impressions:"34.142",ctr:4.3,cpc:0.15,lpViews:842,ic:1,atc:1,purchases:0,spend:216.64,cls:"70% CORE"},{name:"H11,B3,CTA5",impressions:"31.060",ctr:2.6,cpc:0.25,lpViews:445,ic:"—",atc:"—",purchases:0,spend:202.48,cls:"70% CORE"},{name:"H14,B3,CTA5",impressions:"28.937",ctr:2.8,cpc:0.23,lpViews:431,ic:"—",atc:"—",purchases:0,spend:188.98,cls:"20% EMERGING"},{name:"H12,B3,CTA5",impressions:"47.168",ctr:2.5,cpc:0.31,lpViews:467,ic:2,atc:5,purchases:0,spend:374.64,cls:"20% EMERGING"}];
+let ci=DAYS.length-1,cp='daily';
+function tr(c,p){if(!p||p===0)return{a:"",c:"flat"};const d=((c-p)/p*100).toFixed(0);return d>10?{a:`↑${Math.abs(d)}%`,c:"up"}:d<-10?{a:`↓${Math.abs(d)}%`,c:"down"}:{a:"→",c:"flat"}}
+function st(v,t,d){return d==="lower"?v<=t?"ok":v<=t*1.2?"warn":"bad":v>=t?"ok":v>=t*0.8?"warn":"bad"}
+function e(n){return n===0?"—":`€${n.toFixed(2).replace('.',',')}`}
+function p(n){return n===0?"—":`${n.toFixed(1).replace('.',',')}%`}
+function nm(n){return n===0?"—":n.toLocaleString('nl-BE')}
+function renderDaily(){const d=DAYS[ci],pv=ci>0?DAYS[ci-1]:null,c=d.campaign,pc=pv?pv.campaign:null;
+let h='<div class="ph"><div><h1>Dagelijks Rapport</h1><div class="sub">Campaign: 2026: SYBB · Budget: €100/dag</div></div><div class="db">'+d.label+' 2026 (Dag '+d.dayNum+')</div></div>';
+h+='<div class="day-tabs">';DAYS.forEach((x,i)=>{h+='<div class="day-tab '+(i===ci?'active':'')+'" onclick="ci='+i+';renderDaily()">'+x.label+' (Dag '+x.dayNum+')</div>'});h+='</div>';
+h+='<div class="alerts">';d.alerts.forEach(a=>{h+='<div class="alert '+a.type+'"><span>'+(a.type==='critical'?'🚨':a.type==='warning'?'⚠️':'ℹ️')+'</span>'+a.text+'</div>'});h+='</div>';
+function kc(l,v,pv2,ts,sc,sr,inv){const t=pc?tr(parseFloat(String(v).replace(/[€%,]/g,x=>x===','?'.':'')),parseFloat(String(pv2).replace(/[€%,]/g,x=>x===','?'.':''))):{ a:"",c:"flat"};let tc=t.c;if(inv&&t.c==="up")tc="down";if(inv&&t.c==="down")tc="up";return'<div class="kc"><div class="l">'+l+'</div><div class="v">'+v+'</div>'+(t.a?'<div class="trend '+tc+'">'+t.a+' vs vorige</div>':'')+'<div class="s '+sc+'">'+ts+'</div><div class="src">'+sr+'</div></div>'}
+h+='<div class="kg">';
+h+=kc("Spend",e(c.spend),pc?pc.spend:0,d.avgSpendPerActiveDay?`€${d.avgSpendPerActiveDay}/dag (${d.activeDays}d)`:"","warn","Meta Ads MCP",false);
+h+=kc("Impressions",nm(c.impressions),pc?pc.impressions:0,"Reach: "+nm(c.reach),"ok","Meta Ads MCP",false);
+h+=kc("Link Clicks",nm(c.clicks),pc?pc.clicks:0,"→ "+nm(c.lpViews)+" LP views","ok","Meta Ads MCP",false);
+h+=kc("CTR",p(c.ctr),pc?pc.ctr:0,"Target: >1%",st(c.ctr,1,"higher"),"Meta Ads MCP",false);
+h+=kc("CPC",e(c.cpc),pc?pc.cpc:0,"Target: <€0.50",st(c.cpc,0.50,"lower"),"Meta Ads MCP",true);
+if(d.posthog){h+=kc("LP Bounce",p(d.posthog.bounceRate),pv&&pv.posthog?pv.posthog.bounceRate:null,"Target: <55%",st(d.posthog.bounceRate,55,"lower"),`PostHog · ${d.posthog.sessions} sessies`,true)}else{h+='<div class="kc"><div class="l">LP Bounce</div><div class="v">—</div><div class="s na">Geen PostHog data</div></div>'}
+h+='</div>';
+h+='<div class="sec"><div class="sh"><div class="st">Ad Performance</div><div class="sb">'+d.source+'</div></div><table><thead><tr><th>Ad</th><th>Ad Set</th><th>Status</th><th>Spend</th><th>Impr.</th><th>Clicks</th><th>CTR</th><th>CPC</th><th>LP Views</th><th>ATC</th><th>IC</th><th>Purch.</th><th>Flag</th></tr></thead><tbody>';
+d.ads.forEach(a=>{const ss=a.status==="none"?' style="color:var(--red)"':'';const fc=a.flag.includes('🏆')?'good':a.flag.includes('PAUZEREN')?'bad':'warn';const ns=a.flag.includes('🏆')?' style="color:var(--green);font-weight:800"':a.flag.includes('PAUZEREN')?' style="color:var(--red)"':'';h+='<tr><td'+ns+'>'+a.name+'</td><td>'+a.adset+'</td><td'+ss+'>'+(a.status==="none"?"No delivery":"Active ✅")+'</td><td>'+e(a.spend)+'</td><td>'+nm(a.impressions)+'</td><td>'+nm(a.clicks)+'</td><td>'+p(a.ctr)+'</td><td>'+e(a.cpc)+'</td><td>'+nm(a.lpViews)+'</td><td>'+a.atc+'</td><td>'+a.ic+'</td><td>'+a.purchases+'</td><td class="f '+fc+'">'+a.flag+'</td></tr>'});
+h+='</tbody></table><div class="note">IC = InitiateCheckout · ATC = AddToCart · Purchase = afgeronde betaling</div></div>';
+if(d.posthog){const ph=d.posthog;h+='<div class="sec"><div class="sh"><div class="st">Landing Page Health</div><div class="sb">PostHog · '+ph.sessions+' sessies</div></div><table><thead><tr><th>Metric</th><th>Waarde</th><th>Target</th><th>Status</th></tr></thead><tbody>';
+h+='<tr><td>Bounce Rate</td><td>'+p(ph.bounceRate)+'</td><td>< 55%</td><td class="f bad">🔴 CRITICAL</td></tr>';
+h+='<tr><td>Sessie Duur (gem.)</td><td>'+ph.avgSessionDuration+'s</td><td>> 90s</td><td class="f bad">🔴 Mediaan: '+ph.medianSessionDuration+'s</td></tr>';
+h+='<tr><td>Scroll ≥25%</td><td>'+p(ph.scroll25)+'</td><td>> 80%</td><td class="f bad">🔴 51% ziet alleen hero</td></tr>';
+h+='<tr><td>Scroll ≥50%</td><td>'+p(ph.scroll50)+'</td><td>> 60%</td><td class="f bad">🔴</td></tr>';
+h+='<tr><td>Scroll ≥75%</td><td>'+p(ph.scroll75)+'</td><td>> 40%</td><td class="f '+st(ph.scroll75,40,"higher")+'">'+( ph.scroll75>=40?'✅ OK':'🔴')+'</td></tr>';
+h+='<tr><td>Scroll 100%</td><td>'+p(ph.scroll100)+'</td><td>> 20%</td><td class="f '+st(ph.scroll100,20,"higher")+'">'+(ph.scroll100>=20?'✅ OK':'🔴')+'</td></tr>';
+h+='<tr><td>Recordings</td><td>'+ph.recordings+'</td><td>—</td><td class="f good">'+ph.recordingCoverage+'% coverage</td></tr>';
+h+='</tbody></table></div>';
+h+='<div class="sec"><div class="sh"><div class="st">Bounce Rate per Ad (UTM)</div></div><table><thead><tr><th>utm_content</th><th>Sessies</th><th>Bounce Rate</th></tr></thead><tbody>';
+ph.perUtm.forEach(u=>{const c2=u.bounceRate<=75?'good':u.bounceRate>=90?'bad':'warn';h+='<tr><td>'+u.utm+'</td><td>'+u.sessions+'</td><td class="f '+c2+'">'+p(u.bounceRate)+'</td></tr>'});
+h+='</tbody></table></div>'}
+h+='<div class="sec"><div class="st" style="margin-bottom:14px">🎯 Top 3 Acties</div><div class="ag">';
+d.actions.forEach((a,i)=>{h+='<div class="ac"><div class="n">0'+(i+1)+'</div><div class="t">'+a.title+'</div><div class="d">'+a.desc+'</div><div class="p '+a.priority+'">'+(a.priority==='high'?'HOOG':'MEDIUM')+'</div></div>'});
+h+='</div></div><div class="ft">SYBB Dashboard · Sempertex Europe · '+d.source+'</div>';
+document.getElementById('page-daily').innerHTML=h}
+function renderHistory(){let h='<div class="ph"><div><h1>Rapport Geschiedenis</h1><div class="sub">Klik op een dag voor het volledige rapport</div></div></div><div class="sec"><table><thead><tr><th>Datum</th><th>Dag</th><th>Spend</th><th>Spend/dag</th><th>Clicks</th><th>CTR</th><th>CPC</th><th>LP Views</th><th>ATC</th><th>IC</th><th>Bounce</th><th>Notities</th></tr></thead><tbody>';
+DAYS.forEach((d,i)=>{const c=d.campaign;const b=d.posthog?p(d.posthog.bounceRate):"—";const prev=i>0?DAYS[i-1].campaign:null;const ct=prev?tr(c.ctr,prev.ctr):{a:"",c:"flat"};
+h+='<tr class="clickable" onclick="ci='+i+';showPage(\'daily\')"><td style="font-weight:700">'+d.label+'</td><td>Dag '+d.dayNum+'</td><td>'+e(c.spend)+'</td><td>'+(d.avgSpendPerActiveDay?'€'+d.avgSpendPerActiveDay+'/dag':'—')+'</td><td>'+nm(c.clicks)+'</td><td>'+p(c.ctr)+'</td><td>'+e(c.cpc)+'</td><td>'+nm(c.lpViews)+'</td><td>'+c.atc+'</td><td>'+c.ic+'</td><td>'+b+'</td><td class="f '+(d.notes.includes('winnaar')?'good':'warn')+'">'+d.notes+'</td></tr>'});
+h+='</tbody></table><div class="note">Klik op een rij om het volledige dagrapport met alle details te zien.</div></div>';
+document.getElementById('page-history').innerHTML=h}
+function renderAds(){let h='<div class="ph"><div><h1>Lifetime Ad Performance</h1><div class="sub">70-20-10 Classificatie · Meta Ads MCP</div></div></div><div class="sec"><table><thead><tr><th>Ad</th><th>Impr.</th><th>CTR</th><th>CPC</th><th>LP Views</th><th>IC</th><th>ATC</th><th>Purch.</th><th>Spend</th><th>Classificatie</th></tr></thead><tbody>';
+LIFETIME.forEach(l=>{const bc=l.cls.includes('70%')?'bc':'be';const cs=l.ctr>=4?' style="color:var(--green);font-weight:800"':'';const cp2=l.cpc<=0.15?' style="color:var(--green);font-weight:800"':'';
+h+='<tr><td>'+l.name+'</td><td>'+l.impressions+'</td><td'+cs+'>'+p(l.ctr)+'</td><td'+cp2+'>'+e(l.cpc)+'</td><td>'+nm(l.lpViews)+'</td><td>'+l.ic+'</td><td>'+l.atc+'</td><td>'+l.purchases+'</td><td>'+e(l.spend)+'</td><td><span class="'+bc+'">'+l.cls+'</span></td></tr>'});
+h+='</tbody></table><div class="note">IC/ATC = lifetime Meta Pixel events. 0 purchases over volledige looptijd.</div></div>';
+document.getElementById('page-ads').innerHTML=h}
+function renderLP(){const d=DAYS[DAYS.length-1];if(!d.posthog){document.getElementById('page-lp').innerHTML='<div class="ph"><div><h1>Landing Page Health</h1></div></div><div class="es">Nog geen PostHog data.</div>';return}
+const ph=d.posthog;let h='<div class="ph"><div><h1>Landing Page Health</h1><div class="sub">startyourballoonbusiness.com</div></div><div class="db">'+ph.sessions+' sessies (7d)</div></div>';
+h+='<div class="kg"><div class="kc"><div class="l">Bounce</div><div class="v">'+p(ph.bounceRate)+'</div><div class="s bad">Target: <55%</div></div>';
+h+='<div class="kc"><div class="l">Sessie Duur</div><div class="v">'+ph.avgSessionDuration+'s</div><div class="s bad">Mediaan: '+ph.medianSessionDuration+'s</div></div>';
+h+='<div class="kc"><div class="l">Scroll ≥25%</div><div class="v">'+p(ph.scroll25)+'</div><div class="s bad">51% verlaat hero</div></div>';
+h+='<div class="kc"><div class="l">Scroll ≥50%</div><div class="v">'+p(ph.scroll50)+'</div><div class="s bad">Target: >60%</div></div>';
+h+='<div class="kc"><div class="l">Scroll 100%</div><div class="v">'+p(ph.scroll100)+'</div><div class="s ok">Target: >20%</div></div>';
+h+='<div class="kc"><div class="l">Recordings</div><div class="v">'+ph.recordings+'</div><div class="s ok">'+ph.recordingCoverage+'%</div></div></div>';
+h+='<div class="sec"><div class="sh"><div class="st">Bounce per Ad (UTM)</div></div><table><thead><tr><th>utm_content</th><th>Sessies</th><th>Bounce Rate</th></tr></thead><tbody>';
+ph.perUtm.forEach(u=>{const c2=u.bounceRate<=75?'good':u.bounceRate>=90?'bad':'warn';h+='<tr><td>'+u.utm+'</td><td>'+u.sessions+'</td><td class="f '+c2+'">'+p(u.bounceRate)+'</td></tr>'});
+h+='</tbody></table></div>';document.getElementById('page-lp').innerHTML=h}
+function renderTargets(){const d=DAYS[DAYS.length-1],c=d.campaign,ph=d.posthog;
+let h='<div class="ph"><div><h1>KPI Targets</h1><div class="sub">Status per '+d.label+'</div></div></div><div class="sec"><table><thead><tr><th>KPI</th><th>Huidig</th><th>Target 30d</th><th>Target 90d</th><th>Status</th><th>Bron</th></tr></thead><tbody>';
+h+='<tr><td>CPC</td><td>'+e(c.cpc)+'</td><td>< €0,50</td><td>< €0,40</td><td class="f '+st(c.cpc,0.50,'lower')+'">'+e(c.cpc)+'</td><td>Meta Ads MCP</td></tr>';
+h+='<tr><td>CTR</td><td>'+p(c.ctr)+'</td><td>> 1%</td><td>> 2%</td><td class="f '+st(c.ctr,1,'higher')+'">'+p(c.ctr)+'</td><td>Meta Ads MCP</td></tr>';
+h+='<tr><td>Click → LP</td><td>'+(c.clicks?Math.round(c.lpViews/c.clicks*100):'—')+'%</td><td>> 85%</td><td>> 90%</td><td class="f '+(c.lpViews/c.clicks>=0.85?'good':'bad')+'">'+(c.lpViews/c.clicks>=0.85?'✅':'🔴')+'</td><td>Meta</td></tr>';
+if(ph){h+='<tr><td>Bounce Rate</td><td>'+p(ph.bounceRate)+'</td><td>< 55%</td><td>< 40%</td><td class="f bad">🔴</td><td>PostHog</td></tr>';
+h+='<tr><td>Scroll ≥25%</td><td>'+p(ph.scroll25)+'</td><td>> 80%</td><td>> 90%</td><td class="f bad">🔴</td><td>PostHog</td></tr>';
+h+='<tr><td>Sessie Duur</td><td>'+ph.avgSessionDuration+'s</td><td>> 60s</td><td>> 90s</td><td class="f bad">🔴</td><td>PostHog</td></tr>'}
+h+='<tr><td>Purchases</td><td>'+c.purchases+'</td><td>Meten</td><td>Optimaliseren</td><td class="f na">0</td><td>Meta Pixel</td></tr>';
+h+='</tbody></table></div>';document.getElementById('page-targets').innerHTML=h}
+function showPage(n){cp=n;document.querySelectorAll('.page').forEach(p2=>p2.classList.remove('active'));document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));document.getElementById('page-'+n).classList.add('active');document.getElementById('nav-'+n).classList.add('active');if(n==='daily')renderDaily();if(n==='history')renderHistory();if(n==='ads')renderAds();if(n==='lp')renderLP();if(n==='targets')renderTargets()}
+window.onload=()=>{renderDaily()}
+</script>
+<div class="layout">
+<div class="sidebar"><div class="logo"><h2>SYBB Dashboard</h2><span>Sempertex Europe</span></div>
+<nav><div class="ns">Overzicht</div>
+<a class="active" onclick="showPage('daily')" id="nav-daily"><span>📊</span> Dagelijks Rapport</a>
+<a onclick="showPage('weekly')" id="nav-weekly"><span>📅</span> Wekelijks</a>
+<a onclick="showPage('monthly')" id="nav-monthly"><span>📈</span> Maandelijks</a>
+<div class="ns">Analyse</div>
+<a onclick="showPage('ads')" id="nav-ads"><span>🎬</span> Ad Performance</a>
+<a onclick="showPage('lp')" id="nav-lp"><span>🌐</span> Landing Page</a>
+<a onclick="showPage('funnel')" id="nav-funnel"><span>🔄</span> Funnel</a>
+<div class="ns">Referentie</div>
+<a onclick="showPage('targets')" id="nav-targets"><span>🎯</span> KPI Targets</a>
+<a onclick="showPage('history')" id="nav-history"><span>📋</span> Geschiedenis</a>
+</nav></div>
+<div class="main">
+<div class="page active" id="page-daily"></div>
+<div class="page" id="page-weekly"><div class="ph"><div><h1>Wekelijks Overzicht</h1></div></div><div class="es">Na 7 dagen data verschijnt hier de week-over-week vergelijking.</div></div>
+<div class="page" id="page-monthly"><div class="ph"><div><h1>Maandelijks Overzicht</h1></div></div><div class="es">Na 30 dagen data verschijnt hier de maandelijkse analyse.</div></div>
+<div class="page" id="page-ads"></div>
+<div class="page" id="page-lp"></div>
+<div class="page" id="page-funnel"><div class="ph"><div><h1>Funnel Analyse</h1></div></div><div class="es">Funnel tracking wordt opgebouwd met PostHog + Meta Pixel data.</div></div>
+<div class="page" id="page-targets"></div>
+<div class="page" id="page-history"></div>
+</div></div>
+</body></html>
