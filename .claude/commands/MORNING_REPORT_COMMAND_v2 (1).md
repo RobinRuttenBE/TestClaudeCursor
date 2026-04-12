@@ -70,6 +70,9 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 **Slechtste variant:** [welke en waarom]
 **Delivery check:** [welke ads krijgen delivery en welke niet]
 
+#### Gepauzeerde ads (restspend)
+Check de status van elke ad via de Meta Ads MCP. Als een ad op `PAUSED` staat maar nog spend toont in de rapportageperiode, label deze als `GEPAUZEERD, restspend €X` in de Flag kolom. Toon gepauzeerde ads apart onder de actieve ads tabel, niet ertussen. Gebruik dezelfde kolomstructuur als de actieve ads tabel. Als er geen gepauzeerde ads met restspend zijn: "Geen gepauzeerde ads met restspend in deze periode."
+
 ### 📡 Pixel Events
 | Event | Aantal | Cost per Event | Trend |
 |-------|--------|----------------|-------|
