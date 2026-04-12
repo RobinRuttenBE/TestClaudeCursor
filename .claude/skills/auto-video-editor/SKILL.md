@@ -49,6 +49,37 @@ CRUCIAAL — de pacing van effects:
 - **Na de eerste minuut**: 1 effect per 30-60 seconden. Niet meer. Laat de video ademen.
 - **Laatste 30 seconden**: subscribe popup, social bar, end screen teaser.
 
+### Stap 3b: Overlay duur en grootte (BEWEZEN REGELS)
+
+Deze regels komen uit goedgekeurde video's. **Volg ze altijd tenzij er een reden is om af te wijken.**
+
+- **Maximale duur per overlay: 5-8 seconden.** Nooit 20-25s. Robin wil kort en krachtig.
+- **Tips/quotes:** 6-7 seconden
+- **Formules/lijsten met build-up:** max 12 seconden (incl. 2s hold na laatste element)
+- **Closing sequence (YT subscribe + social bar):** elk 5 seconden
+- **End screen:** start pas 5-7s voor einde video
+
+**POSITIE:**
+- Overlays mogen **NOOIT** de hoofden van de sprekers bedekken
+- Standaard positie: **bottom-left** of **bottom-right** (4-5% van rand)
+- Gebruik `scale(0.75)` als standaard verkleining wanneer iets "kleiner" moet
+- Gelijke afstand van linker- en onderrand als het in een hoek staat
+
+**SOUND EFFECTS:**
+- **Heel kader verschijnt** = pop SFX
+- **Tekst-component verschijnt** = click SFX (niet pop)
+- **Grote impact momenten** (x2, reveal) = woosh SFX (niet bass hit)
+- **Ding** = alleen bij highlights (geel blok verschijnt, belangrijk woord)
+
+**SHAKE:**
+- Max 1.5-2px amplitude op kaart-shake. Nooit 4-6px, dat voelt extreem.
+
+**LAYOUT:**
+- Geen diagonale/trap layouts. Lijsten en stapels altijd recht en geordend.
+
+**MUZIEK:**
+- Standaard volume: **-26dB** (0.05). Niet -22dB, dat is te luid.
+
 ### Stap 4: Stel assets voor
 
 Per moment dat je voorstelt, geef aan:

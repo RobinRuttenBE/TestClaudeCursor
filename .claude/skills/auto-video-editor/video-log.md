@@ -55,19 +55,19 @@ Bijgewerkt na elke afgeronde video. Bevat leerpunten voor toekomstige edits.
 
 | # | Type | Status | Notitie |
 |---|------|--------|---------|
-| 1 | part-intro | Gebouwd | PART 3 + "How to price your balloon designs" |
-| 2 | materialenlijst (cost breakdown) | Gebouwd | Foil/Latex/Extras met Audrey Pose.jpg |
-| 3 | quote-card (pop in) | Gebouwd | Plumber analogy, geen typewriter |
-| 4 | animated-pricing-equation (NEW) | Gebouwd | TIME + MATERIALS + OVERHEADS x 2 = YOUR PRICE |
-| 5 | stx-tip (right) | Gebouwd | Perceived value met Wedding.jpg |
-| 6 | typewriter-quote-card | Gebouwd | "never go up" met yellow highlight + ding |
-| 7 | price-ladder-card (NEW) | Gebouwd | Descending: 50/40/25 pound |
-| 8 | text-only-tip | Gebouwd | Stop comparing, eye icon, geen foto |
-| 9 | stx-tip (right) | Gebouwd | Audrey learning twisting met Jungle twisting.jpg |
-| 10 | materialenlijst (30s advice) | Gebouwd | Niche/Products/Education met nummers |
-| 11 | youtube-subscribe | Gebouwd | Standaard closing sequence |
-| 12 | social-bar | Gebouwd | IG + FB handles |
-| 13 | end-screen | Gebouwd | THANKS FOR WATCHING + SUBSCRIBE (laatste deel) |
+| 1 | part-intro | ✅ goedgekeurd | PART 3 + "How to price your balloon designs" |
+| 2 | materialenlijst (cost breakdown) | ✅ goedgekeurd | Foil/Latex/Extras met Audrey Pose.jpg |
+| 3 | quote-card (pop in) | ✅ goedgekeurd | Plumber analogy, 7s, geen typewriter |
+| 4 | animated-pricing-equation (NEW) | ✅ goedgekeurd | Bottom-left, clicks+woosh, subtle shake, 12s |
+| 5 | stx-tip (right) | ✅ goedgekeurd | Perceived value, 7s |
+| 6 | typewriter-quote-card | ✅ goedgekeurd | Width 1200, font 56px, 7s |
+| 7 | price-ladder-card (NEW) | ✅ goedgekeurd | Links, rechte stapel (geen diagonaal), 7s |
+| 8 | text-only-tip | ✅ goedgekeurd | Stop comparing, 6s |
+| 9 | stx-tip (right) | ✅ goedgekeurd | Jungle twisting.jpg, 7s |
+| 10 | materialenlijst (30s advice) | ✅ goedgekeurd | Bottom-left 4%, scale 0.75, 8s, +10s later |
+| 11 | youtube-subscribe | ✅ goedgekeurd | 5s |
+| 12 | social-bar | ✅ goedgekeurd | 5s |
+| 13 | end-screen | ✅ goedgekeurd | +7s later, THANKS FOR WATCHING + SUBSCRIBE |
 
 ### Aangepast door gebruiker (voor build)
 - Lower third geschrapt — Robin voegt zelf toe
@@ -76,10 +76,25 @@ Bijgewerkt na elke afgeronde video. Bevat leerpunten voor toekomstige edits.
 - Asset swap: jungle twisting.jpg naar Moment 9 (learning) ipv Moment 8 (stop comparing)
 - Pricing in pounds, geen euro disclaimer
 
+### Aangepast door gebruiker (na eerste review)
+- Muziekvolume te hoog — verlaagd van -22dB naar -26dB
+- Alle overlays te lang in beeld — alles naar 5-8s (was 20-25s)
+- M4 pricing formula: pops bij tekst vervangen door clicks, bass hit op x2 vervangen door woosh, shake 75% zachter, positie naar bottom-left zodat hoofden zichtbaar blijven
+- M6 quote card te groot — 30% kleiner (width 2600 → 1200, font 120 → 56)
+- M7 price ladder: diagonale trappen → rechte stapel, rechts → links
+- M10 30s advice: 10s later starten, 25% kleiner (scale 0.75), naar bottom-left 4%
+- M13 end screen: 7s later beginnen
+- Closing sequence (YT + social + end): allemaal korter (5s / 5s / auto)
+
 ### Nieuwe overlay types ontstaan
-- `animated-pricing-equation` — animated equation builder met stagger yellow blocks, bass hit op x 2, magenta accent
-- `price-ladder-card` — descending stepped price tiers, right-side panel, stagger slide-in from right
+- `animated-pricing-equation` — animated equation builder met stagger yellow blocks, woosh op x2, magenta accent. Bottom-left positie. Clicks voor componenten, niet pops.
+- `price-ladder-card` — verticale prijstiers, left-side panel, stagger slide-in from left, gelijke breedte per stap (geen diagonaal)
 - `text-only-tip` — stx-tip variant zonder foto, met focus/eye icon in paarse strip
+
+### Direct goedgekeurd (geen aanpassingen)
+- Moment 1 (part-intro): direct akkoord
+- Moment 2 (cost breakdown): direct akkoord
+- Moment 9 (always learning): direct akkoord
 
 ### Leerpunten voor volgende video's
 - Robin verwacht 1-2 innovatieve momenten per video — altijd voorstellen
@@ -87,3 +102,10 @@ Bijgewerkt na elke afgeronde video. Bevat leerpunten voor toekomstige edits.
 - Pricing in lokale valuta laten staan, geen disclaimers — audience begrijpt het
 - Lijst > quote voor praktisch advies, quote > lijst voor emotionele momenten
 - YouTube subscribe + social bar + end screen als vaste closing sequence in die volgorde
+- **TIMING: overlays maximaal 5-8 seconden in beeld. 20-25s is veel te lang. Robin wil kort en krachtig.**
+- **MUZIEK: -22dB is te luid. Start met -26dB als standaard.**
+- **GROOTTE: overlays moeten NOOIT de hoofden van sprekers bedekken. Positioneer bottom-left of bottom-right, niet center.**
+- **SHAKE: subtiel houden. Max 1.5-2px op kaart, nooit 4-6px. Robin vindt hard schudden extreem.**
+- **SFX: bij tekst die verschijnt = clicks, niet pops. Pops voor hele kader verschijnen. Woosh voor grote impact momenten.**
+- **DIAGONAAL: Robin wil geen diagonale/trap layouts. Houd lijsten en stapels recht en geordend.**
+- **SCALE: bij "kleiner maken" is 0.75 (25% kleiner) een goede standaard. Niet alles hoeft fullsize.**
