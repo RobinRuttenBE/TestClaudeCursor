@@ -6835,3 +6835,91 @@ Titel, producten (afbeelding, naam, datum, timing), start en duur zijn individue
 **REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-overlays.tsx` (ProductShowcase component)
 
 **REGISTRATIE:** Moment 20 in Composition `Audrey-Robin-Q`, via parent `remotion-stx/src/overlays/audrey-robin-overlays.tsx`
+
+---
+
+### TYPE: animated-pricing-equation
+
+**WANNEER:** Bij het visualiseren van een **berekening of formule** waar componenten stap voor stap opgebouwd worden. Het hart-moment van een pricing of business-gerelateerde video.
+
+**LAYOUT:** Centered fullscreen card op Sempertex gradient achtergrond. Yellow title block bovenaan, daarna een equation die component voor component verschijnt in gele blokken met operators ertussen.
+
+```
+Position: centered, width 2800
+Content: flex column center, gap 56
+Yellow title block
+Equation row: [COMPONENT] + [COMPONENT] + [COMPONENT]
+Horizontal yellow line (wipe reveal)
+Large "x 2" text + magenta accent badge
+= [RESULT] in yellow block
+```
+
+**BUILD SEQUENCE (stagger ~400ms per component):**
+1. Card pop-in (spring, damping 11)
+2. Title block pops in
+3. Equation components: each in yellow block, dark purple text, spring pop
+4. Operators (+) pop between
+5. Horizontal divider wipe reveals left-to-right
+6. "x 2" impact: scale 0 -> 1.3 -> 0.9 -> 1 met shake + **bass hit SFX** + magenta badge
+7. "= RESULT" block pops in + **ding SFX**
+8. Hold for reading
+9. Pop-out + slide down + whoosh
+
+**MAGENTA ACCENT:** De "x 2" is een van de weinige plekken waar magenta (`#cd0b5c`) als achtergrondkleur mag. De badge ernaast is magenta met witte tekst en glow.
+
+**CARD SHAKE:** Bij x 2 impact schudt de hele card subtiel (sin wave, 6px amplitude, 20 frames).
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part3-overlays.tsx` (Moment4PricingEquation)
+
+**REGISTRATIE:** Moment 4 in Composition `Audrey-Robin-Part-3`
+
+---
+
+### TYPE: price-ladder-card
+
+**WANNEER:** Bij het tonen van **prijsstaffel of alternatieven** die visueel naar beneden aflopen. Starters zien letterlijk hoe alternatives/downsells werken.
+
+**LAYOUT:** Right-side panel (40% breed). Yellow header block bovenaan, gevolgd door 3+ treden die naar links inspringen naarmate de prijs daalt.
+
+```
+Position: right 5%, vertically centered
+Content: flex column, align flex-end, gap 32
+Yellow header block "OFFER ALTERNATIVES"
+Step 1: [PRICE block] — [Label] (breedst, geen indent)
+Step 2: [PRICE block] — [Label] (smaller, indent 160px)
+Step 3: [PRICE block] — [Label] (smallest, indent 320px)
+```
+
+**STAGGER BUILD:** Elke trede slide-in van rechts (200ms stagger). Price in yellow block, label in dark purple. Lavender achtergrond per trede met purple border.
+
+**EFFECT OUT:** Hele panel wipe naar rechts (Easing.in cubic, 18 frames).
+
+**FLOAT:** Per trede een subtiele individuele float met phase offset.
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part3-overlays.tsx` (Moment7PriceLadder)
+
+**REGISTRATIE:** Moment 7 in Composition `Audrey-Robin-Part-3`
+
+---
+
+### TYPE: text-only-tip
+
+**WANNEER:** Voor tips of quotes waar **geen foto beschikbaar of nodig** is. Variant van `stx-tip` maar met een visueel icoon (focus/eye) in een paarse strip links in plaats van een foto-cirkel.
+
+**LAYOUT:** Bottom 10%, left of right 5%. Horizontale card met:
+- Links: paarse strip (200px breed) met focus/eye SVG icon in geel + gele accent lijnen boven en onder
+- Rechts: lavender tekstvak met uppercase titel (Extra Bold) + paarse lijn + italic body text (Bold Italic)
+
+**VERSCHILT VAN STX-TIP:**
+- Geen foto-cirkel, geen logo sectie rechts
+- Links sectie smaller (200px vs 340px)
+- Eye icon vervangt de foto visueel
+- Border om de hele card (6px darkPurple)
+- Breder tekstvak (minWidth 1400)
+
+**EFFECT IN:** Spring pop (damping 9, mass 0.45, stiffness 160)
+**EFFECT OUT:** Pop 1 -> 1.08 -> 0 (12 frames)
+
+**REFERENTIE:** `remotion-stx/src/overlays/audrey-robin-part3-overlays.tsx` (TextOnlyTipOverlay)
+
+**REGISTRATIE:** Moment 8 in Composition `Audrey-Robin-Part-3`
