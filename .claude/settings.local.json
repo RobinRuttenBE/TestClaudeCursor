@@ -225,7 +225,8 @@
       "Bash(git pull:*)",
       "Bash(git checkout:*)",
       "Bash(git -c core.editor=true commit --no-edit)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(git rm:*)"
     ]
   }
 }
