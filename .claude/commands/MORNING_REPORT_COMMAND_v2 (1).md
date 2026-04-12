@@ -26,6 +26,8 @@ Haal via de PostHog MCP data op voor startyourballoonbusiness.com over de afgelo
 - Aantal nieuwe session recordings
 - UTM segmentatie: welke ad variant (utm_content) levert welk gedrag op de LP
 
+**Dag + 7d context (verplicht):** toon voor `bounce rate` en `sessie duur` altijd TWEE waarden: de dagwaarde (gisteren) EN het 7-daags gemiddelde. Format: `Dag: X% · 7d gem: Y%`. Haal beide op via PostHog MCP, de dagwaarde gefilterd op gisteren en het 7d gemiddelde over de afgelopen 7 dagen. Dit geldt ook in de Landing Page Health tabel in de output.
+
 Als er geen traffic was, toon de meest recente data die beschikbaar is.
 
 ### 3. Cross-Reference Analyse
