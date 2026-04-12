@@ -102,18 +102,35 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 ## Data Integriteit Regels (KRITIEK)
 
 ### SANITY CHECKS (verplicht voor elk rapport)
-1. **Purchase waarde check:** SYBB workshop kost €350 ex BTW (€423,50 incl). Als een purchase waarde meer dan €500 of minder dan €300 is, MELD DIT ALS DATAFOUT en gebruik €423,50 als correcte waarde.
-2. **Purchase aantal check:** vergelijk Meta purchase events met het werkelijke aantal orders. Vraag altijd: "Klopt dit aantal met je Wix orders?"
+1. **Purchase waarde check:** SYBB workshop kost €350 ex BTW (€423,50 incl BTW). Als `purchase_value / aantal_purchases` > €500 of < €300: meld "PIXEL DATAFOUT, purchase waarde onrealistisch" en gebruik €423,50 als correcte waarde.
+2. **Purchase aantal check:** vermeld NOOIT een purchase aantal zonder de sanity check. Vraag altijd expliciet: "Verifieer het aantal purchases met Wix orders."
 3. **Gemiddelde spend:** bereken ALLEEN over dagen met spend >€0. Tel gepauzeerde dagen NIET mee. Vermeld altijd het aantal actieve dagen.
-4. **PostHog data is VERPLICHT** in elk rapport. Als PostHog MCP niet bereikbaar is, meld dit als eerste rode vlag.
-5. **Cross-reference:** Meta LP views moeten roughly matchen met PostHog pageviews voor dezelfde periode. Als het verschil >30% is, meld dit als datafout.
-6. **Onlogische metrics:** elke metric die onlogisch lijkt (ROAS >100x, CPC <€0.01, bounce >99%) moet geflagged worden als "MOGELIJKE DATAFOUT — verifieer handmatig".
+4. **PostHog data is VERPLICHT.** Haal ALTIJD PostHog data op via de PostHog MCP als onderdeel van elk rapport. Als de PostHog MCP niet bereikbaar is, meld dit als EERSTE rode vlag met de tekst: "🚩 MCP ERROR, geen LP data beschikbaar". Verplichte PostHog metrics: visitors, pageviews, sessions, bounce rate, avg sessie duur, device breakdown.
+5. **Cross-reference Meta LP views ↔ PostHog sessions:** vergelijk Meta landing_page_view met PostHog sessions gefilterd op `utm_source=meta` (case-insensitive) voor dezelfde periode. Als het verschil >30% is, meld: "DATA MISMATCH, Meta LP views vs PostHog sessions wijken X% af" en benoem mogelijke oorzaken (pixel blocking, session cutoff, UTM case inconsistency).
+6. **Onlogische metrics:** elke metric die onlogisch lijkt (ROAS >100x, CPC <€0.01, bounce >99%) moet geflagged worden als "MOGELIJKE DATAFOUT, verifieer handmatig".
 
-### Geen interpretatie — exacte event namen
-- Gebruik NOOIT het woord "leads". Gebruik de exacte Meta event namen: InitiateCheckout, AddToCart, Purchase
-- Meta's "Gestart betaalproces" = InitiateCheckout, NIET een lead
-- "Results" in Meta Ads Manager = het conversie-event van de campagne (momenteel: InitiateCheckout). Benoem dit expliciet.
-- Lifetime "leads" bestaan niet, het waren InitiateCheckout events
+### Link clicks, niet all clicks (KRITIEK voor Meta Ads data)
+Meta's standaard `clicks` veld is ALL clicks (inclusief likes, comments, profile clicks). Dit is GEEN doorklikratio en mag NOOIT als zodanig gerapporteerd worden.
+
+Bij het ophalen van Meta Ads data via de MCP, gebruik ALTIJD deze metrics:
+- **Clicks:** gebruik `actions.link_click`, NIET het veld `clicks`.
+- **Link CTR (doorklikratio):** bereken als `link_clicks / impressions × 100`. NIET de standaard `ctr` die Meta teruggeeft, want dat is all clicks CTR.
+- **CPC (link):** bereken als `spend / link_clicks`. NIET `spend / all_clicks` en NIET Meta's standaard `cpc` veld.
+
+**Labels (verplicht):**
+- Schrijf altijd `Link CTR` of `All Clicks CTR`, nooit kaal `CTR`.
+- Schrijf altijd `CPC (link)` of `CPC (all)`, nooit kaal `CPC`.
+- Als je beide wilt tonen voor context, label ze expliciet als twee aparte rijen.
+- Rode vlag triggers gebruiken ALTIJD de link-variant: Link CTR <1%, CPC (link) >€0.50.
+
+### Correcte labels en event namen (verplicht)
+- Gebruik NOOIT het woord "leads". Gebruik de exacte Meta event namen: `InitiateCheckout`, `AddToCart`, `Purchase`.
+- Meta's "Gestart betaalproces" = `InitiateCheckout`, NIET een lead.
+- "Results" in Meta Ads Manager = het conversie-event van de campagne (momenteel: `InitiateCheckout`). Benoem dit expliciet.
+- Lifetime "leads" bestaan niet, het waren `InitiateCheckout` events.
+- Gebruik NOOIT kaal "CTR": schrijf `Link CTR` of `All Clicks CTR`.
+- Gebruik NOOIT kaal "CPC": schrijf `CPC (link)` of `CPC (all)`.
+- Gebruik NOOIT "purchases" zonder de purchase sanity check (zie boven).
 
 ### Databron verplicht bij elk datapunt
 - Elk datapunt moet een bron vermelden: (Meta Ads MCP) of (PostHog MCP)
@@ -141,6 +158,6 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 - Wees bondig — geen fluff, geen disclaimers
 - Toon ALLE actieve ads, ook als ze geen delivery krijgen
 - Vergelijk altijd met 7-daags gemiddelde
-- Rode vlaggen triggers: CPC >€0.50, CTR <1%, bounce >70%, scroll <50% bij >60% bezoekers, frequency >3, 0 delivery op actieve ads, click→LP view drop >20%
+- Rode vlaggen triggers: `CPC (link)` >€0.50, `Link CTR` <1%, bounce >70%, scroll <50% bij >60% bezoekers, frequency >3, 0 delivery op actieve ads, link click → LP view drop >20%
 - Sla het rapport op in output/reports/daily/
 - Als PostHog geen data heeft, vermeld dit en toon alleen Meta Ads data
