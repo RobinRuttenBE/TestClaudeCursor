@@ -101,6 +101,14 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 
 ## Data Integriteit Regels (KRITIEK)
 
+### SANITY CHECKS (verplicht voor elk rapport)
+1. **Purchase waarde check:** SYBB workshop kost €350 ex BTW (€423,50 incl). Als een purchase waarde meer dan €500 of minder dan €300 is, MELD DIT ALS DATAFOUT en gebruik €423,50 als correcte waarde.
+2. **Purchase aantal check:** vergelijk Meta purchase events met het werkelijke aantal orders. Vraag altijd: "Klopt dit aantal met je Wix orders?"
+3. **Gemiddelde spend:** bereken ALLEEN over dagen met spend >€0. Tel gepauzeerde dagen NIET mee. Vermeld altijd het aantal actieve dagen.
+4. **PostHog data is VERPLICHT** in elk rapport. Als PostHog MCP niet bereikbaar is, meld dit als eerste rode vlag.
+5. **Cross-reference:** Meta LP views moeten roughly matchen met PostHog pageviews voor dezelfde periode. Als het verschil >30% is, meld dit als datafout.
+6. **Onlogische metrics:** elke metric die onlogisch lijkt (ROAS >100x, CPC <€0.01, bounce >99%) moet geflagged worden als "MOGELIJKE DATAFOUT — verifieer handmatig".
+
 ### Geen interpretatie — exacte event namen
 - Gebruik NOOIT het woord "leads". Gebruik de exacte Meta event namen: InitiateCheckout, AddToCart, Purchase
 - Meta's "Gestart betaalproces" = InitiateCheckout, NIET een lead
