@@ -14,10 +14,16 @@ LOG_DIR="${WORKDIR}/logs"
 LOG_FILE="${LOG_DIR}/morning-report-$(date +%Y-%m-%d).log"
 RECIPIENT="robin.rutten2@gmail.com"
 TODAY=$(date +"%d-%m-%Y")
+TODAY_ISO=$(date +"%Y-%m-%d")
+REPORT_DIR="${WORKDIR}/output/reports/daily"
+ADS_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_ads_report.md"
+OPTIMIZE_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_auto_optimize.md"
+FULL_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_morning_report_full.md"
 FAILURES=0
 
-# Zorg dat log directory bestaat
+# Zorg dat log + report directories bestaan
 mkdir -p "$LOG_DIR"
+mkdir -p "$REPORT_DIR"
 cd "$WORKDIR"
 
 echo "=== Morning Report gestart: $(date) ===" >> "$LOG_FILE" 2>&1
@@ -57,7 +63,10 @@ echo "[1/4] /ads-report uitvoeren..." >> "$LOG_FILE" 2>&1
 REPORT=$(run_claude "/ads-report" "/ads-report") || \
     REPORT="Ads rapport niet beschikbaar. Campagnes staan momenteel op pauze."
 
-echo "[1/4] klaar ($(echo "$REPORT" | wc -c | tr -d ' ') bytes)" >> "$LOG_FILE" 2>&1
+# Persist deelrapport naar disk vóór de email — als de mail faalt is dit nog terug te vinden
+printf '%s\n' "$REPORT" > "$ADS_REPORT_FILE" 2>> "$LOG_FILE"
+
+echo "[1/4] klaar ($(echo "$REPORT" | wc -c | tr -d ' ') bytes, opgeslagen in $ADS_REPORT_FILE)" >> "$LOG_FILE" 2>&1
 
 # --- Stap 2/4: SYBB Daily Report ---
 echo "[2/4] SYBB daily report uitvoeren..." >> "$LOG_FILE" 2>&1
@@ -73,7 +82,10 @@ echo "[3/4] /ads-auto-optimize uitvoeren..." >> "$LOG_FILE" 2>&1
 OPTIMIZE=$(run_claude "/ads-auto-optimize" "/ads-auto-optimize") || \
     OPTIMIZE="Auto-optimize niet beschikbaar. Geen actieve campagnes."
 
-echo "[3/4] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes)" >> "$LOG_FILE" 2>&1
+# Persist deelrapport naar disk vóór de email — als de mail faalt is dit nog terug te vinden
+printf '%s\n' "$OPTIMIZE" > "$OPTIMIZE_REPORT_FILE" 2>> "$LOG_FILE"
+
+echo "[3/4] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in $OPTIMIZE_REPORT_FILE)" >> "$LOG_FILE" 2>&1
 
 # --- Stap 4/4: Combineer en verstuur ---
 echo "[4/4] Email versturen..." >> "$LOG_FILE" 2>&1
@@ -100,11 +112,20 @@ ${OPTIMIZE}
 Dit rapport is automatisch gegenereerd door Claude Code.
 Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar."
 
+# Persist gecombineerd rapport naar disk vóór de email — fail-safe voor mail problemen
+printf '%s\n' "$FULL_REPORT" > "$FULL_REPORT_FILE" 2>> "$LOG_FILE"
+echo "[4/4] gecombineerd rapport opgeslagen in $FULL_REPORT_FILE" >> "$LOG_FILE" 2>&1
+
 "$PYTHON" "$SEND_SCRIPT" \
     "$RECIPIENT" \
     "$SUBJECT" \
     "$FULL_REPORT" \
     >> "$LOG_FILE" 2>&1
+MAIL_EXIT=$?
+
+if [ $MAIL_EXIT -ne 0 ]; then
+    echo "[4/4] EMAIL FAILED (exit $MAIL_EXIT). Rapport blijft beschikbaar in $FULL_REPORT_FILE — re-send handmatig of fix OAuth token." >> "$LOG_FILE" 2>&1
+fi
 
 echo "=== Morning Report afgerond: $(date) — ${FAILURES} failures ===" >> "$LOG_FILE" 2>&1
 
