@@ -21,10 +21,35 @@ Haal via de PostHog MCP data op voor startyourballoonbusiness.com over de afgelo
 - Totaal pageviews en unieke bezoekers
 - Bounce rate
 - Gemiddelde sessie duur
-- Scroll depth distributie (25%, 50%, 75%, 100%)
+- Scroll depth distributie (25%, 50%, 75%, 100%) — zie scroll-instructies hieronder
 - CTA click events
 - Aantal nieuwe session recordings
 - UTM segmentatie: welke ad variant (utm_content) levert welk gedrag op de LP
+
+**Scroll depth (verplicht — gebruik PostHog's ingebouwde property):**
+PostHog tracked scroll automatisch via de property `$prev_pageview_max_scroll_percentage` op het VOLGENDE pageview event (of op `$pageleave`). Deze property bevat het maximum scroll percentage (0.0 - 1.0) dat de bezoeker bereikte op de vorige pageview. Geen custom event of plugin nodig.
+
+Query-aanpak via PostHog MCP (HogQL):
+```sql
+SELECT
+  countIf(properties.$prev_pageview_max_scroll_percentage >= 0.25) / count() * 100 AS scroll_25_pct,
+  countIf(properties.$prev_pageview_max_scroll_percentage >= 0.50) / count() * 100 AS scroll_50_pct,
+  countIf(properties.$prev_pageview_max_scroll_percentage >= 0.75) / count() * 100 AS scroll_75_pct,
+  countIf(properties.$prev_pageview_max_scroll_percentage >= 1.00) / count() * 100 AS scroll_100_pct,
+  count() AS samples
+FROM events
+WHERE event IN ('$pageview', '$pageleave')
+  AND properties.$prev_pageview_max_scroll_percentage IS NOT NULL
+  AND properties.$prev_pageview_host = 'www.startyourballoonbusiness.com'
+  AND timestamp >= toDateTime('YYYY-MM-DD 00:00:00')
+  AND timestamp <  toDateTime('YYYY-MM-DD 00:00:00')
+```
+
+Filter op de host (`$prev_pageview_host`) van de vorige pageview — niet op `$host` van het huidige event, want het scroll-percentage hoort bij de vorige pageview. Bereken het percentage sessies/pageviews dat elk drempel bereikte (25%, 50%, 75%, 100%).
+
+Toon altijd het aantal samples (`samples`) waarop de scroll-metric is gebaseerd. Als `samples < 50` voor de dagwaarde: meld "Onvoldoende data (X samples)".
+
+**Als de property leeg / niet beschikbaar is in de query resultaten** (alle waardes NULL of 0 samples voor de host): meld letterlijk "Scroll data: ophalen via $prev_pageview_max_scroll_percentage" in plaats van een waarde, en flag dit als rode vlag onder "PostHog scroll niet geconfigureerd".
 
 **Dag + 7d context (verplicht):** toon voor `bounce rate` en `sessie duur` altijd TWEE waarden: de dagwaarde (gisteren) EN het 7-daags gemiddelde. Format: `Dag: X% · 7d gem: Y%`. Haal beide op via PostHog MCP, de dagwaarde gefilterd op gisteren en het 7d gemiddelde over de afgelopen 7 dagen. Dit geldt ook in de Landing Page Health tabel in de output.
 
