@@ -43,7 +43,10 @@ FULL_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_morning_report_full.md"
 # iMessage delivery
 IMESSAGE_RECIPIENT="+32468236146"
 IMESSAGE_HELPER="${WORKDIR}/scripts/send-imessage.py"
+# Markdown reports: GitHub blob URL rendert .md files netjes met tabellen/headers
 GITHUB_BLOB_BASE="https://github.com/RobinRuttenBE/TestClaudeCursor/blob/main/Output/Reports/Daily"
+# HTML dashboard: GitHub Pages rendert HTML visueel (niet als source code)
+DASHBOARD_URL="https://robinruttenbe.github.io/TestClaudeCursor/SYBB_Dashboard.html"
 
 FAILURES=0
 
@@ -176,8 +179,12 @@ else
 fi
 
 # --- iMessage notificatie naar Robin ---
-GITHUB_FULL_URL="${GITHUB_BLOB_BASE}/${TODAY_ISO}_morning_report_full.md"
-GITHUB_SYBB_URL="${GITHUB_BLOB_BASE}/${YESTERDAY_ISO}_sybb_report.md"
+# Cache-bust query op de dashboard URL zodat Safari/iMessage altijd de verse versie ophaalt
+CACHE_BUST=$(date +%s)
+DASHBOARD_LINK="${DASHBOARD_URL}?v=${CACHE_BUST}"
+SYBB_REPORT_URL="${GITHUB_BLOB_BASE}/${YESTERDAY_ISO}_sybb_report.md"
+ADS_REPORT_URL="${GITHUB_BLOB_BASE}/${TODAY_ISO}_ads_report.md"
+OPTIMIZE_URL="${GITHUB_BLOB_BASE}/${TODAY_ISO}_auto_optimize.md"
 
 if [ $FAILURES -eq 0 ]; then
     STATUS_LINE="✅ Alles compleet"
@@ -189,11 +196,17 @@ IMESSAGE_BODY="📊 Morning Report ${TODAY_ISO}
 ${STATUS_LINE}
 Bronnen: Meta Ads + PostHog
 
-Full rapport:
-${GITHUB_FULL_URL}
+📈 Dashboard (visueel):
+${DASHBOARD_LINK}
 
-SYBB ${YESTERDAY_ISO}:
-${GITHUB_SYBB_URL}"
+📄 SYBB ${YESTERDAY_ISO} (details):
+${SYBB_REPORT_URL}
+
+📄 Ads rapport:
+${ADS_REPORT_URL}
+
+🔧 Auto-optimize voorstellen:
+${OPTIMIZE_URL}"
 
 if [ -x "$IMESSAGE_HELPER" ]; then
     if /usr/bin/python3 "$IMESSAGE_HELPER" "$IMESSAGE_RECIPIENT" "$IMESSAGE_BODY" >> "$LOG_FILE" 2>&1; then
