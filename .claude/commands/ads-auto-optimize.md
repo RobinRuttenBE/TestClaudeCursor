@@ -7,8 +7,10 @@ Analyseer de performance van alle actieve Meta Ads campagnes over de afgelopen 3
 ### Niveau 1: Automatische acties (GEEN bevestiging nodig)
 Deze acties worden direct uitgevoerd omdat ze duidelijke underperformers stoppen:
 
-- **Pauzeer ads met CTR < 0.5%** na minimaal 1.000 impressions
-- **Pauzeer ads met CPC > €1.00** na minimaal 500 clicks
+- **Pauzeer ads met Link CTR < 0.8%** na minimaal 1.000 impressions
+- **Pauzeer ads met CPC (link) > €1.50** na minimaal 500 link clicks
+
+> **KRITIEK — gebruik altijd LINK metrics, nooit all-clicks.** Meta's standaard `ctr` en `cpc` velden tellen ALLE clicks (likes, comments, profile views, shares) en geven daardoor een vertekend beeld. De kill-regels moeten op échte doorklikratio's draaien, niet op passieve engagement. Zie de definities hieronder.
 
 ### Niveau 2: Voorstellen (WEL bevestiging nodig)
 Deze acties worden ALLEEN voorgesteld — Robin moet goedkeuren:
@@ -20,6 +22,19 @@ Deze acties worden ALLEEN voorgesteld — Robin moet goedkeuren:
 
 **NOOIT** niveau 2 acties uitvoeren zonder expliciete goedkeuring van Robin.
 
+## Definities (KRITIEK — gebruik deze overal)
+
+| Metric | Formule | NIET gebruiken |
+|---|---|---|
+| **Link clicks** | `actions.link_click` waarde uit `get_insights` | NIET het `clicks` veld (= all clicks) |
+| **Link CTR** | `actions.link_click / impressions × 100` | NIET het `ctr` veld (= all clicks CTR) |
+| **CPC (link)** | `spend / actions.link_click` | NIET het `cpc` veld (= spend / all clicks) |
+
+In alle outputs en logs:
+- Schrijf altijd `Link CTR` of `All Clicks CTR`, nooit kaal `CTR`
+- Schrijf altijd `CPC (link)` of `CPC (all)`, nooit kaal `CPC`
+- Kill-regels triggeren UITSLUITEND op de link-variant
+
 ## Stappen
 
 ### 1. Haal performance data op (3 dagen)
@@ -28,10 +43,12 @@ Gebruik het Sempertex Ad Account `act_567892422940728`. Check ook `act_607231713
 **Per account:**
 - `mcp__claude_ai_Pipeboard_Meta_Ads__get_campaigns` met `status_filter: "ACTIVE"`
 - `mcp__claude_ai_Pipeboard_Meta_Ads__get_insights` per campagne met `date_preset: "last_3d"`
-  - Metrics: `spend`, `impressions`, `clicks`, `ctr`, `cpc`, `cpm`, `frequency`, `reach`, `conversions`, `purchase_roas`, `cost_per_action_type`
+  - Velden uit Meta: `spend`, `impressions`, `cpm`, `frequency`, `reach`, `actions` (incl. `link_click`), `action_values` (incl. `purchase`), `cost_per_action_type`
+  - **Bereken zelf** uit `actions`: `link_clicks`, `Link CTR`, `CPC (link)` — zie definities boven
+  - Negeer Meta's `clicks`, `ctr` en `cpc` velden voor kill-rule beslissingen
 - `mcp__claude_ai_Pipeboard_Meta_Ads__get_adsets` per campagne
 - `mcp__claude_ai_Pipeboard_Meta_Ads__get_ads` per ad set
-- `mcp__claude_ai_Pipeboard_Meta_Ads__get_insights` op ad-niveau met `date_preset: "last_3d"`
+- `mcp__claude_ai_Pipeboard_Meta_Ads__get_insights` op ad-niveau met `date_preset: "last_3d"` (zelfde veld-aanpak als boven)
 
 ### 2. Analyseer elke ad tegen de drempelwaarden
 
@@ -39,8 +56,10 @@ Gebruik het Sempertex Ad Account `act_567892422940728`. Check ook `act_607231713
 
 | Regel | Drempel | Minimum data | Actie |
 |-------|---------|-------------|-------|
-| Lage CTR | CTR < 0.5% | ≥ 1.000 impressions | Pauzeer ad |
-| Hoge CPC | CPC > €1.00 | ≥ 500 clicks | Pauzeer ad |
+| Lage Link CTR | Link CTR < 0.8% | ≥ 1.000 impressions | Pauzeer ad |
+| Hoge CPC (link) | CPC (link) > €1.50 | ≥ 500 link clicks | Pauzeer ad |
+
+> Drempels herzien op 2026-04-13: Link CTR-target verhoogd van 0.5% (op all-clicks) naar 0.8% (op link clicks), CPC-drempel verhoogd van €1.00 (op all-clicks) naar €1.50 (op link clicks). Reden: all-clicks metrics tellen passieve engagement (likes, comments, profile views) en geven daardoor structureel hogere CTR / lagere CPC dan de échte doorklikratio. De nieuwe drempels reflecteren wat een ad moet halen op echte link clicks.
 
 **Waarschuwingsregels (alleen rapporteren):**
 
@@ -48,7 +67,7 @@ Gebruik het Sempertex Ad Account `act_567892422940728`. Check ook `act_607231713
 |-------|---------|---------|
 | Creative fatigue | Frequency > 3.5 | Creative vervangen |
 | Dure reach | CPM > €15 | Audience te smal of saturated |
-| Dalende CTR | CTR last_3d < 70% van lifetime CTR | Vermoeidheid begint |
+| Dalende Link CTR | Link CTR last_3d < 70% van lifetime Link CTR | Vermoeidheid begint |
 
 ### 3. Voer automatische acties uit (Niveau 1)
 
@@ -64,13 +83,15 @@ Lees `Bronnen/Alex Hormozi/100m-hooks-playbook.md` voor context.
 
 Classificeer alle ACTIEVE ads (na pauzeren van underperformers):
 
+> **TODO — 70-20-10 drempels nog kalibreren voor link metrics.** De getallen hieronder waren oorspronkelijk gekalibreerd op all-clicks CTR/CPC. Met de overstap naar Link CTR / CPC (link) zullen ze strenger uitvallen (Link CTR is structureel ~50-60% van all-clicks CTR; CPC link is structureel 1.5-3× hoger). Tot Robin nieuwe drempels vaststelt, hanteer deze waarden als RICHTLIJN, niet als hard oordeel — bij twijfel: rapporteer de classificatie maar voer geen budget-shifts uit.
+
 **70% Core — Bewezen winners:**
-- Ads met CTR > 1.5% EN CPC < €0.50
+- Ads met Link CTR > 1.5% EN CPC (link) < €0.50
 - Of ads met ROAS > 2x
 - Deze moeten het meeste budget krijgen
 
 **20% Emerging — Potentieel:**
-- Ads met CTR 0.8-1.5% of CPC €0.50-€0.80
+- Ads met Link CTR 0.8-1.5% of CPC (link) €0.50-€0.80
 - Nog niet genoeg data voor definitief oordeel
 - Verdienen meer tijd/budget om zich te bewijzen
 
@@ -94,7 +115,7 @@ Op basis van de 70-20-10 classificatie:
 - Geef concrete bedragen (van €X naar €X)
 
 **Variatie voorstellen:**
-- Identificeer de top 3 hooks (hoogste CTR)
+- Identificeer de top 3 hooks (hoogste Link CTR)
 - Stel 2-3 variaties voor per winnende hook (ander format, andere CTA, andere body)
 - Gebruik de 7 Hormozi hook types als inspiratie
 
@@ -111,8 +132,8 @@ Op basis van de 70-20-10 classificatie:
 
 | Ad | Reden | Was | Nu | Performance |
 |----|-------|-----|-----|-------------|
-| [naam] | CTR 0.3% (< 0.5%) | ACTIVE | PAUSED | 2.100 imp, 6 clicks |
-| [naam] | CPC €1.23 (> €1.00) | ACTIVE | PAUSED | 520 clicks, €639 spend |
+| [naam] | Link CTR 0.6% (< 0.8%) | ACTIVE | PAUSED | 2.100 imp, 13 link clicks |
+| [naam] | CPC (link) €1.74 (> €1.50) | ACTIVE | PAUSED | 520 link clicks, €904 spend |
 
 **Totaal gepauzeerd: [X] ads**
 (of: "Geen ads gepauzeerd — alles presteert boven de drempelwaarden ✅")
@@ -126,10 +147,10 @@ Op basis van de 70-20-10 classificatie:
 ### 📊 70-20-10 Classificatie
 
 **70% Core (budget: €X/dag — huidig X% van totaal):**
-- [ad naam] — CTR X%, CPC €X, ROAS Xx
+- [ad naam] — Link CTR X%, CPC (link) €X, ROAS Xx
 
 **20% Emerging (budget: €X/dag — huidig X% van totaal):**
-- [ad naam] — CTR X%, CPC €X — potentieel
+- [ad naam] — Link CTR X%, CPC (link) €X — potentieel
 
 **10% Experimental (budget: €X/dag — huidig X% van totaal):**
 - [ad naam] — [X] impressions — te vroeg voor oordeel
@@ -144,7 +165,7 @@ Op basis van de 70-20-10 classificatie:
 - Verwachte impact: [wat]
 
 **2. Nieuwe variaties**
-- Gebaseerd op winnende hook "[hook tekst]" (CTR X%):
+- Gebaseerd op winnende hook "[hook tekst]" (Link CTR X%):
   - Variatie A: "[nieuwe hook]" — [format]
   - Variatie B: "[nieuwe hook]" — [format]
 
