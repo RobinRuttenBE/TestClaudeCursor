@@ -2,21 +2,26 @@
 # morning-report.sh — Dagelijks Meta Ads + PostHog rapport via Claude Code
 # Draait via launchd elke ochtend om 08:00 (com.sempertex.morning-report.plist)
 #
-# Flow: /ads-report → SYBB daily report → /ads-auto-optimize → save naar disk
+# Flow: /ads-report → SYBB daily report → /ads-auto-optimize → git push → iMessage
 #
 # DATA SCOPE (strikt):
 #   - Meta Ads MCP (Pipeboard) — campagne, adset, ad insights
 #   - PostHog MCP — landing page sessies, bounce, scroll, recordings
 #
+# DELIVERY:
+#   - Markdown rapporten naar Output/Reports/Daily/
+#   - Auto-commit + push naar GitHub main
+#   - iMessage notificatie naar Robin met link naar de full report op GitHub
+#
 # GEEN Google integraties:
 #   - Geen Gmail send
-#   - Geen Google Calendar
-#   - Geen Google Drive
-#   - Geen Google Sheets writes (ook niet via /ads-report)
-#   - Geen Google Docs / Slides
+#   - Geen Google Calendar / Drive / Sheets / Docs / Slides
+#   - Geen OAuth tokens, geen refresh-cycle
 #
-# Output: alleen markdown bestanden in output/reports/daily/. Robin leest ze
-# zelf in zijn editor of via het SYBB dashboard.
+# Authenticatie:
+#   - Git push via bestaande SSH/HTTPS credentials in de repo (zelfde als auto-sync cron)
+#   - iMessage via macOS Messages.app + Apple ID (al ingelogd)
+#   - Geen wachtwoorden of API tokens in dit script
 
 set -uo pipefail
 
@@ -27,11 +32,19 @@ LOG_DIR="${WORKDIR}/logs"
 LOG_FILE="${LOG_DIR}/morning-report-$(date +%Y-%m-%d).log"
 TODAY_ISO=$(date +"%Y-%m-%d")
 YESTERDAY_ISO=$(date -v-1d +"%Y-%m-%d")
-REPORT_DIR="${WORKDIR}/output/reports/daily"
+
+# Casing van REPORT_DIR matcht git's canonical pad (zie `git ls-files Output/Reports/Daily/`)
+REPORT_DIR="${WORKDIR}/Output/Reports/Daily"
 ADS_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_ads_report.md"
 SYBB_REPORT_FILE="${REPORT_DIR}/${YESTERDAY_ISO}_sybb_report.md"
 OPTIMIZE_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_auto_optimize.md"
 FULL_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_morning_report_full.md"
+
+# iMessage delivery
+IMESSAGE_RECIPIENT="+32468236146"
+IMESSAGE_HELPER="${WORKDIR}/scripts/send-imessage.py"
+GITHUB_BLOB_BASE="https://github.com/RobinRuttenBE/TestClaudeCursor/blob/main/Output/Reports/Daily"
+
 FAILURES=0
 
 # Standaard "no-google" instructie die aan elke Claude prompt wordt geplakt
@@ -139,6 +152,59 @@ echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in 
 } > "$FULL_REPORT_FILE" 2>> "$LOG_FILE"
 
 echo "[done] Gecombineerd rapport opgeslagen in $FULL_REPORT_FILE" >> "$LOG_FILE" 2>&1
+
+# --- Push naar GitHub zodat de iMessage link direct werkt ---
+echo "[push] Commit + push reports naar main..." >> "$LOG_FILE" 2>&1
+cd "$WORKDIR"
+git add \
+    "Output/Reports/Daily/${TODAY_ISO}_ads_report.md" \
+    "Output/Reports/Daily/${TODAY_ISO}_auto_optimize.md" \
+    "Output/Reports/Daily/${TODAY_ISO}_morning_report_full.md" \
+    "Output/Reports/Daily/${YESTERDAY_ISO}_sybb_report.md" \
+    2>> "$LOG_FILE" || true
+
+if ! git diff --cached --quiet 2>/dev/null; then
+    git commit -m "Morning report: ${TODAY_ISO}" >> "$LOG_FILE" 2>&1 || true
+    if ! git push origin main >> "$LOG_FILE" 2>&1; then
+        # Auto-sync cron kan tussendoor pushen — pull rebase met theirs voor log conflicts
+        echo "[push] eerste push failed, retry met rebase..." >> "$LOG_FILE" 2>&1
+        git pull --rebase -X theirs origin main >> "$LOG_FILE" 2>&1 || git rebase --abort >> "$LOG_FILE" 2>&1
+        git push origin main >> "$LOG_FILE" 2>&1 || echo "[push] FAILED — link in iMessage werkt mogelijk pas na de volgende auto-sync run" >> "$LOG_FILE" 2>&1
+    fi
+else
+    echo "[push] geen nieuwe report files om te committen" >> "$LOG_FILE" 2>&1
+fi
+
+# --- iMessage notificatie naar Robin ---
+GITHUB_FULL_URL="${GITHUB_BLOB_BASE}/${TODAY_ISO}_morning_report_full.md"
+GITHUB_SYBB_URL="${GITHUB_BLOB_BASE}/${YESTERDAY_ISO}_sybb_report.md"
+
+if [ $FAILURES -eq 0 ]; then
+    STATUS_LINE="✅ Alles compleet"
+else
+    STATUS_LINE="⚠️ ${FAILURES} sectie(s) incompleet"
+fi
+
+IMESSAGE_BODY="📊 Morning Report ${TODAY_ISO}
+${STATUS_LINE}
+Bronnen: Meta Ads + PostHog
+
+Full rapport:
+${GITHUB_FULL_URL}
+
+SYBB ${YESTERDAY_ISO}:
+${GITHUB_SYBB_URL}"
+
+if [ -x "$IMESSAGE_HELPER" ]; then
+    if /usr/bin/python3 "$IMESSAGE_HELPER" "$IMESSAGE_RECIPIENT" "$IMESSAGE_BODY" >> "$LOG_FILE" 2>&1; then
+        echo "[imessage] verstuurd naar ${IMESSAGE_RECIPIENT}" >> "$LOG_FILE" 2>&1
+    else
+        echo "[imessage] FAILED — check Messages.app permissions of of de helper draait" >> "$LOG_FILE" 2>&1
+    fi
+else
+    echo "[imessage] helper niet gevonden of niet executable: $IMESSAGE_HELPER" >> "$LOG_FILE" 2>&1
+fi
+
 echo "=== Morning Report afgerond: $(date) — ${FAILURES} failures ===" >> "$LOG_FILE" 2>&1
 
 # Cleanup: verwijder logs ouder dan 30 dagen
