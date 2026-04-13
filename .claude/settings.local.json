@@ -227,11 +227,13 @@
       "Bash(git -c core.editor=true commit --no-edit)",
       "Bash(git stash:*)",
       "Bash(git rm:*)",
-      "Bash(npm start:*)",
-      "mcp__pipeboard-meta-ads__get_ads",
-      "Bash(/tmp/morning-report-noautopause.sh:*)",
-      "mcp__claude_ai_Gmail__create_draft",
-      "Bash(grep -i -E \"sybb|dashboard|\\\\.html$\")"
+      "Bash(git rebase:*)",
+      "Bash(git merge:*)",
+      "Read(//usr/sbin/**)",
+      "Bash(postconf -d mail_version)",
+      "Bash(mail -s \"test subject\" robinrutten@localhost)",
+      "Bash(sudo postconf:*)",
+      "Read(//private/etc/postfix/**)"
     ]
   }
 }
