@@ -227,7 +227,9 @@
       "Bash(git -c core.editor=true commit --no-edit)",
       "Bash(git stash:*)",
       "Bash(git rm:*)",
-      "Bash(npm start:*)"
+      "Bash(npm start:*)",
+      "mcp__pipeboard-meta-ads__get_ads",
+      "Bash(/tmp/morning-report-noautopause.sh:*)"
     ]
   }
 }
