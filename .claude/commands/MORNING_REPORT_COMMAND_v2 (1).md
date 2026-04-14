@@ -132,7 +132,18 @@ Check de status van elke ad via de Meta Ads MCP. Als een ad op `PAUSED` staat ma
 ## Data Integriteit Regels (KRITIEK)
 
 ### SANITY CHECKS (verplicht voor elk rapport)
-1. **Purchase waarde check (multi-ticket aware):** SYBB ticket prijs is €350 ex BTW tot €423,50 incl BTW. Een purchase kan 1 of meerdere tickets bevatten, dus de gemiddelde waarde per purchase moet een veelvoud van de ticket prijs zijn. Bereken `purchase_value / aantal_purchases` en check of het roughly past in de reeks `~€350, ~€423, ~€700, ~€847, ~€1050, ~€1270, ~€1400, ~€1694, ~€1750, ~€2117, ...` (veelvouden van €350 ex of €423,50 incl) met 15% marge. Als het NIET past: meld "PIXEL DATAFOUT, purchase waarde onrealistisch, verifieer met Wix orders" en toon het purchase aantal als `? (verifieer Wix)` in ALLE tabellen waar het voorkomt (Pixel Events, Ad Variant Performance, Samenvatting). Gebruik GEEN geschatte waarde, laat het veld leeg of markeer als onbekend tot Wix bevestigt.
+1. **PURCHASE SANITY CHECK (HARD RULE):
+•⁠  ⁠SYBB ticket = €350 ex BTW of €423,50 incl BTW. Meerdere tickets mogelijk.
+•⁠  ⁠Stap 1: Haal purchase_value en purchase_count op uit Meta Ads MCP.
+•⁠  ⁠Stap 2: Bereken waarde_per_purchase = purchase_value / purchase_count.
+•⁠  ⁠Stap 3: Check of waarde_per_purchase een veelvoud is van €350 tot €425 (met 15% marge).
+  Geldige waarden: €297-€488 (1 ticket), €595-€977 (2 tickets), €892-€1465 (3 tickets).
+•⁠  ⁠Stap 4: Als waarde_per_purchase NIET in een van deze ranges valt:
+  - Toon: 'PIXEL DATAFOUT: [waarde_per_purchase] per purchase past niet bij ticketprijs.'
+  - Toon purchase aantal als '? (verifieer Wix)' in ALLE tabellen
+  - Gebruik NOOIT de foutieve purchase waarde voor ROAS berekening
+  - Zet ROAS op 'n.v.t. (pixel datafout)'
+•⁠  ⁠Stap 5: Als de check FAALT, herhaal de waarschuwing in de samenvatting EN in de **
 2. **Purchase aantal check:** vermeld NOOIT een purchase aantal zonder de sanity check. Vraag altijd expliciet: "Verifieer het aantal purchases met Wix orders."
 3. **Gemiddelde spend:** bereken ALLEEN over dagen met spend >€0. Tel gepauzeerde dagen NIET mee. Vermeld altijd het aantal actieve dagen.
 4. **PostHog data is VERPLICHT.** Haal ALTIJD PostHog data op via de PostHog MCP als onderdeel van elk rapport. Als de PostHog MCP niet bereikbaar is, meld dit als EERSTE rode vlag met de tekst: "🚩 MCP ERROR, geen LP data beschikbaar". Verplichte PostHog metrics: visitors, pageviews, sessions, bounce rate, avg sessie duur, device breakdown.
