@@ -243,7 +243,8 @@
       "Bash(awk '$1==\"blob\" && $3>100000000 {print $3, $4}')",
       "Bash(kill 13105 13104 13103 13093)",
       "Bash(/bin/bash:*)",
-      "mcp__claude_ai_Gmail__create_draft"
+      "mcp__claude_ai_Gmail__create_draft",
+      "Bash(/usr/bin/python3:*)"
     ]
   }
 }

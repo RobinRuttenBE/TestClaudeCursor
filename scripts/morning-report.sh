@@ -216,21 +216,26 @@ else
     STATUS_LINE="⚠️ ${FAILURES} sectie(s) incompleet"
 fi
 
+# Dump de volledige rapport-inhoud in de iMessage (Robin update het HTML
+# dashboard zelf op basis hiervan). Markdown table-separator rijen ("|---|---|")
+# worden eruit gefilterd want die zijn onleesbaar op een telefoonscherm;
+# normale tabelrijen blijven staan.
+REPORT_BODY=$(sed -E '/^[[:space:]]*\|[-: |]+\|[[:space:]]*$/d' "$FULL_REPORT_FILE" 2>/dev/null)
+
+if [ -z "$REPORT_BODY" ]; then
+    REPORT_BODY="(Rapport-inhoud niet beschikbaar — zie log ${LOG_FILE})"
+fi
+
 IMESSAGE_BODY="📊 Morning Report ${TODAY_ISO}
-${STATUS_LINE}
-Bronnen: Meta Ads + PostHog
+${STATUS_LINE} — Bronnen: Meta Ads + PostHog
 
-📈 Dashboard (visueel):
-${DASHBOARD_LINK}
+${REPORT_BODY}
 
-📄 SYBB ${YESTERDAY_ISO} (details):
-${SYBB_REPORT_URL}
-
-📄 Ads rapport:
-${ADS_REPORT_URL}
-
-🔧 Auto-optimize voorstellen:
-${OPTIMIZE_URL}"
+━━━━━━━━━━━━━━━━━━━━━
+📈 Dashboard: ${DASHBOARD_LINK}
+📄 Ads rapport: ${ADS_REPORT_URL}
+📄 SYBB ${YESTERDAY_ISO}: ${SYBB_REPORT_URL}
+🔧 Auto-optimize: ${OPTIMIZE_URL}"
 
 if [ -x "$IMESSAGE_HELPER" ]; then
     if /usr/bin/python3 "$IMESSAGE_HELPER" "$IMESSAGE_RECIPIENT" "$IMESSAGE_BODY" >> "$LOG_FILE" 2>&1; then
