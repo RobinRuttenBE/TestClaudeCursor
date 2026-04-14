@@ -185,10 +185,18 @@ git add \
 if ! git diff --cached --quiet 2>/dev/null; then
     git commit -m "Morning report: ${TODAY_ISO}" >> "$LOG_FILE" 2>&1 || true
     if ! git push origin main >> "$LOG_FILE" 2>&1; then
-        # Auto-sync cron kan tussendoor pushen — pull rebase met theirs voor log conflicts
-        echo "[push] eerste push failed, retry met rebase..." >> "$LOG_FILE" 2>&1
-        git pull --rebase -X theirs origin main >> "$LOG_FILE" 2>&1 || git rebase --abort >> "$LOG_FILE" 2>&1
-        git push origin main >> "$LOG_FILE" 2>&1 || echo "[push] FAILED — link in iMessage werkt mogelijk pas na de volgende auto-sync run" >> "$LOG_FILE" 2>&1
+        # De auto-sync cron en andere processen pushen tussendoor. Daarnaast
+        # heeft de working tree vrijwel altijd onstaged changes (logs/git-sync.log,
+        # de remotion-stx submodule pointer). --autostash verbergt die tijdelijk
+        # tijdens de rebase en zet ze daarna terug, zodat rebase niet klaagt.
+        echo "[push] eerste push failed, retry met rebase --autostash..." >> "$LOG_FILE" 2>&1
+        if git pull --rebase --autostash -X theirs origin main >> "$LOG_FILE" 2>&1; then
+            git push origin main >> "$LOG_FILE" 2>&1 || echo "[push] FAILED — link in iMessage werkt mogelijk pas na de volgende auto-sync run" >> "$LOG_FILE" 2>&1
+        else
+            echo "[push] rebase faalde, aborting" >> "$LOG_FILE" 2>&1
+            git rebase --abort >> "$LOG_FILE" 2>&1 || true
+            echo "[push] FAILED — link in iMessage werkt mogelijk pas na de volgende auto-sync run" >> "$LOG_FILE" 2>&1
+        fi
     fi
 else
     echo "[push] geen nieuwe report files om te committen" >> "$LOG_FILE" 2>&1
