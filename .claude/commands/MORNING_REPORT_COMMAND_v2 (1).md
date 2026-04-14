@@ -99,6 +99,14 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 **Slechtste variant:** [welke en waarom]
 **Delivery check:** [welke ads krijgen delivery en welke niet]
 
+**Ad-level status regels (verplicht):**
+Voor elke ad: check de `effective_status` via Meta Ads MCP. Als status = `PAUSED` of `CAMPAIGN_PAUSED`:
+- Toon de ad in een APART blok onder de actieve ads, met header "Gepauzeerde ads (historische data)"
+- Voeg achter de ad naam toe: "(GEPAUZEERD sinds [datum indien beschikbaar])"
+- Toon spend als "cumulatief" niet als dagelijks
+- Neem gepauzeerde ads NIET mee in de gemiddelde Link CTR / CPC (link) berekening van actieve ads
+- Neem gepauzeerde ads NIET mee in de budget verdeling analyse
+
 #### Gepauzeerde ads (restspend)
 Check de status van elke ad via de Meta Ads MCP. Als een ad op `PAUSED` staat maar nog spend toont in de rapportageperiode, label deze als `GEPAUZEERD, restspend €X` in de Flag kolom. Toon gepauzeerde ads apart onder de actieve ads tabel, niet ertussen. Gebruik dezelfde kolomstructuur als de actieve ads tabel. Als er geen gepauzeerde ads met restspend zijn: "Geen gepauzeerde ads met restspend in deze periode."
 
