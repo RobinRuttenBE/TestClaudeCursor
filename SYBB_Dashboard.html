@@ -140,7 +140,7 @@ alerts:[
 {type:"warning",text:"H15: CTR 0,59%, CPC 2,31, bounce 70%. Pauzeren."},
 {type:"info",text:"10 session recordings geanalyseerd: 50% klikt nergens, /booking is dead end."}],
 actions:[
-{title:"Fix /booking Pagina",desc:"#1 conversiekiller. Prijs zichtbaar, samenvatting, 1-2 testimonials, datumopties uitbreiden. Mensen vertrekken binnen 9 sec.",priority:"high"},
+{title:"Test A: /booking Tussenstap Verwijderen",desc:"93% verliest bij /booking. Laat CTA op LP direct naar /checkout gaan met eerstvolgende datum voorgeselecteerd. Elke stap die je elimineert verhoogt conversie. Datumkeuze kan op /checkout zelf.",priority:"high"},
 {title:"Fix Hero Sectie",desc:"Prijs (350 ex BTW), datum (11-12 mei), locatie (Genk) IN de hero. CTA Book Now naar Bekijk data en prijzen.",priority:"high"},
 {title:"H15 + H14 BATCH 1 Pauzeren",desc:"H15: CTR 0,59%, CPC 2,31. H14 BATCH 1: 0 delivery. Beide pauzeren, budget naar H13/H12.",priority:"medium"}],
 notes:"Dag 4 — CPC 0,90 (link), bounce 57,8%, /booking = #1 killer"}
@@ -261,6 +261,54 @@ const steps=[
 steps.forEach((s,i)=>{const prev=i>0?steps[i-1].val:s.val;const drop=i>0&&prev>0?((1-s.val/prev)*100).toFixed(0)+"%":"—";
 h+='<tr><td>'+s.name+'</td><td>'+nm(s.val)+'</td><td>'+(i>0?drop:'—')+'</td><td>'+s.src+'</td></tr>'});
 h+='</tbody></table><div class="note">Grootste lek: LP View (306) → AddToCart (12) = 96% verlies. De landing page converteert bezoekers niet naar actie.</div></div>';
+h+='<div class="sec"><div class="sh"><div class="st">Volledige Funnel Analyse (PostHog geverifieerd)</div><div class="sb">7 dagen · Handmatig geverifieerd via PostHog dashboard</div></div>';
+h+='<table><thead><tr><th>Stap</th><th>Aantal</th><th>Conversie</th><th>Drop-off</th><th>Beoordeling</th></tr></thead><tbody>';
+h+='<tr><td>Ad Impressions</td><td>62.028</td><td>-</td><td>-</td><td class="f na">-</td></tr>';
+h+='<tr><td>Ad Link Clicks</td><td>~660</td><td>1,07%</td><td>98,9%</td><td class="f warn">Nipt OK. Benchmark 1-2%.</td></tr>';
+h+='<tr><td>LP Visitors (PostHog /)</td><td>798</td><td>121% van clicks</td><td>-</td><td class="f good">PostHog ziet meer dan Meta (iOS gaps)</td></tr>';
+h+='<tr><td>Klik naar /booking</td><td>101</td><td>12,7%</td><td>87,3%</td><td class="f bad">SLECHT. Benchmark 20-30%.</td></tr>';
+h+='<tr><td>/booking naar /checkout</td><td>7</td><td>6,9%</td><td>93,1%</td><td class="f bad">KRITIEK. Grootste lek in de funnel.</td></tr>';
+h+='<tr><td>/checkout naar Purchase</td><td>1</td><td>14,3%</td><td>85,7%</td><td class="f good">OK. Benchmark 10-25%.</td></tr>';
+h+='</tbody></table>';
+h+='<div class="note">Data bron: PostHog Web Analytics paths (7d). Meta claimt 18 IC events maar PostHog toont slechts 7 /checkout pageviews. Verschil komt door Wix Conversions API die events server-side stuurt zonder echte pageview.</div></div>';
+
+h+='<div class="sec"><div class="sh"><div class="st">Impact Analyse: Wat levert fixen op?</div></div>';
+h+='<table><thead><tr><th>Scenario</th><th>/booking rate</th><th>/checkout rate</th><th>Purch. rate</th><th>Sales/week</th></tr></thead><tbody>';
+h+='<tr><td>Nu</td><td>12,7%</td><td>6,9%</td><td>14,3%</td><td class="f bad">~1</td></tr>';
+h+='<tr><td>Fix /booking pagina</td><td>12,7%</td><td style="color:var(--green);font-weight:700">15%</td><td>14,3%</td><td class="f warn">~2</td></tr>';
+h+='<tr><td>Fix /booking + hero</td><td style="color:var(--green);font-weight:700">20%</td><td style="color:var(--green);font-weight:700">15%</td><td>14,3%</td><td class="f good">~3-4</td></tr>';
+h+='<tr><td>Alles + meer budget (200/dag)</td><td style="color:var(--green);font-weight:700">20%</td><td style="color:var(--green);font-weight:700">15%</td><td>14,3%</td><td class="f good">~6-8</td></tr>';
+h+='<tr style="background:var(--yellow-light)"><td style="font-weight:700">TEST A: /booking stap elimineren</td><td style="color:var(--green);font-weight:700">20%</td><td style="color:var(--green);font-weight:700">30-40%</td><td>14,3%</td><td class="f good">~5-8 (minder stappen = minder verlies)</td></tr>';
+h+='</tbody></table>';
+h+='<div class="note">Kleine verbeteringen stapelen op. Van 1 naar 3-4 sales/week is realistisch met de LP fixes die op 13 april zijn doorgevoerd.</div></div>';
+
+h+='<div class="sec"><div class="sh"><div class="st">Conclusies uit PostHog Analyse (14 april)</div></div>';
+h+='<table><thead><tr><th>Inzicht</th><th>Details</th><th>Actie</th></tr></thead><tbody>';
+h+='<tr><td style="font-weight:700">Meta IC events kloppen niet</td><td>Meta: 18 IC events. PostHog: 7 /checkout pageviews. Wix Conversions API blaast het op.</td><td class="f warn">Gebruik PostHog als bron van waarheid, niet Meta pixel</td></tr>';
+h+='<tr><td style="font-weight:700">JS errors opgelost</td><td>Was 10+ errors per sessie. Nu 0. GA4 scripts verwijderd.</td><td class="f good">Done</td></tr>';
+h+='<tr><td style="font-weight:700">Rage clicks = false positive</td><td>11 rage clicks op / zijn agressief mobiel scrollen, geen UX probleem.</td><td class="f good">Geen actie nodig</td></tr>';
+h+='<tr><td style="font-weight:700">/thank-you bevestigt 1 sale</td><td>1 visitor, 6 views (refreshes). Bevestigt 1 purchase, niet 2.</td><td class="f good">Pixel toont 2, realiteit is 1</td></tr>';
+h+='<tr><td style="font-weight:700">8 checkout sessies geregistreerd</td><td>PostHog toont 8 unieke /checkout URLs met query parameters.</td><td class="f warn">Bekijk recordings voor drop-off analyse</td></tr>';
+h+='<tr><td style="font-weight:700">TEST A: Skip /booking</td><td>/booking is een extra tussenstap die niks toevoegt. 93% verliest hier. CTA op LP direct naar /checkout met datum voorgeselecteerd.</td><td class="f bad">TESTEN — hoogste verwachte impact</td></tr>';
+h+='<tr><td style="font-weight:700">Retentie 1,3%</td><td>Slechts 1,3% keert terug in week 1. Vrijwel alle traffic is eenmalig.</td><td class="f warn">Remarketing of email opbouwen</td></tr>';
+h+='<tr><td style="font-weight:700">Piekuren 19-21u CET</td><td>Vrijdag (170 users) en zaterdag (176 users) zijn drukste dagen.</td><td class="f good">Ads schedulen op piekuren</td></tr>';
+h+='</tbody></table></div>';
+
+h+='<div class="sec"><div class="sh"><div class="st">PostHog UTM Breakdown (7 dagen)</div></div>';
+h+='<table><thead><tr><th>UTM Content</th><th>Visitors</th><th>Views</th></tr></thead><tbody>';
+h+='<tr><td style="font-weight:700">h11_b3_cta5</td><td>223</td><td>335</td></tr>';
+h+='<tr><td style="font-weight:700">h13_b3_cta5</td><td>159</td><td>217</td></tr>';
+h+='<tr><td>H14,B3,CTA5 (oud format)</td><td>148</td><td>194</td></tr>';
+h+='<tr><td style="font-weight:700">h12_b3_cta5</td><td>102</td><td>145</td></tr>';
+h+='<tr><td>h15_b3_cta5</td><td>80</td><td>104</td></tr>';
+h+='<tr><td>(geen UTM)</td><td>59</td><td>86</td></tr>';
+h+='<tr><td>h14_b3_cta5 (nieuw format)</td><td>31</td><td>36</td></tr>';
+h+='<tr><td>H12,B3,CTA5 (oud format)</td><td>22</td><td>31</td></tr>';
+h+='<tr><td>bio_link</td><td>10</td><td>18</td></tr>';
+h+='<tr><td>H15,B3,CTA5 (oud format)</td><td>10</td><td>12</td></tr>';
+h+='</tbody></table>';
+h+='<div class="note">H11 drijft het meeste verkeer (223 visitors) maar converteert niet naar purchases. H13 heeft minder verkeer (159) maar is de enige converter. 90% mobile, BE+NL = 67% van traffic.</div></div>';
+
 h+='<div class="sec"><div class="sh"><div class="st">Session Recording Insights</div><div class="sb">10 mobiele bouncers</div></div>';
 h+='<table><thead><tr><th>Inzicht</th><th>Frequentie</th><th>Impact</th><th>Fix</th></tr></thead><tbody>';
 h+='<tr><td>0 clicks, passief scrollen</td><td>50% bouncers</td><td class="f bad">HOOG</td><td>Hero moet overtuigen</td></tr>';
