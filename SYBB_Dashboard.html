@@ -144,6 +144,30 @@ actions:[
 {title:"Fix Hero Sectie",desc:"Prijs (350 ex BTW), datum (11-12 mei), locatie (Genk) IN de hero. CTA Book Now naar Bekijk data en prijzen.",priority:"high"},
 {title:"H15 + H14 BATCH 1 Pauzeren",desc:"H15: CTR 0,59%, CPC 2,31. H14 BATCH 1: 0 delivery. Beide pauzeren, budget naar H13/H12.",priority:"medium"}],
 notes:"Dag 4 — CPC 0,90 (link), bounce 57,8%, /booking = #1 killer"}
+,
+{date:"2026-04-14",label:"14 apr",dayNum:5,source:"Meta Ads Manager + PostHog (handmatig geverifieerd)",activeDays:8,avgSpend:80.86,
+campaign:{spend:646.88,impressions:62028,linkClicks:660,linkCTR:1.07,cpcLink:0.98,reach:32614,frequency:1.90,lpViews:440,atc:26,ic:18,purchases:1,purchaseValue:423.50},
+ads:[
+{name:"H11,B3,CTA5",adset:"Kopie 1",spend:228.74,impressions:17643,linkClicks:184,linkCTR:1.04,cpcLink:1.24,lpViews:120,atc:8,ic:13,purchases:0,flag:"STERKSTE PIPELINE: 13 IC! Duurste CPC maar meeste checkout starts."},
+{name:"H13,B3,CTA5",adset:"Kopie 3",spend:130.73,impressions:11060,linkClicks:124,linkCTR:1.12,cpcLink:1.05,lpViews:80,atc:4,ic:2,purchases:1,flag:"ENIGE CONVERTER: 1 purchase. Schoonste funnel."},
+{name:"H14,B3,CTA5",adset:"BATCH 2 (oud)",spend:122.96,impressions:16551,linkClicks:158,linkCTR:0.95,cpcLink:0.78,lpViews:108,atc:0,ic:0,purchases:0,flag:"GEPAUZEERD sinds 13 apr. 0 IC."},
+{name:"H12,B3,CTA5",adset:"Kopie 2",spend:112.30,impressions:11881,linkClicks:135,linkCTR:1.14,cpcLink:0.83,lpViews:85,atc:4,ic:0,purchases:0,flag:"Beste CTR (1,14%). 0 IC."},
+{name:"H15,B3,CTA5",adset:"Kopie 4",spend:52.15,impressions:4894,linkClicks:61,linkCTR:1.25,cpcLink:0.85,lpViews:30,atc:2,ic:0,purchases:0,flag:"GEPAUZEERD sinds 13 apr. 0 IC ondanks goede CTR."}],
+posthog:{sessions:750,pageviews:980,bounceRate:73.4,avgDuration:54,bounce7d:55.3,duration7d:65,scroll25:60,scroll50:52,scroll75:42,scroll100:24,mobile:93,recordings:90},
+alerts:[
+{type:"success",text:"H11 heeft 13 InitiateCheckouts — veruit de sterkste pipeline. NIET pauzeren ondanks hoge CPC."},
+{type:"success",text:"Scroll depth 60% (was 44%). Hero fix werkt."},
+{type:"critical",text:"PIXEL: nog steeds geen Purchase event. IC laatst ontvangen 2 dagen geleden. GTM tag verifieer bij volgende sale."},
+{type:"critical",text:"PIXEL DATAFOUT: Meta toont 2 purchases / 42.773 euro. Wix bevestigt 1 purchase / 423,50. Sanity check in rapport werkt niet."},
+{type:"critical",text:"13 IC maar 0 purchases via H11. Waarom starten 13 mensen het betaalproces maar koopt niemand? Checkout flow onderzoeken."},
+{type:"warning",text:"CPC (link) 0,98 gemiddeld. Boven 0,50 target. Efficiency moet omhoog."},
+{type:"warning",text:"Bounce rate 73,4% gisteren vs 57,8% eergisteren. Fluctueert nog."},
+{type:"info",text:"3 actieve ads: H11 (13 IC), H13 (1 purchase), H12 (beste CTR). H14 + H15 gepauzeerd."}],
+actions:[
+{title:"Onderzoek H11 Checkout Drop-off",desc:"13 mensen starten betaalproces via H11 maar 0 koopt. Bekijk PostHog session recordings van H11 bezoekers die /checkout bereiken. Waar haken ze af? Betaalmethode? Prijs? Timing?",priority:"high"},
+{title:"Fix Purchase Pixel",desc:"Geen Purchase event sinds 2 dagen. GTM tag staat live maar vuurt niet. Check GTM Preview mode op /thank-you-page. Conversions API stuurt ook geen correct purchase event.",priority:"high"},
+{title:"Monitor 3 Ads Nog 3 Dagen",desc:"H11 (13 IC), H13 (1 purchase), H12 (beste CTR). Niet aanraken. Woensdag decision moment: als H11 nog steeds 0 purchases heeft bij 20+ IC, is er een checkout probleem.",priority:"medium"}],
+notes:"Dag 5 — H11 heeft 13 IC (sterkste pipeline), pixel purchase nog steeds fout, 3 actieve ads"}
 ];
 
 let ci=DAYS.length-1,cp='daily';
@@ -272,6 +296,7 @@ h+='<div class="sec"><div class="sh"><div class="st">Huidige Status</div></div>'
 h+='<table><thead><tr><th>Item</th><th>Status</th><th>Actie</th></tr></thead><tbody>';
 h+='<tr><td>Actieve ads</td><td>4 (H11, H12, H13, H15)</td><td class="f good">Draaien — niet aanraken tot 15 april</td></tr>';
 h+='<tr><td>H14</td><td>Gepauzeerd</td><td class="f good">✅ Done — €123 spend, 0 conversies</td></tr>';
+h+='<tr><td>H11 Pipeline</td><td>13 IC (sterkste)</td><td class="f warn">0 purchases — checkout flow onderzoeken</td></tr>';
 h+='<tr><td>Sales</td><td>1 (€423,50 via H13)</td><td class="f good">Eerste sale bevestigd</td></tr>';
 h+='<tr><td>Budget</td><td>€100/dag (max €330)</td><td class="f warn">Verhogen na 2e sale</td></tr>';
 h+='<tr><td>Video ads klaar</td><td>10 stuks</td><td class="f na">Wacht op Fase 2 (dag 8+)</td></tr>';
@@ -315,7 +340,7 @@ h+='</tbody></table></div>';
 // Winning variables
 h+='<div class="sec"><div class="sh"><div class="st">Winning Variables Tracker</div></div>';
 h+='<table><thead><tr><th>Variabele</th><th>Huidige Winnaar</th><th>Bewijs</th></tr></thead><tbody>';
-h+='<tr><td style="font-weight:700">Hook thema</td><td style="color:var(--green);font-weight:700">H13 — "The rumours are true"</td><td>Enige hook met purchase (€423,50)</td></tr>';
+h+='<tr><td style="font-weight:700">Beste converter</td><td style="color:var(--green);font-weight:700">H13 — "The rumours are true"</td><td>Enige hook met purchase (€423,50)</td></tr>';
 h+='<tr><td style="font-weight:700">Format</td><td>Video</td><td>Alle actieve ads zijn video</td></tr>';
 h+='<tr><td style="font-weight:700">Body copy</td><td>B3</td><td>Enige body variant getest tot nu toe</td></tr>';
 h+='<tr><td style="font-weight:700">CTA</td><td>CTA5</td><td>Enige CTA variant getest tot nu toe</td></tr>';
