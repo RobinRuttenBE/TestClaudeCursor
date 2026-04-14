@@ -83,15 +83,17 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 | Spend | €X | €X | ↑/↓/→ | — | — |
 | Impressions | X | X | ↑/↓/→ | — | — |
 | Link Clicks | X | X | ↑/↓/→ | — | — |
-| CTR | X% | X% | ↑/↓/→ | >1% | 🟢/🔴 |
-| CPC | €X | €X | ↑/↓/→ | <€0.50 | 🟢/🔴 |
+| Link CTR | X% | X% | ↑/↓/→ | >1% | 🟢/🔴 |
+| CPC (link) | €X | €X | ↑/↓/→ | <€0.50 | 🟢/🔴 |
 | Frequency | X | X | ↑/↓/→ | <3.5 | 🟢/🔴 |
 | LP Views | X | X | ↑/↓/→ | — | — |
 
 ### 🎬 Ad Variant Performance
-| Ad (utm_content) | Spend | Clicks | CTR | CPC | LP Views | IC (InitCheckout) | ATC (AddToCart) | Purchases | LP Bounce | LP Scroll 50%+ | Flag |
-|-------------------|-------|--------|-----|-----|----------|-------|-----------|---------|-----------|----------------|------|
+| Ad (utm_content) | Spend | Link Clicks | Link CTR | CPC (link) | LP Views | IC (InitCheckout) | ATC (AddToCart) | Purchases | LP Bounce | LP Scroll 50%+ | Flag |
+|-------------------|-------|-------------|----------|------------|----------|-------|-----------|---------|-----------|----------------|------|
 [per ad variant, zowel Meta als PostHog data gecombineerd]
+
+> **Note:** Alle metrics op link click basis. Meta's standaard CTR/CPC (all clicks) worden NIET gebruikt. Dit geldt voor ALLE tabellen in dit rapport: campagne overview, ad-level, en samenvatting. Gebruik `actions.link_click` voor clicks, `link_clicks / impressions` voor Link CTR, `spend / link_clicks` voor CPC (link).
 
 **Beste variant:** [welke en waarom]
 **Slechtste variant:** [welke en waarom]
