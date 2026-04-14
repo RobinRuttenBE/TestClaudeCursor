@@ -143,7 +143,8 @@ Check de status van elke ad via de Meta Ads MCP. Als een ad op `PAUSED` staat ma
   - Toon purchase aantal als '? (verifieer Wix)' in ALLE tabellen
   - Gebruik NOOIT de foutieve purchase waarde voor ROAS berekening
   - Zet ROAS op 'n.v.t. (pixel datafout)'
-•⁠  ⁠Stap 5: Als de check FAALT, herhaal de waarschuwing in de samenvatting EN in de **
+•⁠  ⁠Stap 5: Als de check FAALT, herhaal de waarschuwing in de samenvatting EN in de rode vlaggen.
+DEZE CHECK MAG NOOIT OVERGESLAGEN WORDEN."**
 2. **Purchase aantal check:** vermeld NOOIT een purchase aantal zonder de sanity check. Vraag altijd expliciet: "Verifieer het aantal purchases met Wix orders."
 3. **Gemiddelde spend:** bereken ALLEEN over dagen met spend >€0. Tel gepauzeerde dagen NIET mee. Vermeld altijd het aantal actieve dagen.
 4. **PostHog data is VERPLICHT.** Haal ALTIJD PostHog data op via de PostHog MCP als onderdeel van elk rapport. Als de PostHog MCP niet bereikbaar is, meld dit als EERSTE rode vlag met de tekst: "🚩 MCP ERROR, geen LP data beschikbaar". Verplichte PostHog metrics: visitors, pageviews, sessions, bounce rate, avg sessie duur, device breakdown.
