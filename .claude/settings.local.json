@@ -237,7 +237,10 @@
       "Bash(/usr/bin/python3 /Users/robinrutten/TestClaudeCursor/scripts/send-imessage.py +32468236146 '📊 Morning Report iMessage delivery test:*)",
       "Bash(/usr/bin/python3 /Users/robinrutten/TestClaudeCursor/scripts/send-imessage.py \"+32468236146\" \"Test 2: tweede send om te checken dat de helper blijft werken, en om te verifiëren dat Messages.app permission al goedgekeurd is.\")",
       "Bash(/usr/bin/python3 /Users/robinrutten/TestClaudeCursor/scripts/send-imessage.py +32468236146 '📊 SYBB Dashboard — visueel \\(test\\):*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(du -sh remotion-stx/public/videos/*.mp4 remotion-stx/public/videos/*.mov)",
+      "Bash(xargs -I{} du -b \"remotion-stx/{}\")",
+      "Bash(awk '$1==\"blob\" && $3>100000000 {print $3, $4}')"
     ]
   }
 }
