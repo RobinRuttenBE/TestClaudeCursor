@@ -226,7 +226,17 @@
       "Bash(git checkout:*)",
       "Bash(git -c core.editor=true commit --no-edit)",
       "Bash(git stash:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(git rebase:*)",
+      "Bash(git merge:*)",
+      "Read(//usr/sbin/**)",
+      "Bash(postconf -d mail_version)",
+      "Bash(mail -s \"test subject\" robinrutten@localhost)",
+      "Bash(sudo postconf:*)",
+      "Read(//private/etc/postfix/**)",
+      "Bash(/usr/bin/python3 /Users/robinrutten/TestClaudeCursor/scripts/send-imessage.py +32468236146 '📊 Morning Report iMessage delivery test:*)",
+      "Bash(/usr/bin/python3 /Users/robinrutten/TestClaudeCursor/scripts/send-imessage.py \"+32468236146\" \"Test 2: tweede send om te checken dat de helper blijft werken, en om te verifiëren dat Messages.app permission al goedgekeurd is.\")",
+      "Bash(/usr/bin/python3 /Users/robinrutten/TestClaudeCursor/scripts/send-imessage.py +32468236146 '📊 SYBB Dashboard — visueel \\(test\\):*)"
     ]
   }
 }

@@ -1,136 +1,107 @@
-# SYBB Daily Report - 13 april 2026
+## 📊 SYBB Rapport — 2026-04-13 (data over 2026-04-12)
 
-## 1. Samenvatting
+### ⚡ Samenvatting
+Spend gisteren €139,80 (ruim 2× het 7d gemiddelde van €66,44), maar Link CTR zakte naar 0,92% en CPC (link) sprong naar €1,41 — beide ruim onder/boven target. 2 InitiateCheckouts (€700 waarde, ✅ sanity check op €350/ticket). Bounce rate op LP 57,8% (boven target), gem. sessieduur 54,6s (onder target). H13 is de schoonste variant; H15 verdient pauze.
 
-Flinke spendstijging gisteren: €140,38 tegenover een 7-daags gemiddelde van €66,45/dag (+111%). Meta heeft de delivery sterk opgeschaald. De CPC (link click) is met €1,29 ruim boven de €0,50 target, maar de funnel laat sterke signalen zien: 5 initiate checkouts en 1 complete registration. H11 domineert het budget (55,6%) en trekt alle bottom-funnel conversies. H14, vorige week de volumeleider, draait niet meer.
+### 🚩 Rode Vlaggen
+- 🚩 **PIXEL DATAFOUT (7d Purchase waarde):** Meta meldt 2 purchases met totale waarde €42.773,50 = €21.386,75 per purchase. Past in geen enkele ticket-veelvoud (€350 ex / €423,50 incl). **Verifieer met Wix orders** voordat dit als omzet wordt gerapporteerd. Toon purchase-aantal als `? (verifieer Wix)` tot bevestiging. (Bron: Meta Ads MCP)
+- 🚩 **CPC (link) ruim boven target:** €1,41 gisteren vs target <€0,50, ook 7d gem €0,90 zit ver boven target. (Bron: Meta Ads MCP, berekend €139,80 / 99 link clicks)
+- 🚩 **Link CTR onder target:** 0,92% gisteren vs target >1%. 7d gem 1,06% zit nipt boven target. (Bron: Meta Ads MCP, berekend 99 / 10.781)
+- 🚩 **Bounce rate boven target:** 57,8% gisteren vs target <55%. 7d gem 55,3% zit ook nipt boven. (Bron: PostHog MCP, n=135 sessies)
+- 🚩 **Avg sessieduur onder target:** 54,6s gisteren vs target >90s. (Bron: PostHog MCP, n=135 sessies)
+- 🚩 **Actieve ad zonder delivery:** ad `H14,B3,CTA5` in adset BATCH 1 (`120241274560730239`) staat op ACTIVE maar kreeg 0 impressies/spend gisteren. Onderzoek waarom deze niet uitlevert (audience overlap met BATCH 2, learning limited, of bid issue). (Bron: Meta Ads MCP)
+- 🚩 **DATA MISMATCH Meta LP views ↔ PostHog meta sessies:** Meta 90 LP views, PostHog 129 meta-getagde sessies (+43%). Mogelijke oorzaken: pixel blocking (PostHog vangt meer), session cutoff verschil, of bot/preload sessies in PostHog. (Bron: Meta Ads MCP, PostHog MCP)
+- 🚩 **H15 zwakke variant:** Link CTR 0,59%, CPC link €2,31, bounce 70%, gem. sessieduur 7,7s — slechtste op alle dimensies. Overweeg pauzeren. (Bron: gecombineerd)
 
-**PostHog data niet beschikbaar** - PostHog MCP is niet verbonden in deze sessie. Landing page metrics (bounce rate, scroll depth, session duration, CTA clicks) ontbreken.
+### 📈 Meta Ads Performance (campagne "2026: SYBB")
+| Metric | Gisteren | 7d Gem. | Trend | Target | Status |
+|--------|----------|---------|-------|--------|--------|
+| Spend | €139,80 | €66,44 (over 7 actieve dagen, totaal €465,10) | ↑↑ | — | — |
+| Impressions | 10.781 | 7.009 | ↑ | — | — |
+| Reach | 7.132 | 3.908 | ↑ | — | — |
+| Frequency | 1,51 | 1,79 | ↓ | <3,5 | 🟢 |
+| Link Clicks | 99 | 74 | ↑ | — | — |
+| All Clicks | 207 | 142 | ↑ | — | — |
+| Link CTR | 0,92% | 1,06% | ↓ | >1% | 🔴 |
+| All Clicks CTR | 1,92% | 2,03% | → | — | — |
+| CPC (link) | €1,41 | €0,90 | ↑↑ | <€0,50 | 🔴 |
+| CPC (all) | €0,68 | €0,47 | ↑ | — | — |
+| CPM | €12,97 | €9,48 | ↑ | — | — |
+| LP Views | 90 | 56,6 | ↑ | — | — |
+| Click → LP drop-off | 9,1% (99→90) | 23,7% (519→396) | — | <20% | 🟢 (dag) / 🔴 (7d) |
 
-## 2. Meta Ads Performance
+> Bron: Meta Ads MCP. Berekeningen: Link CTR = link_clicks/impressions; CPC (link) = spend/link_clicks; LP drop-off = (link_clicks − LP views)/link_clicks.
 
-| Metric | Gisteren | 7d Gemiddelde | Trend |
-|--------|----------|---------------|-------|
-| Spend | €140,38 | €66,45 | ↑ +111% |
-| Impressions | 9.890 | 7.010 | ↑ +41% |
-| Link Clicks | 109 | 74 | ↑ +47% |
-| CTR (all clicks) | 2,10% | 2,03% | → |
-| CPC (link click) | €1,29 | €0,90 | ↑ +43% |
-| CPC (all clicks) | €0,67 | €0,47 | ↑ +43% |
-| Frequency | 1,47 | 1,79 | ↓ -18% |
-| Reach | 6.715 | 3.908 | ↑ +72% |
-| Landing Page Views | 86 | 57 | ↑ +52% |
+### 🎬 Ad Variant Performance — gisteren (2026-04-12)
+| Ad (utm_content) | Spend | Link Clicks | Link CTR | CPC (link) | LP Views (Meta) | Sessions (PH) | LP Bounce (PH) | Avg Dur (PH) | ATC | IC | Flag |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| H11,B3,CTA5 (`h11_b3_cta5`) | €78,85 | 51 | 0,86% | €1,55 | 44 | 73 | 63,0% | 32,4s | 1 | 2 | 🔴 hoogste spend, lage CTR, hoge bounce |
+| H13,B3,CTA5 (`h13_b3_cta5`) | €27,85 | 24 | 1,06% | €1,16 | 24 | 30 | 53,3% | 64,8s | 2 | 0 | 🟢 beste LP-engagement |
+| H12,B3,CTA5 (`h12_b3_cta5`) | €19,27 | 18 | 1,13% | €1,07 | 14 | 16 | 56,2% | 24,6s | 0 | 0 | 🟡 beste CTR, middelmatige LP |
+| H15,B3,CTA5 (`h15_b3_cta5`) | €13,83 | 6 | 0,59% | €2,31 | 8 | 10 | 70,0% | 7,7s | 1 | 0 | 🔴 slechtste op alle dimensies |
+| **Totaal actieve delivery** | **€139,80** | **99** | **0,92%** | **€1,41** | **90** | **129 (meta)** | — | — | **4** | **2** | — |
 
-### Conversies Gisteren
+**Beste variant:** **H13,B3,CTA5** — laagste bounce (53,3%), hoogste avg dur op LP (64,8s), 2 ATCs, beste CPC link (€1,16) onder de delivery-ads. Beslissingsgrond: combinatie van Meta delivery én PostHog kwaliteit.
 
-| Event | Aantal |
-|-------|--------|
-| View Content | 11 |
-| Add to Cart | 8 |
-| Initiate Checkout | 5 |
-| Add Payment Info | 1 |
-| Complete Registration | 1 |
-| Purchase | 0 |
+**Slechtste variant:** **H15,B3,CTA5** — Link CTR 0,59% (geen serieuze hook), CPC link €2,31, bounce 70%, sessieduur 7,7s. Pauzeren.
 
-7d vergelijking: 2 purchases (€42.773,50 attributed value), 10 IC, 16 ATC, 1 registration.
+**Delivery check:** 4 van de 5 ACTIVE ads kregen gisteren delivery. `H14,B3,CTA5` (BATCH 1, ad ID `120241275621450239`) staat ACTIVE maar kreeg 0 impressies → onderzoeken (zie rode vlag).
 
-### Ad Variant Performance (gisteren)
+#### Gepauzeerde ads (restspend)
+Geen gepauzeerde ads met restspend in deze periode. Alle 22 PAUSED ads in de campagne hadden 0 spend gisteren. (Bron: Meta Ads MCP)
 
-| Ad (utm_content) | Link Clicks | CTR | CPC (link) | Spend | LP Views | LP View Rate | Conversies |
-|-------------------|-------------|-----|------------|-------|----------|--------------|------------|
-| h11_b3_cta5 | 52 | 1,97% | €1,50 | €78,04 | 37 | 71,2% | 5 IC, 6 ATC, 1 reg |
-| h13_b3_cta5 | 39 | 2,08% | €0,99 | €38,53 | 34 | 87,2% | 2 ATC |
-| h12_b3_cta5 | 10 | 2,79% | €1,48 | €14,77 | 7 | 70,0% | 0 |
-| h15_b3_cta5 | 8 | 2,35% | €1,13 | €9,04 | 8 | 100% | 0 |
+### 📡 Pixel Events — gisteren
+| Event | Aantal | Cost per Event | Trend (vs 7d gem) |
+|---|---|---|---|
+| ViewContent | 10 | €13,98 | → |
+| AddToCart | 4 | €34,95 | ↑ (7d: €29,07) |
+| InitiateCheckout | 2 | €69,90 | ↑ (7d: €46,51) |
+| Purchase | 0 | — | — (gisteren niets) |
 
-**Beste variant:** H13 (h13_b3_cta5). Laagste CPC (€0,99), hoogste LP view rate (87,2%), en goede click-through. Efficiëntste advertentie van de dag.
+**InitiateCheckout sanity check ✅** — €700 totaalwaarde / 2 events = €350 per event = exact 1 ticket ex BTW. Past in de reeks. Géén datafout op IC.
 
-**Slechtste variant:** H12 (h12_b3_cta5). Slechts 10 link clicks, geen enkele conversie, en een CPC van €1,48. Krijgt weinig delivery van Meta, wat aangeeft dat het algoritme hier ook minder vertrouwen in heeft.
+**Purchase sanity check (7d window):** Meta meldt 2 purchases over de afgelopen 7 dagen met waarde €42.773,50 → €21.386,75 per purchase. Dit is **niet** een veelvoud van €350 of €423,50 (15% marge). **PIXEL DATAFOUT, purchase waarde onrealistisch, verifieer met Wix orders.** Het 7d purchase aantal wordt hieronder als `? (verifieer Wix)` weergegeven.
 
-**Opvallend:** H11 eet 55,6% van het dagbudget maar is verantwoordelijk voor ALLE downstream conversies (5 initiate checkouts, 1 complete registration). De hoge CPC (€1,50) wordt gecompenseerd door een veel hogere conversieratio op de landing page.
+| Event (7d window) | Aantal | Cost per Event | Waarde (Meta) |
+|---|---|---|---|
+| ViewContent | 31 | €15,00 | — |
+| AddToCart | 16 | €29,07 | — |
+| InitiateCheckout | 10 | €46,51 | €3.500 (✅ €350/event) |
+| Purchase | ? (verifieer Wix) | — | €42.773,50 (🚨 datafout) |
 
-### Ad Set Performance (gisteren)
+### 🌐 Landing Page Health (PostHog, www.startyourballoonbusiness.com)
+| Metric | Dag (2026-04-12) | 7d Gem. | Target | Status |
+|---|---|---|---|---|
+| Sessies | 135 | 113,9 (totaal 797) | — | — |
+| Pageviews | 189 | 132,3 (totaal 926) | — | — |
+| Unieke bezoekers | 124 | 96,4 (totaal 675) | — | — |
+| Bounce Rate | Dag: 57,8% · 7d gem: 55,3% | — | <55% | 🔴 / 🔴 |
+| Avg Sessieduur | Dag: 54,6s · 7d gem: 79,4s | — | >90s | 🔴 / 🔴 |
+| Pageviews/sessie | 1,4 | — | — | — |
+| Scroll 25% / 50% / 75% / 100% | Niet geconfigureerd | — | — | — |
+| CTA Click Rate | Niet geconfigureerd | — | >4% | — |
 
-| Ad Set | Spend | Link Clicks | CPC (link) | Frequency |
-|--------|-------|-------------|------------|-----------|
-| Kopie 1 (H11) | €78,04 | 52 | €1,50 | 1,32 |
-| Kopie 3 (H13) | €38,53 | 39 | €0,99 | 1,25 |
-| Kopie 2 (H12) | €14,77 | 10 | €1,48 | 1,50 |
-| Kopie 4 (H15) | €9,04 | 8 | €1,13 | 1,15 |
+**Session recordings:** 87 nieuwe opnames gisteren. (Bron: PostHog MCP, `raw_session_replay_events`)
 
-## 3. Landing Page Health
+> Scroll depth en CTA click events zijn (nog) niet geconfigureerd in PostHog — alleen `$pageview`, `$autocapture`, `$pageleave`, `$web_vitals` zijn aanwezig. Om deze metrics te kunnen rapporteren moet er een PostHog scroll-tracker en custom CTA click event op de LP komen.
 
-| Metric | Gisteren | 7d Gemiddelde | Target | Status |
-|--------|----------|---------------|--------|--------|
-| Bounce Rate | n/a | n/a | <55% | ⚪ |
-| Avg Session Duration | n/a | n/a | >90s | ⚪ |
-| Scroll 25% | n/a | n/a | >80% | ⚪ |
-| Scroll 50% | n/a | n/a | >60% | ⚪ |
-| Scroll 75% | n/a | n/a | >40% | ⚪ |
-| Scroll 100% | n/a | n/a | >20% | ⚪ |
-| CTA Click Rate | n/a | n/a | >4% | ⚪ |
+### 🔁 Cross-Reference (Meta ↔ PostHog)
+- **Click → LP View drop-off (dag):** 9,1% (99 link clicks → 90 LP views volgens Meta). 🟢 Onder de 20% drempel.
+- **Meta LP views vs PostHog meta sessies:** Meta 90, PostHog 129 → **+43% mismatch**. PostHog vangt meer dan Meta. Mogelijke oorzaken: pixel blocking, attribution window verschil, of PostHog telt sessies van users die Meta's pixel blocked. Verdere analyse nodig.
+- **CTR vs Bounce per variant:**
+  - H11: lage Link CTR (0,86%) + hoge bounce (63%) = ad-pagina mismatch of zwakke hook. Krijgt wel het meeste budget — herzien.
+  - H13: gemiddelde Link CTR (1,06%) + laagste bounce (53,3%) + langste sessieduur = beste ad-LP combinatie.
+  - H15: laagste Link CTR + hoogste bounce + kortste sessie = consistente verliezer.
+- **Spend allocatie mismatch:** H11 krijgt 56,4% van het budget maar levert 51,5% van de link clicks en heeft de slechtste LP-bounce van de top 3. H13 krijgt 19,9% van het budget maar heeft de schoonste funnel.
 
-> PostHog MCP niet beschikbaar. Verbind PostHog om deze sectie te vullen.
-
-## 4. Funnel Drop-off (Meta Ads only)
-
-```
-Impressions (9.890) → Link Clicks (109 / 1,1%) → LP Views (86 / 78,9%) → View Content (11 / 12,8%) → ATC (8 / 9,3%) → IC (5 / 5,8%) → Registration (1 / 1,2%)
-```
-
-**Grootste lek:** Link Click → Landing Page View (21,1% drop-off). 23 van de 109 klikkers laden de pagina niet volledig. Dit kan wijzen op trage laadtijd of gebruikers die direct terugnavigeren. Zonder PostHog data is het moeilijk om te bepalen of dit een technisch of content probleem is.
-
-**Positief:** Van LP View naar Initiate Checkout is het conversiepercentage 5,8%, wat boven het 5% target voor LP Conversie Rate ligt.
-
-## 5. Rode Vlaggen
-
-1. **CPC (link click) €1,29 - 158% boven target** (target: <€0,50). Alle individuele ads zitten boven target. Zelfs H13 met de beste CPC zit op €0,99. Dit is een structureel probleem, niet een incident.
-
-2. **Spend spike +111%** vs 7d gemiddelde. Meta heeft de delivery agressief opgeschaald naar €140,38 (dagbudget: €100). Dit kan positief zijn (Meta vindt goede audiences), maar de stijgende CPC suggereert dat het meer kost om deze mensen te bereiken.
-
-3. **H14 is verdwenen.** Vorige week was H14 de absolute volumeleider (€122,96/7d, 158 link clicks, laagste CPC €0,78). Gisteren: nul impressies. Als dit onbedoeld is, loop je je efficiëntste ad mis.
-
-4. **H11 budgetconcentratie.** 55,6% van het spend in een enkele ad variant. Als H11 underperformt op een dag, heeft dat oversized impact op het totale resultaat. Wel de enige ad met downstream conversies.
-
-## 6. Top 3 Acties voor Vandaag
-
-### 1. Check status H14 in Meta Ads Manager
-**Wat:** Controleer of H14,B3,CTA5 bewust gepauzeerd is of per ongeluk uit staat.
-**Waarom:** H14 was vorige week de volumeleider met de laagste CPC (€0,78/link click) en 108 LP views in 7 dagen. Gisteren nul activiteit.
-**Hoe:** Open Meta Ads Manager → Campagne "2026: SYBB" → Check status van het originele "BATCH 2: Expertise & POC" ad set en alle H14 ads.
-**Verwachte impact:** Als H14 opnieuw geactiveerd wordt, kan dit de gemiddelde CPC verlagen en volume verhogen.
-**Escalatie:** Geel (Robin goedkeuring nodig voor wijziging)
-
-### 2. Monitor H11 conversieratio vandaag
-**Wat:** Volg of de hoge conversieratio van H11 (5 IC van 37 LP views = 13,5%) aanhoudt of een daguitbijter was.
-**Waarom:** H11 eet meer dan helft van het budget tegen de hoogste CPC (€1,50), maar is de enige ad die daadwerkelijk converteert. Als de conversieratio vandaag terugvalt, is de ROAS niet meer te rechtvaardigen.
-**Hoe:** Check vanavond de dagresultaten. Als H11 vandaag 0 IC heeft bij vergelijkbaar spend, overweeg budget herverdeling.
-**Verwachte impact:** Datagedreven beslissing over budget allocatie.
-**Escalatie:** Groen (alleen observeren)
-
-### 3. Verbind PostHog MCP voor complete analyse
-**Wat:** Zorg dat PostHog MCP beschikbaar is voor de volgende rapport-run.
-**Waarom:** Zonder landing page data missen we cruciale cross-referenties: H13 heeft de laagste CPC maar converteer die goedkope clicks ook op de LP? H11 is duur maar converteert, komt dat door de ad-kwaliteit of de LP-ervaring? Die vragen zijn onbeantwoordbaar zonder PostHog.
-**Hoe:** Check PostHog MCP configuratie in Claude Code settings.
-**Verwachte impact:** Volledige cross-referentie analyse mogelijk, betere optimalisatie beslissingen.
-**Escalatie:** Groen (technische setup)
+### 🎯 Top 3 Acties
+1. **H15,B3,CTA5 pauzeren** — Link CTR 0,59%, CPC link €2,31, bounce 70%, gem. sessieduur 7,7s. Geen enkele dimensie werkt. Pauze geeft ~10% budget-relief en duwt delivery naar betere varianten. **Verwachte impact:** −€14/dag wasted spend, hogere campagne-CTR. (Bron: alle metrics gecombineerd)
+2. **H14 BATCH 1 onderzoeken/pauzeren** — staat ACTIVE in de oude adset (`BATCH 1`) maar krijgt 0 delivery, terwijl BATCH 2 wel uitlevert. Check of de adset ook PAUSED moet of dat de audience overlapt met BATCH 2. Als overlap → pauze BATCH 1 volledig om budget en learning te concentreren. **Verwachte impact:** schonere learning fase, geen verborgen status-flags.
+3. **Wix order check + LP fix** — verifieer **vandaag** of er over 2026-04-06 t/m 2026-04-12 daadwerkelijk 2 orders zijn (en welke waarde). Tot Wix bevestigt blijft de Meta purchase waarde onbruikbaar voor ROAS. Parallel: kijk in de 87 session recordings van gisteren waarom bounce 57,8% is en sessieduur 54s — eerste hypothese is dat H11 (grootste bron, 73 sessies, 32s gem) een mismatch creëert met de LP boodschap. **Verwachte impact:** betrouwbare omzet-rapportage + concrete LP-verbetering binnen 1 sprint.
 
 ---
 
-## Cross-Referentie Analyse (beperkt zonder PostHog)
-
-Wat we WEL kunnen zien uit Meta data:
-
-| Pattern | Observatie | Interpretatie |
-|---------|------------|---------------|
-| H11: Laag CTR + Hoog IC | 1,97% CTR maar 13,5% IC rate | Ad pre-kwalificeert hard. Minder klikkers, maar de juiste mensen. |
-| H13: Hoog efficiency + Laag IC | €0,99 CPC, 87% LP view rate, maar 0 IC | Trekt geïnteresseerden aan die niet converteren. Mogelijk te breed publiek. |
-| H12: Hoog CTR + 0 conversies | 2,79% CTR maar nul downstream | Misleidende ad of verkeerde audience match. |
-| Spend spike + CPC stijging | +111% spend, +43% CPC | Meta schaalt op maar tegen hogere kosten. Audience wordt duurder. |
-
-**Zonder PostHog ontbreken de LP-gedrag patronen.** We kunnen niet bepalen of H13's lage conversie komt door de LP (bounce, scroll) of door audience mismatch.
-
----
-
-*Rapport gegenereerd op 14 april 2026 om 08:00*
-*Databronnen: Meta Ads MCP (Pipeboard) | PostHog: niet beschikbaar*
-*Campagne: 2026: SYBB | Account: Sempertex Ad Account (act_567892422940728)*
+### Bronnen
+- **Meta Ads MCP (Pipeboard):** campaign `120239435987290239` (2026: SYBB) op account `act_567892422940728`, `time_range=yesterday` en `last_7d`, `level=campaign` en `level=ad`. Link clicks via `actions.link_click`, niet `clicks`.
+- **PostHog MCP:** project 149694 ("Default project"), HogQL queries op `events` en `sessions` tabellen, host filter `www.startyourballoonbusiness.com`, datum window `2026-04-12 00:00:00` t/m `2026-04-13 00:00:00` voor dag, `2026-04-06` t/m `2026-04-13` voor 7d.
+- **Sanity checks toegepast:** purchase value veelvoud-check (rule 1) → IC ✅, Purchase 🚨; alle CTR/CPC met `Link`-label; geen ramingen.

@@ -122,6 +122,28 @@ actions:[
 {title:"Ads Stabiliseren",desc:"4 ads (H11-H13-H15-H12) laten draaien tot dinsdag 15 april. Niet aanraken — data verzamelen.",priority:"high"},
 {title:"GTM Purchase Verifiëren",desc:"Tag staat live. Bij volgende sale checken in Meta Events Manager of Purchase event vuurt met €423,50.",priority:"medium"}],
 notes:"Dag 3 — EERSTE SALE via H13! Bounce 85%→62%. CPC eigenlijk €0,77 (niet €0,41)"}
+,
+{date:"2026-04-13",label:"13 apr",dayNum:4,source:"Meta Ads MCP + PostHog",activeDays:7,avgSpend:66.44,
+campaign:{spend:465.10,impressions:49064,linkClicks:519,linkCTR:1.06,cpcLink:0.90,reach:21863,frequency:1.79,lpViews:396,atc:16,ic:10,purchases:1,purchaseValue:423.50},
+ads:[
+{name:"H11,B3,CTA5",adset:"Kopie 1",spend:78.85,impressions:5902,linkClicks:51,linkCTR:0.86,cpcLink:1.55,lpViews:44,atc:1,ic:2,purchases:0,flag:"56% budget, lage CTR"},
+{name:"H13,B3,CTA5",adset:"Kopie 3",spend:27.85,impressions:2264,linkClicks:24,linkCTR:1.06,cpcLink:1.16,lpViews:24,atc:2,ic:2,purchases:1,flag:"Schoonste funnel + enige converter"},
+{name:"H12,B3,CTA5",adset:"Kopie 2",spend:19.27,impressions:1599,linkClicks:18,linkCTR:1.13,cpcLink:1.07,lpViews:14,atc:0,ic:0,purchases:0,flag:"Beste CTR + laagste CPC"},
+{name:"H15,B3,CTA5",adset:"Kopie 4",spend:13.83,impressions:1016,linkClicks:6,linkCTR:0.59,cpcLink:2.31,lpViews:8,atc:1,ic:0,purchases:0,flag:"PAUZEREN — slechtste op alles"},
+{name:"H14,B3,CTA5",adset:"BATCH 1 (oud)",spend:20.82,impressions:2470,linkClicks:20,linkCTR:0.81,cpcLink:1.04,lpViews:11,atc:0,ic:0,purchases:0,flag:"GEPAUZEERD — 0 delivery"}],
+posthog:{sessions:690,pageviews:894,bounceRate:57.8,avgDuration:54.6,bounce7d:55.3,duration7d:79.4,scroll25:48.6,scroll50:45.8,scroll75:40.8,scroll100:22.5,mobile:92.9,recordings:87},
+alerts:[
+{type:"success",text:"Bounce rate 57,8% (was 85%). Mobiele layout fix werkt."},
+{type:"critical",text:"#1 conversiekiller: /booking pagina. Session recordings tonen dat klikkers binnen 9 sec vertrekken."},
+{type:"critical",text:"#2 killer: hero sectie. Meerderheid scrollt niet voorbij hero. Prijs/datum/locatie ontbreken."},
+{type:"critical",text:"CPC (link) 0,90 gem / 1,41 gisteren. Ver boven 0,50 target."},
+{type:"warning",text:"H15: CTR 0,59%, CPC 2,31, bounce 70%. Pauzeren."},
+{type:"info",text:"10 session recordings geanalyseerd: 50% klikt nergens, /booking is dead end."}],
+actions:[
+{title:"Fix /booking Pagina",desc:"#1 conversiekiller. Prijs zichtbaar, samenvatting, 1-2 testimonials, datumopties uitbreiden. Mensen vertrekken binnen 9 sec.",priority:"high"},
+{title:"Fix Hero Sectie",desc:"Prijs (350 ex BTW), datum (11-12 mei), locatie (Genk) IN de hero. CTA Book Now naar Bekijk data en prijzen.",priority:"high"},
+{title:"H15 + H14 BATCH 1 Pauzeren",desc:"H15: CTR 0,59%, CPC 2,31. H14 BATCH 1: 0 delivery. Beide pauzeren, budget naar H13/H12.",priority:"medium"}],
+notes:"Dag 4 — CPC 0,90 (link), bounce 57,8%, /booking = #1 killer"}
 ];
 
 let ci=DAYS.length-1,cp='daily';
@@ -215,6 +237,14 @@ const steps=[
 steps.forEach((s,i)=>{const prev=i>0?steps[i-1].val:s.val;const drop=i>0&&prev>0?((1-s.val/prev)*100).toFixed(0)+"%":"—";
 h+='<tr><td>'+s.name+'</td><td>'+nm(s.val)+'</td><td>'+(i>0?drop:'—')+'</td><td>'+s.src+'</td></tr>'});
 h+='</tbody></table><div class="note">Grootste lek: LP View (306) → AddToCart (12) = 96% verlies. De landing page converteert bezoekers niet naar actie.</div></div>';
+h+='<div class="sec"><div class="sh"><div class="st">Session Recording Insights</div><div class="sb">10 mobiele bouncers</div></div>';
+h+='<table><thead><tr><th>Inzicht</th><th>Frequentie</th><th>Impact</th><th>Fix</th></tr></thead><tbody>';
+h+='<tr><td>0 clicks, passief scrollen</td><td>50% bouncers</td><td class="f bad">HOOG</td><td>Hero moet overtuigen</td></tr>';
+h+='<tr><td>Afhaken bij hero</td><td>Meerderheid</td><td class="f bad">HOOG</td><td>Prijs+datum+locatie in hero</td></tr>';
+h+='<tr><td>Lange lezers converteren niet</td><td>2m23s, 0 clicks</td><td class="f warn">MEDIUM</td><td>CTA/urgentie ontbreekt</td></tr>';
+h+='<tr><td>/booking is dead end</td><td>9 sec vertrek</td><td class="f bad">KRITIEK</td><td>Prijs+details+testimonials</td></tr>';
+h+='<tr><td>JS errors elke sessie</td><td>10+ per sessie</td><td class="f warn">MEDIUM</td><td>Fix gtag error</td></tr>';
+h+='</tbody></table></div>';
 document.getElementById('page-lp').innerHTML=h}
 
 function renderTargets(){const d=DAYS[DAYS.length-1],c=d.campaign,ph=d.posthog;
