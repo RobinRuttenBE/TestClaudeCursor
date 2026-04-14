@@ -89,9 +89,15 @@ Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 | LP Views | X | X | ↑/↓/→ | — | — |
 
 ### 🎬 Ad Variant Performance
-| Ad (utm_content) | Spend | Link Clicks | Link CTR | CPC (link) | LP Views | IC (InitCheckout) | ATC (AddToCart) | Purchases | LP Bounce | LP Scroll 50%+ | Flag |
-|-------------------|-------|-------------|----------|------------|----------|-------|-----------|---------|-----------|----------------|------|
+| Ad (utm_content) | Spend | Link Clicks | Link CTR | CPC (link) | LP Views | IC (gisteren) | IC (totaal) | ATC (gisteren) | ATC (totaal) | Purchases | LP Bounce | LP Scroll 50%+ | Flag |
+|-------------------|-------|-------------|----------|------------|----------|----------------|-------------|-----------------|---------------|-----------|-----------|----------------|------|
 [per ad variant, zowel Meta als PostHog data gecombineerd]
+
+**IC/ATC data ophalen (verplicht):**
+- `IC (gisteren)` en `ATC (gisteren)` = aantal InitiateCheckout / AddToCart events voor deze ad in de afgelopen 24u (Meta Ads MCP, `date_preset=yesterday` of expliciete gisteren range).
+- `IC (totaal)` en `ATC (totaal)` = CUMULATIEF aantal InitiateCheckout / AddToCart events over de volledige campagne periode (Meta Ads MCP, `date_preset=maximum` of vanaf campagne start tot nu). Dit is een aparte MCP call per ad met lifetime-range.
+- Rapporteer ALTIJD beide kolommen. Budget- en pauze-beslissingen MOETEN gebaseerd zijn op de totaal-kolom, niet op gisteren alleen. Een ad met 0 IC gisteren maar 13 IC totaal mag NIET gepauzeerd worden puur op basis van gisteren.
+- Als de MCP geen lifetime range teruggeeft, haal de maximaal beschikbare periode op (bijv. laatste 90d) en label de kolom expliciet als `IC (90d)` / `ATC (90d)` in plaats van `totaal`.
 
 > **Note:** Alle metrics op link click basis. Meta's standaard CTR/CPC (all clicks) worden NIET gebruikt. Dit geldt voor ALLE tabellen in dit rapport: campagne overview, ad-level, en samenvatting. Gebruik `actions.link_click` voor clicks, `link_clicks / impressions` voor Link CTR, `spend / link_clicks` voor CPC (link).
 
