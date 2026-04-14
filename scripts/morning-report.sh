@@ -25,6 +25,11 @@
 
 set -uo pipefail
 
+# Harde wall-clock limiet per Claude stap. Voorkomt dat een hangende MCP call
+# (zoals op 2026-04-14, waar /ads-report 1.5 uur bleef plakken) de hele chain
+# blokkeert en iMessage nooit wordt verstuurd.
+CLAUDE_STEP_TIMEOUT_SEC=600
+
 # Paden
 CLAUDE="/Users/robinrutten/.local/bin/claude"
 WORKDIR="/Users/robinrutten/TestClaudeCursor"
@@ -70,13 +75,24 @@ run_claude() {
     local result=""
 
     while [ $attempt -le $max_attempts ]; do
-        echo "  [poging ${attempt}/${max_attempts}] ${label}..." >> "$LOG_FILE" 2>&1
-        result=$("$CLAUDE" -p "$prompt" \
+        echo "  [poging ${attempt}/${max_attempts}] ${label} (timeout ${CLAUDE_STEP_TIMEOUT_SEC}s)..." >> "$LOG_FILE" 2>&1
+        # perl alarm+exec: harde wall-clock timeout. Bij SIGALRM wordt het
+        # claude subprocess met default-dispositie getermineerd.
+        result=$(/usr/bin/perl -e 'alarm shift; exec @ARGV or die "exec: $!"' "$CLAUDE_STEP_TIMEOUT_SEC" \
+            "$CLAUDE" -p "$prompt" \
             --output-format text \
             --max-turns 30 \
             --dangerously-skip-permissions \
-            2>> "$LOG_FILE") && break
-        echo "  [poging ${attempt}] mislukt" >> "$LOG_FILE" 2>&1
+            2>> "$LOG_FILE")
+        local rc=$?
+        if [ $rc -eq 0 ] && [ -n "$result" ]; then
+            break
+        fi
+        if [ $rc -eq 142 ] || [ $rc -eq 14 ]; then
+            echo "  [poging ${attempt}] TIMEOUT na ${CLAUDE_STEP_TIMEOUT_SEC}s" >> "$LOG_FILE" 2>&1
+        else
+            echo "  [poging ${attempt}] mislukt (exit ${rc})" >> "$LOG_FILE" 2>&1
+        fi
         attempt=$((attempt + 1))
         [ $attempt -le $max_attempts ] && sleep 5
     done

@@ -240,7 +240,9 @@
       "Bash(git:*)",
       "Bash(du -sh remotion-stx/public/videos/*.mp4 remotion-stx/public/videos/*.mov)",
       "Bash(xargs -I{} du -b \"remotion-stx/{}\")",
-      "Bash(awk '$1==\"blob\" && $3>100000000 {print $3, $4}')"
+      "Bash(awk '$1==\"blob\" && $3>100000000 {print $3, $4}')",
+      "Bash(kill 13105 13104 13103 13093)",
+      "Bash(/bin/bash:*)"
     ]
   }
 }
