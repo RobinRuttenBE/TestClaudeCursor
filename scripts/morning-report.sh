@@ -202,36 +202,81 @@ echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in 
 #   `actions.link_click` voorschrijft. 4e keer dat deze regel werd
 #   overgeslagen door sub-claude. Dus nu: link metrics worden eveneens
 #   hardcoded berekend en het rapport wordt overschreven.
-echo "[4/4] sanity + link metrics fetch..." >> "$LOG_FILE" 2>&1
+echo "[4/4] sanity + link metrics fetch (campagne + per-ad + active days)..." >> "$LOG_FILE" 2>&1
 
-PURCHASE_PROMPT="Haal via de Meta Ads MCP (Pipeboard) voor campagne '2026: SYBB' de volgende vijf getallen op over de afgelopen 30 dagen:
-1. purchase_value: totale waarde van alle purchase events (som van action_values waar action_type een purchase event is — 'purchase', 'omni_purchase', 'offsite_conversion.fb_pixel_purchase')
-2. purchase_count: totaal aantal purchase events (som van actions voor dezelfde action_types)
-3. spend: totaal spend in EUR (het 'spend' veld op campaign level)
-4. impressions: totaal aantal impressions
-5. link_clicks: totaal aantal LINK clicks — KRITIEK: gebruik action_type 'link_click' uit de actions array, NIET het standaard 'clicks' veld (dat bevat alle clicks inclusief likes/reacties/profile clicks)
+PURCHASE_PROMPT="Haal via de Meta Ads MCP (Pipeboard) voor campagne '2026: SYBB' het volgende op over de afgelopen 30 dagen:
 
-Output UITSLUITEND één regel valide JSON, niets anders. Geen prose, geen markdown, geen code fences, geen uitleg eromheen. Exact formaat:
-{\"purchase_value\": <float>, \"purchase_count\": <int>, \"spend\": <float>, \"impressions\": <int>, \"link_clicks\": <int>}
+A. CAMPAGNE TOTALS (hele periode):
+   - purchase_value: som van action_values waar action_type een purchase event is ('purchase', 'omni_purchase', 'offsite_conversion.fb_pixel_purchase')
+   - purchase_count: som van actions voor dezelfde action_types
+   - spend: totaal spend in EUR
+   - impressions: totaal aantal impressions
+   - link_clicks: totaal aantal LINK clicks — KRITIEK: gebruik action_type 'link_click' uit de actions array, NIET het standaard 'clicks' veld
 
-Als een metric niet beschikbaar is, gebruik 0. Als er geen data is: {\"purchase_value\": 0, \"purchase_count\": 0, \"spend\": 0, \"impressions\": 0, \"link_clicks\": 0}.
+B. ACTIVE DAYS COUNT:
+   - Haal daily breakdown op met time_increment=1 (dagelijkse spend)
+   - Tel het aantal dagen waarop spend > 0
+   - Output als 'active_days' integer
+
+C. PER-AD METRICS (alleen ads met spend > 0 in deze periode, ongeacht status):
+   - Voor elke ad: name (exact zoals in Meta), spend, impressions, link_clicks (actions.link_click)
+   - Output als 'ads' array met per-ad objecten
+
+Output UITSLUITEND één regel valide JSON, inline (geen newlines in de JSON zelf). Geen prose, geen markdown, geen code fences, geen uitleg. Exact formaat:
+{\"purchase_value\": <float>, \"purchase_count\": <int>, \"spend\": <float>, \"impressions\": <int>, \"link_clicks\": <int>, \"active_days\": <int>, \"ads\": [{\"name\": \"<exact name>\", \"spend\": <float>, \"impressions\": <int>, \"link_clicks\": <int>}, ...]}
+
+Als data niet beschikbaar is, gebruik 0 en een lege 'ads' array.
 
 ${NO_GOOGLE_RULE}"
 
-PURCHASE_RAW=$(run_claude "sanity + link metrics fetch" "$PURCHASE_PROMPT") || PURCHASE_RAW=""
-PURCHASE_JSON=$(printf '%s\n' "$PURCHASE_RAW" | grep -oE '\{[^{}]*"purchase_value"[^{}]*\}' | tail -1)
-echo "[4/4] raw json: ${PURCHASE_JSON:-<leeg>}" >> "$LOG_FILE" 2>&1
+PURCHASE_RAW=$(run_claude "sanity + link metrics + per-ad" "$PURCHASE_PROMPT") || PURCHASE_RAW=""
+
+# Schrijf raw output naar een data file, extract vervolgens een geldig JSON
+# object via python (handelt nested braces correct af, in tegenstelling tot
+# grep dat de 'ads' array niet kan matchen).
+PURCHASE_DATA_FILE="${LOG_DIR}/morning-report-${TODAY_ISO}.data.json"
+printf '%s' "$PURCHASE_RAW" | /usr/bin/python3 -c '
+import json, re, sys
+
+text = sys.stdin.read()
+best = ""
+for m in re.finditer(r"\{", text):
+    start = m.start()
+    depth = 0
+    for i in range(start, len(text)):
+        ch = text[i]
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                cand = text[start:i+1]
+                if "purchase_value" in cand:
+                    try:
+                        json.loads(cand)
+                        if len(cand) > len(best):
+                            best = cand
+                    except Exception:
+                        pass
+                break
+sys.stdout.write(best)
+' > "$PURCHASE_DATA_FILE" 2>> "$LOG_FILE"
+
+PURCHASE_DATA_BYTES=$(wc -c < "$PURCHASE_DATA_FILE" | tr -d ' ')
+echo "[4/4] extracted JSON: ${PURCHASE_DATA_BYTES} bytes in ${PURCHASE_DATA_FILE}" >> "$LOG_FILE" 2>&1
 
 SANITY_VERDICT=$(/usr/bin/python3 -c '
 import json, sys
+from pathlib import Path
 
-raw = sys.argv[1] if len(sys.argv) > 1 else ""
+path = Path(sys.argv[1])
+raw = path.read_text(encoding="utf-8").strip() if path.exists() else ""
 
 def fail(status):
-    print(f"{status}|0.00|0|0.00|0.00|0|0|0.00|0.00")
+    print(f"{status}|0.00|0|0.00|0.00|0|0|0.00|0.00|0|0.00")
     sys.exit(0)
 
-if not raw.strip():
+if not raw:
     fail("NODATA")
 
 try:
@@ -241,12 +286,19 @@ try:
     spend = float(d.get("spend", 0) or 0)
     impressions = int(float(d.get("impressions", 0) or 0))
     link_clicks = int(float(d.get("link_clicks", 0) or 0))
+    active_days = int(float(d.get("active_days", 0) or 0))
 except Exception:
     fail("PARSE_ERROR")
 
 # Link metrics — onafhankelijk van de purchase sanity check
 link_ctr = (link_clicks / impressions * 100) if impressions > 0 else 0.0
 link_cpc = (spend / link_clicks) if link_clicks > 0 else 0.0
+
+# Daily spend over ACTIEVE dagen (spend > 0). Vermijd de naieve spend/30
+# berekening die de sub-claude soms rapporteert (leidt tot ~1/3 van de
+# werkelijke dagspend bij campagnes die slechts deels van de periode actief
+# zijn).
+avg_daily_spend = (spend / active_days) if active_days > 0 else 0.0
 
 # Purchase sanity verdict
 if pc <= 0:
@@ -259,8 +311,8 @@ else:
     valid = any(297 * n <= per <= 488 * n for n in range(1, 21))
     sanity = "PASS" if valid else "FAIL"
 
-print(f"{sanity}|{pv:.2f}|{pc}|{per:.2f}|{spend:.2f}|{impressions}|{link_clicks}|{link_ctr:.2f}|{link_cpc:.2f}")
-' "$PURCHASE_JSON")
+print(f"{sanity}|{pv:.2f}|{pc}|{per:.2f}|{spend:.2f}|{impressions}|{link_clicks}|{link_ctr:.2f}|{link_cpc:.2f}|{active_days}|{avg_daily_spend:.2f}")
+' "$PURCHASE_DATA_FILE")
 
 SANITY_STATUS=$(echo "$SANITY_VERDICT" | cut -d'|' -f1)
 SANITY_PV=$(echo "$SANITY_VERDICT" | cut -d'|' -f2)
@@ -271,6 +323,8 @@ SANITY_IMP=$(echo "$SANITY_VERDICT" | cut -d'|' -f6)
 SANITY_LC=$(echo "$SANITY_VERDICT" | cut -d'|' -f7)
 SANITY_LCTR=$(echo "$SANITY_VERDICT" | cut -d'|' -f8)
 SANITY_LCPC=$(echo "$SANITY_VERDICT" | cut -d'|' -f9)
+SANITY_ADAYS=$(echo "$SANITY_VERDICT" | cut -d'|' -f10)
+SANITY_AVG=$(echo "$SANITY_VERDICT" | cut -d'|' -f11)
 echo "[4/4] verdict: ${SANITY_VERDICT}" >> "$LOG_FILE" 2>&1
 
 # Mode bepaling — de rewrite helper wordt ALTIJD aangeroepen zodat link
@@ -297,6 +351,7 @@ case "$SANITY_STATUS" in
         ;;
 esac
 echo "[4/4] link metrics: Link CTR ${SANITY_LCTR}% · CPC (link) EUR ${SANITY_LCPC} (spend=${SANITY_SPEND} imp=${SANITY_IMP} lc=${SANITY_LC})" >> "$LOG_FILE" 2>&1
+echo "[4/4] daily spend: EUR ${SANITY_AVG} over ${SANITY_ADAYS} actieve dagen (van 30)" >> "$LOG_FILE" 2>&1
 
 # --- Combineer alle deelrapporten naar 1 markdown bestand ---
 {
@@ -345,6 +400,9 @@ echo "[done] Gecombineerd rapport opgeslagen in $FULL_REPORT_FILE" >> "$LOG_FILE
     "$SANITY_LC" \
     "$SANITY_LCTR" \
     "$SANITY_LCPC" \
+    "$SANITY_ADAYS" \
+    "$SANITY_AVG" \
+    "$PURCHASE_DATA_FILE" \
     >> "$LOG_FILE" 2>&1 || \
     echo "[pixel-rewrite] helper faalde — rapport blijft ongewijzigd" >> "$LOG_FILE" 2>&1
 

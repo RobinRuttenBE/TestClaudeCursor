@@ -161,3 +161,32 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [2/3] klaar (645 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-14_sybb_report.md)
 [3/3] /ads-auto-optimize uitvoeren...
   [poging 1/2] /ads-auto-optimize (timeout 600s)...
+[3/3] klaar (1206 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-15_auto_optimize.md)
+[4/4] sanity + link metrics fetch...
+  [poging 1/2] sanity + link metrics fetch (timeout 600s)...
+[4/4] raw json: {"purchase_value": 42773.5, "purchase_count": 2, "spend": 701.77, "impressions": 66263, "link_clicks": 711}
+[4/4] verdict: FAIL|42773.50|2|21386.75|701.77|66263|711|1.07|0.99
+[4/4] 🚨 PIXEL DATAFOUT — EUR 21386.75/purchase bij 2 purchases
+[4/4] link metrics: Link CTR 1.07% · CPC (link) EUR 0.99 (spend=701.77 imp=66263 lc=711)
+[done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-15_morning_report_full.md
+[pixel-rewrite] mode=datafout link_rewrite=True link_ctr=1.07% link_cpc=EUR0.99 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-15_morning_report_full.md
+[push] Commit + push reports naar main...
+[main 4c82f50] Morning report: 2026-04-15
+ Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 52 insertions(+), 203 deletions(-)
+To https://github.com/RobinRuttenBE/TestClaudeCursor.git
+   12b6226..4c82f50  main -> main
+[imessage] verstuurd naar +32468236146
+=== Morning Report afgerond: Wed Apr 15 15:08:57 CEST 2026 — 0 failures ===
