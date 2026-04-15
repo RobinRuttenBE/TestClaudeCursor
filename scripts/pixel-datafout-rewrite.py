@@ -80,24 +80,11 @@ def mask_roas_and_purchases(text: str) -> str:
         flags=re.IGNORECASE,
     )
 
-    # Tabelrijen van het type "| Purchases | 2 |" of "| Purchases | 2 (EUR ...) |"
-    def _purchases_row(match: re.Match) -> str:
-        return f"{match.group(1)}? (verifieer Wix){match.group(3)}"
-
-    text = re.sub(
-        r"(\|\s*Purchases?\s*\|\s*)([^|]+?)(\s*\|)",
-        _purchases_row,
-        text,
-        flags=re.IGNORECASE,
-    )
-
-    # Tabelrijen "| Revenue | EUR 42.773,50 |"
-    text = re.sub(
-        r"(\|\s*Revenue\s*\|\s*)([^|]+?)(\s*\|)",
-        lambda m: f"{m.group(1)}n.v.t. (pixel datafout){m.group(3)}",
-        text,
-        flags=re.IGNORECASE,
-    )
+    # Tabelrijen van het type "| Purchases | 2 | EUR ... |" kunnen niet
+    # veilig met regex worden aangepast zonder ook header-rijen te breken
+    # (bijv. "| Purchases | Revenue |" waarbij Revenue de volgende kolom-
+    # header is). De waarschuwing bovenaan + de ROAS / prose masking
+    # maken voldoende duidelijk dat de tabelcijfers niet betrouwbaar zijn.
 
     return text
 
