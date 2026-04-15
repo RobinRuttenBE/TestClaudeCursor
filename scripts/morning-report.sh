@@ -91,9 +91,34 @@ run_claude() {
 
     while [ $attempt -le $max_attempts ]; do
         echo "  [poging ${attempt}/${max_attempts}] ${label} (timeout ${CLAUDE_STEP_TIMEOUT_SEC}s)..." >> "$LOG_FILE" 2>&1
-        # perl alarm+exec: harde wall-clock timeout. Bij SIGALRM wordt het
-        # claude subprocess met default-dispositie getermineerd.
-        result=$(/usr/bin/perl -e 'alarm shift; exec @ARGV or die "exec: $!"' "$CLAUDE_STEP_TIMEOUT_SEC" \
+        # Python wrapper: harde wall-clock timeout met process-group kill.
+        # perl alarm+exec werkte niet op macOS omdat alarm(2) timers niet
+        # bewaard blijven over exec — SIGALRM vuurde nooit en stap 1 bleef
+        # 1+ uur hangen (incidenten 2026-04-14 en 2026-04-15).
+        # Exit 124 = timeout hit (matcht GNU coreutils `timeout`).
+        result=$(/usr/bin/python3 -c '
+import os, signal, subprocess, sys
+timeout = int(sys.argv[1])
+cmd = sys.argv[2:]
+p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=sys.stderr, preexec_fn=os.setsid)
+try:
+    out, _ = p.communicate(timeout=timeout)
+    sys.stdout.buffer.write(out)
+    sys.exit(p.returncode)
+except subprocess.TimeoutExpired:
+    try:
+        os.killpg(os.getpgid(p.pid), signal.SIGTERM)
+    except ProcessLookupError:
+        pass
+    try:
+        p.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(os.getpgid(p.pid), signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+    sys.exit(124)
+' "$CLAUDE_STEP_TIMEOUT_SEC" \
             "$CLAUDE" -p "$prompt" \
             --output-format text \
             --max-turns 30 \
@@ -103,8 +128,8 @@ run_claude() {
         if [ $rc -eq 0 ] && [ -n "$result" ]; then
             break
         fi
-        if [ $rc -eq 142 ] || [ $rc -eq 14 ]; then
-            echo "  [poging ${attempt}] TIMEOUT na ${CLAUDE_STEP_TIMEOUT_SEC}s" >> "$LOG_FILE" 2>&1
+        if [ $rc -eq 124 ]; then
+            echo "  [poging ${attempt}] TIMEOUT na ${CLAUDE_STEP_TIMEOUT_SEC}s (process group gekilled)" >> "$LOG_FILE" 2>&1
         else
             echo "  [poging ${attempt}] mislukt (exit ${rc})" >> "$LOG_FILE" 2>&1
         fi
@@ -264,5 +289,11 @@ fi
 
 echo "=== Morning Report afgerond: $(date) — ${FAILURES} failures ===" >> "$LOG_FILE" 2>&1
 
-# Cleanup: verwijder logs ouder dan 30 dagen
+# Markeer vandaag als klaar zodat launchd's StartInterval (elke paar minuten)
+# het script vandaag niet opnieuw triggert. De marker bevat timestamp + failures
+# voor debugging. Verwijder het bestand om handmatig een re-run te forceren.
+echo "done=$(date +%s) failures=${FAILURES}" > "$DONE_MARKER"
+
+# Cleanup: verwijder logs + markers ouder dan 30 dagen
 find "$LOG_DIR" -name "morning-report-*.log" -mtime +30 -delete 2>/dev/null || true
+find "$LOG_DIR" -name "morning-report-*.done" -mtime +30 -delete 2>/dev/null || true
