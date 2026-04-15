@@ -2,193 +2,154 @@
 
 ## 1. Samenvatting
 
-Matige dag voor SYBB. De CPC is met €0.62 flink boven target (€0.50) en de bounce rate op de landing page is gestegen naar 60%, boven de 55% target. Impressies en clicks zijn ~20% lager dan het 7-daags gemiddelde, wat wijst op dalende delivery. Lichtpuntje: H12 presteert uitstekend met de hoogste CTR (3.02%), laagste CPC (€0.49) en laagste bounce rate (40%), maar krijgt slechts 9% van het budget. Scroll depth is zorgwekkend: meer dan de helft van de bezoekers scrollt niet voorbij 25% van de pagina.
-
----
+Matige dag voor SYBB. Het volume is flink gedaald: impressions -23% en clicks -21% vs het 7-daags gemiddelde. De CPC is gestegen naar EUR 0.62 (boven het target van EUR 0.50). Grootste zorgpunt blijft de extreem hoge bounce rate van 82.7%, ver boven het target van 55%. Positief: de CTA click rate op de landing page was sterk (16.3%), en H12 presteert uitstekend met de laagste CPC en hoogste CTR. De /booking bezoeken zijn echter met 38% gedaald vs het 7d gemiddelde.
 
 ## 2. Meta Ads Performance
 
 | Metric | Gisteren | 7d Gemiddelde | Trend |
 |--------|----------|---------------|-------|
-| Spend | €95.93 | €100.25 | → |
-| Impressions | 7,290 | 9,466 | ↓ |
-| Clicks (all) | 154 | 194 | ↓ |
-| Link Clicks | 83 | 102 | ↓ |
-| CTR | 2.11% | 2.05% | → |
-| CPC | €0.62 | €0.52 | ↑ |
-| Landing Page Views | 63 | 78 | ↓ |
-| Frequency | 1.53 | 1.92 | → |
-| Video Views | 1,567 | 1,865 | ↓ |
-| Add to Cart | 2 | 3.7 | ↓ |
-| View Content | 7 | 7.0 | → |
+| Spend | EUR 95.93 | EUR 100.25 | -> |
+| Impressions | 7,292 | 9,466 | v |
+| Clicks (all) | 154 | 193.7 | v |
+| Link Clicks | 83 | 101.6 | v |
+| CTR | 2.11% | 2.05% | -> |
+| CPC | EUR 0.62 | EUR 0.52 | ^ |
+| LP Views | 63 | 77.9 | v |
+| Frequency | 1.53 | 1.92 (7d totaal) | OK |
+| Add to Cart | 2 | 3.7 | v |
+| View Content | 7 | 7.0 | -> |
 
-**Opvallend:** CPC stijgt (+19% vs 7d gem.), impressies dalen (-23%). Mogelijk begin van ad fatigue of algoritme-shift. Budget wordt niet volledig uitgeput (€95.93 van €100 daily budget).
+### Ad Variant Performance (Gisteren)
 
-### Ad Variant Performance
+| Ad (utm_content) | Spend | Imp | Link Clicks | CTR | CPC | LP Views | View Content | ATC |
+|-------------------|-------|-----|-------------|-----|-----|----------|-------------|-----|
+| H11, B3, CTA5 | EUR 63.51 | 4,903 | 55 | 2.04% | EUR 0.64 | 40 | 4 | 0 |
+| H13, B3, CTA5 | EUR 23.57 | 1,792 | 19 | 2.01% | EUR 0.65 | 14 | 2 | 0 |
+| H12, B3, CTA5 | EUR 8.85 | 597 | 9 | 3.02% | EUR 0.49 | 9 | 1 | 2 |
 
-| Ad (utm_content) | Spend | Impressions | Link Clicks | CTR | CPC | LP Views | LP Bounce | Avg Sessie |
-|-------------------|-------|-------------|-------------|-----|-----|----------|-----------|------------|
-| h11_b3_cta5 | €63.51 | 4,902 | 55 | 2.04% | €0.64 | 40 | 61.5% | 83s |
-| h13_b3_cta5 | €23.57 | 1,791 | 19 | 2.01% | €0.65 | 14 | 70.4% | 288s |
-| h12_b3_cta5 | €8.85 | 597 | 9 | 3.02% | €0.49 | 9 | 40.0% | 63s |
+### Ad Variant Performance (7d Totaal)
 
-**Beste variant:** H12 (h12_b3_cta5). Hoogste CTR (3.02%), enige variant onder CPC target (€0.49), en veruit de laagste bounce rate (40%). Dit is de best converterende ad, maar krijgt slechts 9.2% van het dagbudget.
+| Ad (utm_content) | Spend | Link Clicks | LP Views | Cost/LP View | View Content | ATC | Purchases |
+|-------------------|-------|-------------|----------|-------------|-------------|-----|-----------|
+| H11, B3, CTA5 | EUR 266.80 | 213 | 165 | EUR 1.62 | 22 | 13 | 0 |
+| H13, B3, CTA5 | EUR 142.66 | 138 | 117 | EUR 1.22 | 13 | 6 | 2 |
+| H12, B3, CTA5 (Kopie 2) | EUR 102.81 | 121 | 98 | EUR 1.05 | 8 | 4 | 0 |
+| H14, B3, CTA5 | EUR 122.96 | 158 | 108 | EUR 1.14 | 3 | 0 | 0 |
+| H15, B3, CTA5 (Kopie 4) | EUR 49.83 | 57 | 36 | EUR 1.38 | 2 | 1 | 0 |
+| H12, B3, CTA5 (origineel) | EUR 14.37 | 20 | 18 | EUR 0.80 | 1 | 2 | 0 |
+| H15, B3, CTA5 (origineel) | EUR 2.32 | 4 | 3 | EUR 0.77 | 0 | 0 | 0 |
 
-**Slechtste variant:** H13 (h13_b3_cta5). Bounce rate van 70.4% is een rode vlag. Bezoekers klikken maar verlaten de pagina meteen. De hoge gemiddelde sessieduur (288s) wordt veroorzaakt door een paar lange sessies, terwijl 70% direct afhaakt. Sterke ad-pagina mismatch.
+**Beste variant gisteren:** H12, B3, CTA5. Hoogste CTR (3.02%), laagste CPC (EUR 0.49), en als enige 2 add-to-carts. Krijgt echter slechts 9% van het budget.
 
-### Ad Set Performance
+**Slechtste variant gisteren:** H13, B3, CTA5. Laagste CTR (2.01%), hoogste CPC (EUR 0.65), geen conversies.
 
-| Ad Set | Spend | CPC | CTR | Frequency |
-|--------|-------|-----|-----|-----------|
-| BATCH 2: Expertise & POC - Kopie 1 (H11) | €63.51 | €0.64 | 2.04% | 1.33 |
-| BATCH 2: Expertise & POC - Kopie 3 (H13) | €23.57 | €0.65 | 2.01% | 1.27 |
-| BATCH 2: Expertise & POC - Kopie 2 (H12) | €8.85 | €0.49 | 3.02% | 1.64 |
+**7d winnaar op conversie:** H13 heeft 2 purchases (enige variant met purchases), maar H11 leidt in add-to-carts (13) en initiate checkouts (13).
 
----
-
-## 3. Landing Page Health
+## 3. Landing Page Health (PostHog)
 
 | Metric | Gisteren | 7d Gemiddelde | Target | Status |
 |--------|----------|---------------|--------|--------|
-| Bounce Rate | 60.0% | 56.2% | <55% | 🔴 |
-| Avg Session Duration | 129s | 90s | >90s | 🟢 |
-| Scroll ≥25% | 44.8% | 41.3% | >80% | 🔴 |
-| Scroll ≥50% | 41.4% | 37.0% | >60% | 🔴 |
-| Scroll ≥75% | 34.5% | 30.4% | >40% | 🟡 |
-| Scroll ≥100% | 24.1% | 18.8% | >20% | 🟢 |
-| CTA Click Rate | ~15% | ~21% | >4% | 🟢 |
-| /booking Visits | 10 uniek | 14.7/dag | meten | → |
+| Pageviews | 134 | 175.7/dag | n.v.t. | v |
+| Unique Visitors | 100 | 119.1/dag | n.v.t. | v |
+| Sessions | 104 | 130.4/dag | n.v.t. | v |
+| Bounce Rate | 82.7% | 81.9% | <55% | ROOD |
+| CTA Click Rate | 16.3% | 11.1% | >4% | GROEN |
+| /booking Bezoeken | 13 | 20.9/dag | n.v.t. | v |
+| Avg Session Duration | n.b. | n.b. | >90s | ? |
+| Scroll Depth | n.b. | n.b. | >60% | ? |
 
-**Pageviews:** 134 (100 unieke bezoekers) vs. 7d gem. 176/dag (-24%)
-**CTA Clicks gisteren:** Explore Options (5), booking link (5), Go to workshop (4), Book This Date! (2), Add to Cart (1)
+### UTM Segmentatie (Gisteren, PostHog)
 
-**Let op:** "Book Now" button komt niet voor in de data van gisteren maar was de #1 CTA in de 7d data (76 clicks). Mogelijk is de buttontekst aangepast of is deze verplaatst.
+| UTM Content | Pageviews | Sessions | Unieke Bezoekers | Pag/Sessie |
+|-------------|-----------|----------|-------------------|------------|
+| h11_b3_cta5 | 76 | 62 | 61 | 1.23 |
+| h13_b3_cta5 | 33 | 26 | 25 | 1.27 |
+| h12_b3_cta5 | 11 | 8 | 7 | 1.38 |
+| bio_link | 8 | 6 | 6 | 1.33 |
+| (direct/geen UTM) | 6 | 4 | 4 | 1.50 |
 
----
+### CTA Click Breakdown (Gisteren)
+
+| Knooptekst | Clicks |
+|------------|--------|
+| Explore Options | 5 |
+| booking link | 5 |
+| Go to workshop | 4 |
+| Book This Date! | 2 |
+| Add to Cart | 1 |
+| FAQ items | 6 |
+| Overig/null | 31 |
 
 ## 4. Funnel Drop-off
 
 ```
-Pageview (100 uniek) ──── 100%
-       │
-       │  ▼ 59% verliest
-       │
-Scroll 50%+ (~41)  ──── 41%
-       │
-       │  ▼ 63% verliest
-       │
-CTA Click (~15)    ──── 15%
-       │
-       │  ▼ 33% verliest
-       │
-/booking (10)      ──── 10%
+LP Pageview (104 sessions, 100%)
+    |
+    v  83.7% verliest
+CTA Click (17 clicks, 16.3%)
+    |
+    v  23.5% verliest
+/booking Pageview (13 bezoeken, 12.5%)
+    |
+    v  76.9% verliest
+Booking Action (3 acties, 2.9%)
 ```
 
-**Grootste lek:** Scroll depth. 59% van de bezoekers scrollt niet voorbij de helft van de pagina. De hero sectie en eerste content blokken slagen er niet in om bezoekers vast te houden. Van de 100 unieke bezoekers haken er ~59 af voordat ze de kernboodschap bereiken.
+**Grootste lek:** LP Pageview naar CTA Click. 83.7% van de bezoekers verlaat de pagina zonder interactie. Dit komt overeen met de 82.7% bounce rate. De hero sectie en eerste zichtbare content slagen er niet in om bezoekers vast te houden.
 
-**Secundair lek:** CTA Click naar /booking conversie (63% drop-off). Bezoekers die wel scrollen en CTA's zien, klikken er niet altijd op, of de CTA's staan te laag op de pagina.
+## 5. Cross-Reference Analyse
 
----
+### Ad CTR vs LP Bounce
+- H11: CTR 2.04% + hoge LP traffic (62 sessions) maar bounce rate structureel hoog (82.7% gemiddeld)
+- Conclusie: de ads trekken klikkers, maar de landing page matcht niet met de verwachting die de ad wekt
 
-## 5. Rode Vlaggen 🚩
+### Ad CPC vs LP Conversie
+- H12 heeft de laagste CPC (EUR 0.49) EN de hoogste pagina's/sessie (1.38). Dit wijst op betere audience-match.
+- H11 heeft de hoogste CPC (EUR 0.64) maar domineert 66% van het budget, waardoor het totale CPC omhoog wordt getrokken.
 
-### 1. CPC €0.62 -- 24% boven target
-- **Probleem:** CPC is €0.12 boven de €0.50 target en 19% hoger dan het 7-daags gemiddelde (€0.52)
-- **Oorzaak:** Mogelijk dalende relevance score, toenemende concurrentie, of te hoge frequentie op een kleiner audience segment
-- **Urgentie:** Hoog
+### Volume vs Engagement
+- Ondanks dalend volume (impressions -23%) is de CTA click rate gestegen naar 16.3% (vs 11.1% 7d avg). Minder, maar kwalitatief betere bezoekers? Of toeval door lage aantallen.
 
-### 2. H13 Bounce Rate 70.4% -- Ad-pagina mismatch
-- **Probleem:** 7 van de 10 bezoekers via H13 verlaten de pagina direct
-- **Oorzaak:** De hook van H13 creëert een verwachting die de landing page niet meteen waarmaakt
-- **Urgentie:** Hoog
+### Frequency vs Bounce
+- Frequency gisteren (1.53) is lager dan 7d totaal (1.92). Geen direct ad fatigue signaal.
 
-### 3. Scroll Depth ≥25% slechts 44.8% -- Hero sectie faalt
-- **Probleem:** Meer dan de helft van alle bezoekers scrollt niet voorbij het eerste kwart van de pagina
-- **Oorzaak:** Hero sectie is niet overtuigend genoeg, of er is een disconnect tussen ad belofte en pagina-opening
-- **Urgentie:** Hoog
+## 6. Rode Vlaggen
 
-### 4. Bounce Rate 60% -- Boven 55% target
-- **Probleem:** 66 van 110 sessies waren bounces, 6.8% stijging vs. 7d gemiddelde
-- **Oorzaak:** Samenhangende factor met lage scroll depth en H13 mismatch
-- **Urgentie:** Medium
+1. **KRITIEK: Bounce Rate 82.7%** (target <55%, al 7 dagen boven 80%). De landing page verliest meer dan 4 op 5 bezoekers direct. Dit is het grootste probleem in de hele funnel.
 
-### 5. Impressies -23% vs 7d gemiddelde
-- **Probleem:** Delivery daalt, budget wordt niet volledig uitgeput
-- **Oorzaak:** Meta algoritme schaalt terug, mogelijk door lagere engagement of kwaliteitsscore
-- **Urgentie:** Medium
+2. **CPC EUR 0.62 > EUR 0.50 target.** Stijging van 19.2% vs 7d gemiddelde. Bijna op het 20% alarm-niveau. H11 en H13 zijn de duurste varianten.
 
----
+3. **Volume daalt:** Impressions -23%, clicks -21% vs 7d gemiddelde. Minder bereik = minder kansen.
 
-## 6. Cross-Reference Analyse
+4. **/booking bezoeken -38%:** Van 20.9/dag gemiddeld naar 13 gisteren. Minder mensen bereiken de boekingspagina.
 
-| Cross-Reference | H11 | H12 | H13 |
-|-----------------|-----|-----|-----|
-| Ad CTR | 2.04% | 3.02% | 2.01% |
-| LP Bounce Rate | 61.5% | 40.0% | 70.4% |
-| CTR vs Bounce Match | ⚠️ Mismatch | ✅ Match | ❌ Mismatch |
-| CPC vs Target | ❌ €0.64 | ✅ €0.49 | ❌ €0.65 |
-| Budget Allocatie | 66.2% | 9.2% | 24.6% |
-
-**Patroon:** H12 is verreweg de best presterende variant op ALLE metrics: hoogste CTR, laagste CPC, laagste bounce rate. Toch krijgt het de minste impressies. Meta's algoritme optimaliseert hier suboptimaal, waarschijnlijk door het kleine sample size.
-
-**H13 analyse:** Hoge CTR-to-bounce ratio (2.01% CTR maar 70.4% bounce) = klassieke ad-pagina mismatch. De hook trekt mensen aan die niet matchen met het aanbod, of de landing page beantwoordt de verwachting niet.
-
-**H11 analyse:** Grootste budgettrekker (66%) maar CPC (€0.64) en bounce rate (61.5%) zijn beide boven target. Redelijke CTR maar de on-page engagement is onvoldoende.
-
----
+5. **H11 domineert budget onnodig:** 66% van de spend gaat naar H11, terwijl H12 betere metrics heeft op CTR, CPC en conversie per euro.
 
 ## 7. Top 3 Acties voor Vandaag
 
-### 1. Herverdeel budget naar H12 (Escalatie: Geel -- Robin goedkeuring)
-- **Wat:** Verhoog de dagelijkse budgetcap van H12's ad set, of dupliceer H12 in een nieuwe ad set met hoger budget
-- **Waarom:** H12 scoort het best op alle metrics (CTR 3.02%, CPC €0.49, bounce 40%) maar krijgt slechts 9.2% van het budget
-- **Hoe:** Meta Ads Manager > Campaign > Ad Set "Kopie 2" > Budget verhogen naar minimaal €30/dag
-- **Verwachte impact:** Daling overall CPC richting target, lagere bounce rate, meer /booking visits
-- **Escalatie:** Geel (Robin goedkeuring vereist voor budgetwijziging)
+### 1. Landing page hero sectie herzien (URGENT)
+- **Wat:** Herwerk de above-the-fold content op startyourballoonbusiness.com. Meer specifieke waardepropositie, sterkere visuele hook, directe problem-identification.
+- **Waarom:** 82.7% bounce rate. Bezoekers beslissen binnen 3 seconden dat de pagina niet relevant is.
+- **Hoe:** Wix Editor. Test een variant met: specifiekere headline (niet generiek "start your balloon business" maar een concreet resultaat/probleem), social proof boven de vouw, en een duidelijke "wat krijg je" sectie.
+- **Verwachte impact:** Bounce rate naar <70% zou /booking bezoeken verdubbelen.
+- **Escalatie:** Oranje (Wix Editor)
 
-### 2. Overweeg H13 te pauzeren (Escalatie: Geel -- Robin goedkeuring)
-- **Wat:** Pauzeer H13 of verlaag het budget significant
-- **Waarom:** 70.4% bounce rate bij €23.57 spend = betalen voor traffic die direct afhaakt. Dit budget kan beter naar H12
-- **Hoe:** Meta Ads Manager > Ad Set "Kopie 3" > Status op Paused zetten
-- **Verwachte impact:** Besparing van ~€24/dag die naar betere variant kan, daling overall bounce rate
-- **Escalatie:** Geel (Robin goedkeuring vereist)
+### 2. Budget herverdelen: meer naar H12, minder naar H11
+- **Wat:** Verschuif minimaal 30% van H11's budget naar H12. H12 heeft de beste CTR (3.02%), laagste CPC (EUR 0.49), en meeste add-to-carts relatief aan spend.
+- **Waarom:** H11 pakt 66% van het budget met de hoogste CPC. H12 is 23% goedkoper per klik en converteert beter.
+- **Hoe:** Meta Ads Manager, ad set budgets aanpassen.
+- **Verwachte impact:** Gemiddelde CPC daling naar <EUR 0.55, meer conversies per euro.
+- **Escalatie:** Geel (Robin goedkeuring)
 
-### 3. Optimaliseer hero sectie landing page (Escalatie: Oranje -- Wix Editor)
-- **Wat:** Versterkt de above-the-fold content op startyourballoonbusiness.com. De hero moet direct de belofte uit de ads waarmaken
-- **Waarom:** 55% van bezoekers scrollt niet voorbij 25% van de pagina. De hero sectie overtuigt niet
-- **Hoe:** Wix Editor > Hero sectie aanpassen: sterkere headline die matcht met ad hooks, social proof (testimonial/badge) boven de fold, duidelijkere CTA hoger op de pagina
-- **Verwachte impact:** Daling bounce rate, stijging scroll depth en CTA clicks
-- **Escalatie:** Oranje (vereist handmatige edit in Wix)
-
----
-
-## Appendix: Ruwe Data
-
-### Meta Ads Campagne Totalen (7 dagen: 8-14 apr)
-- Totaal spend: €701.76
-- Totaal impressies: 66,259
-- Totaal link clicks: 711
-- Landing page views: 545
-- Add to cart: 26
-- Initiate checkout: 15
-- Purchases: 2
-- View content: 49
-
-### PostHog Sessie Data (7 dagen)
-- Totaal sessies: 1,015
-- Bounce sessies: 570 (56.2%)
-- Gem. sessie duur: 90.0s
-- /booking pageviews: 146 (103 uniek)
-
-### UTM Breakdown PostHog (gisteren)
-| utm_content | Pageviews | Unieke Bezoekers |
-|-------------|-----------|------------------|
-| h11_b3_cta5 | 76 | 61 |
-| h13_b3_cta5 | 33 | 25 |
-| h12_b3_cta5 | 11 | 7 |
-| bio_link | 8 | 6 |
+### 3. PostHog scroll depth en session recording tracking verbeteren
+- **Wat:** Zorg dat scroll depth events en session duration correct worden gelogd in PostHog.
+- **Waarom:** Scroll depth en session duration data is niet beschikbaar, waardoor we niet kunnen diagnosticeren WAAR op de pagina bezoekers afhaken.
+- **Hoe:** PostHog snippet configuratie checken, custom events voor scroll milestones toevoegen.
+- **Verwachte impact:** Betere diagnose, gerichtere LP optimalisaties.
+- **Escalatie:** Groen (technisch, zelfstandig uit te voeren)
 
 ---
 
-*Rapport gegenereerd op 15 april 2026 via Meta Ads MCP (Pipeboard) + PostHog MCP*
-*Data periode: 14 april 2026 (met 7-daags gemiddelde 8-14 april)*
+*Rapport gegenereerd: 15 april 2026*
+*Databronnen: Meta Ads MCP (Pipeboard), PostHog MCP*
+*Periode: 14 april 2026 (met 7d vergelijking 8-14 april)*
