@@ -186,6 +186,69 @@ OPTIMIZE=$(run_claude "/ads-auto-optimize" "$OPTIMIZE_PROMPT") || \
 printf '%s\n' "$OPTIMIZE" > "$OPTIMIZE_REPORT_FILE" 2>> "$LOG_FILE"
 echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in $OPTIMIZE_REPORT_FILE)" >> "$LOG_FILE" 2>&1
 
+# --- Stap 4/4: Purchase Sanity Check (HARDCODED — mag nooit worden overgeslagen) ---
+# Achtergrond: op 2026-04-15 rapporteerde /ads-report "2 purchases, EUR 42.773,50
+# revenue, ROAS 60,95x" — wat neerkomt op EUR 21.386 per purchase, ~50x de
+# werkelijke SYBB ticketprijs (EUR 350 ex / EUR 423,50 incl). De sanity check
+# zat alleen als instructie in het command en werd door de sub-claude
+# overgeslagen. Deze check draait nu in code en kan dus niet genegeerd worden.
+echo "[4/4] purchase sanity check..." >> "$LOG_FILE" 2>&1
+
+PURCHASE_PROMPT="Haal via de Meta Ads MCP (Pipeboard) voor campagne '2026: SYBB' de volgende twee getallen op over de afgelopen 30 dagen:
+1. purchase_value: totale waarde van alle purchase events (som van action_values waar action_type een purchase event is — 'purchase', 'omni_purchase', 'offsite_conversion.fb_pixel_purchase')
+2. purchase_count: totaal aantal purchase events (som van actions voor dezelfde action_types)
+
+Output UITSLUITEND een enkele regel valide JSON, niets anders. Geen prose, geen markdown, geen code fences, geen uitleg eromheen. Formaat exact:
+{\"purchase_value\": <float>, \"purchase_count\": <int>}
+
+Als er geen purchases zijn in de periode: {\"purchase_value\": 0, \"purchase_count\": 0}.
+
+${NO_GOOGLE_RULE}"
+
+PURCHASE_RAW=$(run_claude "purchase sanity fetch" "$PURCHASE_PROMPT") || PURCHASE_RAW=""
+PURCHASE_JSON=$(printf '%s\n' "$PURCHASE_RAW" | grep -oE '\{[^{}]*"purchase_value"[^{}]*\}' | tail -1)
+echo "[4/4] raw json: ${PURCHASE_JSON:-<leeg>}" >> "$LOG_FILE" 2>&1
+
+SANITY_VERDICT=$(/usr/bin/python3 -c '
+import json, sys
+
+raw = sys.argv[1] if len(sys.argv) > 1 else ""
+if not raw.strip():
+    print("NODATA|0.00|0|0.00")
+    sys.exit(0)
+
+try:
+    data = json.loads(raw)
+    pv = float(data.get("purchase_value", 0) or 0)
+    pc = int(float(data.get("purchase_count", 0) or 0))
+except Exception:
+    print("PARSE_ERROR|0.00|0|0.00")
+    sys.exit(0)
+
+if pc <= 0:
+    print(f"NO_PURCHASES|{pv:.2f}|{pc}|0.00")
+    sys.exit(0)
+
+per = pv / pc
+# Geldige per-purchase ranges: N tickets * [297, 488] (15% marge rond EUR 350-425).
+# Check tot N=20 zodat grote groepsboekingen ook geldig zijn.
+valid = any(297 * n <= per <= 488 * n for n in range(1, 21))
+verdict = "PASS" if valid else "FAIL"
+print(f"{verdict}|{pv:.2f}|{pc}|{per:.2f}")
+' "$PURCHASE_JSON")
+
+SANITY_STATUS=$(echo "$SANITY_VERDICT" | cut -d'|' -f1)
+SANITY_PV=$(echo "$SANITY_VERDICT" | cut -d'|' -f2)
+SANITY_PC=$(echo "$SANITY_VERDICT" | cut -d'|' -f3)
+SANITY_PER=$(echo "$SANITY_VERDICT" | cut -d'|' -f4)
+echo "[4/4] verdict: ${SANITY_VERDICT}" >> "$LOG_FILE" 2>&1
+
+PIXEL_DATAFOUT=0
+if [ "$SANITY_STATUS" = "FAIL" ]; then
+    PIXEL_DATAFOUT=1
+    echo "[4/4] 🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases" >> "$LOG_FILE" 2>&1
+fi
+
 # --- Combineer alle deelrapporten naar 1 markdown bestand ---
 {
     echo "# Morning Report — ${TODAY_ISO}"
@@ -211,6 +274,20 @@ echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in 
 } > "$FULL_REPORT_FILE" 2>> "$LOG_FILE"
 
 echo "[done] Gecombineerd rapport opgeslagen in $FULL_REPORT_FILE" >> "$LOG_FILE" 2>&1
+
+# --- Pixel Datafout rewrite (als sanity check faalde) ---
+# Draait VOOR push en iMessage zodat zowel GitHub als iMessage de
+# gecorrigeerde versie krijgen. Helper maskeert ROAS / purchase patterns
+# en plakt een duidelijk waarschuwingsblok bovenaan het rapport.
+if [ "$PIXEL_DATAFOUT" -eq 1 ]; then
+    /usr/bin/python3 "${WORKDIR}/scripts/pixel-datafout-rewrite.py" \
+        "$FULL_REPORT_FILE" \
+        "$SANITY_PV" \
+        "$SANITY_PC" \
+        "$SANITY_PER" \
+        >> "$LOG_FILE" 2>&1 || \
+        echo "[pixel-datafout] rewrite helper faalde — rapport blijft ongewijzigd" >> "$LOG_FILE" 2>&1
+fi
 
 # --- Push naar GitHub zodat de iMessage link direct werkt ---
 echo "[push] Commit + push reports naar main..." >> "$LOG_FILE" 2>&1
@@ -259,14 +336,26 @@ fi
 # Dump de volledige rapport-inhoud in de iMessage (Robin update het HTML
 # dashboard zelf op basis hiervan). Markdown table-separator rijen ("|---|---|")
 # worden eruit gefilterd want die zijn onleesbaar op een telefoonscherm;
-# normale tabelrijen blijven staan.
+# normale tabelrijen blijven staan. De rewrite-stap heeft hierboven al
+# eventuele pixel-datafout warning in FULL_REPORT_FILE geplakt, dus die
+# reist automatisch mee in REPORT_BODY.
 REPORT_BODY=$(sed -E '/^[[:space:]]*\|[-: |]+\|[[:space:]]*$/d' "$FULL_REPORT_FILE" 2>/dev/null)
 
 if [ -z "$REPORT_BODY" ]; then
     REPORT_BODY="(Rapport-inhoud niet beschikbaar — zie log ${LOG_FILE})"
 fi
 
-IMESSAGE_BODY="📊 Morning Report ${TODAY_ISO}
+# Explicit pixel-datafout prefix bovenaan de iMessage, zodat je de
+# waarschuwing ziet voordat je hoeft te scrollen (naast het warning blok
+# dat via REPORT_BODY meekomt).
+PIXEL_PREFIX=""
+if [ "$PIXEL_DATAFOUT" -eq 1 ]; then
+    PIXEL_PREFIX="🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases past niet bij ticketprijs EUR 350-425. Purchase aantal en ROAS zijn NIET betrouwbaar. Verifieer in Wix.
+━━━━━━━━━━━━━━━━━━━━━
+"
+fi
+
+IMESSAGE_BODY="${PIXEL_PREFIX}📊 Morning Report ${TODAY_ISO}
 ${STATUS_LINE} — Bronnen: Meta Ads + PostHog
 
 ${REPORT_BODY}
