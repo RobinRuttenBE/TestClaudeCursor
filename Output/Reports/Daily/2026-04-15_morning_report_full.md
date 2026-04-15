@@ -5,85 +5,70 @@ Failures: 0
 
 ---
 
-Rapport is klaar en gepusht. Hier is de samenvatting:
+Rapport opgeslagen. Hier is de samenvatting:
 
 ## Meta Ads Rapport -- 15 april 2026
 
-### Campagne: 2026: SYBB (laatste 30 dagen)
+### Campagne: 2026: SYBB (ACTIVE)
+| Spend | Impressions | Clicks | CTR | CPC | Purchases | Revenue | ROAS |
+|-------|------------|--------|-----|-----|-----------|---------|------|
+| EUR 701,76 | 66.259 | 1.356 | 2,0% | EUR 0,52 | 2 | EUR 42.773,50 | 60,95x |
 
-| Metric | Waarde |
-|--------|--------|
-| Spend | EUR 701,74 |
-| Impressions | 66.257 |
-| Reach | 34.460 |
-| CTR | 2,0% |
-| CPC | EUR 0,52 |
-| Purchases | 2 (EUR 42.773,50) |
-| ROAS | 60,95x |
+### Top ads (op spend)
+| Ad | Spend | CTR | CPC | Purch. | Flag |
+|----|-------|-----|-----|--------|------|
+| H11 (Kopie 1) | EUR 266,80 | 2,0% | **EUR 0,66** | 0 | CPC boven drempel |
+| H13 (Kopie 3) | EUR 142,66 | 1,9% | EUR 0,61 | **2** | **ROAS 299,8x** |
+| H14 (BATCH 2) | EUR 122,96 | 1,8% | EUR 0,41 | 0 | Gepauzeerd |
+| H12 (Kopie 2) | EUR 102,81 | 2,3% | EUR 0,40 | 0 | Beste CTR+CPC |
+| H15 (Kopie 4) | EUR 49,83 | 2,3% | EUR 0,47 | 0 | Gepauzeerd |
 
-### Actieve ads (3 van 21)
+### PostHog Cross-Reference
+Alle bounce rates boven 55% target (59,8% tot 67,5%). Sessieduur is goed (1m42s tot 3m34s, allemaal boven 90s target). Grootste funnel lek: LP View naar View Content (91% drop-off).
 
-| Ad | CPC | CTR | Purchases | Flag |
-|----|-----|-----|-----------|------|
-| **H12,B3,CTA5** | EUR 0,40 | 2,3% | 0 | Beste CPC |
-| **H13,B3,CTA5** | EUR 0,61 | 1,9% | 2 (299,8x ROAS) | CPC boven drempel |
-| **H11, B3, CTA5** | EUR 0,66 | 1,9% | 0 | CPC boven drempel, hoogste spend |
+### Top 5 Aanbevelingen
+1. **70% budget naar H13** (enige converter, ROAS 299,8x)
+2. **Pauzeer of halveer H11** (EUR 266,80 spend, 0 purchases)
+3. **Fix landing page bounce rate** (alle varianten boven 55% target)
+4. **H12 als 20% variatie** (beste CPC EUR 0,40 + CTR 2,3%)
+5. **Debug checkout funnel** (87% drop-off van IC naar purchase)
 
-### Key takeaways
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-15_ads_report.md`
 
-1. **H11 is de bottleneck:** 52% van actieve spend, 13 ATC + 13 IC maar 0 purchases. Checkout drop-off onderzoeken.
-2. **H12 is de efficiëntste:** laagste CPC, hoogste CTR. Draait pas sinds 9 april, meer tijd nodig.
-3. **H13 is de revenue driver:** enige ad met purchases (ROAS 299,8x).
-4. **Frequency (1,92) is gezond:** geen creative fatigue risico.
-
-Rapport opgeslagen in `Output/Reports/Daily/2026-04-15_ads_report.md`.
-
-> **Wil je funnel data toevoegen?** Geef dan de landing page metrics uit PostHog of GA4. Ik heb nodig: landing page visitors, bounce rate, scroll depth, CTA clicks, /booking visits. Dan draai ik automatisch een `/funnel-diagnose` analyse.
+> **Wil je funnel data toevoegen?** Ik kan een `/funnel-diagnose` draaien met de Meta + PostHog data die ik al heb. Of geef aanvullende Wix/GA4 metrics voor een complete analyse.
 
 ---
 
-SYBB Daily Report 14 april staat klaar in `Output/Reports/Daily/2026-04-14_sybb_report.md`. Gecommit en gepusht.
+Rapport opgeslagen en gepusht. Hier de samenvatting:
 
-**Belangrijkste bevindingen:**
+**SYBB Daily Report 14 april 2026 -- Kernpunten:**
 
-| Metric | Gisteren | 7d Avg | Signaal |
-|---|---|---|---|
-| Spend | €95,91 | €100,25 | Stabiel |
-| CPC | €0,63 | €0,52 | 🚩 +21%, boven target |
-| CTR | 2,09% | 2,04% | Stabiel |
-| Purchases | 0 | 0,3/dag | 2e dag op rij 0 |
+**Meta Ads:** Spend €95.93, CPC €0.62 (24% boven target), CTR 2.11%. Impressies -23% vs 7d gem. 3 ads actief: H11 (66% budget, matig), H13 (70.4% bounce, slecht), H12 (beste op alle metrics maar slechts 9% budget).
 
-**3 urgente acties:**
-1. **Budget shift H11 → H12** -- H11 verbrandt 66% van spend met slechtste metrics. H12 (9% budget) heeft beste CTR (2,85%) en enige add-to-carts.
-2. **Checkout flow testen** -- 2 dagen 0 purchases, 0 initiated checkouts gisteren ondanks 2 ATC events. Mogelijke technische blokkade.
-3. **PostHog MCP herstellen** -- PostHog MCP was niet verbonden in deze sessie. Landing page health data (bounce rate, scroll depth, CTA clicks) ontbreekt volledig. Herstart sessie om cross-referencing te herstellen.
+**Landing Page (PostHog):** 134 pageviews, 100 unieke bezoekers. Bounce rate 60% (boven 55% target). Scroll depth zorgwekkend: slechts 44.8% scrollt voorbij 25%. CTA click rate ~15% (boven target). 10 unieke /booking bezoekers.
+
+**Rode vlaggen:** CPC boven target, H13 bounce 70.4% (ad-pagina mismatch), scroll depth ≥25% slechts 44.8%, bounce rate boven target.
+
+**Top 3 acties:**
+1. Herverdeel budget van H11 naar H12 (beste performer op alle metrics)
+2. Overweeg H13 te pauzeren (70.4% bounce = weggegooid geld)
+3. Optimaliseer hero sectie LP (55% scrollt niet voorbij 25%)
+
+Rapport: `Output/Reports/Daily/2026-04-14_sybb_report.md`
 
 ---
 
-## Auto-Optimize samenvatting, 15 april 2026
+Rapport opgeslagen, gecommit en gepusht.
 
-**Niveau 1 (uitgevoerd):** 0 ads gepauzeerd. Alle 3 actieve ads presteren boven de drempelwaarden.
+**Samenvatting:**
 
-**3 actieve ads status (last 3d):**
+- **0 ads gepauzeerd** - alle 3 actieve ads presteren boven de kill-drempels
+- **Vlakke performance** - nagenoeg identiek aan gisteren op alle metrics
+- **Grootste risico:** H11 CPC (link) €1,40 blijft op €0,10 van de kill-grens, terwijl het 62,4% van budget opslokt
+- **Opvallend:** H11 is de enige ad die checkouts/registraties genereert. H12 heeft na 124 lifetime link clicks nog steeds nul checkouts.
+- **PostHog:** CTA click tracking is kapot (0 events). LP engagement is goed (1,9 pagina's per meta-sessie).
 
-| Ad | Link CTR | CPC (link) | Spend % |
-|----|----------|-----------|---------|
-| H11 (Kopie 1) | 0,98% | €1,40 | 62,4% |
-| H12 (Kopie 2) | 1,19% | €1,16 | 12,2% |
-| H13 (Kopie 3) | 1,17% | €1,10 | 25,5% |
-
-**Waarschuwingen:**
-- H11 CPC (link) €1,40 nadert kill-grens (€1,50). Bij ~500 link clicks wordt regel scherp.
-- H11 slokt 62% van budget op terwijl H12/H13 efficiënter zijn op CPC en CPM.
-- Positief: H11 Link CTR verbeterd van 0,9% (gisteren) naar 0,98%. CPC gedaald van €1,45 naar €1,40.
-
-**Niveau 2 voorstellen (wachten op goedkeuring):**
-1. H11 CPC monitoring verscherpen
-2. Budget herverdeling via ad set spend limits (A: min €20/dag Kopie 2, B: max €50/dag Kopie 1)
-3. H12 funnel diagnose (0 checkouts/purchases op 123 lifetime link clicks)
-4. H13 ROAS anomalie verifiëren (€42.773,50 purchase)
-
-Rapport opgeslagen en gepusht. Geef aan welke voorstellen (1/2A/2B/3/4) je wil uitvoeren.
+**5 voorstellen wachten op goedkeuring:** verscherpte CPC-monitoring (1), budget herverdeling (2A/2B), H12 funnel-diagnose (3), PostHog CTA tracking fix (4), H13 ROAS verificatie (5). Welke wil je uitvoeren?
 
 ---
 
