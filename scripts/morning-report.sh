@@ -26,8 +26,8 @@
 set -uo pipefail
 
 # Harde wall-clock limiet per Claude stap. Voorkomt dat een hangende MCP call
-# (zoals op 2026-04-14, waar /ads-report 1.5 uur bleef plakken) de hele chain
-# blokkeert en iMessage nooit wordt verstuurd.
+# (zoals 2026-04-14 en 2026-04-15, waar /ads-report 1+ uur bleef plakken) de
+# hele chain blokkeert en iMessage nooit wordt verstuurd.
 CLAUDE_STEP_TIMEOUT_SEC=600
 
 # Paden
@@ -37,6 +37,21 @@ LOG_DIR="${WORKDIR}/logs"
 LOG_FILE="${LOG_DIR}/morning-report-$(date +%Y-%m-%d).log"
 TODAY_ISO=$(date +"%Y-%m-%d")
 YESTERDAY_ISO=$(date -v-1d +"%Y-%m-%d")
+
+# Idempotency marker — zodra dit bestand voor vandaag bestaat, slaan we de
+# volledige run over. Launchd mag het script dus elke paar minuten triggeren
+# (StartInterval + RunAtLoad) zonder dat we dubbele rapporten sturen.
+DONE_MARKER="${LOG_DIR}/morning-report-${TODAY_ISO}.done"
+
+# Vroeg filteren: niet draaien vóór 08:00 en niet nog een keer als vandaag al
+# klaar is. Laat het script stil exit'en zodat launchd logs niet vollopen.
+CURRENT_HOUR=$(date +%H)
+if [ -f "$DONE_MARKER" ]; then
+    exit 0
+fi
+if [ "$CURRENT_HOUR" -lt 8 ]; then
+    exit 0
+fi
 
 # Casing van REPORT_DIR matcht git's canonical pad (zie `git ls-files Output/Reports/Daily/`)
 REPORT_DIR="${WORKDIR}/Output/Reports/Daily"
