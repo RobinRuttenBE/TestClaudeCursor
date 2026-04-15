@@ -246,7 +246,9 @@
       "mcp__claude_ai_Gmail__create_draft",
       "Bash(/usr/bin/python3:*)",
       "Bash(kill 28921 28920 28919 28908)",
-      "Bash(launchctl unload:*)"
+      "Bash(launchctl unload:*)",
+      "Bash(kill 34863 34871 34872 34873 34874)",
+      "Bash(kill -9 35545 35688)"
     ]
   }
 }
