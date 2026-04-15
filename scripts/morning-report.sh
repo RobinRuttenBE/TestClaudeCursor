@@ -186,26 +186,39 @@ OPTIMIZE=$(run_claude "/ads-auto-optimize" "$OPTIMIZE_PROMPT") || \
 printf '%s\n' "$OPTIMIZE" > "$OPTIMIZE_REPORT_FILE" 2>> "$LOG_FILE"
 echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in $OPTIMIZE_REPORT_FILE)" >> "$LOG_FILE" 2>&1
 
-# --- Stap 4/4: Purchase Sanity Check (HARDCODED — mag nooit worden overgeslagen) ---
-# Achtergrond: op 2026-04-15 rapporteerde /ads-report "2 purchases, EUR 42.773,50
-# revenue, ROAS 60,95x" — wat neerkomt op EUR 21.386 per purchase, ~50x de
-# werkelijke SYBB ticketprijs (EUR 350 ex / EUR 423,50 incl). De sanity check
-# zat alleen als instructie in het command en werd door de sub-claude
-# overgeslagen. Deze check draait nu in code en kan dus niet genegeerd worden.
-echo "[4/4] purchase sanity check..." >> "$LOG_FILE" 2>&1
+# --- Stap 4/4: Purchase Sanity Check + Link Metrics (HARDCODED) ---
+# Deze stap haalt in één narrow JSON call alle campagne-totals op:
+# purchase_value/count + spend + impressions + link_clicks. De Python
+# evaluator berekent zelf de sanity verdict EN de link CTR / CPC (link),
+# en pixel-datafout-rewrite.py overschrijft daarna de kale "CTR" / "CPC"
+# cellen in het rapport met de correcte link-based waarden.
+#
+# Achtergrond:
+# - 2026-04-15: /ads-report meldde "ROAS 60,95x" terwijl pv/pc = EUR 21.386
+#   per purchase, ~50x de ticketprijs. Sanity check zat alleen als
+#   instructie — werd genegeerd door sub-claude.
+# - 2026-04-15 (tweede incident): rapport toonde "CTR 2,0% / CPC EUR 0,52"
+#   als kale Meta standaard (all clicks) ondanks dat het command expliciet
+#   `actions.link_click` voorschrijft. 4e keer dat deze regel werd
+#   overgeslagen door sub-claude. Dus nu: link metrics worden eveneens
+#   hardcoded berekend en het rapport wordt overschreven.
+echo "[4/4] sanity + link metrics fetch..." >> "$LOG_FILE" 2>&1
 
-PURCHASE_PROMPT="Haal via de Meta Ads MCP (Pipeboard) voor campagne '2026: SYBB' de volgende twee getallen op over de afgelopen 30 dagen:
+PURCHASE_PROMPT="Haal via de Meta Ads MCP (Pipeboard) voor campagne '2026: SYBB' de volgende vijf getallen op over de afgelopen 30 dagen:
 1. purchase_value: totale waarde van alle purchase events (som van action_values waar action_type een purchase event is — 'purchase', 'omni_purchase', 'offsite_conversion.fb_pixel_purchase')
 2. purchase_count: totaal aantal purchase events (som van actions voor dezelfde action_types)
+3. spend: totaal spend in EUR (het 'spend' veld op campaign level)
+4. impressions: totaal aantal impressions
+5. link_clicks: totaal aantal LINK clicks — KRITIEK: gebruik action_type 'link_click' uit de actions array, NIET het standaard 'clicks' veld (dat bevat alle clicks inclusief likes/reacties/profile clicks)
 
-Output UITSLUITEND een enkele regel valide JSON, niets anders. Geen prose, geen markdown, geen code fences, geen uitleg eromheen. Formaat exact:
-{\"purchase_value\": <float>, \"purchase_count\": <int>}
+Output UITSLUITEND één regel valide JSON, niets anders. Geen prose, geen markdown, geen code fences, geen uitleg eromheen. Exact formaat:
+{\"purchase_value\": <float>, \"purchase_count\": <int>, \"spend\": <float>, \"impressions\": <int>, \"link_clicks\": <int>}
 
-Als er geen purchases zijn in de periode: {\"purchase_value\": 0, \"purchase_count\": 0}.
+Als een metric niet beschikbaar is, gebruik 0. Als er geen data is: {\"purchase_value\": 0, \"purchase_count\": 0, \"spend\": 0, \"impressions\": 0, \"link_clicks\": 0}.
 
 ${NO_GOOGLE_RULE}"
 
-PURCHASE_RAW=$(run_claude "purchase sanity fetch" "$PURCHASE_PROMPT") || PURCHASE_RAW=""
+PURCHASE_RAW=$(run_claude "sanity + link metrics fetch" "$PURCHASE_PROMPT") || PURCHASE_RAW=""
 PURCHASE_JSON=$(printf '%s\n' "$PURCHASE_RAW" | grep -oE '\{[^{}]*"purchase_value"[^{}]*\}' | tail -1)
 echo "[4/4] raw json: ${PURCHASE_JSON:-<leeg>}" >> "$LOG_FILE" 2>&1
 
@@ -213,43 +226,60 @@ SANITY_VERDICT=$(/usr/bin/python3 -c '
 import json, sys
 
 raw = sys.argv[1] if len(sys.argv) > 1 else ""
-if not raw.strip():
-    print("NODATA|0.00|0|0.00")
+
+def fail(status):
+    print(f"{status}|0.00|0|0.00|0.00|0|0|0.00|0.00")
     sys.exit(0)
+
+if not raw.strip():
+    fail("NODATA")
 
 try:
-    data = json.loads(raw)
-    pv = float(data.get("purchase_value", 0) or 0)
-    pc = int(float(data.get("purchase_count", 0) or 0))
+    d = json.loads(raw)
+    pv = float(d.get("purchase_value", 0) or 0)
+    pc = int(float(d.get("purchase_count", 0) or 0))
+    spend = float(d.get("spend", 0) or 0)
+    impressions = int(float(d.get("impressions", 0) or 0))
+    link_clicks = int(float(d.get("link_clicks", 0) or 0))
 except Exception:
-    print("PARSE_ERROR|0.00|0|0.00")
-    sys.exit(0)
+    fail("PARSE_ERROR")
 
+# Link metrics — onafhankelijk van de purchase sanity check
+link_ctr = (link_clicks / impressions * 100) if impressions > 0 else 0.0
+link_cpc = (spend / link_clicks) if link_clicks > 0 else 0.0
+
+# Purchase sanity verdict
 if pc <= 0:
-    print(f"NO_PURCHASES|{pv:.2f}|{pc}|0.00")
-    sys.exit(0)
+    sanity = "NO_PURCHASES"
+    per = 0.0
+else:
+    per = pv / pc
+    # Geldige per-purchase ranges: N tickets * [297, 488] (15% marge rond
+    # EUR 350-425). Check tot N=20 zodat grote groepsboekingen ook valid zijn.
+    valid = any(297 * n <= per <= 488 * n for n in range(1, 21))
+    sanity = "PASS" if valid else "FAIL"
 
-per = pv / pc
-# Geldige per-purchase ranges: N tickets * [297, 488] (15% marge rond EUR 350-425).
-# Check tot N=20 zodat grote groepsboekingen ook geldig zijn.
-valid = any(297 * n <= per <= 488 * n for n in range(1, 21))
-verdict = "PASS" if valid else "FAIL"
-print(f"{verdict}|{pv:.2f}|{pc}|{per:.2f}")
+print(f"{sanity}|{pv:.2f}|{pc}|{per:.2f}|{spend:.2f}|{impressions}|{link_clicks}|{link_ctr:.2f}|{link_cpc:.2f}")
 ' "$PURCHASE_JSON")
 
 SANITY_STATUS=$(echo "$SANITY_VERDICT" | cut -d'|' -f1)
 SANITY_PV=$(echo "$SANITY_VERDICT" | cut -d'|' -f2)
 SANITY_PC=$(echo "$SANITY_VERDICT" | cut -d'|' -f3)
 SANITY_PER=$(echo "$SANITY_VERDICT" | cut -d'|' -f4)
+SANITY_SPEND=$(echo "$SANITY_VERDICT" | cut -d'|' -f5)
+SANITY_IMP=$(echo "$SANITY_VERDICT" | cut -d'|' -f6)
+SANITY_LC=$(echo "$SANITY_VERDICT" | cut -d'|' -f7)
+SANITY_LCTR=$(echo "$SANITY_VERDICT" | cut -d'|' -f8)
+SANITY_LCPC=$(echo "$SANITY_VERDICT" | cut -d'|' -f9)
 echo "[4/4] verdict: ${SANITY_VERDICT}" >> "$LOG_FILE" 2>&1
 
-# Mode bepaling — rewrite mode is mutually exclusive:
-#   "datafout"   = mismatch tussen purchase_value/count en ticketprijs
-#   "unverified" = we konden de purchase data niet ophalen of parsen
-#                  (fail-closed: beter een false warning dan een ROAS
-#                  die budget beslissingen beïnvloedt)
-#   ""           = check ok of er zijn 0 purchases, geen rewrite nodig
-REWRITE_MODE=""
+# Mode bepaling — de rewrite helper wordt ALTIJD aangeroepen zodat link
+# metrics altijd overschreven worden, maar de mode bepaalt of er ook een
+# sanity warning block wordt geplakt.
+#   "datafout"   = purchase_value/count past niet bij ticketprijs
+#   "unverified" = JSON fetch mislukt/niet parseerbaar (geen link data)
+#   "linkfix"    = purchase data OK of geen purchases, alleen link rewrite
+REWRITE_MODE="linkfix"
 case "$SANITY_STATUS" in
     FAIL)
         REWRITE_MODE="datafout"
@@ -266,6 +296,7 @@ case "$SANITY_STATUS" in
         echo "[4/4] ✅ geen purchases in periode — niets te verifiëren" >> "$LOG_FILE" 2>&1
         ;;
 esac
+echo "[4/4] link metrics: Link CTR ${SANITY_LCTR}% · CPC (link) EUR ${SANITY_LCPC} (spend=${SANITY_SPEND} imp=${SANITY_IMP} lc=${SANITY_LC})" >> "$LOG_FILE" 2>&1
 
 # --- Combineer alle deelrapporten naar 1 markdown bestand ---
 {
@@ -293,24 +324,29 @@ esac
 
 echo "[done] Gecombineerd rapport opgeslagen in $FULL_REPORT_FILE" >> "$LOG_FILE" 2>&1
 
-# --- Pixel Datafout / Unverified rewrite ---
-# Draait VOOR push en iMessage zodat zowel GitHub als iMessage de
-# gecorrigeerde versie krijgen. Helper maskeert ROAS / purchase patterns
-# en plakt een waarschuwingsblok bovenaan het rapport.
-#   mode=datafout   → hard mismatch (per-purchase valt buiten ticket range)
-#   mode=unverified → fail-closed: we konden de purchase data niet ophalen
-#                     of parsen; liever een false warning dan een foutieve
-#                     ROAS die budget beslissingen beïnvloedt.
-if [ -n "$REWRITE_MODE" ]; then
-    /usr/bin/python3 "${WORKDIR}/scripts/pixel-datafout-rewrite.py" \
-        "$REWRITE_MODE" \
-        "$FULL_REPORT_FILE" \
-        "$SANITY_PV" \
-        "$SANITY_PC" \
-        "$SANITY_PER" \
-        >> "$LOG_FILE" 2>&1 || \
-        echo "[pixel-rewrite] helper faalde — rapport blijft ongewijzigd" >> "$LOG_FILE" 2>&1
-fi
+# --- Rewrite: sanity warnings + link metrics ---
+# Draait ALTIJD (REWRITE_MODE is minimaal "linkfix"), vóór push en
+# iMessage. Helper doet twee dingen:
+#   1. Link metric rewrite: vervangt kale "CTR"/"CPC" in campagne-summary
+#      tabellen door de hardcoded link_ctr / link_cpc waarden en plakt een
+#      "LINK METRICS" block bovenaan. Dit gebeurt altijd als we link data
+#      hebben (mode != unverified en link_clicks > 0).
+#   2. Sanity warning: alleen bij datafout (hard mismatch) of unverified
+#      (fetch faalde) — plakt PIXEL DATAFOUT / NIET GEVERIFIEERD block +
+#      maskeert ROAS en purchase prose.
+/usr/bin/python3 "${WORKDIR}/scripts/pixel-datafout-rewrite.py" \
+    "$REWRITE_MODE" \
+    "$FULL_REPORT_FILE" \
+    "$SANITY_PV" \
+    "$SANITY_PC" \
+    "$SANITY_PER" \
+    "$SANITY_SPEND" \
+    "$SANITY_IMP" \
+    "$SANITY_LC" \
+    "$SANITY_LCTR" \
+    "$SANITY_LCPC" \
+    >> "$LOG_FILE" 2>&1 || \
+    echo "[pixel-rewrite] helper faalde — rapport blijft ongewijzigd" >> "$LOG_FILE" 2>&1
 
 # --- Push naar GitHub zodat de iMessage link direct werkt ---
 echo "[push] Commit + push reports naar main..." >> "$LOG_FILE" 2>&1
@@ -368,18 +404,24 @@ if [ -z "$REPORT_BODY" ]; then
     REPORT_BODY="(Rapport-inhoud niet beschikbaar — zie log ${LOG_FILE})"
 fi
 
-# Explicit warning prefix bovenaan de iMessage, zodat je de waarschuwing
+# Explicit warning prefix bovenaan de iMessage, zodat je belangrijke info
 # ziet voordat je hoeft te scrollen (naast het warning blok dat via
 # REPORT_BODY meekomt).
 PIXEL_PREFIX=""
 case "$REWRITE_MODE" in
     datafout)
         PIXEL_PREFIX="🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases past niet bij ticketprijs EUR 350-425. Purchase aantal en ROAS zijn NIET betrouwbaar. Verifieer in Wix.
+✅ Link CTR: ${SANITY_LCTR}% · CPC (link): EUR ${SANITY_LCPC}
 ━━━━━━━━━━━━━━━━━━━━━
 "
         ;;
     unverified)
-        PIXEL_PREFIX="⚠️ PURCHASE DATA NIET GEVERIFIEERD — sanity check kon geen purchase data ophalen. ROAS is gemaskeerd als n.v.t. Behandel purchase cijfers als onbetrouwbaar. Verifieer in Wix.
+        PIXEL_PREFIX="⚠️ PURCHASE DATA NIET GEVERIFIEERD — sanity check kon geen purchase data ophalen. ROAS gemaskeerd. Link metrics ook niet beschikbaar. Behandel alles als onbetrouwbaar. Verifieer in Wix.
+━━━━━━━━━━━━━━━━━━━━━
+"
+        ;;
+    linkfix)
+        PIXEL_PREFIX="✅ Link CTR: ${SANITY_LCTR}% · CPC (link): EUR ${SANITY_LCPC} (hardcoded via Meta Ads MCP)
 ━━━━━━━━━━━━━━━━━━━━━
 "
         ;;
