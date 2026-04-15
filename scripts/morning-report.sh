@@ -243,11 +243,29 @@ SANITY_PC=$(echo "$SANITY_VERDICT" | cut -d'|' -f3)
 SANITY_PER=$(echo "$SANITY_VERDICT" | cut -d'|' -f4)
 echo "[4/4] verdict: ${SANITY_VERDICT}" >> "$LOG_FILE" 2>&1
 
-PIXEL_DATAFOUT=0
-if [ "$SANITY_STATUS" = "FAIL" ]; then
-    PIXEL_DATAFOUT=1
-    echo "[4/4] 🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases" >> "$LOG_FILE" 2>&1
-fi
+# Mode bepaling — rewrite mode is mutually exclusive:
+#   "datafout"   = mismatch tussen purchase_value/count en ticketprijs
+#   "unverified" = we konden de purchase data niet ophalen of parsen
+#                  (fail-closed: beter een false warning dan een ROAS
+#                  die budget beslissingen beïnvloedt)
+#   ""           = check ok of er zijn 0 purchases, geen rewrite nodig
+REWRITE_MODE=""
+case "$SANITY_STATUS" in
+    FAIL)
+        REWRITE_MODE="datafout"
+        echo "[4/4] 🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases" >> "$LOG_FILE" 2>&1
+        ;;
+    NODATA|PARSE_ERROR)
+        REWRITE_MODE="unverified"
+        echo "[4/4] ⚠️ purchase data niet verifieerbaar (${SANITY_STATUS}) — fail-closed, ROAS wordt gemaskeerd" >> "$LOG_FILE" 2>&1
+        ;;
+    PASS)
+        echo "[4/4] ✅ purchase sanity OK (EUR ${SANITY_PER}/purchase)" >> "$LOG_FILE" 2>&1
+        ;;
+    NO_PURCHASES)
+        echo "[4/4] ✅ geen purchases in periode — niets te verifiëren" >> "$LOG_FILE" 2>&1
+        ;;
+esac
 
 # --- Combineer alle deelrapporten naar 1 markdown bestand ---
 {
@@ -275,18 +293,23 @@ fi
 
 echo "[done] Gecombineerd rapport opgeslagen in $FULL_REPORT_FILE" >> "$LOG_FILE" 2>&1
 
-# --- Pixel Datafout rewrite (als sanity check faalde) ---
+# --- Pixel Datafout / Unverified rewrite ---
 # Draait VOOR push en iMessage zodat zowel GitHub als iMessage de
 # gecorrigeerde versie krijgen. Helper maskeert ROAS / purchase patterns
-# en plakt een duidelijk waarschuwingsblok bovenaan het rapport.
-if [ "$PIXEL_DATAFOUT" -eq 1 ]; then
+# en plakt een waarschuwingsblok bovenaan het rapport.
+#   mode=datafout   → hard mismatch (per-purchase valt buiten ticket range)
+#   mode=unverified → fail-closed: we konden de purchase data niet ophalen
+#                     of parsen; liever een false warning dan een foutieve
+#                     ROAS die budget beslissingen beïnvloedt.
+if [ -n "$REWRITE_MODE" ]; then
     /usr/bin/python3 "${WORKDIR}/scripts/pixel-datafout-rewrite.py" \
+        "$REWRITE_MODE" \
         "$FULL_REPORT_FILE" \
         "$SANITY_PV" \
         "$SANITY_PC" \
         "$SANITY_PER" \
         >> "$LOG_FILE" 2>&1 || \
-        echo "[pixel-datafout] rewrite helper faalde — rapport blijft ongewijzigd" >> "$LOG_FILE" 2>&1
+        echo "[pixel-rewrite] helper faalde — rapport blijft ongewijzigd" >> "$LOG_FILE" 2>&1
 fi
 
 # --- Push naar GitHub zodat de iMessage link direct werkt ---
@@ -345,15 +368,22 @@ if [ -z "$REPORT_BODY" ]; then
     REPORT_BODY="(Rapport-inhoud niet beschikbaar — zie log ${LOG_FILE})"
 fi
 
-# Explicit pixel-datafout prefix bovenaan de iMessage, zodat je de
-# waarschuwing ziet voordat je hoeft te scrollen (naast het warning blok
-# dat via REPORT_BODY meekomt).
+# Explicit warning prefix bovenaan de iMessage, zodat je de waarschuwing
+# ziet voordat je hoeft te scrollen (naast het warning blok dat via
+# REPORT_BODY meekomt).
 PIXEL_PREFIX=""
-if [ "$PIXEL_DATAFOUT" -eq 1 ]; then
-    PIXEL_PREFIX="🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases past niet bij ticketprijs EUR 350-425. Purchase aantal en ROAS zijn NIET betrouwbaar. Verifieer in Wix.
+case "$REWRITE_MODE" in
+    datafout)
+        PIXEL_PREFIX="🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases past niet bij ticketprijs EUR 350-425. Purchase aantal en ROAS zijn NIET betrouwbaar. Verifieer in Wix.
 ━━━━━━━━━━━━━━━━━━━━━
 "
-fi
+        ;;
+    unverified)
+        PIXEL_PREFIX="⚠️ PURCHASE DATA NIET GEVERIFIEERD — sanity check kon geen purchase data ophalen. ROAS is gemaskeerd als n.v.t. Behandel purchase cijfers als onbetrouwbaar. Verifieer in Wix.
+━━━━━━━━━━━━━━━━━━━━━
+"
+        ;;
+esac
 
 IMESSAGE_BODY="${PIXEL_PREFIX}📊 Morning Report ${TODAY_ISO}
 ${STATUS_LINE} — Bronnen: Meta Ads + PostHog

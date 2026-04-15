@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
 """
 pixel-datafout-rewrite.py — overschrijft het morning report wanneer de
-purchase sanity check faalt. Plakt een waarschuwingsblok bovenaan en
-maskeert alle ROAS- en purchase-patronen in de rest van het rapport.
+purchase sanity check iets anders dan PASS oplevert. Plakt een
+waarschuwingsblok bovenaan en maskeert ROAS-patronen in het rapport.
+
+Twee modes (mutually exclusive):
+  datafout   — Hard mismatch: per-purchase waarde past niet bij de SYBB
+               ticketprijs. Het aantal purchases in Meta klopt dus niet.
+  unverified — Fail-closed: we konden geen purchase data ophalen of
+               parsen uit de Meta Ads MCP. Liever een false warning dan
+               een foutieve ROAS die budget beslissingen beïnvloedt.
 
 Aangeroepen door scripts/morning-report.sh nadat de hardcoded sanity check
-een mismatch detecteert tussen Meta's purchase_value / purchase_count en de
-werkelijke SYBB ticketprijs. Deze rewrite mag niet worden overgeslagen:
-de sub-claudes die het rapport genereren hebben geen veto over deze stap.
+het verdict bepaalt. Deze rewrite mag niet worden overgeslagen: de
+sub-claudes die het rapport genereren hebben geen veto over deze stap.
 
 Usage:
-    pixel-datafout-rewrite.py <report_file> <purchase_value> <purchase_count> <per_purchase>
+    pixel-datafout-rewrite.py <mode> <report_file> <purchase_value> <purchase_count> <per_purchase>
+
+    mode = "datafout" | "unverified"
 """
 
 import re
@@ -18,7 +26,7 @@ import sys
 from pathlib import Path
 
 
-def build_warning_block(pv: str, pc: str, per: str) -> str:
+def build_datafout_warning(pv: str, pc: str, per: str) -> str:
     return (
         "> 🚨 **PIXEL DATAFOUT — Meta Purchase Tracking**\n"
         f"> Waarde per purchase: **EUR {per}** bij {pc} purchases "
@@ -28,24 +36,59 @@ def build_warning_block(pv: str, pc: str, per: str) -> str:
         "> Geldige ranges per purchase (15% marge): "
         "EUR 297-488 (1 ticket), EUR 595-977 (2 tickets), "
         "EUR 892-1465 (3 tickets), etc.\n"
-        "> Purchase aantal en ROAS in onderstaand rapport zijn "
-        "overschreven met `? (verifieer Wix)` en `n.v.t. (pixel datafout)`.\n"
+        "> ROAS is overschreven met `n.v.t. (pixel datafout)`. "
+        "Purchase aantal in prose als `? purchases (verifieer Wix)`.\n"
         "> **Verifieer het echte aantal purchases handmatig in Wix orders.**\n"
         "\n"
     )
 
 
-def mask_roas_and_purchases(text: str) -> str:
+def build_unverified_warning() -> str:
+    return (
+        "> ⚠️ **PURCHASE DATA KON NIET GEVERIFIEERD WORDEN**\n"
+        "> De hardcoded sanity check kon geen purchase_value / purchase_count "
+        "ophalen uit de Meta Ads MCP (NODATA of PARSE_ERROR).\n"
+        "> Dit rapport bevat mogelijk niet-gevalideerde purchase cijfers. "
+        "Behandel alle purchase getallen en ROAS als **onbetrouwbaar** "
+        "tot je ze handmatig in Wix hebt geverifieerd.\n"
+        "> ROAS is uit voorzorg overschreven met `n.v.t. (niet geverifieerd)`. "
+        "Purchase aantallen zijn niet geraakt — de tabellen tonen wat Meta "
+        "rapporteerde, maar die cijfers zijn niet gecheckt tegen de "
+        "ticketprijs (EUR 350 ex BTW / EUR 423,50 incl BTW).\n"
+        "> **Beter een false warning dan een foutieve ROAS die budget "
+        "beslissingen beïnvloedt.**\n"
+        "\n"
+    )
+
+
+def mask_roas_and_purchases(text: str, mode: str) -> str:
+    """Maskeer ROAS en (optioneel) purchase prose in de rapport tekst.
+
+    mode = "datafout"   → ROAS label "n.v.t. (pixel datafout)",
+                          purchase prose "? purchases (verifieer Wix)"
+    mode = "unverified" → ROAS label "n.v.t. (niet geverifieerd)",
+                          purchase prose blijft ongemoeid (we weten niet
+                          of de getallen fout zijn, we weten alleen dat ze
+                          niet geverifieerd konden worden — de warning
+                          bovenaan maakt dat duidelijk)
+    """
+    if mode == "datafout":
+        roas_label = "ROAS n.v.t. (pixel datafout)"
+        bare_label = "n.v.t. (pixel datafout)"
+    else:  # unverified
+        roas_label = "ROAS n.v.t. (niet geverifieerd)"
+        bare_label = "n.v.t. (niet geverifieerd)"
+
     # ROAS waarden: "60,95x", "299,8x", "ROAS 60.95x", "**ROAS 299,8x**"
     text = re.sub(
         r"\*{0,2}\s*ROAS\s*[:|]?\s*\*{0,2}\d+[.,]?\d*\s*x\*{0,2}",
-        "ROAS n.v.t. (pixel datafout)",
+        roas_label,
         text,
         flags=re.IGNORECASE,
     )
     text = re.sub(
         r"\*{0,2}\d+[.,]?\d*\s*x\s*ROAS\*{0,2}",
-        "ROAS n.v.t. (pixel datafout)",
+        roas_label,
         text,
         flags=re.IGNORECASE,
     )
@@ -54,31 +97,25 @@ def mask_roas_and_purchases(text: str) -> str:
     # digit(s), x).
     text = re.sub(
         r"(?<![A-Za-z])\d+[.,]\d+\s*x\b",
-        "n.v.t. (pixel datafout)",
-        text,
-    )
-    # "299,8x ROAS" / "60.95x ROAS" zonder de ROAS prefix
-    text = re.sub(
-        r"\b\d+[.,]\d+\s*x\b",
-        "n.v.t.",
+        bare_label,
         text,
     )
 
-    # Purchase waarden met expliciete EUR revenue: "2 (EUR 42.773,50)",
-    # "**2 (EUR 42.773,50)**", "| 2 | EUR 42.773,50 |"
-    text = re.sub(
-        r"\*{0,2}\d+\s*\(\s*EUR\s*[\d.]+,\d{2}\s*\)\*{0,2}",
-        "? (verifieer Wix)",
-        text,
-    )
-
-    # "N purchases" / "N purchase" in prose
-    text = re.sub(
-        r"\b\d+\s+purchases?\b",
-        "? purchases (verifieer Wix)",
-        text,
-        flags=re.IGNORECASE,
-    )
+    # Purchase prose alleen bij datafout — bij unverified laten we de
+    # getallen staan omdat we niet weten of ze fout zijn, we weten alleen
+    # dat we ze niet konden checken. De warning block zegt dat expliciet.
+    if mode == "datafout":
+        text = re.sub(
+            r"\*{0,2}\d+\s*\(\s*EUR\s*[\d.]+,\d{2}\s*\)\*{0,2}",
+            "? (verifieer Wix)",
+            text,
+        )
+        text = re.sub(
+            r"\b\d+\s+purchases?\b",
+            "? purchases (verifieer Wix)",
+            text,
+            flags=re.IGNORECASE,
+        )
 
     # Tabelrijen van het type "| Purchases | 2 | EUR ... |" kunnen niet
     # veilig met regex worden aangepast zonder ook header-rijen te breken
@@ -90,24 +127,38 @@ def mask_roas_and_purchases(text: str) -> str:
 
 
 def main() -> int:
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 6:
         print(
-            "usage: pixel-datafout-rewrite.py "
-            "<report_file> <purchase_value> <purchase_count> <per_purchase>",
+            "usage: pixel-datafout-rewrite.py <mode> "
+            "<report_file> <purchase_value> <purchase_count> <per_purchase>\n"
+            "  mode = datafout | unverified",
             file=sys.stderr,
         )
         return 2
 
-    path = Path(sys.argv[1])
-    pv, pc, per = sys.argv[2], sys.argv[3], sys.argv[4]
+    mode = sys.argv[1]
+    if mode not in ("datafout", "unverified"):
+        print(
+            f"[pixel-rewrite] onbekende mode: {mode!r} "
+            "(verwacht 'datafout' of 'unverified')",
+            file=sys.stderr,
+        )
+        return 2
+
+    path = Path(sys.argv[2])
+    pv, pc, per = sys.argv[3], sys.argv[4], sys.argv[5]
 
     if not path.exists():
-        print(f"[pixel-datafout-rewrite] {path} bestaat niet", file=sys.stderr)
+        print(f"[pixel-rewrite] {path} bestaat niet", file=sys.stderr)
         return 1
 
     original = path.read_text(encoding="utf-8")
-    masked = mask_roas_and_purchases(original)
-    warning = build_warning_block(pv, pc, per)
+    masked = mask_roas_and_purchases(original, mode)
+
+    if mode == "datafout":
+        warning = build_datafout_warning(pv, pc, per)
+    else:
+        warning = build_unverified_warning()
 
     lines = masked.split("\n", 1)
     if lines and lines[0].startswith("# "):
@@ -119,7 +170,7 @@ def main() -> int:
 
     path.write_text(new_text, encoding="utf-8")
     print(
-        f"[pixel-datafout-rewrite] {path} overschreven "
+        f"[pixel-rewrite] mode={mode} {path} overschreven "
         f"(pv=EUR {pv} pc={pc} per=EUR {per})",
         file=sys.stderr,
     )
