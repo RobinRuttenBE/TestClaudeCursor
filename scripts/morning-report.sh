@@ -60,6 +60,12 @@ SYBB_REPORT_FILE="${REPORT_DIR}/${YESTERDAY_ISO}_sybb_report.md"
 OPTIMIZE_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_auto_optimize.md"
 FULL_REPORT_FILE="${REPORT_DIR}/${TODAY_ISO}_morning_report_full.md"
 
+# Verified funnel data
+WIX_ORDERS_FILE="${WORKDIR}/data/wix-orders.json"
+POSTHOG_SESSIONS_FILE="${LOG_DIR}/morning-report-${TODAY_ISO}.posthog-sessions.json"
+VERIFIED_FUNNEL_SCRIPT="${WORKDIR}/scripts/verified-funnel.py"
+THIRTY_DAYS_AGO=$(date -v-30d +"%Y-%m-%d")
+
 # iMessage delivery
 IMESSAGE_RECIPIENT="+32468236146"
 IMESSAGE_HELPER="${WORKDIR}/scripts/send-imessage.py"
@@ -148,7 +154,7 @@ except subprocess.TimeoutExpired:
 }
 
 # --- Stap 1/3: /ads-report (Meta Ads only — geen Google Sheets) ---
-echo "[1/3] /ads-report uitvoeren..." >> "$LOG_FILE" 2>&1
+echo "[1/5] /ads-report uitvoeren..." >> "$LOG_FILE" 2>&1
 ADS_PROMPT="/ads-report
 
 ${NO_GOOGLE_RULE}
@@ -159,10 +165,10 @@ REPORT=$(run_claude "/ads-report" "$ADS_PROMPT") || \
     REPORT="Ads rapport niet beschikbaar. Campagnes staan momenteel op pauze."
 
 printf '%s\n' "$REPORT" > "$ADS_REPORT_FILE" 2>> "$LOG_FILE"
-echo "[1/3] klaar ($(echo "$REPORT" | wc -c | tr -d ' ') bytes, opgeslagen in $ADS_REPORT_FILE)" >> "$LOG_FILE" 2>&1
+echo "[1/5] klaar ($(echo "$REPORT" | wc -c | tr -d ' ') bytes, opgeslagen in $ADS_REPORT_FILE)" >> "$LOG_FILE" 2>&1
 
 # --- Stap 2/3: SYBB Daily Report (Meta + PostHog) ---
-echo "[2/3] SYBB daily report uitvoeren..." >> "$LOG_FILE" 2>&1
+echo "[2/5] SYBB daily report uitvoeren..." >> "$LOG_FILE" 2>&1
 SYBB_PROMPT="Genereer het dagelijkse SYBB rapport voor gisteren. Haal Meta Ads data op voor campagne \"2026: SYBB\" via de Meta Ads MCP. Haal PostHog data op voor startyourballoonbusiness.com via de PostHog MCP. Combineer beide databronnen en volg de rapportstructuur uit skills/daily-sybb-report/SKILL.md. Sla het rapport op in ${SYBB_REPORT_FILE}.
 
 ${NO_GOOGLE_RULE}"
@@ -170,10 +176,10 @@ ${NO_GOOGLE_RULE}"
 SYBB_REPORT=$(run_claude "SYBB daily report" "$SYBB_PROMPT") || \
     SYBB_REPORT="SYBB rapport niet beschikbaar."
 
-echo "[2/3] klaar ($(echo "$SYBB_REPORT" | wc -c | tr -d ' ') bytes, sub-Claude schrijft naar $SYBB_REPORT_FILE)" >> "$LOG_FILE" 2>&1
+echo "[2/5] klaar ($(echo "$SYBB_REPORT" | wc -c | tr -d ' ') bytes, sub-Claude schrijft naar $SYBB_REPORT_FILE)" >> "$LOG_FILE" 2>&1
 
 # --- Stap 3/3: /ads-auto-optimize (Meta only) ---
-echo "[3/3] /ads-auto-optimize uitvoeren..." >> "$LOG_FILE" 2>&1
+echo "[3/5] /ads-auto-optimize uitvoeren..." >> "$LOG_FILE" 2>&1
 OPTIMIZE_PROMPT="/ads-auto-optimize
 
 ${NO_GOOGLE_RULE}
@@ -184,7 +190,7 @@ OPTIMIZE=$(run_claude "/ads-auto-optimize" "$OPTIMIZE_PROMPT") || \
     OPTIMIZE="Auto-optimize niet beschikbaar. Geen actieve campagnes."
 
 printf '%s\n' "$OPTIMIZE" > "$OPTIMIZE_REPORT_FILE" 2>> "$LOG_FILE"
-echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in $OPTIMIZE_REPORT_FILE)" >> "$LOG_FILE" 2>&1
+echo "[3/5] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in $OPTIMIZE_REPORT_FILE)" >> "$LOG_FILE" 2>&1
 
 # --- Stap 4/4: Purchase Sanity Check + Link Metrics (HARDCODED) ---
 # Deze stap haalt in één narrow JSON call alle campagne-totals op:
@@ -202,7 +208,7 @@ echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in 
 #   `actions.link_click` voorschrijft. 4e keer dat deze regel werd
 #   overgeslagen door sub-claude. Dus nu: link metrics worden eveneens
 #   hardcoded berekend en het rapport wordt overschreven.
-echo "[4/4] sanity + link metrics fetch (campagne + per-ad + active days)..." >> "$LOG_FILE" 2>&1
+echo "[4/5] sanity + link metrics fetch (campagne + per-ad + active days)..." >> "$LOG_FILE" 2>&1
 
 PURCHASE_PROMPT="Haal via de Meta Ads MCP (Pipeboard) voor campagne '2026: SYBB' het volgende op over de afgelopen 30 dagen:
 
@@ -263,7 +269,7 @@ sys.stdout.write(best)
 ' > "$PURCHASE_DATA_FILE" 2>> "$LOG_FILE"
 
 PURCHASE_DATA_BYTES=$(wc -c < "$PURCHASE_DATA_FILE" | tr -d ' ')
-echo "[4/4] extracted JSON: ${PURCHASE_DATA_BYTES} bytes in ${PURCHASE_DATA_FILE}" >> "$LOG_FILE" 2>&1
+echo "[4/5] extracted JSON: ${PURCHASE_DATA_BYTES} bytes in ${PURCHASE_DATA_FILE}" >> "$LOG_FILE" 2>&1
 
 SANITY_VERDICT=$(/usr/bin/python3 -c '
 import json, sys
@@ -327,7 +333,7 @@ SANITY_LCTR=$(echo "$SANITY_VERDICT" | cut -d'|' -f8)
 SANITY_LCPC=$(echo "$SANITY_VERDICT" | cut -d'|' -f9)
 SANITY_ADAYS=$(echo "$SANITY_VERDICT" | cut -d'|' -f10)
 SANITY_AVG=$(echo "$SANITY_VERDICT" | cut -d'|' -f11)
-echo "[4/4] verdict: ${SANITY_VERDICT}" >> "$LOG_FILE" 2>&1
+echo "[4/5] verdict: ${SANITY_VERDICT}" >> "$LOG_FILE" 2>&1
 
 # Mode bepaling — de rewrite helper wordt ALTIJD aangeroepen zodat link
 # metrics altijd overschreven worden, maar de mode bepaalt of er ook een
@@ -339,21 +345,103 @@ REWRITE_MODE="linkfix"
 case "$SANITY_STATUS" in
     FAIL)
         REWRITE_MODE="datafout"
-        echo "[4/4] 🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases" >> "$LOG_FILE" 2>&1
+        echo "[4/5] 🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases" >> "$LOG_FILE" 2>&1
         ;;
     NODATA|PARSE_ERROR)
         REWRITE_MODE="unverified"
-        echo "[4/4] ⚠️ purchase data niet verifieerbaar (${SANITY_STATUS}) — fail-closed, ROAS wordt gemaskeerd" >> "$LOG_FILE" 2>&1
+        echo "[4/5] ⚠️ purchase data niet verifieerbaar (${SANITY_STATUS}) — fail-closed, ROAS wordt gemaskeerd" >> "$LOG_FILE" 2>&1
         ;;
     PASS)
-        echo "[4/4] ✅ purchase sanity OK (EUR ${SANITY_PER}/purchase)" >> "$LOG_FILE" 2>&1
+        echo "[4/5] ✅ purchase sanity OK (EUR ${SANITY_PER}/purchase)" >> "$LOG_FILE" 2>&1
         ;;
     NO_PURCHASES)
-        echo "[4/4] ✅ geen purchases in periode — niets te verifiëren" >> "$LOG_FILE" 2>&1
+        echo "[4/5] ✅ geen purchases in periode — niets te verifiëren" >> "$LOG_FILE" 2>&1
         ;;
 esac
-echo "[4/4] link metrics: Link CTR ${SANITY_LCTR}% · CPC (link) EUR ${SANITY_LCPC} (spend=${SANITY_SPEND} imp=${SANITY_IMP} lc=${SANITY_LC})" >> "$LOG_FILE" 2>&1
-echo "[4/4] daily spend: EUR ${SANITY_AVG} over ${SANITY_ADAYS} actieve dagen (van 30)" >> "$LOG_FILE" 2>&1
+echo "[4/5] link metrics: Link CTR ${SANITY_LCTR}% · CPC (link) EUR ${SANITY_LCPC} (spend=${SANITY_SPEND} imp=${SANITY_IMP} lc=${SANITY_LC})" >> "$LOG_FILE" 2>&1
+echo "[4/5] daily spend: EUR ${SANITY_AVG} over ${SANITY_ADAYS} actieve dagen (van 30)" >> "$LOG_FILE" 2>&1
+
+# --- Stap 5/5: PostHog /thank-you-page sessies met UTM data ---
+echo "[5/5] PostHog /thank-you sessies ophalen (${THIRTY_DAYS_AGO} t/m ${TODAY_ISO})..." >> "$LOG_FILE" 2>&1
+POSTHOG_TY_PROMPT="Voer de volgende HogQL query uit via de PostHog MCP (query-run met DataVisualizationNode + HogQLQuery) voor het project 'Default project' op startyourballoonbusiness.com.
+
+Query:
+SELECT
+  toDate(timestamp) AS visit_date,
+  toString(timestamp) AS visit_time,
+  e.\$session_id AS session_id,
+  properties.utm_content AS utm_content,
+  properties.utm_source AS utm_source,
+  properties.\$geoip_country_name AS country,
+  properties.\$device_type AS device
+FROM events e
+WHERE event = '\$pageview'
+  AND properties.\$current_url LIKE '%/thank-you%'
+  AND timestamp >= toDateTime('${THIRTY_DAYS_AGO} 00:00:00')
+  AND timestamp < toDateTime('${TODAY_ISO} 00:00:00')
+ORDER BY timestamp DESC
+
+Date range: date_from='${THIRTY_DAYS_AGO}', date_to='${TODAY_ISO}'.
+
+Als utm_content leeg is in het resultaat, doe een TWEEDE query per sessie om de utm_content op te halen van de eerste pageview in die sessie (de landing page met UTM parameters).
+
+Output UITSLUITEND valide JSON, geen prose, geen markdown, geen code fences. Formaat:
+{\"thank_you_sessions\": [{\"visit_date\": \"YYYY-MM-DD\", \"visit_time\": \"HH:MM:SS\", \"session_id\": \"...\", \"utm_content\": \"h11_b3_cta5\", \"utm_source\": \"meta\", \"country\": \"...\", \"device\": \"...\"}]}
+
+Als er geen resultaten zijn, output: {\"thank_you_sessions\": []}
+
+${NO_GOOGLE_RULE}"
+
+POSTHOG_TY_RAW=$(run_claude "PostHog /thank-you sessions" "$POSTHOG_TY_PROMPT") || POSTHOG_TY_RAW=""
+
+# Extract JSON
+printf '%s' "$POSTHOG_TY_RAW" | /usr/bin/python3 -c '
+import json, re, sys
+
+text = sys.stdin.read()
+best = ""
+for m in re.finditer(r"\{", text):
+    start = m.start()
+    depth = 0
+    for i in range(start, len(text)):
+        ch = text[i]
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                cand = text[start:i+1]
+                if "thank_you_sessions" in cand:
+                    try:
+                        json.loads(cand)
+                        if len(cand) > len(best):
+                            best = cand
+                    except Exception:
+                        pass
+                break
+sys.stdout.write(best)
+' > "$POSTHOG_SESSIONS_FILE" 2>> "$LOG_FILE"
+
+POSTHOG_SESSIONS_BYTES=$(wc -c < "$POSTHOG_SESSIONS_FILE" | tr -d ' ')
+echo "[5/5] extracted JSON: ${POSTHOG_SESSIONS_BYTES} bytes in ${POSTHOG_SESSIONS_FILE}" >> "$LOG_FILE" 2>&1
+
+# Tel /thank-you sessies
+TY_COUNT=$(/usr/bin/python3 -c '
+import json, sys
+from pathlib import Path
+path = Path(sys.argv[1])
+if not path.exists():
+    print(0); sys.exit(0)
+raw = path.read_text().strip()
+if not raw:
+    print(0); sys.exit(0)
+try:
+    d = json.loads(raw)
+    print(len(d.get("thank_you_sessions", [])))
+except Exception:
+    print(0)
+' "$POSTHOG_SESSIONS_FILE")
+echo "[5/5] /thank-you sessies gevonden: ${TY_COUNT}" >> "$LOG_FILE" 2>&1
 
 # --- Combineer alle deelrapporten naar 1 markdown bestand ---
 {
@@ -407,6 +495,18 @@ echo "[done] Gecombineerd rapport opgeslagen in $FULL_REPORT_FILE" >> "$LOG_FILE
     "$PURCHASE_DATA_FILE" \
     >> "$LOG_FILE" 2>&1 || \
     echo "[pixel-rewrite] helper faalde — rapport blijft ongewijzigd" >> "$LOG_FILE" 2>&1
+
+# --- Verified Funnel: cross-reference Meta + PostHog + Wix ---
+echo "[verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders..." >> "$LOG_FILE" 2>&1
+/usr/bin/python3 "$VERIFIED_FUNNEL_SCRIPT" \
+    "$FULL_REPORT_FILE" \
+    "$PURCHASE_DATA_FILE" \
+    "$POSTHOG_SESSIONS_FILE" \
+    "$WIX_ORDERS_FILE" \
+    "$THIRTY_DAYS_AGO" \
+    "$TODAY_ISO" \
+    >> "$LOG_FILE" 2>&1 || \
+    echo "[verified-funnel] helper faalde — sectie niet toegevoegd" >> "$LOG_FILE" 2>&1
 
 # --- Push naar GitHub zodat de iMessage link direct werkt ---
 echo "[push] Commit + push reports naar main..." >> "$LOG_FILE" 2>&1
