@@ -1,21 +1,19 @@
-Rapport opgeslagen, gecommit en gepusht.
+Auto-optimize run compleet. Rapport opgeslagen in `Output/Reports/Daily/2026-04-16_auto_optimize.md`.
 
----
+**Samenvatting:**
 
-## Resultaat Auto-Optimize 2026-04-16
+**Geen ads gepauzeerd.** Alle 3 actieve ads presteren boven de kill-drempels.
 
-**0 ads gepauzeerd** - alle 3 actieve ads presteren boven de kill-drempelwaarden.
+| Ad | Link CTR | CPC (link) | ROAS | Status |
+|----|----------|------------|------|--------|
+| H11, B3, CTA5 | 1,02% | EUR 1,33 | **7,23x** | Core winner (4 purchases) |
+| H12,B3,CTA5 | 1,30% | EUR 1,13 | 0,00x | Emerging (te weinig data) |
+| H13,B3,CTA5 | 1,16% | EUR 1,11 | 0,00x | Emerging (monitor) |
 
-### Highlights:
-- **ROAS campagne:** 4,74x (€1.473,50 omzet op €311,19 spend)
-- **H11** is de converter: 4 purchases, ROAS 7,23x, maar CPC (link) op €1,33 (nadert €1,50 grens)
-- **H12** heeft de beste Link CTR (1,30%) maar krijgt slechts 9,5% van het budget door CBO
-- **H13** stabiel, lifetime data toont opvallend hoge purchase value (€42.773,50) die verificatie nodig heeft
+**Aandachtspunten:**
+- H11 is verantwoordelijk voor 100% van de purchases. Geen backup converter.
+- H12 CPM nadert EUR 15 grens (EUR 14,74)
+- H13 heeft EUR 68,76 gespend zonder purchase. Bij EUR 150+ zonder conversie: heroverweeg.
+- Experimentele bucket (10%) is leeg. Variaties van winnende H11 hook aanbevolen.
 
-### 4 voorstellen ter goedkeuring:
-1. **H11 CPC (link) dagelijks monitoren** (zit op 89% van kill-grens)
-2. **H12 minimum budget €15/dag** geven voor eerlijke dataverzameling
-3. **2 experimentele ads toevoegen** (er draaien nu 0 experimental ads, zou 10% moeten zijn)
-4. **H13 purchase waarde verifi\u00ebren** in webshop backend (€42.773,50 voor 2 purchases lijkt abnormaal)
-
-**Wil je een of meer van deze voorstellen uitvoeren? Geef aan welke nummers.**
+**Wil je een of meer van de voorstellen uit het rapport uitvoeren?**
