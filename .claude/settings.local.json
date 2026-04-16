@@ -251,7 +251,11 @@
       "Bash(kill -9 35545 35688)",
       "Bash(sqlite3:*)",
       "Bash(bash -n scripts/morning-report.sh)",
-      "mcp__imessage__tool_send_message"
+      "mcp__imessage__tool_send_message",
+      "Bash(import shutil *)",
+      "mcp__claude_ai_Wix__SearchWixRESTDocumentation",
+      "mcp__claude_ai_Wix__ReadFullDocsArticle",
+      "mcp__claude_ai_Wix__CallWixSiteAPI"
     ]
   }
 }
