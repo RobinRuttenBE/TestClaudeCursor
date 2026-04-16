@@ -205,6 +205,15 @@ def mask_roas_and_purchases(text: str, mode: str) -> str:
             r"\b\d+\s+purchases?\b",
             "? purchases (verifieer Wix)", text, flags=re.IGNORECASE,
         )
+        # Mask tabelcellen: `| Purchases | 6 |` en `| Purchase Value | €44.247 |`
+        text = re.sub(
+            r"(\|\s*Purchases?\s*\|\s*)\d+(\s*\|)",
+            r"\1? (verifieer Wix)\2", text, flags=re.IGNORECASE,
+        )
+        text = re.sub(
+            r"(\|\s*Purchase Value\s*\|\s*)(?:€|EUR\s*)[\d.,]+(\s*\|)",
+            r"\1n.v.t. (pixel datafout)\2", text, flags=re.IGNORECASE,
+        )
 
     return text
 
