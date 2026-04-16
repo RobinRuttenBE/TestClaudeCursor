@@ -62,7 +62,33 @@ Combineer Meta Ads + PostHog data:
 - Detecteer winnaars: lage CPC + lage bounce + diepe scroll = beste ad-LP combinatie
 - Click → LP View drop-off percentage
 
-### 4. Rapport Opslaan
+### 4. Pixel Sanity Check + Link Metrics (hardcoded)
+Wordt automatisch uitgevoerd door `morning-report.sh` stap 4/6. Haalt campagne-totals op via Meta Ads MCP en berekent in Python:
+- Purchase sanity verdict (10% marge, max 5 tickets, max EUR 2340/purchase)
+- Link CTR en CPC (link) op basis van `actions.link_click`
+- Gemiddelde dagspend over actieve dagen (niet totaal/30)
+- `pixel-datafout-rewrite.py` overschrijft het rapport met hardcoded waarden
+
+### 5. Wix Orders ophalen via Wix MCP
+Wordt automatisch uitgevoerd door `morning-report.sh` stap 5/6. Haalt betaalde eCommerce orders op via de Wix MCP (`CallWixSiteAPI` naar `https://www.wixapis.com/ecom/v1/orders/search`).
+- Site ID: `476f7384-3ec8-4157-8440-73bef7409891`
+- Filter: `paymentStatus: PAID`
+- `fetch-wix-orders.py` parseert de response en mergt `manual_ad_attribution` uit `data/wix-orders.json` (voor orders zonder PostHog match)
+- Fallback: als Wix MCP faalt, gebruikt het `data/wix-orders.json`
+
+### 6. PostHog /thank-you sessies met UTM data
+Wordt automatisch uitgevoerd door `morning-report.sh` stap 6/6. HogQL query voor alle /thank-you-page pageviews in de 30-dag periode:
+- Per sessie: `visit_date`, `session_id`, `utm_content`, `utm_source`, `country`, `device`
+- Als `utm_content` leeg is op de /thank-you-page, wordt de UTM van de eerste landing pageview in die sessie opgehaald
+
+### 7. Verified Funnel (cross-reference alle bronnen)
+Wordt automatisch uitgevoerd door `scripts/verified-funnel.py` na stap 6. Cross-referencing:
+- **Meta ad → PostHog sessie**: match via `utm_content` (ad naam genormaliseerd naar lowercase, bijv. `H11, B3, CTA5` → `h11_b3_cta5`)
+- **PostHog sessie → Wix order**: match op datum (+/- 1 dag tolerantie)
+- **Manual attribution**: orders met `manual_ad_attribution` in `data/wix-orders.json` worden direct gekoppeld (prioriteit boven PostHog match)
+- **Discrepantie detectie**: vergelijkt Meta pixel `purchase_count` met Wix order count. Verdicts: PIXEL OVERSTELT / ONDERTELT / WAARDE MISMATCH / MATCH OK
+
+### 8. Rapport Opslaan
 Sla het rapport op in output/reports/daily/YYYY-MM-DD_sybb_report.md
 
 ## Output format
@@ -124,6 +150,27 @@ Check de status van elke ad via de Meta Ads MCP. Als een ad op `PAUSED` staat ma
 | InitiateCheckout | X | €X | ↑/↓/→ |
 | Purchase | X | €X | ↑/↓/→ |
 
+### 🔗 Verified Funnel per Ad (Meta + PostHog + Wix gekoppeld)
+| Ad | Spend | Link Clicks | PostHog Sessions | Meta IC | Wix Orders | Revenue | Cost per Sale | Verified ROAS |
+|---|---|---|---|---|---|---|---|---|
+[per ad: data uit Meta Ads MCP + PostHog /thank-you sessies + Wix orders]
+
+**Kolom uitleg:**
+- **PostHog Sessions**: sessies met `utm_content` = ad naam (lowercase, bijv. `h11_b3_cta5`)
+- **Meta IC**: InitiateCheckout events per ad (Meta pixel, gemarkeerd als "mogelijk opgeblazen door Conversions API")
+- **Wix Orders**: echte orders gematcht via PostHog /thank-you sessie OF `manual_ad_attribution` in `data/wix-orders.json`
+- **Revenue**: som van `amount_eur` van gekoppelde Wix orders
+- **Cost per Sale**: spend / Wix orders
+- **Verified ROAS**: Wix revenue / spend
+
+**Discrepantie flagging (verplicht):**
+Bij verschil Meta IC/Purchase count >> Wix Orders: toon blok:
+> **CROSS-REFERENCE: Meta Pixel vs Wix Orders**
+> Meta pixel: X purchases (EUR Y) -- Wix orders: Z orders (EUR W)
+> **Verdict: PIXEL OVERSTELT.** Gebruik Wix orders als bron van waarheid.
+
+**Bron:** `scripts/verified-funnel.py` genereert deze sectie automatisch. Als het script niet draait (bijv. bij handmatige command executie), genereer de tabel handmatig uit de beschikbare data.
+
 ### 🌐 Landing Page Health (PostHog)
 | Metric | Gisteren | Target | Status |
 |--------|----------|--------|--------|
@@ -152,8 +199,8 @@ Check de status van elke ad via de Meta Ads MCP. Als een ad op `PAUSED` staat ma
 •⁠  ⁠SYBB ticket = €350 ex BTW of €423,50 incl BTW. Meerdere tickets mogelijk.
 •⁠  ⁠Stap 1: Haal purchase_value en purchase_count op uit Meta Ads MCP.
 •⁠  ⁠Stap 2: Bereken waarde_per_purchase = purchase_value / purchase_count.
-•⁠  ⁠Stap 3: Check of waarde_per_purchase een veelvoud is van €350 tot €425 (met 15% marge).
-  Geldige waarden: €297-€488 (1 ticket), €595-€977 (2 tickets), €892-€1465 (3 tickets).
+•⁠  ⁠Stap 3: Check of waarde_per_purchase een veelvoud is van €350 tot €425 (met 10% marge, max 5 tickets).
+  Geldige waarden: €315-€468 (1 ticket), €630-€936 (2 tickets), €945-€1404 (3 tickets), €1260-€1872 (4), €1575-€2340 (5).
 •⁠  ⁠Stap 4: Als waarde_per_purchase NIET in een van deze ranges valt:
   - Toon: 'PIXEL DATAFOUT: [waarde_per_purchase] per purchase past niet bij ticketprijs.'
   - Toon purchase aantal als '? (verifieer Wix)' in ALLE tabellen
