@@ -43,11 +43,15 @@ Zoek in het transcript naar:
 
 ### Stap 3: Bepaal de verdeling (PACING)
 
-CRUCIAAL — de pacing van effects:
+CRUCIAAL — de pacing van effects (HARDE REGELS van Robin):
 
-- **Eerste 30-60 seconden**: veel energie. Lower thirds, intro overlay, meerdere effects dicht op elkaar. Dit is de hook — de kijker moet direct zien dat dit een professionele video is.
-- **Na de eerste minuut**: 1 effect per 30-60 seconden. Niet meer. Laat de video ademen.
-- **Laatste 30 seconden**: subscribe popup, social bar, end screen teaser.
+- **Eerste 60 seconden = HIGH-DENSITY HOOK ZONE**: 5-6 effects dicht op elkaar (±10s tussen elementen). Dit is de hook — de kijker moet direct zien dat dit een professionele video is. Meer energie dan normaal, meerdere types door elkaar.
+- **Na de eerste 60 seconden**: **1 effect per 30-60 seconden**. Niet meer, niet minder. Laat de video ademen. Dit is strikt — geen clusters.
+- **Laatste 30 seconden**: subscribe popup, social bar, end screen teaser in die volgorde.
+
+### LOWER THIRDS — NOOIT PLANNEN
+
+**Robin voegt lower thirds ALTIJD zelf toe.** Niet opnemen in het plan, niet bouwen, niet noemen in de asset lijst. Plan alleen content overlays (tips, quotes, lijsten, info-cards, intro/outro).
 
 ### Stap 3b: Overlay duur en grootte (BEWEZEN REGELS)
 
@@ -57,7 +61,16 @@ Deze regels komen uit goedgekeurde video's. **Volg ze altijd tenzij er een reden
 - **Tips/quotes:** 6-7 seconden
 - **Formules/lijsten met build-up:** max 12 seconden (incl. 2s hold na laatste element)
 - **Closing sequence (YT subscribe + social bar):** elk 5 seconden
-- **End screen:** start pas 5-7s voor einde video
+- **End screen:** standaard **5 seconden** (niet langer). Robin vindt 15-17s end screens te lang. Fade erin direct na het laatste video segment, geen dead space ertussen.
+
+### Stap 3c: Multi-segment timeline regels
+
+Bij long-form edits waar meerdere video bestanden achter elkaar worden geplakt (bijv. Denise Twisting Compilation met 7 segmenten):
+
+- **METEN is verplicht.** Gebruik `@remotion/media-parser` → `parseMedia({ fields: { slowDurationInSeconds: true } })` om de *exacte* frame count van elk bestand te bepalen voordat je segment timings invult. Nooit uitgaan van ruwe schattingen uit het transcript — dat creëert dode ruimte tussen segmenten waar de laatste frame bevriest.
+- **Segmenten moeten overlappen met CROSS_FADE (~8f).** Elke volgende Sequence begint 8 frames vóór het einde van de vorige, zodat cross-fades met beide video's tegelijk gebeuren. Zonder overlap zie je de dark-purple achtergrond tussen clips.
+- **Step overlay bij elke segment transition.** Grote "PART X →" badge (geel, dark-purple border) bovenaan het scherm, ~60 frames duration, begint ~20f vóór de start van het nieuwe segment. Markeert duidelijk de overgang voor de kijker.
+- **Logo intro fade in/uit zonder paarse gap.** Logo intro moet overlappen met beide naburige segmenten (intro en part 1). Nooit de logo losstaand laten met fade-out naar paars + fade-in uit paars.
 
 **POSITIE:**
 - Overlays mogen **NOOIT** de hoofden van de sprekers bedekken
@@ -70,6 +83,8 @@ Deze regels komen uit goedgekeurde video's. **Volg ze altijd tenzij er een reden
 - **Tekst-component verschijnt** = click SFX (niet pop)
 - **Grote impact momenten** (x2, reveal) = woosh SFX (niet bass hit)
 - **Ding** = alleen bij highlights (geel blok verschijnt, belangrijk woord)
+- **Volume:** houd SFX volumes laag. Richtbereik 0.28-0.40 (niet 0.5-0.6). Robin vindt SFX boven 0.5 te hard. Typewriter sfx moet altijd **stoppen zodra de tekst klaar is met typen** — wrap de `<Audio>` in een `<Sequence durationInFrames={...}>` die eindigt op het moment dat de laatste letter verschijnt. Niet het hele sfx-bestand laten uitspelen.
+- **Typewriter overlays mogen nooit overlappen met een logo intro.** Zorg dat ze volledig uit beeld zijn vóór de logo intro start (inclusief swipe-out animatie).
 
 **SHAKE:**
 - Max 1.5-2px amplitude op kaart-shake. Nooit 4-6px, dat voelt extreem.
@@ -78,7 +93,10 @@ Deze regels komen uit goedgekeurde video's. **Volg ze altijd tenzij er een reden
 - Geen diagonale/trap layouts. Lijsten en stapels altijd recht en geordend.
 
 **MUZIEK:**
-- Standaard volume: **-26dB** (0.05). Niet -22dB, dat is te luid.
+- Standaard volume: **-29dB** (0.035). Voor Denise Twisting Compilation was 0.05 te luid.
+- Muziek mag **luider** tijdens logo intro (0.35 absoluut) en nog luider bij het outro card (0.45 absoluut, geen speech daar). Dit creëert een duidelijke climax op openings- en afsluitingsmomenten.
+- **CRUCIAAL:** `<Audio loop>` volume callback `(f)` geeft het **audio file frame** (reset elke loop), NIET het compositie-frame. Bij compositie-brede volume curves ALTIJD `useCurrentFrame()` gebruiken en volume als getal meegeven: `volume={vol}`.
+- **NOOIT** OffthreadVideo muten en audio via aparte `<Audio>` elementen afspelen — veroorzaakt volume-sprongen bij segment transitions.
 
 ### Stap 4: Stel assets voor
 
@@ -104,6 +122,10 @@ Maak duidelijk onderscheid: **"DIT HEB IK VAN JOU NODIG"** vs **"DIT DOE IK ZELF
 | Geel | `#ffdb5a` | Highlight vakken achter donkerpaarse tekst, accent, emphasis. **VEELGEBRUIKT.** |
 | Magenta | `#cd0b5c` | **ALLEEN** voor waarschuwingen, iets belangrijks, iets extra's markeren. **SPAARZAAM.** |
 | Groen | `#95C01E` | Accent kleur, specifieke use cases |
+
+### Productnamen (STRIKT)
+
+- Sempertex balloon sizes: altijd `N260`, `N350`, `N160`, `N646`, etc. **NOOIT** een `Q` suffix gebruiken (`260Q`, `350Q`) — dat is Qualatex (concurrent). Robin heeft dit expliciet geflagd in Denise Twisting Compilation M4. Geldt voor overlays, captions, ad copy, emails, scripts — alles.
 
 ### Fonts (STRIKT — alleen Rethink Sans)
 
