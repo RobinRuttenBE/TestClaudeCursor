@@ -407,7 +407,7 @@ for m in re.finditer(r"\{", text):
                         pass
                 break
 sys.stdout.write(best)
-' | /usr/bin/python3 "$FETCH_WIX_SCRIPT" "$WIX_ORDERS_FILE" "$THIRTY_DAYS_AGO" "$TODAY_ISO" 2>> "$LOG_FILE"
+' | /usr/bin/python3 "$FETCH_WIX_SCRIPT" "$WIX_ORDERS_FILE" "$THIRTY_DAYS_AGO" "$TODAY_ISO" "$WIX_ORDERS_FALLBACK" 2>> "$LOG_FILE"
 
     WIX_ORDER_COUNT=$(/usr/bin/python3 -c '
 import json, sys

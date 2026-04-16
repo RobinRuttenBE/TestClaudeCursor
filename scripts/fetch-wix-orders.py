@@ -99,11 +99,45 @@ def build_wix_orders_json(orders: list, period_from: str, period_to: str) -> dic
     }
 
 
+def merge_manual_attributions(orders: list, fallback_path: Path) -> list:
+    """Merge manual_ad_attribution from fallback JSON into live orders.
+
+    Match by order_id (WIX-XXXXX). If a fallback order has
+    manual_ad_attribution set, copy it onto the matching live order.
+    """
+    if not fallback_path.exists():
+        return orders
+    try:
+        fb_data = json.loads(fallback_path.read_text(encoding="utf-8"))
+        fb_orders = fb_data.get("orders", [])
+    except Exception:
+        return orders
+
+    # Build lookup: order_id -> manual_ad_attribution
+    attr_map = {}
+    for fb_order in fb_orders:
+        oid = fb_order.get("order_id", "")
+        attr = (fb_order.get("manual_ad_attribution") or "").strip()
+        if oid and attr:
+            attr_map[oid] = attr
+
+    if not attr_map:
+        return orders
+
+    for order in orders:
+        oid = order.get("order_id", "")
+        if oid in attr_map:
+            order["manual_ad_attribution"] = attr_map[oid]
+
+    return orders
+
+
 def main() -> int:
     if len(sys.argv) < 2:
         print(
-            "usage: fetch-wix-orders.py <output_json> [<period_from> <period_to>]\n"
-            "  Reads Wix API response from stdin, writes standardized JSON to output_json.",
+            "usage: fetch-wix-orders.py <output_json> [<period_from> <period_to> [<fallback_json>]]\n"
+            "  Reads Wix API response from stdin, writes standardized JSON to output_json.\n"
+            "  If fallback_json is provided, merges manual_ad_attribution from it.",
             file=sys.stderr,
         )
         return 2
@@ -111,15 +145,21 @@ def main() -> int:
     output_path = Path(sys.argv[1])
     period_from = sys.argv[2] if len(sys.argv) > 2 else ""
     period_to = sys.argv[3] if len(sys.argv) > 3 else ""
+    fallback_path = Path(sys.argv[4]) if len(sys.argv) > 4 else None
 
     raw = sys.stdin.read()
     orders = parse_wix_orders_response(raw)
 
+    if fallback_path:
+        orders = merge_manual_attributions(orders, fallback_path)
+
     result = build_wix_orders_json(orders, period_from, period_to)
     output_path.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
 
+    merged = sum(1 for o in orders if o.get("manual_ad_attribution"))
     print(
-        f"[fetch-wix-orders] {len(orders)} orders parsed, written to {output_path}",
+        f"[fetch-wix-orders] {len(orders)} orders parsed, {merged} with manual attribution, "
+        f"written to {output_path}",
         file=sys.stderr,
     )
     return 0

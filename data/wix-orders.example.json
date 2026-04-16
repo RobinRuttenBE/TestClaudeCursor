@@ -14,7 +14,8 @@
       "product": "Start Your Balloon Business - Professional",
       "customer_country": "Netherlands",
       "source_hint": "meta_ads",
-      "notes": ""
+      "manual_ad_attribution": "",
+      "notes": "manual_ad_attribution: vul utm_content in (bijv. h11_b3_cta5) voor orders zonder PostHog match"
     }
   ]
 }

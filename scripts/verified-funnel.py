@@ -134,6 +134,10 @@ def match_sessions_to_ads(sessions: list, ad_ids: dict) -> dict:
 def match_orders_to_sessions(orders: list, sessions: list) -> tuple:
     """Match Wix orders to PostHog sessions by date (+/- 1 day).
 
+    Priority:
+    1. manual_ad_attribution on the order (handmatig geverifieerd)
+    2. PostHog /thank-you session match by date (+/- 1 day)
+
     Returns (matched_orders_by_utm, unmatched_orders).
     matched_orders_by_utm: {utm_content: [order, ...]}
     """
@@ -141,6 +145,15 @@ def match_orders_to_sessions(orders: list, sessions: list) -> tuple:
     unmatched = []
 
     for order in orders:
+        # Priority 1: manual attribution (for orders without PostHog data)
+        manual_utm = (order.get("manual_ad_attribution") or "").strip().lower()
+        if manual_utm:
+            if manual_utm not in matched_by_utm:
+                matched_by_utm[manual_utm] = []
+            matched_by_utm[manual_utm].append(order)
+            continue
+
+        # Priority 2: PostHog session match by date
         try:
             order_date = parse_date(order.get("date", ""))
         except Exception:
