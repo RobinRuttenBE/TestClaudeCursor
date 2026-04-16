@@ -13793,8 +13793,17 @@ After doing this, you may fix the identity used for this commit with:
  1 file changed, 17 insertions(+)
 To https://github.com/RobinRuttenBE/TestClaudeCursor.git
    4dfbd2d..07cfe40  main -> main
-[main c5ce296] Auto-sync: 2026-04-13 17:23
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+=======
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 66d24e0] Auto-sync: 2026-04-13 16:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -13807,11 +13816,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   07cfe40..c5ce296  main -> main
-[main c5e8282] Auto-sync: 2026-04-14 09:08
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 57b86cf] Auto-sync: 2026-04-13 16:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -13824,323 +13838,833 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 11 files changed, 21 insertions(+)
- create mode 100644 Kennis/content/meeting-summaries/.DS_Store
- create mode 100644 Kennis/content/transcripts/.DS_Store
- create mode 100644 logs/morning-report-2026-04-14.log
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 592e729] Auto-sync: 2026-04-13 17:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 59c06b0] Auto-sync: 2026-04-13 17:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main f325640] Auto-sync: 2026-04-13 18:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 8e7bedb] Auto-sync: 2026-04-13 18:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main ea858b3] Auto-sync: 2026-04-13 19:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 4332e40] Auto-sync: 2026-04-13 19:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 4c062f1] Auto-sync: 2026-04-13 20:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 31f2e59] Auto-sync: 2026-04-13 20:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 9beffa2] Auto-sync: 2026-04-13 21:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main c30b354] Auto-sync: 2026-04-13 21:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d443e56] Auto-sync: 2026-04-13 22:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 2014d79] Auto-sync: 2026-04-13 22:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 5dcbe7b] Auto-sync: 2026-04-13 23:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 5abc44c] Auto-sync: 2026-04-13 23:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main bf2f27c] Auto-sync: 2026-04-14 00:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 7851bd6] Auto-sync: 2026-04-14 00:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 969c613] Auto-sync: 2026-04-14 01:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main f106bbd] Auto-sync: 2026-04-14 01:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d2db670] Auto-sync: 2026-04-14 02:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 7164bf0] Auto-sync: 2026-04-14 02:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 9d4fe7e] Auto-sync: 2026-04-14 03:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 32940ec] Auto-sync: 2026-04-14 03:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 0512518] Auto-sync: 2026-04-14 04:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main c54def2] Auto-sync: 2026-04-14 04:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 292b297] Auto-sync: 2026-04-14 05:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 409e97a] Auto-sync: 2026-04-14 05:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 9b18cb0] Auto-sync: 2026-04-14 06:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 8385fdc] Auto-sync: 2026-04-14 06:44
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 2895526] Auto-sync: 2026-04-14 07:14
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main df51567] Auto-sync: 2026-04-14 07:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+>>>>>>> Stashed changes
+[main 4eed6d8] Auto-sync: 2026-04-14 08:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 32 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   83e75f4..4eed6d8  main -> main
+[main b8e13be] Auto-sync: 2026-04-14 08:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   4eed6d8..b8e13be  main -> main
+[main e2c233b] Auto-sync: 2026-04-14 09:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   b8e13be..e2c233b  main -> main
+[main 9e7b2d0] Auto-sync: 2026-04-14 09:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   e2c233b..9e7b2d0  main -> main
+[main 1f3e519] Auto-sync: 2026-04-14 10:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   9e7b2d0..1f3e519  main -> main
+[main 4552372] Auto-sync: 2026-04-14 10:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   1f3e519..4552372  main -> main
+[main be153e1] Auto-sync: 2026-04-14 11:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   4552372..be153e1  main -> main
+[main e1c7f36] Auto-sync: 2026-04-14 11:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main e7e6219] Auto-sync: 2026-04-14 09:38
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 26 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main a89b89b] Auto-sync: 2026-04-14 10:08
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 2 files changed, 25 insertions(+), 1 deletion(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main ede39b6] Auto-sync: 2026-04-14 10:38
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 3 files changed, 27 insertions(+), 1 deletion(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 70620e4] Auto-sync: 2026-04-14 11:08
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 4 files changed, 50 insertions(+), 5 deletions(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main fa1e0a4] Auto-sync: 2026-04-14 11:38
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 3 files changed, 73 insertions(+), 40 deletions(-)
- delete mode 100644 logs/morning-report-2026-03-13.log
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   b256577..fa1e0a4  main -> main
-[main 37dd540] Auto-sync: 2026-04-14 12:08
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 18 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   fa1e0a4..37dd540  main -> main
-[main f3fffe2] Auto-sync: 2026-04-14 12:38
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 2 files changed, 19 insertions(+), 1 deletion(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   37dd540..f3fffe2  main -> main
-[main ec39525] Auto-sync: 2026-04-14 13:08
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   f3fffe2..ec39525  main -> main
-[main 5dd2ff0] Auto-sync: 2026-04-14 13:38
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   ec39525..5dd2ff0  main -> main
-[main 16e6ca0] Auto-sync: 2026-04-14 14:08
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 3 files changed, 36 insertions(+), 13 deletions(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   5dd2ff0..16e6ca0  main -> main
-[main f960120] Auto-sync: 2026-04-14 14:38
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   0eab1d1..f960120  main -> main
-[main 4de369d] Auto-sync: 2026-04-14 15:08
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 2 files changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   5519263..4de369d  main -> main
-[main 13d953a] Auto-sync: 2026-04-14 15:39
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   4de369d..13d953a  main -> main
-[main b156b28] Auto-sync: 2026-04-14 16:09
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   13d953a..b156b28  main -> main
-[main e7448aa] Auto-sync: 2026-04-14 16:39
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   b156b28..e7448aa  main -> main
-[main 0398ecf] Auto-sync: 2026-04-14 22:29
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main f3633a5] Auto-sync: 2026-04-14 22:59
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+[main af036fc] Auto-sync: 2026-04-14 12:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14154,16 +14678,16 @@ After doing this, you may fix the identity used for this commit with:
     git commit --amend --reset-author
 
  1 file changed, 23 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
+To github.com:RobinRuttenBE/testclaudecursor.git
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 6d99f2c] Auto-sync: 2026-04-15 09:36
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+[main e9c3df8] Auto-sync: 2026-04-14 12:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14176,62 +14700,881 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 5 files changed, 80 insertions(+), 3 deletions(-)
- create mode 100644 Output/Reports/Daily/2026-04-15_ads_report.md
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main bb7ada5] Auto-sync: 2026-04-14 13:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main ad04d2c] Auto-sync: 2026-04-14 13:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 3f95645] Auto-sync: 2026-04-14 14:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main a536d70] Auto-sync: 2026-04-14 14:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 23c7a5e] Auto-sync: 2026-04-14 15:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 6a3a32a] Auto-sync: 2026-04-14 15:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 7532f56] Auto-sync: 2026-04-14 16:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 1736991] Auto-sync: 2026-04-14 16:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main b1c8eb7] Auto-sync: 2026-04-14 17:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main ca7bdcb] Auto-sync: 2026-04-14 17:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 7a5b46b] Auto-sync: 2026-04-14 18:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 9be72a4] Auto-sync: 2026-04-14 18:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main e5bfe7f] Auto-sync: 2026-04-14 19:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 6f06bce] Auto-sync: 2026-04-14 19:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main ccd7f67] Auto-sync: 2026-04-14 20:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d06d1c0] Auto-sync: 2026-04-14 20:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 0419e2c] Auto-sync: 2026-04-14 21:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 75303c9] Auto-sync: 2026-04-14 21:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 859b80c] Auto-sync: 2026-04-14 22:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 5545b21] Auto-sync: 2026-04-14 22:45
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 47949a5] Auto-sync: 2026-04-14 23:15
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main ded716f] Auto-sync: 2026-04-14 23:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main a2358f4] Auto-sync: 2026-04-15 00:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 33e98d1] Auto-sync: 2026-04-15 00:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main c2e8896] Auto-sync: 2026-04-15 01:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main e187786] Auto-sync: 2026-04-15 01:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 8c15586] Auto-sync: 2026-04-15 02:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d62fd8a] Auto-sync: 2026-04-15 02:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d7953ab] Auto-sync: 2026-04-15 03:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 99fa350] Auto-sync: 2026-04-15 03:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main fa09cc5] Auto-sync: 2026-04-15 04:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 1583452] Auto-sync: 2026-04-15 04:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 25f75ac] Auto-sync: 2026-04-15 05:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main e8768e8] Auto-sync: 2026-04-15 05:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 458c2d1] Auto-sync: 2026-04-15 06:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main e18136b] Auto-sync: 2026-04-15 06:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main ece43c9] Auto-sync: 2026-04-15 07:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d9753e1] Auto-sync: 2026-04-15 07:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main f25454a] Auto-sync: 2026-04-15 08:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 60 insertions(+)
  create mode 100644 logs/morning-report-2026-04-15.log
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 288a68d] Auto-sync: 2026-04-15 10:06
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 5 files changed, 87 insertions(+), 23 deletions(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[main 5df5d07] Auto-sync: 2026-04-15 10:36
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 4 files changed, 29 insertions(+), 28 deletions(-)
- delete mode 100644 logs/morning-report-2026-03-14.log
- delete mode 100644 logs/morning-report-2026-03-15.log
- create mode 100644 logs/morning-report-2026-04-15.done
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   fdeb8b5..5df5d07  main -> main
-[main af4af7e] Auto-sync: 2026-04-15 11:06
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   75e0bbe..f25454a  main -> main
+[main 71c3d5d] Auto-sync: 2026-04-15 08:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14245,10 +15588,12 @@ After doing this, you may fix the identity used for this commit with:
     git commit --amend --reset-author
 
  1 file changed, 20 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   5df5d07..af4af7e  main -> main
-[main 8a4b828] Auto-sync: 2026-04-15 11:36
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   f25454a..71c3d5d  main -> main
+[main 2ef5b45] Auto-sync: 2026-04-15 09:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14261,11 +15606,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   af4af7e..8a4b828  main -> main
-[main 1f993e9] Auto-sync: 2026-04-15 12:06
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   71c3d5d..2ef5b45  main -> main
+[main 289ada4] Auto-sync: 2026-04-15 09:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14278,12 +15625,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 3 files changed, 251 insertions(+), 2 deletions(-)
- create mode 100755 scripts/pixel-datafout-rewrite.py
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   8a4b828..1f993e9  main -> main
-[main 4a08fe7] Auto-sync: 2026-04-15 12:36
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   2ef5b45..289ada4  main -> main
+[main 7e972b6] Auto-sync: 2026-04-15 10:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14296,11 +15644,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 18 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   e921c6d..4a08fe7  main -> main
-[main b7393ec] Auto-sync: 2026-04-15 13:06
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main e4080a9] Auto-sync: 2026-04-15 10:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14313,12 +15667,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 5 files changed, 70 insertions(+), 2 deletions(-)
- create mode 100644 .claude/scheduled_tasks.lock
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   00d6918..b7393ec  main -> main
-[main 4302872] Auto-sync: 2026-04-15 13:36
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 2c022df] Auto-sync: 2026-04-15 11:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14331,11 +15690,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 4 files changed, 291 insertions(+), 123 deletions(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   b7393ec..4302872  main -> main
-[main 76ae2aa] Auto-sync: 2026-04-15 14:06
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 629744c] Auto-sync: 2026-04-15 11:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14348,11 +15713,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 2 files changed, 19 insertions(+), 1 deletion(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   4302872..76ae2aa  main -> main
-[main c2c441b] Auto-sync: 2026-04-15 14:36
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main c6557cc] Auto-sync: 2026-04-15 12:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14365,11 +15736,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 3 files changed, 57 insertions(+), 1 deletion(-)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   b46c783..c2c441b  main -> main
-[main d33b9e1] Auto-sync: 2026-04-15 15:06
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main fc80a56] Auto-sync: 2026-04-15 12:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14382,12 +15759,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 4 files changed, 53 insertions(+), 117 deletions(-)
- delete mode 100644 logs/morning-report-2026-04-15.done
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   8caffbd..d33b9e1  main -> main
-[main cdf3f44] Auto-sync: 2026-04-15 15:36
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 31e917d] Auto-sync: 2026-04-15 13:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14400,12 +15782,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 5 files changed, 393 insertions(+), 114 deletions(-)
- create mode 100644 logs/morning-report-2026-04-15.done
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   4c82f50..cdf3f44  main -> main
-[main 5e09157] Auto-sync: 2026-04-15 16:06
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 44cc1ca] Auto-sync: 2026-04-15 13:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14418,11 +15805,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 18 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   cdf3f44..5e09157  main -> main
-[main 6ea391e] Auto-sync: 2026-04-15 16:36
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d57e5f2] Auto-sync: 2026-04-15 14:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14435,11 +15828,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   5e09157..6ea391e  main -> main
-[main fbc29dc] Auto-sync: 2026-04-15 17:06
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 9777e03] Auto-sync: 2026-04-15 14:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14452,11 +15851,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   6ea391e..fbc29dc  main -> main
-[main a3d2aea] Auto-sync: 2026-04-15 19:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 7392792] Auto-sync: 2026-04-15 15:16
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14469,12 +15874,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 2 files changed, 17 insertions(+), 1 deletion(-)
- delete mode 100644 .claude/scheduled_tasks.lock
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   fbc29dc..a3d2aea  main -> main
-[main 8157cf0] Auto-sync: 2026-04-15 20:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 80a0587] Auto-sync: 2026-04-15 15:46
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14487,11 +15897,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 18 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   a3d2aea..8157cf0  main -> main
-[main 7604d54] Auto-sync: 2026-04-15 20:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 295dc7d] Auto-sync: 2026-04-15 16:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14504,11 +15920,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   8157cf0..7604d54  main -> main
-[main 50bbb71] Auto-sync: 2026-04-15 21:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 77647bd] Auto-sync: 2026-04-15 16:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14521,11 +15943,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   7604d54..50bbb71  main -> main
-[main 506ed8d] Auto-sync: 2026-04-15 21:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main fce3f19] Auto-sync: 2026-04-15 17:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14538,11 +15966,17 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   50bbb71..506ed8d  main -> main
-[main 28b78cf] Auto-sync: 2026-04-15 22:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 75ee2ec] Auto-sync: 2026-04-15 17:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14555,11 +15989,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   506ed8d..28b78cf  main -> main
-[main 94d7220] Auto-sync: 2026-04-15 22:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 23 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 4381519] Auto-sync: 2026-04-15 18:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14572,11 +16011,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   28b78cf..94d7220  main -> main
-[main dbdfba0] Auto-sync: 2026-04-15 23:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main e8c7269] Auto-sync: 2026-04-15 18:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14589,11 +16033,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   94d7220..dbdfba0  main -> main
-[main 8dc13e3] Auto-sync: 2026-04-15 23:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main bd21dbc] Auto-sync: 2026-04-15 19:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14606,11 +16055,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   dbdfba0..8dc13e3  main -> main
-[main f78030e] Auto-sync: 2026-04-16 00:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 8fe01cd] Auto-sync: 2026-04-15 19:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14623,11 +16077,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   8dc13e3..f78030e  main -> main
-[main e8332e6] Auto-sync: 2026-04-16 00:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main f8e552f] Auto-sync: 2026-04-15 20:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14640,11 +16099,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   f78030e..e8332e6  main -> main
-[main 93c8341] Auto-sync: 2026-04-16 01:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 072f28e] Auto-sync: 2026-04-15 20:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14657,11 +16121,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   e8332e6..93c8341  main -> main
-[main acce3c6] Auto-sync: 2026-04-16 01:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 10b1ed5] Auto-sync: 2026-04-15 21:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14674,11 +16143,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   93c8341..acce3c6  main -> main
-[main 247b414] Auto-sync: 2026-04-16 02:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main fb7e0e7] Auto-sync: 2026-04-15 21:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14691,11 +16165,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   acce3c6..247b414  main -> main
-[main c3869e9] Auto-sync: 2026-04-16 02:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 2783aae] Auto-sync: 2026-04-15 22:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14708,11 +16187,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   247b414..c3869e9  main -> main
-[main 524b2f5] Auto-sync: 2026-04-16 03:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 28570de] Auto-sync: 2026-04-15 22:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14725,11 +16209,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   c3869e9..524b2f5  main -> main
-[main 9c445e8] Auto-sync: 2026-04-16 03:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main c902a4f] Auto-sync: 2026-04-15 23:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14742,11 +16231,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   524b2f5..9c445e8  main -> main
-[main 5c2f24b] Auto-sync: 2026-04-16 04:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main b94039f] Auto-sync: 2026-04-15 23:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14759,11 +16253,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   9c445e8..5c2f24b  main -> main
-[main e0ef486] Auto-sync: 2026-04-16 04:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 2566143] Auto-sync: 2026-04-16 00:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14776,11 +16275,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   5c2f24b..e0ef486  main -> main
-[main 800107c] Auto-sync: 2026-04-16 05:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 1791b78] Auto-sync: 2026-04-16 00:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14793,11 +16297,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   e0ef486..800107c  main -> main
-[main 3951897] Auto-sync: 2026-04-16 05:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main fdd2780] Auto-sync: 2026-04-16 01:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14810,11 +16319,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   800107c..3951897  main -> main
-[main 4664579] Auto-sync: 2026-04-16 06:17
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main a783eee] Auto-sync: 2026-04-16 01:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14827,11 +16341,18 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   3951897..4664579  main -> main
-[main 8db46a0] Auto-sync: 2026-04-16 06:47
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+Auto packing the repository in background for optimum performance.
+See "git help gc" for manual housekeeping.
+[main 344bb30] Auto-sync: 2026-04-16 02:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14844,11 +16365,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   4664579..8db46a0  main -> main
-[main 96bfb98] Auto-sync: 2026-04-16 07:18
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 24 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 7f656ea] Auto-sync: 2026-04-16 02:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14861,11 +16387,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   8db46a0..96bfb98  main -> main
-[main 551dd60] Auto-sync: 2026-04-16 07:48
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 24 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main e969d4c] Auto-sync: 2026-04-16 03:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -14878,6 +16409,209 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   96bfb98..551dd60  main -> main
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d8d71ee] Auto-sync: 2026-04-16 03:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main a5265f3] Auto-sync: 2026-04-16 04:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 42a3874] Auto-sync: 2026-04-16 04:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main d4a90c6] Auto-sync: 2026-04-16 05:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 0d4bc16] Auto-sync: 2026-04-16 05:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 1f4ea7d] Auto-sync: 2026-04-16 06:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 377c753] Auto-sync: 2026-04-16 06:47
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main b29c5c5] Auto-sync: 2026-04-16 07:17
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 51b692b] Auto-sync: 2026-04-16 07:48
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.

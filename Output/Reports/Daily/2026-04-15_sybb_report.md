@@ -1,8 +1,8 @@
-# SYBB Daily Report, 15 april 2026
+# SYBB Daily Report -- 2026-04-15
 
 ## 1. Samenvatting
 
-Sterke conversie-dag: 4 purchases (€1.473,50) uit slechts €74,65 spend, ROAS 19,7x. Maar het totale volume lag fors onder het 7d gemiddelde (spend -27%, impressions -34%). CPC steeg naar €0,61 (boven de €0,50 target). H11 blijft de enige ad die converteert, terwijl H12 goedkoop verkeer genereert dat niet engageert op de landing page. De /booking pagina toonde slechts 1 tracked pageview, al zijn er wel 3 "Place Order & Pay" clicks geregistreerd, wat wijst op tracking inconsistentie op de Wix booking pagina.
+Lagere spend-dag (€74.65, -27% vs 7d gemiddelde) met minder impressies en clicks, maar opvallend sterke conversies: 4 purchases (€1,473.50 revenue) leveren een ROAS van 19.7x op. Alle purchases kwamen via H11. CPC steeg naar €0.61 (boven €0.50 target). H12 blijft de variant met de hoogste CTR (4.55%) en laagste CPC (€0.25), maar krijgt slechts 7.8% van het budget. H13 presteert het slechtst: laagste CTR (1.14%), hoogste CPC (€0.95), en nul conversies. PostHog MCP was niet bereikbaar, waardoor LP-data ontbreekt in dit rapport.
 
 ---
 
@@ -10,144 +10,155 @@ Sterke conversie-dag: 4 purchases (€1.473,50) uit slechts €74,65 spend, ROAS
 
 | Metric | Gisteren | 7d Gemiddelde | Trend |
 |--------|----------|---------------|-------|
-| Spend | €74,65 | €101,97 | ↓ -27% |
-| Impressions | 5.847 | 8.811 | ↓ -34% |
-| Link Clicks | 57 | 98 | ↓ -42% |
-| CTR | 2,09% | 2,15% | → |
-| CPC | €0,61 | €0,54 | ↑ +13% |
-| Frequency | 1,34 | 2,10 | ↓ |
-| Landing Page Views | 44 | 76 | ↓ -42% |
-| Purchases | 4 | 0,86 | ↑↑ |
-| Purchase Value | €1.473,50 | €6.321 | ↓ |
-| ROAS | 19,7x | 62,0x | ↓ |
+| Spend | €74.65 | €101.97 | ↓ |
+| Impressions | 5,847 | 8,811 | ↓ |
+| Clicks | 122 | 189 | ↓ |
+| CTR | 2.09% | 2.15% | → |
+| CPC | €0.61 | €0.54 | ↑ |
+| Link Clicks | 57 | 98 | ↓ |
+| LP Views | 44 | 76 | ↓ |
+| Frequency | 1.34 | 2.10 | ↓ |
+| Video Views | 1,367 | 1,825 | ↓ |
+| Add to Cart | 2 | 4.0 | ↓ |
+| Purchases | 4 | 0.9 | ↑ |
+| Revenue | €1,473.50 | - | - |
+| ROAS | 19.7x | - | - |
 
-> 7d ROAS wordt sterk opgeblazen door 2 hoge-waarde purchases (€42.773) eerder in de week via H13. Dagelijkse ROAS fluctueert sterk bij lage volumes.
+### Ad Set Performance
+
+| Ad Set | Spend | Impressions | Clicks | CTR | CPC | Link Clicks | LP Views | Frequency |
+|--------|-------|-------------|--------|-----|-----|-------------|----------|-----------|
+| Kopie 1 (H11) | €62.18 | 4,729 | 92 | 1.95% | €0.68 | 46 | 32 | 1.25 |
+| Kopie 2 (H12) | €5.83 | 506 | 23 | 4.55% | €0.25 | 7 | 7 | 1.61 |
+| Kopie 3 (H13) | €6.64 | 612 | 7 | 1.14% | €0.95 | 4 | 5 | 1.13 |
 
 ### Ad Variant Performance
 
-| Ad (utm_content) | Spend | Link Clicks | CTR | CPC | LPV | Purchases | LP Scroll 50%+ |
-|-------------------|-------|-------------|-----|-----|-----|-----------|----------------|
-| h11_b3_cta5 | €62,18 | 46 | 1,95% | €0,68 | 32 | 4 | 57,7% (15/26) |
-| h13_b3_cta5 | €6,64 | 4 | 1,14% | €0,95 | 5 | 0 | 50,0% (1/2) |
-| h12_b3_cta5 | €5,83 | 7 | 4,55% | €0,25 | 7 | 0 | 25,0% (1/4) |
+| Ad (utm_content) | Spend | Link Clicks | CTR | CPC | LP Views (Meta) | Purchases | ATC | View Content |
+|-------------------|-------|-------------|-----|-----|-----------------|-----------|-----|--------------|
+| h11_b3_cta5 | €62.18 | 46 | 1.95% | €0.68 | 32 | 4 | 2 | 7 |
+| h12_b3_cta5 | €5.83 | 7 | 4.55% | €0.25 | 7 | 0 | 0 | 1 |
+| h13_b3_cta5 | €6.64 | 4 | 1.14% | €0.95 | 5 | 0 | 0 | 0 |
 
-**7d referentie per variant:**
+**Beste variant:** H12,B3,CTA5. Hoogste CTR (4.55%), laagste CPC (€0.25, ruim onder €0.50 target). Ondanks minimaal budget (7.8%) genereert deze variant de meest efficiente clicks. Geen conversies gisteren, maar dat is te verwachten bij slechts 7 LP views.
 
-| Ad (utm_content) | 7d Spend | 7d LPV | 7d Purchases | 7d CPC |
-|-------------------|----------|--------|--------------|--------|
-| h11_b3_cta5 | €328,99 | 197 | 4 | €0,66 |
-| h13_b3_cta5 | €149,30 | 122 | 2 | €0,62 |
-| h12_b3_cta5 | €123,01 | 123 | 0 | €0,39 |
-| h14_b3_cta5 | €60,30 | 52 | 0 | €0,42 |
-| h15_b3_cta5 | €52,15 | 39 | 0 | €0,47 |
+**Slechtste variant:** H13,B3,CTA5. Laagste CTR (1.14%), hoogste CPC (€0.95, bijna 2x de target), nul conversies, en slechts 4 link clicks van 612 impressies.
 
-**Beste variant:** H11 (enige converterend, 4 purchases gisteren, beste scroll engagement op LP met 57,7% voorbij 50%)
-**Slechtste variant:** H12 (hoge CTR van 4,55% maar slechts 25% scroll 50%+ op LP en 0 conversies in 7 dagen, €123 verspild)
+### 7d Ad Variant Totalen (voor context)
+
+| Ad | 7d Spend | 7d Link Clicks | 7d LP Views | 7d CPC (overall) | 7d Purchases |
+|----|----------|----------------|-------------|-------------------|--------------|
+| H11,B3,CTA5 | €328.99 | 259 | 197 | €0.66 | 4 |
+| H12,B3,CTA5 | €123.01 | 148 | 123 | €0.38 | 0 |
+| H13,B3,CTA5 | €149.31 | 142 | 122 | €0.62 | 2 |
+| H14,B3,CTA5 | €60.30 | 78 | 52 | €0.42 | 0 |
+| H15,B3,CTA5 | €52.15 | 61 | 39 | €0.45 | 0 |
+
+**Let op:** H14 en H15 zaten in de parent ad set en Kopie 4 die gisteren geen spend kregen. Alleen Kopie 1/2/3 waren actief.
 
 ---
 
 ## 3. Landing Page Health
 
-*Bron: PostHog (startyourballoonbusiness.com). NB: PostHog staat op UTC timezone, TrendsQuery toonde 0 voor 15 april. Data opgehaald via HogQL met expliciete timestamps.*
+**PostHog MCP niet beschikbaar.** LP-metrics (bounce rate, scroll depth, sessie duur, CTA clicks) konden niet worden opgehaald. Zie Rode Vlaggen sectie 5.
 
 | Metric | Gisteren | 7d Gemiddelde | Target | Status |
 |--------|----------|---------------|--------|--------|
-| Pageviews | 97 | 170 | meten | &#x1F7E1; laag volume |
-| Unique Visitors | 70 | 119 | meten | &#x1F7E1; laag volume |
-| Scroll 25%+ | 65,6% (21/32) | 63,9% (230/360) | >80% | &#x1F534; |
-| Scroll 50%+ | 53,1% (17/32) | 54,7% (197/360) | >60% | &#x1F7E1; |
-| Scroll 75%+ | 43,8% (14/32) | 45,0% (162/360) | >40% | &#x1F7E2; |
-| Scroll 100% | 28,1% (9/32) | 30,3% (109/360) | >20% | &#x1F7E2; |
-| CTA Click Rate | 15,7% (11/70) | 10,9% (13/119) | >4% | &#x1F7E2; |
-| /booking Views | 1 | 19,7 | meten | &#x1F534; |
-
-### CTA Click Breakdown (15 april)
-| Element | Clicks |
-|---------|--------|
-| Go to workshop | 9 |
-| Continue (booking flow) | 6 |
-| Place Order & Pay | 3 |
-| Buy Now | 2 |
-| FAQ interacties | 6 |
-
-### Rage Clicks
-0 rage clicks gisteren. Geen UX frustratie signalen.
+| Bounce Rate | N/A | N/A | <55% | -- |
+| Avg Session Duration | N/A | N/A | >90s | -- |
+| Scroll 25%+ | N/A | N/A | >80% | -- |
+| Scroll 50%+ | N/A | N/A | >60% | -- |
+| Scroll 75%+ | N/A | N/A | >40% | -- |
+| Scroll 100% | N/A | N/A | >20% | -- |
+| CTA Click Rate | N/A | N/A | >4% | -- |
 
 ---
 
 ## 4. Funnel Drop-off
 
+Geen funnel data beschikbaar (PostHog MCP niet bereikbaar).
+
+Op basis van Meta data alleen:
+
 ```
-Pageview LP (97, 100%) 
-  --> Scroll 50%+ (~53%) 
-    --> CTA Click (11, ~15,7% van visitors)
-      --> /booking pageview (1, ~1,4%) 
-        --> Place Order & Pay (3 clicks)
-          --> Purchase (4 via Meta attributie)
+Impressions (5,847)
+    ↓ 99.0% drop
+Link Clicks (57, 0.97% van impressions)
+    ↓ 22.8% drop
+LP Views (44, 77.2% van link clicks)
+    ↓ 95.5% drop
+Purchases (4, 9.1% van LP views)
 ```
 
-**Grootste lek:** CTA Click naar /booking pageview. 11 CTA clicks maar slechts 1 tracked /booking pageview. Dit is waarschijnlijk een **tracking probleem**, want er zijn 6 "Continue" clicks en 3 "Place Order & Pay" clicks op de booking pagina geregistreerd. Wix SPA navigatie triggert mogelijk geen nieuwe $pageview bij routing naar /booking.
-
-**Tweede lek:** Hero section retentie. 34% van bezoekers (11/32 met scroll data) verlaat de pagina bij <10% scroll, zonder de eerste sectie te zien. Dit zijn vooral mobiele bounces.
+**Opmerkelijk:** De conversie van LP view naar purchase (9.1%) is zeer sterk. Het probleem zit hoger in de funnel: het aantal mensen dat daadwerkelijk op de LP landt is laag (44 van 5,847 impressies).
 
 ---
 
 ## 5. Rode Vlaggen
 
-**&#x1F6A9; CPC boven target: €0,61 vs €0,50 target (+22%)**
-H11 CPC is €0,68, H13 zelfs €0,95. Alleen H12 zit onder target (€0,25) maar die converteert niet.
+1. **PostHog MCP niet bereikbaar** -- Geen LP-data beschikbaar voor dit rapport. Bounce rate, scroll depth, sessie duur en CTA clicks ontbreken volledig. Hierdoor is cross-referencing tussen Meta en LP-gedrag niet mogelijk. Controleer of de PostHog MCP server draait.
 
-**&#x1F6A9; H12 ad-page mismatch: Hoge CTR (4,55%), lage LP engagement (25% scroll 50%+), 0 conversies**
-Klassiek signaal: de ad trekt kliks aan maar de verkeerde doelgroep of misleidende hook. €123 spend in 7 dagen zonder enige conversie.
+2. **CPC €0.61 > €0.50 target** -- 13% boven 7d gemiddelde (€0.54). Bij lagere spend (€74.65 vs €101.97 gem.) krijg je proportioneel nog minder verkeer.
 
-**&#x1F6A9; /booking tracking breakdown**
-Slechts 1 /booking pageview terwijl er aantoonbaar booking-pagina interactie is (6 "Continue" + 3 "Place Order & Pay" clicks). PostHog $pageview events worden niet correct gefired bij Wix interne routing.
+3. **H13 CPC €0.95** -- Bijna 2x de target. Bij 612 impressies genereerde H13 slechts 4 link clicks en 0 conversies. Cost per LP view: €1.33. Dit is niet rendabel.
 
-**&#x1F6A9; Volume daling: -27% spend, -34% impressions vs 7d gemiddelde**
-Meta levert minder impressions uit. Kan duiden op audience saturation in de huidige targeting, of budget pacing na eerdere hoge-spend dagen.
+4. **Budget concentratie: 83% naar H11** -- H11 krijgt €62.18 van €74.65 totaal, maar heeft een CPC van €0.68 (boven target). H12 presteert efficenter op CPC (€0.25) en CTR (4.55%) maar krijgt slechts €5.83.
 
-**&#x1F6A9; Scroll 25%+ op 65,6% (target >80%)**
-35% van bezoekers scrollt niet voorbij de hero. De bovenste sectie van de LP houdt onvoldoende aandacht vast.
+5. **LP Views daling -42%** -- 44 LP views gisteren vs 76/d gemiddeld. Minder verkeer op de landing page betekent minder kans op conversies, ook al is de conversie rate sterk.
 
 ---
 
-## 6. Cross-Referencing: Meta Ads x PostHog
+## 6. Cross-Reference Analyse
 
-| Patroon | Signaal | Actie |
-|---------|---------|-------|
-| H11: CTR 1,95% + LP Scroll 57,7% 50%+ | Goede match: ad belofte sluit aan bij pagina content | Doorschalen |
-| H12: CTR 4,55% + LP Scroll 25% 50%+ | **Mismatch**: hook trekt verkeerde publiek, pagina voldoet niet aan verwachting | Pauzeren of hook aanpassen |
-| H13: CTR 1,14% + LP Scroll 50% 50%+ (n=2) | Te weinig volume om conclusies te trekken | Meer budget geven voor data |
-| Frequency 1,34 gisteren vs 2,10 7d avg | Verse doelgroep bereikt | Positief, doorgaan |
-| 4 purchases uit 1 variant (H11) | Alle conversies geconcentreerd in 1 ad | Risico: als H11 vermoeit, vallen conversies weg |
+**Beperkt door PostHog MCP uitval.** Alleen Meta-interne cross-referencing mogelijk.
+
+### Meta-interne analyse
+
+| Pattern | Variant | Bevinding |
+|---------|---------|-----------|
+| Hoge CTR + Lage CPC | H12 (4.55% CTR, €0.25 CPC) | Meest efficiente variant. Algoritme geeft het weinig budget ondanks sterke performance. |
+| Hoge Spend + Conversies | H11 (€62.18, 4 purchases) | Budget concentratie betaalt zich uit in conversies. ROAS op H11: €1,473.50/€62.18 = 23.7x. |
+| Laag alles | H13 (1.14% CTR, €0.95 CPC, 0 conv) | Slechtste performer op elke metric. 8.9% budget voor 0 resultaat. |
+
+### Cost per LP View per variant
+
+| Variant | Spend | LP Views | Cost per LP View |
+|---------|-------|----------|-----------------|
+| H11 | €62.18 | 32 | €1.94 |
+| H12 | €5.83 | 7 | €0.83 |
+| H13 | €6.64 | 5 | €1.33 |
+
+### Conversie-analyse H11
+
+H11 genereerde gisteren 4 purchases met een totale waarde van €1,473.50 (gem. €368.38/purchase). Daarnaast: 3 complete registrations, 4 initiate checkouts, 2 add to carts, en 2 add payment info events. Dit is een volledige funnel flow die wijst op een sterke dag voor workshop bookings. De 7d totaal toont echter ook 4 purchases, wat betekent dat ALLE 7d purchases op gisteren vielen. Dit kan een anomalie zijn of een seizoenseffect.
 
 ---
 
 ## 7. Top 3 Acties voor Vandaag
 
-### 1. Pauzeer H12 ad variant (Kopie 2 adset)
-- **Wat:** Pauzeer adset "BATCH 2: Expertise & POC - Kopie 2" (H12, B3, CTA5)
-- **Waarom:** €123 spend in 7 dagen, 0 conversies, slechtste LP scroll engagement (25%). Hoge CTR (4,55%) is misleidend: het trekt kliks maar geen kopers.
-- **Hoe:** Meta Ads Manager > Campagne 2026: SYBB > Adset Kopie 2 > Pauzeer
-- **Verwachte impact:** €15-17/dag besparing, budget wordt herverdeeld naar beter converterende varianten
-- **Escalatie:** Geel (Robin goedkeuring)
+### 1. Herstel PostHog MCP verbinding
+- **Wat:** Check of de PostHog MCP server draait en verbind opnieuw. Zonder LP-data is het onmogelijk om ad-pagina mismatch te detecteren.
+- **Waarom:** PostHog MCP was niet bereikbaar, waardoor 50% van de rapportage-data ontbreekt. Bounce rate, scroll depth en CTA clicks zijn essentieel voor optimalisatie.
+- **Hoe:** Check `claude mcp list` voor PostHog server status. Herstart indien nodig.
+- **Verwachte impact:** Volledig rapport met cross-referencing, betere optimalisatiebeslissingen.
+- **Escalatie:** Groen (technisch, zelf op te lossen)
 
-### 2. Fix /booking pageview tracking in Wix
-- **Wat:** Voeg een expliciet PostHog `$pageview` event toe bij navigatie naar /booking op de Wix site
-- **Waarom:** Funnel data is onbetrouwbaar door ontbrekende /booking pageviews. Gisteren slechts 1 tracked pageview terwijl er 3 "Place Order & Pay" clicks waren. Zonder accurate funnel data kun je de LP niet optimaliseren.
-- **Hoe:** Wix Editor > /booking pagina > voeg custom code toe met `posthog.capture('$pageview')` bij page load, of configureer Wix Velo routing om pageview events te triggeren
-- **Verwachte impact:** Complete funnel visibility, betere optimalisatie beslissingen
-- **Escalatie:** Oranje (Wix Editor nodig)
+### 2. Verhoog H12 budget, verlaag H13
+- **Wat:** Verschuif budget van Kopie 3 (H13) naar Kopie 2 (H12). Overweeg H13 te pauzeren.
+- **Waarom:** H12 heeft 4x hogere CTR (4.55% vs 1.14%), 4x lagere CPC (€0.25 vs €0.95), en de laagste cost per LP view (€0.83). H13 genereerde 0 conversies in 7 dagen met €149 spend.
+- **Hoe:** Meta Ads Manager > Campagne 2026: SYBB > Pauzeer Kopie 3, verhoog Kopie 2 budget naar minimaal €20/dag.
+- **Verwachte impact:** Bij gelijke spend zou H12 ~3x meer LP views genereren dan H13. Met PostHog data van vorige rapporten weten we ook dat H12 de laagste bounce rate had.
+- **Escalatie:** Geel (Robin goedkeuring nodig)
 
-### 3. Test hero section variant om scroll 25%+ te verhogen
-- **Wat:** De huidige hero sectie verliest 35% van bezoekers. Test een variant met een sterkere opening: direct het probleem benoemen ("You know you can make beautiful balloon decorations, but turning that into a real business feels overwhelming") gevolgd door een kort social proof element.
-- **Waarom:** Scroll 25%+ is 65,6% vs 80% target. Als meer mensen voorbij de hero komen, stijgt de hele funnel.
-- **Hoe:** Wix Editor > Hero sectie > A/B test met aangepaste headline en subheadline
-- **Verwachte impact:** +15-20% scroll 25%+, cascade effect op alle funnel stappen
-- **Escalatie:** Oranje (Wix Editor nodig)
+### 3. Analyseer de 4 purchases van gisteren
+- **Wat:** Check in Wix/WooCommerce welke bookings er gisteren binnenkwamen. Valideer of de Meta pixel correct attributeert.
+- **Waarom:** 4 purchases op 1 dag is uitzonderlijk (7d totaal was ook 4). De gemiddelde orderwaarde van €368.38 matcht een workshop booking. Als dit klopt, is de funnel zeer effectief en moet de focus liggen op volume (meer LP traffic).
+- **Hoe:** Check order dashboard voor 15 april. Vergelijk met Meta conversie data.
+- **Verwachte impact:** Bevestiging van pixel accuracy. Als attributie klopt, verschuift de strategie van "fix de LP" naar "meer budget = meer bookings".
+- **Escalatie:** Geel (Robin moet orders controleren)
 
 ---
 
-*Campagne: 2026: SYBB (ID: 120239435987290239) | Account: Sempertex Ad Account (act_567892422940728)*
-*PostHog Project: Default project (ID: 149694) | Timezone: UTC*
-*Rapport gegenereerd: 16 april 2026*
+*Rapport gegenereerd op 2026-04-16 op basis van Meta Ads MCP (Pipeboard) data.*
+*PostHog MCP was niet bereikbaar. LP-data ontbreekt volledig.*
+*Datumbereik: 2026-04-15 (dagdata) vs 2026-04-09 t/m 2026-04-15 (7d referentie).*
