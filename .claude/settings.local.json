@@ -250,7 +250,8 @@
       "Bash(kill 34863 34871 34872 34873 34874)",
       "Bash(kill -9 35545 35688)",
       "Bash(sqlite3:*)",
-      "Bash(bash -n scripts/morning-report.sh)"
+      "Bash(bash -n scripts/morning-report.sh)",
+      "mcp__imessage__tool_send_message"
     ]
   }
 }

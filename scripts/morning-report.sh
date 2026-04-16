@@ -306,9 +306,11 @@ if pc <= 0:
     per = 0.0
 else:
     per = pv / pc
-    # Geldige per-purchase ranges: N tickets * [297, 488] (15% marge rond
-    # EUR 350-425). Check tot N=20 zodat grote groepsboekingen ook valid zijn.
-    valid = any(297 * n <= per <= 488 * n for n in range(1, 21))
+    # Geldige per-purchase ranges: N tickets * [315, 468] (10% marge rond
+    # EUR 350-425). Max N=5 (realistisch max voor groepsboeking).
+    # BUG FIX 2026-04-16: N=20 + 15% marge creëerde een aaneengesloten band
+    # van EUR 891-9760 waardoor EUR 7374/purchase (n=16) doorglipte.
+    valid = any(315 * n <= per <= 468 * n for n in range(1, 6))
     sanity = "PASS" if valid else "FAIL"
 
 print(f"{sanity}|{pv:.2f}|{pc}|{per:.2f}|{spend:.2f}|{impressions}|{link_clicks}|{link_ctr:.2f}|{link_cpc:.2f}|{active_days}|{avg_daily_spend:.2f}")
