@@ -26,8 +26,8 @@
 set -uo pipefail
 
 # Harde wall-clock limiet per Claude stap. Voorkomt dat een hangende MCP call
-# (zoals op 2026-04-14, waar /ads-report 1.5 uur bleef plakken) de hele chain
-# blokkeert en iMessage nooit wordt verstuurd.
+# (zoals 2026-04-14 en 2026-04-15, waar /ads-report 1+ uur bleef plakken) de
+# hele chain blokkeert en iMessage nooit wordt verstuurd.
 CLAUDE_STEP_TIMEOUT_SEC=600
 
 # Paden
@@ -37,6 +37,21 @@ LOG_DIR="${WORKDIR}/logs"
 LOG_FILE="${LOG_DIR}/morning-report-$(date +%Y-%m-%d).log"
 TODAY_ISO=$(date +"%Y-%m-%d")
 YESTERDAY_ISO=$(date -v-1d +"%Y-%m-%d")
+
+# Idempotency marker — zodra dit bestand voor vandaag bestaat, slaan we de
+# volledige run over. Launchd mag het script dus elke paar minuten triggeren
+# (StartInterval + RunAtLoad) zonder dat we dubbele rapporten sturen.
+DONE_MARKER="${LOG_DIR}/morning-report-${TODAY_ISO}.done"
+
+# Vroeg filteren: niet draaien vóór 08:00 en niet nog een keer als vandaag al
+# klaar is. Laat het script stil exit'en zodat launchd logs niet vollopen.
+CURRENT_HOUR=$(date +%H)
+if [ -f "$DONE_MARKER" ]; then
+    exit 0
+fi
+if [ "$CURRENT_HOUR" -lt 8 ]; then
+    exit 0
+fi
 
 # Casing van REPORT_DIR matcht git's canonical pad (zie `git ls-files Output/Reports/Daily/`)
 REPORT_DIR="${WORKDIR}/Output/Reports/Daily"
@@ -76,9 +91,34 @@ run_claude() {
 
     while [ $attempt -le $max_attempts ]; do
         echo "  [poging ${attempt}/${max_attempts}] ${label} (timeout ${CLAUDE_STEP_TIMEOUT_SEC}s)..." >> "$LOG_FILE" 2>&1
-        # perl alarm+exec: harde wall-clock timeout. Bij SIGALRM wordt het
-        # claude subprocess met default-dispositie getermineerd.
-        result=$(/usr/bin/perl -e 'alarm shift; exec @ARGV or die "exec: $!"' "$CLAUDE_STEP_TIMEOUT_SEC" \
+        # Python wrapper: harde wall-clock timeout met process-group kill.
+        # perl alarm+exec werkte niet op macOS omdat alarm(2) timers niet
+        # bewaard blijven over exec — SIGALRM vuurde nooit en stap 1 bleef
+        # 1+ uur hangen (incidenten 2026-04-14 en 2026-04-15).
+        # Exit 124 = timeout hit (matcht GNU coreutils `timeout`).
+        result=$(/usr/bin/python3 -c '
+import os, signal, subprocess, sys
+timeout = int(sys.argv[1])
+cmd = sys.argv[2:]
+p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=sys.stderr, preexec_fn=os.setsid)
+try:
+    out, _ = p.communicate(timeout=timeout)
+    sys.stdout.buffer.write(out)
+    sys.exit(p.returncode)
+except subprocess.TimeoutExpired:
+    try:
+        os.killpg(os.getpgid(p.pid), signal.SIGTERM)
+    except ProcessLookupError:
+        pass
+    try:
+        p.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(os.getpgid(p.pid), signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+    sys.exit(124)
+' "$CLAUDE_STEP_TIMEOUT_SEC" \
             "$CLAUDE" -p "$prompt" \
             --output-format text \
             --max-turns 30 \
@@ -88,8 +128,8 @@ run_claude() {
         if [ $rc -eq 0 ] && [ -n "$result" ]; then
             break
         fi
-        if [ $rc -eq 142 ] || [ $rc -eq 14 ]; then
-            echo "  [poging ${attempt}] TIMEOUT na ${CLAUDE_STEP_TIMEOUT_SEC}s" >> "$LOG_FILE" 2>&1
+        if [ $rc -eq 124 ]; then
+            echo "  [poging ${attempt}] TIMEOUT na ${CLAUDE_STEP_TIMEOUT_SEC}s (process group gekilled)" >> "$LOG_FILE" 2>&1
         else
             echo "  [poging ${attempt}] mislukt (exit ${rc})" >> "$LOG_FILE" 2>&1
         fi
@@ -146,6 +186,173 @@ OPTIMIZE=$(run_claude "/ads-auto-optimize" "$OPTIMIZE_PROMPT") || \
 printf '%s\n' "$OPTIMIZE" > "$OPTIMIZE_REPORT_FILE" 2>> "$LOG_FILE"
 echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in $OPTIMIZE_REPORT_FILE)" >> "$LOG_FILE" 2>&1
 
+# --- Stap 4/4: Purchase Sanity Check + Link Metrics (HARDCODED) ---
+# Deze stap haalt in één narrow JSON call alle campagne-totals op:
+# purchase_value/count + spend + impressions + link_clicks. De Python
+# evaluator berekent zelf de sanity verdict EN de link CTR / CPC (link),
+# en pixel-datafout-rewrite.py overschrijft daarna de kale "CTR" / "CPC"
+# cellen in het rapport met de correcte link-based waarden.
+#
+# Achtergrond:
+# - 2026-04-15: /ads-report meldde "ROAS 60,95x" terwijl pv/pc = EUR 21.386
+#   per purchase, ~50x de ticketprijs. Sanity check zat alleen als
+#   instructie — werd genegeerd door sub-claude.
+# - 2026-04-15 (tweede incident): rapport toonde "CTR 2,0% / CPC EUR 0,52"
+#   als kale Meta standaard (all clicks) ondanks dat het command expliciet
+#   `actions.link_click` voorschrijft. 4e keer dat deze regel werd
+#   overgeslagen door sub-claude. Dus nu: link metrics worden eveneens
+#   hardcoded berekend en het rapport wordt overschreven.
+echo "[4/4] sanity + link metrics fetch (campagne + per-ad + active days)..." >> "$LOG_FILE" 2>&1
+
+PURCHASE_PROMPT="Haal via de Meta Ads MCP (Pipeboard) voor campagne '2026: SYBB' het volgende op over de afgelopen 30 dagen:
+
+A. CAMPAGNE TOTALS (hele periode):
+   - purchase_value: som van action_values waar action_type een purchase event is ('purchase', 'omni_purchase', 'offsite_conversion.fb_pixel_purchase')
+   - purchase_count: som van actions voor dezelfde action_types
+   - spend: totaal spend in EUR
+   - impressions: totaal aantal impressions
+   - link_clicks: totaal aantal LINK clicks — KRITIEK: gebruik action_type 'link_click' uit de actions array, NIET het standaard 'clicks' veld
+
+B. ACTIVE DAYS COUNT:
+   - Haal daily breakdown op met time_increment=1 (dagelijkse spend)
+   - Tel het aantal dagen waarop spend > 0
+   - Output als 'active_days' integer
+
+C. PER-AD METRICS (alleen ads met spend > 0 in deze periode, ongeacht status):
+   - Voor elke ad: name (exact zoals in Meta), spend, impressions, link_clicks (actions.link_click)
+   - Output als 'ads' array met per-ad objecten
+
+Output UITSLUITEND één regel valide JSON, inline (geen newlines in de JSON zelf). Geen prose, geen markdown, geen code fences, geen uitleg. Exact formaat:
+{\"purchase_value\": <float>, \"purchase_count\": <int>, \"spend\": <float>, \"impressions\": <int>, \"link_clicks\": <int>, \"active_days\": <int>, \"ads\": [{\"name\": \"<exact name>\", \"spend\": <float>, \"impressions\": <int>, \"link_clicks\": <int>}, ...]}
+
+Als data niet beschikbaar is, gebruik 0 en een lege 'ads' array.
+
+${NO_GOOGLE_RULE}"
+
+PURCHASE_RAW=$(run_claude "sanity + link metrics + per-ad" "$PURCHASE_PROMPT") || PURCHASE_RAW=""
+
+# Schrijf raw output naar een data file, extract vervolgens een geldig JSON
+# object via python (handelt nested braces correct af, in tegenstelling tot
+# grep dat de 'ads' array niet kan matchen).
+PURCHASE_DATA_FILE="${LOG_DIR}/morning-report-${TODAY_ISO}.data.json"
+printf '%s' "$PURCHASE_RAW" | /usr/bin/python3 -c '
+import json, re, sys
+
+text = sys.stdin.read()
+best = ""
+for m in re.finditer(r"\{", text):
+    start = m.start()
+    depth = 0
+    for i in range(start, len(text)):
+        ch = text[i]
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                cand = text[start:i+1]
+                if "purchase_value" in cand:
+                    try:
+                        json.loads(cand)
+                        if len(cand) > len(best):
+                            best = cand
+                    except Exception:
+                        pass
+                break
+sys.stdout.write(best)
+' > "$PURCHASE_DATA_FILE" 2>> "$LOG_FILE"
+
+PURCHASE_DATA_BYTES=$(wc -c < "$PURCHASE_DATA_FILE" | tr -d ' ')
+echo "[4/4] extracted JSON: ${PURCHASE_DATA_BYTES} bytes in ${PURCHASE_DATA_FILE}" >> "$LOG_FILE" 2>&1
+
+SANITY_VERDICT=$(/usr/bin/python3 -c '
+import json, sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+raw = path.read_text(encoding="utf-8").strip() if path.exists() else ""
+
+def fail(status):
+    print(f"{status}|0.00|0|0.00|0.00|0|0|0.00|0.00|0|0.00")
+    sys.exit(0)
+
+if not raw:
+    fail("NODATA")
+
+try:
+    d = json.loads(raw)
+    pv = float(d.get("purchase_value", 0) or 0)
+    pc = int(float(d.get("purchase_count", 0) or 0))
+    spend = float(d.get("spend", 0) or 0)
+    impressions = int(float(d.get("impressions", 0) or 0))
+    link_clicks = int(float(d.get("link_clicks", 0) or 0))
+    active_days = int(float(d.get("active_days", 0) or 0))
+except Exception:
+    fail("PARSE_ERROR")
+
+# Link metrics — onafhankelijk van de purchase sanity check
+link_ctr = (link_clicks / impressions * 100) if impressions > 0 else 0.0
+link_cpc = (spend / link_clicks) if link_clicks > 0 else 0.0
+
+# Daily spend over ACTIEVE dagen (spend > 0). Vermijd de naieve spend/30
+# berekening die de sub-claude soms rapporteert (leidt tot ~1/3 van de
+# werkelijke dagspend bij campagnes die slechts deels van de periode actief
+# zijn).
+avg_daily_spend = (spend / active_days) if active_days > 0 else 0.0
+
+# Purchase sanity verdict
+if pc <= 0:
+    sanity = "NO_PURCHASES"
+    per = 0.0
+else:
+    per = pv / pc
+    # Geldige per-purchase ranges: N tickets * [297, 488] (15% marge rond
+    # EUR 350-425). Check tot N=20 zodat grote groepsboekingen ook valid zijn.
+    valid = any(297 * n <= per <= 488 * n for n in range(1, 21))
+    sanity = "PASS" if valid else "FAIL"
+
+print(f"{sanity}|{pv:.2f}|{pc}|{per:.2f}|{spend:.2f}|{impressions}|{link_clicks}|{link_ctr:.2f}|{link_cpc:.2f}|{active_days}|{avg_daily_spend:.2f}")
+' "$PURCHASE_DATA_FILE")
+
+SANITY_STATUS=$(echo "$SANITY_VERDICT" | cut -d'|' -f1)
+SANITY_PV=$(echo "$SANITY_VERDICT" | cut -d'|' -f2)
+SANITY_PC=$(echo "$SANITY_VERDICT" | cut -d'|' -f3)
+SANITY_PER=$(echo "$SANITY_VERDICT" | cut -d'|' -f4)
+SANITY_SPEND=$(echo "$SANITY_VERDICT" | cut -d'|' -f5)
+SANITY_IMP=$(echo "$SANITY_VERDICT" | cut -d'|' -f6)
+SANITY_LC=$(echo "$SANITY_VERDICT" | cut -d'|' -f7)
+SANITY_LCTR=$(echo "$SANITY_VERDICT" | cut -d'|' -f8)
+SANITY_LCPC=$(echo "$SANITY_VERDICT" | cut -d'|' -f9)
+SANITY_ADAYS=$(echo "$SANITY_VERDICT" | cut -d'|' -f10)
+SANITY_AVG=$(echo "$SANITY_VERDICT" | cut -d'|' -f11)
+echo "[4/4] verdict: ${SANITY_VERDICT}" >> "$LOG_FILE" 2>&1
+
+# Mode bepaling — de rewrite helper wordt ALTIJD aangeroepen zodat link
+# metrics altijd overschreven worden, maar de mode bepaalt of er ook een
+# sanity warning block wordt geplakt.
+#   "datafout"   = purchase_value/count past niet bij ticketprijs
+#   "unverified" = JSON fetch mislukt/niet parseerbaar (geen link data)
+#   "linkfix"    = purchase data OK of geen purchases, alleen link rewrite
+REWRITE_MODE="linkfix"
+case "$SANITY_STATUS" in
+    FAIL)
+        REWRITE_MODE="datafout"
+        echo "[4/4] 🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases" >> "$LOG_FILE" 2>&1
+        ;;
+    NODATA|PARSE_ERROR)
+        REWRITE_MODE="unverified"
+        echo "[4/4] ⚠️ purchase data niet verifieerbaar (${SANITY_STATUS}) — fail-closed, ROAS wordt gemaskeerd" >> "$LOG_FILE" 2>&1
+        ;;
+    PASS)
+        echo "[4/4] ✅ purchase sanity OK (EUR ${SANITY_PER}/purchase)" >> "$LOG_FILE" 2>&1
+        ;;
+    NO_PURCHASES)
+        echo "[4/4] ✅ geen purchases in periode — niets te verifiëren" >> "$LOG_FILE" 2>&1
+        ;;
+esac
+echo "[4/4] link metrics: Link CTR ${SANITY_LCTR}% · CPC (link) EUR ${SANITY_LCPC} (spend=${SANITY_SPEND} imp=${SANITY_IMP} lc=${SANITY_LC})" >> "$LOG_FILE" 2>&1
+echo "[4/4] daily spend: EUR ${SANITY_AVG} over ${SANITY_ADAYS} actieve dagen (van 30)" >> "$LOG_FILE" 2>&1
+
 # --- Combineer alle deelrapporten naar 1 markdown bestand ---
 {
     echo "# Morning Report — ${TODAY_ISO}"
@@ -171,6 +378,33 @@ echo "[3/3] klaar ($(echo "$OPTIMIZE" | wc -c | tr -d ' ') bytes, opgeslagen in 
 } > "$FULL_REPORT_FILE" 2>> "$LOG_FILE"
 
 echo "[done] Gecombineerd rapport opgeslagen in $FULL_REPORT_FILE" >> "$LOG_FILE" 2>&1
+
+# --- Rewrite: sanity warnings + link metrics ---
+# Draait ALTIJD (REWRITE_MODE is minimaal "linkfix"), vóór push en
+# iMessage. Helper doet twee dingen:
+#   1. Link metric rewrite: vervangt kale "CTR"/"CPC" in campagne-summary
+#      tabellen door de hardcoded link_ctr / link_cpc waarden en plakt een
+#      "LINK METRICS" block bovenaan. Dit gebeurt altijd als we link data
+#      hebben (mode != unverified en link_clicks > 0).
+#   2. Sanity warning: alleen bij datafout (hard mismatch) of unverified
+#      (fetch faalde) — plakt PIXEL DATAFOUT / NIET GEVERIFIEERD block +
+#      maskeert ROAS en purchase prose.
+/usr/bin/python3 "${WORKDIR}/scripts/pixel-datafout-rewrite.py" \
+    "$REWRITE_MODE" \
+    "$FULL_REPORT_FILE" \
+    "$SANITY_PV" \
+    "$SANITY_PC" \
+    "$SANITY_PER" \
+    "$SANITY_SPEND" \
+    "$SANITY_IMP" \
+    "$SANITY_LC" \
+    "$SANITY_LCTR" \
+    "$SANITY_LCPC" \
+    "$SANITY_ADAYS" \
+    "$SANITY_AVG" \
+    "$PURCHASE_DATA_FILE" \
+    >> "$LOG_FILE" 2>&1 || \
+    echo "[pixel-rewrite] helper faalde — rapport blijft ongewijzigd" >> "$LOG_FILE" 2>&1
 
 # --- Push naar GitHub zodat de iMessage link direct werkt ---
 echo "[push] Commit + push reports naar main..." >> "$LOG_FILE" 2>&1
@@ -219,14 +453,39 @@ fi
 # Dump de volledige rapport-inhoud in de iMessage (Robin update het HTML
 # dashboard zelf op basis hiervan). Markdown table-separator rijen ("|---|---|")
 # worden eruit gefilterd want die zijn onleesbaar op een telefoonscherm;
-# normale tabelrijen blijven staan.
+# normale tabelrijen blijven staan. De rewrite-stap heeft hierboven al
+# eventuele pixel-datafout warning in FULL_REPORT_FILE geplakt, dus die
+# reist automatisch mee in REPORT_BODY.
 REPORT_BODY=$(sed -E '/^[[:space:]]*\|[-: |]+\|[[:space:]]*$/d' "$FULL_REPORT_FILE" 2>/dev/null)
 
 if [ -z "$REPORT_BODY" ]; then
     REPORT_BODY="(Rapport-inhoud niet beschikbaar — zie log ${LOG_FILE})"
 fi
 
-IMESSAGE_BODY="📊 Morning Report ${TODAY_ISO}
+# Explicit warning prefix bovenaan de iMessage, zodat je belangrijke info
+# ziet voordat je hoeft te scrollen (naast het warning blok dat via
+# REPORT_BODY meekomt).
+PIXEL_PREFIX=""
+case "$REWRITE_MODE" in
+    datafout)
+        PIXEL_PREFIX="🚨 PIXEL DATAFOUT — EUR ${SANITY_PER}/purchase bij ${SANITY_PC} purchases past niet bij ticketprijs EUR 350-425. Purchase aantal en ROAS zijn NIET betrouwbaar. Verifieer in Wix.
+✅ Link CTR: ${SANITY_LCTR}% · CPC (link): EUR ${SANITY_LCPC}
+━━━━━━━━━━━━━━━━━━━━━
+"
+        ;;
+    unverified)
+        PIXEL_PREFIX="⚠️ PURCHASE DATA NIET GEVERIFIEERD — sanity check kon geen purchase data ophalen. ROAS gemaskeerd. Link metrics ook niet beschikbaar. Behandel alles als onbetrouwbaar. Verifieer in Wix.
+━━━━━━━━━━━━━━━━━━━━━
+"
+        ;;
+    linkfix)
+        PIXEL_PREFIX="✅ Link CTR: ${SANITY_LCTR}% · CPC (link): EUR ${SANITY_LCPC} (hardcoded via Meta Ads MCP)
+━━━━━━━━━━━━━━━━━━━━━
+"
+        ;;
+esac
+
+IMESSAGE_BODY="${PIXEL_PREFIX}📊 Morning Report ${TODAY_ISO}
 ${STATUS_LINE} — Bronnen: Meta Ads + PostHog
 
 ${REPORT_BODY}
@@ -249,5 +508,11 @@ fi
 
 echo "=== Morning Report afgerond: $(date) — ${FAILURES} failures ===" >> "$LOG_FILE" 2>&1
 
-# Cleanup: verwijder logs ouder dan 30 dagen
+# Markeer vandaag als klaar zodat launchd's StartInterval (elke paar minuten)
+# het script vandaag niet opnieuw triggert. De marker bevat timestamp + failures
+# voor debugging. Verwijder het bestand om handmatig een re-run te forceren.
+echo "done=$(date +%s) failures=${FAILURES}" > "$DONE_MARKER"
+
+# Cleanup: verwijder logs + markers ouder dan 30 dagen
 find "$LOG_DIR" -name "morning-report-*.log" -mtime +30 -delete 2>/dev/null || true
+find "$LOG_DIR" -name "morning-report-*.done" -mtime +30 -delete 2>/dev/null || true

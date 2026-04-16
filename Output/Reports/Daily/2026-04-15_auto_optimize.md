@@ -1,24 +1,25 @@
-## Auto-Optimize samenvatting, 15 april 2026
+## Auto-Optimize Rapport 2026-04-15 klaar
 
-**Niveau 1 (uitgevoerd):** 0 ads gepauzeerd. Alle 3 actieve ads presteren boven de drempelwaarden.
+**0 ads gepauzeerd** -- alle 3 actieve ads presteren boven de kill-drempels.
 
-**3 actieve ads status (last 3d):**
+### Key metrics (3d)
+| Ad | Link CTR | CPC (link) | Spend | Purchases |
+|----|----------|------------|-------|-----------|
+| H11 | 0,98% | €1,40 | €220,61 | 0 |
+| H12 | 1,19% | €1,16 | €42,96 | 0 |
+| H13 | 1,17% | €1,10 | €90,03 | 0 |
 
-| Ad | Link CTR | CPC (link) | Spend % |
-|----|----------|-----------|---------|
-| H11 (Kopie 1) | 0,98% | €1,40 | 62,4% |
-| H12 (Kopie 2) | 1,19% | €1,16 | 12,2% |
-| H13 (Kopie 3) | 1,17% | €1,10 | 25,5% |
+### Grootste probleem: budget mismatch wordt erger
+- H11 (0 purchases lifetime, €313 spend) krijgt nu **62,4%** van budget (was 45% gisteren)
+- H13 (enige ad met purchases, ROAS 290,6x) krijgt slechts **25,5%**
+- Na pauzering van H14 gisteren stuurt Meta nog meer budget naar H11
+- CPC (link) campagne-gemiddeld stijgt: €1,14 naar €1,29
 
-**Waarschuwingen:**
-- H11 CPC (link) €1,40 nadert kill-grens (€1,50). Bij ~500 link clicks wordt regel scherp.
-- H11 slokt 62% van budget op terwijl H12/H13 efficiënter zijn op CPC en CPM.
-- Positief: H11 Link CTR verbeterd van 0,9% (gisteren) naar 0,98%. CPC gedaald van €1,45 naar €1,40.
+### 5 voorstellen wachten op goedkeuring:
+1. **Pauzeer ad set Kopie 1 (H11)** om budget naar H13/H12 te forceren
+2. **Checkout flow diagnose** -- H11 heeft 13 IC maar 0 purchases, er zit een blokkade
+3. **Hook variaties** op H13 (enige ad met purchases)
+4. **ROAS verificatie** -- zijn H13's 2 purchases (€42.773) echte orders?
+5. **Audience** -- geen actie nodig, frequency <2.0
 
-**Niveau 2 voorstellen (wachten op goedkeuring):**
-1. H11 CPC monitoring verscherpen
-2. Budget herverdeling via ad set spend limits (A: min €20/dag Kopie 2, B: max €50/dag Kopie 1)
-3. H12 funnel diagnose (0 checkouts/purchases op 123 lifetime link clicks)
-4. H13 ROAS anomalie verifiëren (€42.773,50 purchase)
-
-Rapport opgeslagen en gepusht. Geef aan welke voorstellen (1/2A/2B/3/4) je wil uitvoeren.
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-15_auto_optimize.md`. Welke voorstellen wil je uitvoeren?

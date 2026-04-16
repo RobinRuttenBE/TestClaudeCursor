@@ -1,89 +1,105 @@
 # Morning Report — 2026-04-15
 
+> 🚨 **PIXEL DATAFOUT — Meta Purchase Tracking**
+> Waarde per purchase: **EUR 21386,75** bij 2 purchases (totaal EUR 42773,50).
+> Dit past NIET bij de SYBB ticketprijs van EUR 350 ex BTW / EUR 423,50 incl BTW.
+> Geldige ranges per purchase (15% marge): EUR 297-488 (1 ticket), EUR 595-977 (2 tickets), EUR 892-1465 (3 tickets), etc.
+> ROAS is overschreven met `n.v.t. (pixel datafout)`. Purchase aantal in prose als `? purchases (verifieer Wix)`.
+> **Verifieer het echte aantal purchases handmatig in Wix orders.**
+
+> ✅ **LINK METRICS — hardcoded via Meta Ads MCP**
+> - **Link CTR: 1,07%** (link_clicks ÷ impressions × 100)
+> - **CPC (link): EUR 0,99** (spend ÷ link_clicks)
+> - Bron: spend EUR 701,77 · impressions 66.263 · link_clicks 711
+> Dit zijn de ENIGE betrouwbare CTR/CPC cijfers in dit rapport. Kale `CTR`/`CPC` in campagne-summary tabellen zijn overschreven met de link-based waarden. Per-ad tabellen bevatten mogelijk nog all-clicks cijfers — controleer dubbel.
+
+
 Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 Failures: 0
 
 ---
 
-Rapport is klaar en gepusht. Hier is de samenvatting:
-
 ## Meta Ads Rapport -- 15 april 2026
 
-### Campagne: 2026: SYBB (laatste 30 dagen)
+### Campagne: 2026: SYBB (30 dagen)
 
 | Metric | Waarde |
 |--------|--------|
-| Spend | EUR 701,74 |
-| Impressions | 66.257 |
-| Reach | 34.460 |
-| CTR | 2,0% |
-| CPC | EUR 0,52 |
-| Purchases | 2 (EUR 42.773,50) |
-| ROAS | 60,95x |
+| Spend | EUR 701,77 |
+| Impressions | 66.263 |
+| Link CTR | 1,07% |
+| CPC (link) | EUR 0,99 |
+| Purchases | ? (verifieer Wix) |
+|ROAS n.v.t. (pixel datafout) |
 
-### Actieve ads (3 van 21)
+### 3 actieve ads
 
-| Ad | CPC | CTR | Purchases | Flag |
-|----|-----|-----|-----------|------|
-| **H12,B3,CTA5** | EUR 0,40 | 2,3% | 0 | Beste CPC |
-| **H13,B3,CTA5** | EUR 0,61 | 1,9% | 2 (299,8x ROAS) | CPC boven drempel |
-| **H11, B3, CTA5** | EUR 0,66 | 1,9% | 0 | CPC boven drempel, hoogste spend |
+| Ad | Spend | CPC | Purch. | Flag |
+|----|-------|-----|--------|------|
+| H11, B3, CTA5 | EUR 266,81 | EUR 0,66 | 0 | CPC te hoog, 0 conversies ondanks 13 IC |
+| H13, B3, CTA5 | EUR 142,66 | EUR 0,61 | 2 | CPC hoog maar ENIGE met purchases (ROAS n.v.t. (pixel datafout)) |
+| H12, B3, CTA5 | EUR 102,81 | EUR 0,40 | 0 | Beste CPC/CTR, nog geen conversies |
 
-### Key takeaways
+### Kritieke bevindingen
 
-1. **H11 is de bottleneck:** 52% van actieve spend, 13 ATC + 13 IC maar 0 purchases. Checkout drop-off onderzoeken.
-2. **H12 is de efficiëntste:** laagste CPC, hoogste CTR. Draait pas sinds 9 april, meer tijd nodig.
-3. **H13 is de revenue driver:** enige ad met purchases (ROAS 299,8x).
-4. **Frequency (1,92) is gezond:** geen creative fatigue risico.
+1. **H11 eet 38% van het budget** maar converteert niet, ondanks 13 add-to-carts en 13 initiate checkouts. Er zit een blokkade in de checkout flow.
+2. **LP bounce is het #1 probleem.** Van 545 landing page views vuren er maar 49 een view content event (9%). 91% verdwijnt direct.
+3. **PostHog bevestigt:** 882 meta pageviews vs. 545 Meta LP views, 65% van al het SYBB traffic komt van Meta.
+4. **Frequency 1,92** is prima, geen creative fatigue.
 
-Rapport opgeslagen in `Output/Reports/Daily/2026-04-15_ads_report.md`.
+### Top 3 acties
+1. **Verschuif budget van H11 naar H13** (enige converterende ad, ROAS n.v.t. (pixel datafout))
+2. **Fix de landing page bounce** (91% verlaat zonder engagement, dit is de funnel bottleneck)
+3. **Geef H12 meer ruimte** als secondary winner (laagste CPC EUR 0,40, hoogste CTR 2,3%)
 
-> **Wil je funnel data toevoegen?** Geef dan de landing page metrics uit PostHog of GA4. Ik heb nodig: landing page visitors, bounce rate, scroll depth, CTA clicks, /booking visits. Dan draai ik automatisch een `/funnel-diagnose` analyse.
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-15_ads_report.md` en gepusht naar GitHub.
 
 ---
 
-SYBB Daily Report 14 april staat klaar in `Output/Reports/Daily/2026-04-14_sybb_report.md`. Gecommit en gepusht.
+> **Wil je funnel data toevoegen?** Geef dan de landing page metrics uit Wix Analytics of GA4.
+> Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases.
+
+---
+
+SYBB rapport voor 2026-04-14 is gegenereerd, opgeslagen en gepushed.
 
 **Belangrijkste bevindingen:**
+- CPC €0.62 (boven €0.50 target), impressions -23% vs 7d gemiddelde
+- Bounce rate 82.7% (structureel probleem, target is <55%)
+- 40% zero-scroll rate, mediaan sessieduur slechts 7s
+- H12 is de beste variant (CTR 3.02%, CPC €0.49, 75% bounce) maar krijgt slechts 9% budget
+- H13 is de slechtste (88.5% bounce), H11 is het grootste geldlek (66% budget, 84% bounce)
+- 10 unieke bezoekers bereikten /booking (9.6% conversie)
 
-| Metric | Gisteren | 7d Avg | Signaal |
-|---|---|---|---|
-| Spend | €95,91 | €100,25 | Stabiel |
-| CPC | €0,63 | €0,52 | 🚩 +21%, boven target |
-| CTR | 2,09% | 2,04% | Stabiel |
-| Purchases | 0 | 0,3/dag | 2e dag op rij 0 |
-
-**3 urgente acties:**
-1. **Budget shift H11 → H12** -- H11 verbrandt 66% van spend met slechtste metrics. H12 (9% budget) heeft beste CTR (2,85%) en enige add-to-carts.
-2. **Checkout flow testen** -- 2 dagen 0 purchases, 0 initiated checkouts gisteren ondanks 2 ATC events. Mogelijke technische blokkade.
-3. **PostHog MCP herstellen** -- PostHog MCP was niet verbonden in deze sessie. Landing page health data (bounce rate, scroll depth, CTA clicks) ontbreekt volledig. Herstart sessie om cross-referencing te herstellen.
+**Top acties:** budget verschuiven van H13 naar H12, hero sectie optimaliseren, LP variant testen voor H11 verkeer.
 
 ---
 
-## Auto-Optimize samenvatting, 15 april 2026
+## Auto-Optimize Rapport 2026-04-15 klaar
 
-**Niveau 1 (uitgevoerd):** 0 ads gepauzeerd. Alle 3 actieve ads presteren boven de drempelwaarden.
+**0 ads gepauzeerd** -- alle 3 actieve ads presteren boven de kill-drempels.
 
-**3 actieve ads status (last 3d):**
+### Key metrics (3d)
+| Ad | Link CTR | CPC (link) | Spend | Purchases |
+|----|----------|------------|-------|-----------|
+| H11 | 0,98% | €1,40 | €220,61 | 0 |
+| H12 | 1,19% | €1,16 | €42,96 | 0 |
+| H13 | 1,17% | €1,10 | €90,03 | 0 |
 
-| Ad | Link CTR | CPC (link) | Spend % |
-|----|----------|-----------|---------|
-| H11 (Kopie 1) | 0,98% | €1,40 | 62,4% |
-| H12 (Kopie 2) | 1,19% | €1,16 | 12,2% |
-| H13 (Kopie 3) | 1,17% | €1,10 | 25,5% |
+### Grootste probleem: budget mismatch wordt erger
+- H11 (? purchases (verifieer Wix) lifetime, €313 spend) krijgt nu **62,4%** van budget (was 45% gisteren)
+- H13 (enige ad met purchases,ROAS n.v.t. (pixel datafout)) krijgt slechts **25,5%**
+- Na pauzering van H14 gisteren stuurt Meta nog meer budget naar H11
+- CPC (link) campagne-gemiddeld stijgt: €1,14 naar €1,29
 
-**Waarschuwingen:**
-- H11 CPC (link) €1,40 nadert kill-grens (€1,50). Bij ~500 link clicks wordt regel scherp.
-- H11 slokt 62% van budget op terwijl H12/H13 efficiënter zijn op CPC en CPM.
-- Positief: H11 Link CTR verbeterd van 0,9% (gisteren) naar 0,98%. CPC gedaald van €1,45 naar €1,40.
+### 5 voorstellen wachten op goedkeuring:
+1. **Pauzeer ad set Kopie 1 (H11)** om budget naar H13/H12 te forceren
+2. **Checkout flow diagnose** -- H11 heeft 13 IC maar ? purchases (verifieer Wix), er zit een blokkade
+3. **Hook variaties** op H13 (enige ad met purchases)
+4. **ROAS verificatie** -- zijn H13's ? purchases (verifieer Wix) (€42.773) echte orders?
+5. **Audience** -- geen actie nodig, frequency <2.0
 
-**Niveau 2 voorstellen (wachten op goedkeuring):**
-1. H11 CPC monitoring verscherpen
-2. Budget herverdeling via ad set spend limits (A: min €20/dag Kopie 2, B: max €50/dag Kopie 1)
-3. H12 funnel diagnose (0 checkouts/purchases op 123 lifetime link clicks)
-4. H13 ROAS anomalie verifiëren (€42.773,50 purchase)
-
-Rapport opgeslagen en gepusht. Geef aan welke voorstellen (1/2A/2B/3/4) je wil uitvoeren.
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-15_auto_optimize.md`. Welke voorstellen wil je uitvoeren?
 
 ---
 

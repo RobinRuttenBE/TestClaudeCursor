@@ -244,7 +244,13 @@
       "Bash(kill 13105 13104 13103 13093)",
       "Bash(/bin/bash:*)",
       "mcp__claude_ai_Gmail__create_draft",
-      "Bash(/usr/bin/python3:*)"
+      "Bash(/usr/bin/python3:*)",
+      "Bash(kill 28921 28920 28919 28908)",
+      "Bash(launchctl unload:*)",
+      "Bash(kill 34863 34871 34872 34873 34874)",
+      "Bash(kill -9 35545 35688)",
+      "Bash(sqlite3:*)",
+      "Bash(bash -n scripts/morning-report.sh)"
     ]
   }
 }

@@ -1,34 +1,39 @@
-Rapport is klaar en gepusht. Hier is de samenvatting:
-
 ## Meta Ads Rapport -- 15 april 2026
 
-### Campagne: 2026: SYBB (laatste 30 dagen)
+### Campagne: 2026: SYBB (30 dagen)
 
 | Metric | Waarde |
 |--------|--------|
-| Spend | EUR 701,74 |
-| Impressions | 66.257 |
-| Reach | 34.460 |
+| Spend | EUR 701,77 |
+| Impressions | 66.263 |
 | CTR | 2,0% |
 | CPC | EUR 0,52 |
 | Purchases | 2 (EUR 42.773,50) |
-| ROAS | 60,95x |
+| ROAS | 60,9x |
 
-### Actieve ads (3 van 21)
+### 3 actieve ads
 
-| Ad | CPC | CTR | Purchases | Flag |
-|----|-----|-----|-----------|------|
-| **H12,B3,CTA5** | EUR 0,40 | 2,3% | 0 | Beste CPC |
-| **H13,B3,CTA5** | EUR 0,61 | 1,9% | 2 (299,8x ROAS) | CPC boven drempel |
-| **H11, B3, CTA5** | EUR 0,66 | 1,9% | 0 | CPC boven drempel, hoogste spend |
+| Ad | Spend | CPC | Purch. | Flag |
+|----|-------|-----|--------|------|
+| H11, B3, CTA5 | EUR 266,81 | EUR 0,66 | 0 | CPC te hoog, 0 conversies ondanks 13 IC |
+| H13, B3, CTA5 | EUR 142,66 | EUR 0,61 | 2 | CPC hoog maar ENIGE met purchases (ROAS 299,8x) |
+| H12, B3, CTA5 | EUR 102,81 | EUR 0,40 | 0 | Beste CPC/CTR, nog geen conversies |
 
-### Key takeaways
+### Kritieke bevindingen
 
-1. **H11 is de bottleneck:** 52% van actieve spend, 13 ATC + 13 IC maar 0 purchases. Checkout drop-off onderzoeken.
-2. **H12 is de efficiëntste:** laagste CPC, hoogste CTR. Draait pas sinds 9 april, meer tijd nodig.
-3. **H13 is de revenue driver:** enige ad met purchases (ROAS 299,8x).
-4. **Frequency (1,92) is gezond:** geen creative fatigue risico.
+1. **H11 eet 38% van het budget** maar converteert niet, ondanks 13 add-to-carts en 13 initiate checkouts. Er zit een blokkade in de checkout flow.
+2. **LP bounce is het #1 probleem.** Van 545 landing page views vuren er maar 49 een view content event (9%). 91% verdwijnt direct.
+3. **PostHog bevestigt:** 882 meta pageviews vs. 545 Meta LP views, 65% van al het SYBB traffic komt van Meta.
+4. **Frequency 1,92** is prima, geen creative fatigue.
 
-Rapport opgeslagen in `Output/Reports/Daily/2026-04-15_ads_report.md`.
+### Top 3 acties
+1. **Verschuif budget van H11 naar H13** (enige converterende ad, 299,8x ROAS)
+2. **Fix de landing page bounce** (91% verlaat zonder engagement, dit is de funnel bottleneck)
+3. **Geef H12 meer ruimte** als secondary winner (laagste CPC EUR 0,40, hoogste CTR 2,3%)
 
-> **Wil je funnel data toevoegen?** Geef dan de landing page metrics uit PostHog of GA4. Ik heb nodig: landing page visitors, bounce rate, scroll depth, CTA clicks, /booking visits. Dan draai ik automatisch een `/funnel-diagnose` analyse.
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-15_ads_report.md` en gepusht naar GitHub.
+
+---
+
+> **Wil je funnel data toevoegen?** Geef dan de landing page metrics uit Wix Analytics of GA4.
+> Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases.
