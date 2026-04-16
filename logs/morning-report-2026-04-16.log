@@ -31,3 +31,8 @@ remote: This repository moved. Please use the new location:
 remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
 To github.com:RobinRuttenBE/testclaudecursor.git
    6f85c81..74c373d  main -> main
+send-imessage: osascript failed (exit 1)
+stderr: 50:91: execution error: Messages got an error: AppleEvent timed out. (-1712)
+
+[imessage] FAILED — check Messages.app permissions of of de helper draait
+=== Morning Report afgerond: Thu Apr 16 08:18:20 CEST 2026 — 0 failures ===
