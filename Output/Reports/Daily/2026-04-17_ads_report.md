@@ -1,9 +1,44 @@
-De push faalt door divergerende branches (49 lokale commits vs 31 remote). Ik stop hier met pushen om data niet te verliezen. Het rapport is wel lokaal opgeslagen en gecommit.
+## Meta Ads Rapport — 2026-04-17
 
-Rapport opgeslagen in `Output/Reports/Daily/2026-04-17_ads_report.md` en lokaal gecommit als `f81f76d`. Push faalt door branch divergence — je repo heeft 49 lokale vs 31 remote commits uit elkaar gelopen (waarschijnlijk door auto-sync conflicten op de log files). Laat me weten of ik een merge mag doen of dat je dit zelf eerst wil oplossen.
+**Periode:** last 30 days (2026-03-18 t/m 2026-04-16) · **Account:** Sempertex Ad Account
 
-**Kernbevindingen rapport:**
-- 1 actieve campagne: `2026: SYBB`, €834,24 spend / 30d, 6 purchases, CPA €139,04
-- 3 actieve ads: H11 (grootste spend, enige echte converter met 4 purchases), H12 (laagste CPC €0,40, beste CTR), H13 (CPC €0,61 grensgeval)
-- 🚩 Flags: H11 CPC €0,65 en H13 CPC €0,61 boven drempel €0,50
-- **Data caveat:** Meta pixel rapporteert purchase_value €44.247 op 6 purchases — onrealistisch, ROAS 53x is niet bruikbaar. Check Events Manager pixel mapping voor SYBB pixel `888973173636482`
+### Overzicht per campagne
+
+| Campagne | Status | Spend | Impressions | Clicks | CTR | CPC | CPM | Conv. | ROAS* |
+|----------|--------|-------|-------------|--------|-----|-----|-----|-------|------|
+| 2026: SYBB | Active | €834,27 | 76.618 | 1.582 | 2,1% | €0,53 | €10,89 | 6 | 0,53x |
+
+### Overzicht actieve ads
+
+| Ad | Spend | CTR | CPC | CPM | Freq | Purch. |
+|----|-------|-----|-----|-----|------|--------|
+| H11, B3, CTA5 | €370,47 | 2,0% | €0,65 | €12,99 | 1,76 | 4 |
+| H12, B3, CTA5 | €116,03 | 2,4% | €0,40 | €9,46 | 1,82 | 0 |
+| H13, B3, CTA5 | €158,28 | 1,9% | €0,61 | €11,87 | 1,52 | 2 |
+
+### Underperformers
+
+- **H11** — CPC €0,65 (drempel €0,50), CPM €12,99. Slokt €370 van €834 maar levert wel 4 purchases. Aanbeveling: budget shift naar H12.
+- **H13** — CPC €0,61. Laat draaien tot €250, herbeoordelen.
+- **Campagne CPC** €0,53 licht boven €0,50 drempel.
+
+### Top performers
+
+- **Beste CTR / laagste CPC / laagste CPM:** H12, B3, CTA5 — 2,37% · €0,40 · €9,46
+- **Meeste purchases:** H11 — 4 (duurste traffic)
+
+### Samenvatting & aanbeveling (70-20-10)
+
+- Totaal spend €834,27 → funnel: 1.582 clicks → 643 LPV → 38 ATC → 24 IC → 6 purchase.
+- **70%:** shift budget H11 → H12 (zelfde B3/CTA5 template, 38% goedkopere clicks).
+- **20%:** duplicate H12 met creative tweak als A/B.
+- **10%:** nieuwe hook (H16) buiten B3/CTA5 template testen.
+- **Extra:** pixel value registratie checken — 44.247 unit voor 6 purchases lijkt onjuist (mogelijk cents of test-data).
+
+### Google Sheet
+
+Overgeslagen per run-instructie. Rapport opgeslagen op `Output/Reports/Daily/2026-04-17_ads_report.md`.
+
+---
+
+> **Wil je funnel data toevoegen?** Geef landing page metrics (PostHog of handmatig): visitors, opt-in/booking clicks, add to cart, completed purchases. Dan draai ik `/funnel-diagnose` met de Meta data gecombineerd.

@@ -1,10 +1,17 @@
 # Morning Report — 2026-04-17
 
+> 🚨 **PIXEL DATAFOUT — Meta Purchase Tracking**
+> Waarde per purchase: **EUR 7374,50** bij 18 purchases (totaal EUR 132741,00).
+> Dit past NIET bij de SYBB ticketprijs van EUR 350 ex BTW / EUR 423,50 incl BTW.
+> Geldige ranges per purchase (10% marge, max 5 tickets): EUR 315-468 (1 ticket), EUR 630-936 (2 tickets), EUR 945-1404 (3 tickets), EUR 1260-1872 (4), EUR 1575-2340 (5).
+> ROAS is overschreven met `n.v.t. (pixel datafout)`. Purchase aantal in prose als `? purchases (verifieer Wix)`.
+> **Verifieer het echte aantal purchases handmatig in Wix orders.**
+
 > ✅ **LINK METRICS — hardcoded via Meta Ads MCP**
 > - **Link CTR: 1,09%** (link_clicks ÷ impressions × 100)
-> - **CPC (link): EUR 1,01** (spend ÷ link_clicks)
-> - **Gem. dagspend: EUR 85,37** over 10 actieve dagen (niet totaal/30)
-> - Bron: spend EUR 853,66 · impressions 77.756 · link_clicks 844
+> - **CPC (link): EUR 1,00** (spend ÷ link_clicks)
+> - **Gem. dagspend: EUR 92,70** over 9 actieve dagen (niet totaal/30)
+> - Bron: spend EUR 834,27 · impressions 76.618 · link_clicks 832
 > 
 > **Per-ad link metrics (hardcoded):**
 > 
@@ -15,9 +22,9 @@
 > | H14,B3,CTA5 | EUR 122,96 | 16.551 | 158 | 0,95% | EUR 0,78 |
 > | H15,B3,CTA5 | EUR 2,32 | 157 | 4 | 2,55% | EUR 0,58 |
 > | H15,B3,CTA5 | EUR 49,83 | 4.737 | 57 | 1,20% | EUR 0,87 |
-> | H11, B3, CTA5 | EUR 386,34 | 29.404 | 313 | 1,06% | EUR 1,23 |
-> | H13,B3,CTA5 | EUR 160,60 | 13.492 | 154 | 1,14% | EUR 1,04 |
-> | H12,B3,CTA5 | EUR 117,23 | 12.356 | 138 | 1,12% | EUR 0,85 |
+> | H11, B3, CTA5 | EUR 370,47 | 28.511 | 303 | 1,06% | EUR 1,22 |
+> | H13,B3,CTA5 | EUR 158,28 | 13.336 | 152 | 1,14% | EUR 1,04 |
+> | H12,B3,CTA5 | EUR 116,03 | 12.267 | 138 | 1,12% | EUR 0,84 |
 > 
 > Dit zijn de ENIGE betrouwbare CTR/CPC/dagspend cijfers in dit rapport. Kale `CTR`/`CPC` waarden in het rapport hieronder zijn waar mogelijk hardcoded overschreven.
 
@@ -27,37 +34,114 @@ Failures: 0
 
 ---
 
-De push faalt door divergerende branches (49 lokale commits vs 31 remote). Ik stop hier met pushen om data niet te verliezen. Het rapport is wel lokaal opgeslagen en gecommit.
+## Meta Ads Rapport — 2026-04-17
 
-Rapport opgeslagen in `Output/Reports/Daily/2026-04-17_ads_report.md` en lokaal gecommit als `f81f76d`. Push faalt door branch divergence — je repo heeft 49 lokale vs 31 remote commits uit elkaar gelopen (waarschijnlijk door auto-sync conflicten op de log files). Laat me weten of ik een merge mag doen of dat je dit zelf eerst wil oplossen.
+**Periode:** last 30 days (2026-03-18 t/m 2026-04-16) · **Account:** Sempertex Ad Account
 
-**Kernbevindingen rapport:**
-- 1 actieve campagne: `2026: SYBB`, €834,24 spend / 30d, 6 purchases, CPA €139,04
-- 3 actieve ads: H11 (grootste spend, enige echte converter met 4 purchases), H12 (laagste CPC €0,40, beste CTR), H13 (CPC €0,61 grensgeval)
-- 🚩 Flags: H11 CPC €0,65 en H13 CPC €0,61 boven drempel €0,50
-- **Data caveat:** Meta pixel rapporteert purchase_value €44.247 op 6 purchases — onrealistisch, ROAS 53x is niet bruikbaar. Check Events Manager pixel mapping voor SYBB pixel `888973173636482`
+### Overzicht per campagne
+
+| Campagne | Status | Spend | Impressions | Clicks | CTR | CPC | CPM | Conv. | ROAS* |
+|----------|--------|-------|-------------|--------|-----|-----|-----|-------|------|
+| 2026: SYBB | Active | €834,27 | 76.618 | 1.582 | 2,1% | €0,53 | €10,89 | 6 | n.v.t. (pixel datafout) |
+
+### Overzicht actieve ads
+
+| Ad | Spend | CTR | CPC | CPM | Freq | Purch. |
+|----|-------|-----|-----|-----|------|--------|
+| H11, B3, CTA5 | €370,47 | 1,06% | € 1,22 | €12,99 | 1,76 | 4 |
+| H12, B3, CTA5 | €116,03 | 1,12% | € 0,84 | € 0,84 | 1,82 | 0 |
+| H13, B3, CTA5 | €158,28 | 1,14% | € 1,04 | €11,87 | 1,52 | 2 |
+
+### Underperformers
+
+- **H11** — CPC €0,65 (drempel €0,50), CPM €12,99. Slokt €370 van €834 maar levert wel ? purchases (verifieer Wix). Aanbeveling: budget shift naar H12.
+- **H13** — CPC €0,61. Laat draaien tot €250, herbeoordelen.
+- **Campagne CPC** €0,53 licht boven €0,50 drempel.
+
+### Top performers
+
+- **Beste CTR / laagste CPC / laagste CPM:** H12, B3, CTA5 — 2,37% · €0,40 · €9,46
+- **Meeste purchases:** H11 — 4 (duurste traffic)
+
+### Samenvatting & aanbeveling (70-20-10)
+
+- Totaal spend €834,27 → funnel: 1.582 clicks → 643 LPV → 38 ATC → 24 IC → ? purchases (verifieer Wix).
+- **70%:** shift budget H11 → H12 (zelfde B3/CTA5 template, 38% goedkopere clicks).
+- **20%:** duplicate H12 met creative tweak als A/B.
+- **10%:** nieuwe hook (H16) buiten B3/CTA5 template testen.
+- **Extra:** pixel value registratie checken — 44.247 unit voor ? purchases (verifieer Wix) lijkt onjuist (mogelijk cents of test-data).
+
+### Google Sheet
+
+Overgeslagen per run-instructie. Rapport opgeslagen op `Output/Reports/Daily/2026-04-17_ads_report.md`.
 
 ---
 
-Rapport opgeslagen in `Output/Reports/Daily/2026-04-16_sybb_report.md`.
-
-**Samenvatting:**
-- Meta data opgehaald voor 16 april: €57,79 spend, 4.498 impressions, CTR 2,31%, CPC €0,56, **0 purchases** (vs 0,86/dag gemiddeld)
-- **Kritieke bevinding:** 5 initiated checkouts, 0 purchases = 100% drop-off bij betaalstap
-- **Spend daling 43%** vs 7d gemiddelde, oorzaak onduidelijk (check delivery/audience)
-- **H13 beste variant** (CTR 2,40%, CPC €0,53). H11 nam 72% budget maar 0 purchases
-- **PostHog MCP niet beschikbaar** in deze sessie, LP health sectie geflagd als blinde vlek
-
-Top 3 acties: checkout flow zelf testen, spend-daling onderzoeken, PostHog MCP herstellen.
+> **Wil je funnel data toevoegen?** Geef landing page metrics (PostHog of handmatig): visitors, opt-in/booking clicks, add to cart, completed purchases. Dan draai ik `/funnel-diagnose` met de Meta data gecombineerd.
 
 ---
 
-Rapport opgeslagen en lokaal gecommit. De push faalt door branch-divergence (50 lokale vs 31 remote commits, met merge-conflict op `logs/morning-report-2026-04-16.log` uit de auto-sync). Dit los ik niet zelf op — het is een destructieve operatie die jouw oordeel vereist.
+Ik kan dit rapport niet genereren. De Meta Ads MCP (Pipeboard) en PostHog MCP zijn niet beschikbaar in deze sessie.
 
-**Samenvatting rapport:** 0 ads gepauzeerd. Alle 3 actieve SYBB ads passen de kill-regels (Link CTR >0,8%, CPC link <€1,50). H11 is Core met ROAS 8,82x (4 purchases, €1.473). H12 is de meest kansrijke emerging met Link CTR 1,5% en CPC €0,85 maar krijgt te weinig budget. Voorstel: H12 verhogen naar €15/dag, H13 verlagen naar €10/dag, experimental slot openen.
+Alleen de Google MCP is geladen (die mag ik op jouw strikte instructie niet gebruiken), plus ingebouwde tools als Bash/Read/Write. De `ListMcpResourcesTool` toont alleen de `google` server als aangesloten MCP.
 
-Opgeslagen: `Output/Reports/Daily/2026-04-17_auto_optimize.md`. Push wacht op handmatige resolutie van de auto-sync divergence.
+**Wat er ontbreekt:**
+- `mcp__pipeboard__*` / Meta Ads tools — niet geladen
+- `mcp__posthog__*` — niet geladen
+
+**Opties om door te gaan:**
+1. **Check MCP config.** Kijken of Pipeboard/PostHog wel in `~/.claude.json` of `.mcp.json` staan en reconnect doen (`/mcp` in Claude Code).
+2. **CLI fallback.** Als je API keys lokaal hebt, kan ik de data via `curl` tegen de Meta Graph API en PostHog API halen en daarmee het rapport bouwen. Laat me dan weten welke env vars/keys beschikbaar zijn.
+3. **Skip voor vandaag.** Een leeg placeholder-rapport met "data unavailable" is niet nuttig; beter wachten tot de MCPs er zijn.
+
+Welke wil je?
 
 ---
+
+Rapport staat op `Output/Reports/Daily/2026-04-17_auto_optimize.md`.
+
+## Samenvatting
+
+**⚡ Automatische acties: 0 pauzeringen.** Alle 3 actieve ads zitten boven de Link CTR-drempel (0,8%) en hebben nog te weinig link clicks (< 500) om de CPC-kill-regel te triggeren.
+
+**📊 Campagne 3d (2026: SYBB):** €228,44 spend, 204 link clicks, Link CTR 1,2%, CPC (link) €1,12, ? purchases (verifieer Wix),ROAS n.v.t. (pixel datafout).
+
+**Per ad (Link CTR / CPC link / purchases):**
+- **H11, B3, CTA5** (Kopie 1) — 1,1% / €1,15 / **? purchases (verifieer Wix),ROAS n.v.t. (pixel datafout) → Core
+- **H13, B3, CTA5** (Kopie 3) — 1,1% / €1,19 / 0 → Emerging
+- **H12, B3, CTA5** (Kopie 2) — 1,5% / €0,85 / 0 (3 IC, 5 ATC) → Emerging, beste top-of-funnel
+
+**💡 Voorstellen (wacht op goedkeuring):**
+1. H11 variaties (v2 andere opening, v3 urgentie-CTA)
+2. H12 conversie-push (trust/proof frame)
+3. Experimental slot openen met Pillar 7-hook op €10/d
+4. Kopie 2 budget +€5/d om CPC-kill-regel scherp te krijgen
+
+**Twee accounts:** act_607231713057715 geen toegang met huidige token, act_1489853856181844 geen actieve campagnes.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+| Ad | Spend | Link Clicks | PostHog /ty | Wix Orders | Revenue | Verified ROAS | CPA |
+|---|---|---|---|---|---|---|---|
+| H11, B3, CTA5 | EUR 370,47 | 303 | 1 | 0 | - | - | - |
+| H12,B3,CTA5 | EUR 130,40 | 158 | 0 | 0 | - | - | - |
+| H13,B3,CTA5 | EUR 158,29 | 152 | 0 | 0 | - | - | - |
+| H14,B3,CTA5 | EUR 122,96 | 158 | 0 | 0 | - | - | - |
+| H15,B3,CTA5 | EUR 52,15 | 61 | 0 | 0 | - | - | - |
+| **Totaal** | **EUR 834,27** | **832** | **1** | **0** | **EUR 0,00** | **-** | **-** |
+
+> Wix orders: 0 orders in periode. Update `data/wix-orders.json` met orders uit Wix admin.
+
+> **ONGEMATCHTE /thank-you SESSIES:**
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+
+
 
 Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.

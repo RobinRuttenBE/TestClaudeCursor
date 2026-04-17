@@ -1,60 +1,37 @@
-=== Morning Report gestart: Fri Apr 17 08:00:00 CEST 2026 ===
+=== Morning Report gestart: Fri Apr 17 10:34:26 CEST 2026 ===
 Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
-[1/3] /ads-report uitvoeren...
+[1/6] /ads-report uitvoeren...
   [poging 1/2] /ads-report (timeout 600s)...
-[1/3] klaar (1051 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_ads_report.md)
-[2/3] SYBB daily report uitvoeren...
+  [poging 1] mislukt (exit 1)
+  [poging 2/2] /ads-report (timeout 600s)...
+[1/6] klaar (2022 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_ads_report.md)
+[2/6] SYBB daily report uitvoeren...
   [poging 1/2] SYBB daily report (timeout 600s)...
-[2/3] klaar (676 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-16_sybb_report.md)
-[3/3] /ads-auto-optimize uitvoeren...
+[2/6] klaar (965 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-16_sybb_report.md)
+[3/6] /ads-auto-optimize uitvoeren...
   [poging 1/2] /ads-auto-optimize (timeout 600s)...
-[3/3] klaar (775 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_auto_optimize.md)
-[4/4] sanity + link metrics fetch (campagne + per-ad + active days)...
+[3/6] klaar (1079 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_auto_optimize.md)
+[4/6] sanity + link metrics fetch (campagne + per-ad + active days)...
   [poging 1/2] sanity + link metrics + per-ad (timeout 600s)...
-[4/4] extracted JSON: 790 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-17.data.json
-[4/4] verdict: PASS|132741.00|18|7374.50|853.66|77756|844|1.09|1.01|10|85.37
-[4/4] ✅ purchase sanity OK (EUR 7374.50/purchase)
-[4/4] link metrics: Link CTR 1.09% · CPC (link) EUR 1.01 (spend=853.66 imp=77756 lc=844)
-[4/4] daily spend: EUR 85.37 over 10 actieve dagen (van 30)
+[4/6] extracted JSON: 790 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-17.data.json
+[4/6] verdict: FAIL|132741.00|18|7374.50|834.27|76618|832|1.09|1.00|9|92.70
+[4/6] 🚨 PIXEL DATAFOUT — EUR 7374.50/purchase bij 18 purchases
+[4/6] link metrics: Link CTR 1.09% · CPC (link) EUR 1.00 (spend=834.27 imp=76618 lc=832)
+[4/6] daily spend: EUR 92.70 over 9 actieve dagen (van 30)
+[5/6] Wix orders ophalen via MCP (2026-03-18 t/m 2026-04-17)...
+  [poging 1/2] Wix orders fetch (timeout 600s)...
+[fetch-wix-orders] 0 orders parsed, 0 with manual attribution, written to /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-17.wix-orders.json
+[5/6] Wix MCP: 0 betaalde orders opgehaald
+[6/6] PostHog /thank-you sessies ophalen (2026-03-18 t/m 2026-04-17)...
+  [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
+[6/6] extracted JSON: 1601 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-17.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 8
 [done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_morning_report_full.md
-[pixel-rewrite] mode=linkfix link_rewrite=True link_ctr=1.09% link_cpc=EUR1.01 avg_daily=EUR85.37/10d ads=8 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_morning_report_full.md
+[pixel-rewrite] mode=datafout link_rewrite=True link_ctr=1.09% link_cpc=EUR1.00 avg_daily=EUR92.70/9d ads=8 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_morning_report_full.md
+[verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
+[verified-funnel] ads=8 posthog_ty=8 wix_orders=0 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_morning_report_full.md
 [push] Commit + push reports naar main...
-[main 9ce746e] Morning report: 2026-04-17
- Committer: Robin Rutten <robinrutten@Mac-mini.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 4 files changed, 152 insertions(+), 204 deletions(-)
- create mode 100644 Output/Reports/Daily/2026-04-16_sybb_report.md
- create mode 100644 Output/Reports/Daily/2026-04-17_morning_report_full.md
-To github.com:RobinRuttenBE/testclaudecursor.git
- ! [rejected]        main -> main (non-fast-forward)
-error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
-hint: Updates were rejected because the tip of your current branch is behind
-hint: its remote counterpart. If you want to integrate the remote changes,
-hint: use 'git pull' before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[push] eerste push failed, retry met rebase --autostash...
-From github.com:RobinRuttenBE/testclaudecursor
- * branch            main       -> FETCH_HEAD
-Created autostash: d71e154
-Rebasing (1/51)Rebasing (2/51)Rebasing (3/51)Rebasing (4/51)Rebasing (5/51)Rebasing (6/51)Rebasing (7/51)Rebasing (8/51)Rebasing (9/51)Rebasing (10/51)Rebasing (11/51)Rebasing (12/51)Rebasing (13/51)Rebasing (14/51)Rebasing (15/51)Rebasing (16/51)Rebasing (17/51)Rebasing (18/51)Rebasing (19/51)Rebasing (20/51)Rebasing (21/51)Rebasing (22/51)Rebasing (23/51)Rebasing (24/51)Rebasing (25/51)Rebasing (26/51)Rebasing (27/51)Rebasing (28/51)Rebasing (29/51)Rebasing (30/51)Rebasing (31/51)Rebasing (32/51)Rebasing (33/51)Rebasing (34/51)Rebasing (35/51)Rebasing (36/51)Rebasing (37/51)Rebasing (38/51)Rebasing (39/51)Rebasing (40/51)Rebasing (41/51)Rebasing (42/51)Rebasing (43/51)Rebasing (44/51)Rebasing (45/51)Rebasing (46/51)Rebasing (47/51)Rebasing (48/51)Rebasing (49/51)Rebasing (50/51)Rebasing (51/51)Applied autostash.
-Successfully rebased and updated refs/heads/main.
-remote: This repository moved. Please use the new location:        
-remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
-To github.com:RobinRuttenBE/testclaudecursor.git
-   60a52a7..ca1a393  main -> main
-send-imessage: osascript failed (exit 1)
-stderr: 50:91: execution error: Messages got an error: AppleEvent timed out. (-1712)
-
-[imessage] FAILED — check Messages.app permissions of of de helper draait
-=== Morning Report afgerond: Fri Apr 17 08:11:54 CEST 2026 — 0 failures ===
+fatal: pathspec 'Output/Reports/Daily/2026-04-16_sybb_report.md' did not match any files
+[push] geen nieuwe report files om te committen
+[imessage] verstuurd naar +32468236146
+=== Morning Report afgerond: Fri Apr 17 10:57:40 CEST 2026 — 0 failures ===

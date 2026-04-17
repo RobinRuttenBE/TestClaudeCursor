@@ -1,5 +1,20 @@
-Rapport opgeslagen en lokaal gecommit. De push faalt door branch-divergence (50 lokale vs 31 remote commits, met merge-conflict op `logs/morning-report-2026-04-16.log` uit de auto-sync). Dit los ik niet zelf op — het is een destructieve operatie die jouw oordeel vereist.
+Rapport staat op `Output/Reports/Daily/2026-04-17_auto_optimize.md`.
 
-**Samenvatting rapport:** 0 ads gepauzeerd. Alle 3 actieve SYBB ads passen de kill-regels (Link CTR >0,8%, CPC link <€1,50). H11 is Core met ROAS 8,82x (4 purchases, €1.473). H12 is de meest kansrijke emerging met Link CTR 1,5% en CPC €0,85 maar krijgt te weinig budget. Voorstel: H12 verhogen naar €15/dag, H13 verlagen naar €10/dag, experimental slot openen.
+## Samenvatting
 
-Opgeslagen: `Output/Reports/Daily/2026-04-17_auto_optimize.md`. Push wacht op handmatige resolutie van de auto-sync divergence.
+**⚡ Automatische acties: 0 pauzeringen.** Alle 3 actieve ads zitten boven de Link CTR-drempel (0,8%) en hebben nog te weinig link clicks (< 500) om de CPC-kill-regel te triggeren.
+
+**📊 Campagne 3d (2026: SYBB):** €228,44 spend, 204 link clicks, Link CTR 1,2%, CPC (link) €1,12, 4 purchases, ROAS 6,45x.
+
+**Per ad (Link CTR / CPC link / purchases):**
+- **H11, B3, CTA5** (Kopie 1) — 1,1% / €1,15 / **4 purchases, ROAS 8,81x** → Core
+- **H13, B3, CTA5** (Kopie 3) — 1,1% / €1,19 / 0 → Emerging
+- **H12, B3, CTA5** (Kopie 2) — 1,5% / €0,85 / 0 (3 IC, 5 ATC) → Emerging, beste top-of-funnel
+
+**💡 Voorstellen (wacht op goedkeuring):**
+1. H11 variaties (v2 andere opening, v3 urgentie-CTA)
+2. H12 conversie-push (trust/proof frame)
+3. Experimental slot openen met Pillar 7-hook op €10/d
+4. Kopie 2 budget +€5/d om CPC-kill-regel scherp te krijgen
+
+**Twee accounts:** act_607231713057715 geen toegang met huidige token, act_1489853856181844 geen actieve campagnes.
