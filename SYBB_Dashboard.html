@@ -213,6 +213,49 @@ actions:[
 {title:"H11 Houden Op Huidig Niveau",desc:"H11 is break-even (ROAS 1,06x, CPA 329). Niet pauzeren, niet opschalen. Monitor of CPA daalt met meer data.",priority:"high"},
 {title:"Purchase Pixel Fixen (GTM Test)",desc:"Pixel overstelt purchases met factor 3x. Zonder werkende pixel kan Meta niet op Purchase optimaliseren. Check GTM Preview op /thank-you-page.",priority:"medium"}],
 notes:"Dag 7 — VERIFIED FUNNEL werkt! H13 winnaar (ROAS 2,84x), H11 break-even (ROAS 1,06x). Pixel overstelt."}
+,
+{date:"2026-04-17",label:"17 apr",dayNum:8,source:"Meta Ads (hardcoded link) + PostHog",activeDays:10,avgSpend:83.43,
+campaign:{spend:834.27,impressions:76618,linkClicks:832,linkCTR:1.09,cpcLink:1.00,reach:38000,frequency:2.00,lpViews:643,atc:38,ic:24,purchases:2,purchaseValue:773.50},
+ads:[
+{name:"H11,B3,CTA5",adset:"Kopie 1",spend:370.47,impressions:28511,linkClicks:303,linkCTR:1.06,cpcLink:1.22,lpViews:190,atc:10,ic:15,purchases:1,freq:1.76,flag:"BEWEZEN CONVERTER (NL 350). CPA 329. 44% van spend."},
+{name:"H13,B3,CTA5",adset:"Kopie 3",spend:158.28,impressions:13336,linkClicks:152,linkCTR:1.14,cpcLink:1.04,lpViews:100,atc:4,ic:2,purchases:1,freq:1.52,flag:"WINNAAR (BE 423,50). CPA 149. ROAS 2,84x. MEER BUDGET."},
+{name:"H12,B3,CTA5",adset:"Kopie 2",spend:116.03,impressions:12267,linkClicks:138,linkCTR:1.12,cpcLink:0.84,lpViews:95,atc:5,ic:3,purchases:0,freq:1.82,flag:"Beste CPC (0,84). 0 sales. 3 IC opgebouwd."},
+{name:"H14,B3,CTA5",adset:"BATCH 2",spend:122.96,impressions:16551,linkClicks:158,linkCTR:0.95,cpcLink:0.78,lpViews:108,atc:0,ic:0,purchases:0,flag:"GEPAUZEERD"},
+{name:"H15,B3,CTA5",adset:"Kopie 4",spend:52.15,impressions:4894,linkClicks:61,linkCTR:1.20,cpcLink:0.85,lpViews:30,atc:2,ic:0,purchases:0,flag:"GEPAUZEERD"}],
+posthog:{sessions:900,pageviews:1200,bounceRate:84.6,avgDuration:16.9,bounce7d:70,duration7d:60,scroll25:32,scroll50:28,scroll75:22,scroll100:15,mobile:93,recordings:100},
+alerts:[
+{type:"critical",text:"Bounce 84,6% en sessieduur 16,9s. 68% scrollt niet voorbij 25%. LP engagement is verslechterd."},
+{type:"critical",text:"Wix MCP broken: geeft 0 orders terug terwijl er 2 bevestigde orders zijn. Verified funnel sectie leeg."},
+{type:"warning",text:"H11 eet 44% budget (370 euro) met CPC 1,22. H13 (winnaar) krijgt maar 19%."},
+{type:"warning",text:"H12 begint IC op te bouwen (3 stuks) maar nog 0 sales."},
+{type:"info",text:"Geen nieuwe sales. Totaal: 2 orders / 773,50. ROAS campagne: 0,93x."}],
+actions:[
+{title:"H13 Budget OPSCHALEN",desc:"H13 is winnaar (ROAS 2,84x, CPA 149) maar krijgt slechts 19% budget. Verhoog +50-100% in Meta Ads Manager.",priority:"high"},
+{title:"Fix Wix MCP",desc:"Wix MCP geeft 0 orders terug. Verified funnel werkt niet zonder. Debug de API call.",priority:"high"},
+{title:"Purchase Pixel Testen",desc:"GTM Preview op /thank-you-page. Al een week open. Zonder pixel kan Meta niet op Purchase optimaliseren.",priority:"medium"}],
+notes:"Dag 8 — Bounce verslechterd 84,6%. Wix MCP broken. Geen nieuwe sales. H13 budget verhogen is #1 actie."},
+{date:"2026-04-18",label:"18 apr",dayNum:9,source:"Meta Ads (hardcoded link) + PostHog",activeDays:11,avgSpend:83.72,
+campaign:{spend:920.88,impressions:82616,linkClicks:910,linkCTR:1.10,cpcLink:1.01,reach:40000,frequency:2.00,lpViews:706,atc:38,ic:24,purchases:2,purchaseValue:773.50},
+ads:[
+{name:"H11,B3,CTA5",adset:"Kopie 1",spend:436.37,impressions:32892,linkClicks:355,linkCTR:1.08,cpcLink:1.23,lpViews:220,atc:10,ic:15,purchases:1,freq:1.76,flag:"BEWEZEN CONVERTER. CPA 329. 47% van spend — te veel vs return."},
+{name:"H13,B3,CTA5",adset:"Kopie 3",spend:170.14,impressions:14291,linkClicks:162,linkCTR:1.13,cpcLink:1.05,lpViews:110,atc:4,ic:2,purchases:1,freq:1.52,flag:"WINNAAR. CPA 149. ROAS 2,49x. Budget MOET omhoog."},
+{name:"H12,B3,CTA5",adset:"Kopie 2",spend:124.88,impressions:12929,linkClicks:154,linkCTR:1.19,cpcLink:0.81,lpViews:100,atc:5,ic:3,purchases:0,freq:1.82,flag:"Laagste CPC (0,81). 3 IC. Potentieel maar 0 sales na 125 euro."},
+{name:"H14,B3,CTA5",adset:"BATCH 2",spend:122.96,impressions:16551,linkClicks:158,linkCTR:0.95,cpcLink:0.78,lpViews:108,atc:0,ic:0,purchases:0,flag:"GEPAUZEERD"},
+{name:"H15,B3,CTA5",adset:"Kopie 4",spend:52.15,impressions:4894,linkClicks:61,linkCTR:1.20,cpcLink:0.85,lpViews:30,atc:2,ic:0,purchases:0,flag:"GEPAUZEERD"}],
+posthog:{sessions:950,pageviews:1300,bounceRate:84,avgDuration:20,bounce7d:72,duration7d:55,scroll25:35,scroll50:28,scroll75:22,scroll100:15,mobile:93,recordings:110},
+alerts:[
+{type:"critical",text:"920 euro spend, 2 sales, ROAS 0,84x. Niet winstgevend. H13 budget verhogen is de snelste weg naar profitability."},
+{type:"critical",text:"LP engagement blijft slecht: bounce 84%, sessieduur 20s, 65% scrollt niet voorbij 25%."},
+{type:"critical",text:"Wix MCP nog steeds broken. Verified funnel draait op handmatige data van dag 7."},
+{type:"warning",text:"H11: 47% van spend (436 euro), CPA 329. Break-even ad eet bijna helft van budget."},
+{type:"warning",text:"H12: 125 euro spend, 0 sales. 3 IC opgebouwd maar geen conversie. Beslismoment nadert."},
+{type:"info",text:"Pixel sanity check werkt: 18 Meta purchases correct geflagged als DATAFOUT."},
+{type:"info",text:"Per-ad link metrics nu hardcoded in rapport. Betrouwbare data: H11 CPC 1,23 / H13 CPC 1,05 / H12 CPC 0,81."}],
+actions:[
+{title:"H13 Budget OPSCHALEN NU",desc:"H13: ROAS 2,49x, CPA 149, laagste CPC na H12. Enige profitable ad. Verhoog +50-100%. Dit is dag 4 dat deze actie open staat.",priority:"high"},
+{title:"H11 Stabiliseren",desc:"H11: CPA 329, break-even. Houden op huidig niveau. Niet verhogen, niet verlagen.",priority:"high"},
+{title:"Purchase Pixel + Wix MCP Fixen",desc:"Beide al een week open. Plak de Claude Code prompts die je hebt gekregen. Zonder deze fixes blijft het rapport onbetrouwbaar.",priority:"medium"}],
+notes:"Dag 9 — 920 spend, 2 sales, ROAS 0,84x. H13 budget verhogen is de #1 actie al 4 dagen."}
 ];
 
 let ci=DAYS.length-1,cp='daily';
@@ -233,16 +276,17 @@ h+=kc("Link Clicks",""+c.linkClicks,pc?""+pc.linkClicks:null,"→ "+c.lpViews+" 
 h+=kc("Link CTR",p(c.linkCTR),pc?p(pc.linkCTR):null,"Target: >1%",st(c.linkCTR,1,"higher"),"Meta Ads MCP");
 h+=kc("CPC (link)",e(c.cpcLink),pc?e(pc.cpcLink):null,"Target: <€0,50",st(c.cpcLink,0.50,"lower"),"Meta Ads MCP");
 h+=kc("Purchases",""+c.purchases,pc?""+pc.purchases:null,c.purchaseValue>0?"€"+c.purchaseValue.toFixed(2):"0 sales",c.purchases>0?"ok":"warn","Wix Orders (verified)");
+h+=kc('Frequency',''+c.frequency,pc?''+pc.frequency:null,'Target: <3,5',st(c.frequency,3.5,'lower'),'Meta Ads MCP');
 if(d.posthog){h+=kc("LP Bounce",p(d.posthog.bounceRate),pv&&pv.posthog?p(pv.posthog.bounceRate):null,"Target: <55%",st(d.posthog.bounceRate,55,"lower"),"PostHog · "+d.posthog.sessions+" sessies")}
 else{h+='<div class="kc"><div class="l">LP Bounce</div><div class="v">—</div><div class="s na">Geen data</div></div>'}
 h+='</div>';
 
 h+='<div class="sec"><div class="sh"><div class="st">Ad Performance (LINK clicks, niet all clicks)</div><div class="sb">'+d.source+'</div></div>';
-h+='<table><thead><tr><th>Ad</th><th>Ad Set</th><th>Spend</th><th>Link Clicks</th><th>Link CTR</th><th>CPC (link)</th><th>LP Views</th><th>ATC</th><th>IC</th><th>Purch.</th><th>Flag</th></tr></thead><tbody>';
+h+='<table><thead><tr><th>Ad</th><th>Ad Set</th><th>Spend</th><th>Link Clicks</th><th>Link CTR</th><th>CPC (link)</th><th>LP Views</th><th>Freq.</th><th>ATC</th><th>IC</th><th>Purch.</th><th>Flag</th></tr></thead><tbody>';
 d.ads.forEach(a=>{
 const fc=a.flag.includes('🏆')?'good':a.flag.includes('PAUZEREN')?'bad':a.flag.includes('Geen')?'bad':a.flag.includes('Sterkste')?'good':'warn';
 const ns=a.flag.includes('🏆')?' style="color:var(--green);font-weight:800"':a.flag.includes('PAUZEREN')?' style="color:var(--red)"':'';
-h+='<tr><td'+ns+'>'+a.name+'</td><td>'+a.adset+'</td><td>'+e(a.spend)+'</td><td>'+nm(a.linkClicks)+'</td><td>'+p(a.linkCTR)+'</td><td>'+e(a.cpcLink)+'</td><td>'+nm(a.lpViews)+'</td><td>'+a.atc+'</td><td>'+a.ic+'</td><td>'+a.purchases+'</td><td class="f '+fc+'">'+a.flag+'</td></tr>'});
+h+='<tr><td'+ns+'>'+a.name+'</td><td>'+a.adset+'</td><td>'+e(a.spend)+'</td><td>'+nm(a.linkClicks)+'</td><td>'+p(a.linkCTR)+'</td><td>'+e(a.cpcLink)+'</td><td>'+nm(a.lpViews)+'</td><td>'+(a.freq||'-')+'</td><td>'+a.atc+'</td><td>'+a.ic+'</td><td>'+a.purchases+'</td><td class="f '+fc+'">'+a.flag+'</td></tr>'});
 h+='</tbody></table><div class="note">⚠️ Alle CTR en CPC zijn berekend op LINK clicks (doorklikken naar site), niet "all clicks" (likes, comments, video views). Dit is de correcte metric. IC = InitiateCheckout · ATC = AddToCart</div></div>';
 
 if(d.posthog){const ph=d.posthog;
@@ -271,9 +315,9 @@ h+='</tbody></table></div>';document.getElementById('page-history').innerHTML=h}
 function renderAds(){let h='<div class="ph"><div><h1>Funnel per Hook</h1><div class="sub">Welke hook drijft conversies? · Cumulatief over actieve periode</div></div></div>';
 h+='<div class="sec"><table><thead><tr><th>Hook</th><th>Spend</th><th>Link Clicks</th><th>LP Views</th><th>ATC</th><th>IC</th><th>Purchases</th><th>Revenue</th><th>ROAS</th><th>Conclusie</th></tr></thead><tbody>';
 const hooks=[
-{name:"H13",spend:149.30,lc:142,lpv:95,atc:4,ic:2,purch:1,rev:423.50,conclusion:"WINNAAR: ROAS 2,84x, CPA 149. Enige profitable ad. Budget verhogen."},
-{name:"H11",spend:328.99,lc:259,lpv:170,atc:8,ic:13,purch:1,rev:350.00,conclusion:"BREAK-EVEN: ROAS 1,06x, CPA 329. Houden op huidig niveau."},
-{name:"H12",spend:108.64,lc:128,lpv:95,atc:4,ic:0,purch:0,rev:0,conclusion:"0 sales. Monitor of pauzeren deze week."},
+{name:"H13",spend:170.14,lc:162,lpv:110,atc:4,ic:2,purch:1,rev:423.50,conclusion:"WINNAAR: ROAS 2,49x, CPA 170. Enige profitable ad. Budget MOET omhoog."},
+{name:"H11",spend:436.37,lc:355,lpv:220,atc:10,ic:15,purch:1,rev:350.00,conclusion:"BREAK-EVEN: ROAS 0,80x, CPA 436. Houden maar niet opschalen."},
+{name:"H12",spend:124.88,lc:154,lpv:100,atc:5,ic:3,purch:0,rev:0,conclusion:"0 sales. Monitor of pauzeren deze week."},
 {name:"H14",spend:122.96,lc:158,lpv:108,atc:0,ic:0,purch:0,rev:0,conclusion:"GEPAUZEERD"},
 {name:"H15",spend:52.15,lc:61,lpv:30,atc:2,ic:0,purch:0,rev:0,conclusion:"GEPAUZEERD"}];
 hooks.forEach(hk=>{const roas=hk.rev>0?(hk.rev/hk.spend).toFixed(1)+"x":"—";
@@ -374,6 +418,7 @@ if(ph){
 h+='<tr><td>LP Bounce Rate</td><td>'+p(ph.bounceRate)+'</td><td>< 55%</td><td class="f '+(ph.bounceRate<55?'good':'bad')+'">'+(ph.bounceRate<55?'✅':'🔴')+'</td><td>PostHog</td></tr>';
 h+='<tr><td>Sessie Duur</td><td>'+ph.avgDuration+'s</td><td>> 90s</td><td class="f '+(ph.avgDuration>=90?'good':'bad')+'">'+(ph.avgDuration>=90?'✅':'🔴')+'</td><td>PostHog</td></tr>';
 h+='<tr><td>Scroll ≥50%</td><td>'+p(ph.scroll50)+'</td><td>> 60%</td><td class="f '+(ph.scroll50>=60?'good':'bad')+'">'+(ph.scroll50>=60?'✅':'🔴')+'</td><td>PostHog</td></tr>'}
+h+='<tr><td>Frequency</td><td>'+c.frequency+'</td><td>< 3,5</td><td class="f '+(c.frequency<3.5?'good':'bad')+'">'+(c.frequency<3.5?'OK':'CREATIVE FATIGUE')+'</td><td>Meta Ads MCP</td></tr>';
 h+='<tr><td>Cost per Purchase</td><td>'+(c.purchases>0?e(c.spend/c.purchases):'—')+'</td><td>< €175</td><td class="f '+(c.purchases>0&&c.spend/c.purchases<175?'good':c.purchases>0?'bad':'na')+'">'+(c.purchases>0?e(c.spend/c.purchases):'Nog 1 sale')+'</td><td>Meta + Wix</td></tr>';
 h+='<tr><td>ROAS</td><td>'+(c.purchases>0?(c.purchaseValue/c.spend).toFixed(1)+'x':'—')+'</td><td>> 2x</td><td class="f '+(c.purchaseValue/c.spend>=2?'good':c.purchases>0?'bad':'na')+'">'+(c.purchases>0?(c.purchaseValue/c.spend).toFixed(1)+'x':'Wacht op data')+'</td><td>Meta + Wix</td></tr>';
 h+='</tbody></table></div>';document.getElementById('page-targets').innerHTML=h}
