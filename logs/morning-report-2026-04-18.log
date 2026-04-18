@@ -1,14 +1,14 @@
-=== Morning Report gestart: Sat Apr 18 08:00:06 CEST 2026 ===
+=== Morning Report gestart: Sat Apr 18 08:00:00 CEST 2026 ===
 Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [1/6] /ads-report uitvoeren...
   [poging 1/2] /ads-report (timeout 600s)...
-[1/6] klaar (1826 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_ads_report.md)
+[1/6] klaar (2616 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_ads_report.md)
 [2/6] SYBB daily report uitvoeren...
   [poging 1/2] SYBB daily report (timeout 600s)...
-[2/6] klaar (695 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_sybb_report.md)
+[2/6] klaar (641 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-17_sybb_report.md)
 [3/6] /ads-auto-optimize uitvoeren...
   [poging 1/2] /ads-auto-optimize (timeout 600s)...
-[3/6] klaar (792 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_auto_optimize.md)
+[3/6] klaar (768 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_auto_optimize.md)
 [4/6] sanity + link metrics fetch (campagne + per-ad + active days)...
   [poging 1/2] sanity + link metrics + per-ad (timeout 600s)...
 [4/6] extracted JSON: 791 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-18.data.json
@@ -22,15 +22,15 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [5/6] Wix MCP: 0 betaalde orders opgehaald
 [6/6] PostHog /thank-you sessies ophalen (2026-03-19 t/m 2026-04-18)...
   [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
-[6/6] extracted JSON: 1489 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-18.posthog-sessions.json
-[6/6] /thank-you sessies gevonden: 8
+[6/6] extracted JSON: 26 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-18.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 0
 [done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_morning_report_full.md
 [pixel-rewrite] mode=datafout link_rewrite=True link_ctr=1.10% link_cpc=EUR1.01 avg_daily=EUR83.72/11d ads=8 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_morning_report_full.md
 [verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
-[verified-funnel] ads=8 posthog_ty=8 wix_orders=0 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_morning_report_full.md
+[verified-funnel] ads=8 posthog_ty=0 wix_orders=0 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_morning_report_full.md
 [push] Commit + push reports naar main...
-[main 6e65a26] Morning report: 2026-04-18
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+[main 82480d8] Morning report: 2026-04-18
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -43,22 +43,16 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 2 files changed, 139 insertions(+)
+ 3 files changed, 188 insertions(+)
+ create mode 100644 Output/Reports/Daily/2026-04-18_ads_report.md
  create mode 100644 Output/Reports/Daily/2026-04-18_auto_optimize.md
  create mode 100644 Output/Reports/Daily/2026-04-18_morning_report_full.md
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-[push] eerste push failed, retry met rebase --autostash...
-From https://github.com/RobinRuttenBE/TestClaudeCursor
- * branch            main       -> FETCH_HEAD
-   60a52a7..82480d8  main       -> origin/main
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   82480d8..2164a25  main -> main
-[imessage] verstuurd naar +32468236146
-=== Morning Report afgerond: Sat Apr 18 08:10:37 CEST 2026 — 0 failures ===
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   013078e..82480d8  main -> main
+send-imessage: osascript failed (exit 1)
+stderr: 50:91: execution error: Messages got an error: AppleEvent timed out. (-1712)
+
+[imessage] FAILED — check Messages.app permissions of of de helper draait
+=== Morning Report afgerond: Sat Apr 18 08:12:09 CEST 2026 — 0 failures ===
