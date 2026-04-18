@@ -190,6 +190,11 @@ Bij verschil Meta IC/Purchase count >> Wix Orders: toon blok:
 1. [Actie — wat, waarom, hoe, verwachte impact]
 2. [Actie]
 3. [Actie]
+
+**Budget-aanbevelingen regels (HARD):**
+- Budget aanbevelingen MOETEN gebaseerd zijn op de VERIFIED FUNNEL data (Wix orders), NIET op Meta pixel purchases.
+- Als de pixel datafout flag actief is, gebruik ALLEEN Wix orders voor ROAS en CPA berekeningen.
+- Ads zonder verified Wix orders mogen NIET als "beste performer" gelabeld worden puur op basis van Meta pixel data.
 ```
 
 ## Data Integriteit Regels (KRITIEK)
