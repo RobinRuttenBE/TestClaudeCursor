@@ -419,7 +419,22 @@ try:
     print(len(d.get("orders", [])))
 except: print(0)
 ' "$WIX_ORDERS_FILE")
-    echo "[5/6] Wix MCP: ${WIX_ORDER_COUNT} betaalde orders opgehaald" >> "$LOG_FILE" 2>&1
+    if [ "$WIX_ORDER_COUNT" = "0" ] && [ -f "$WIX_ORDERS_FALLBACK" ]; then
+        cp "$WIX_ORDERS_FALLBACK" "$WIX_ORDERS_FILE" 2>> "$LOG_FILE"
+        WIX_ORDER_COUNT=$(/usr/bin/python3 -c '
+import json, sys
+from pathlib import Path
+path = Path(sys.argv[1])
+if not path.exists(): print(0); sys.exit(0)
+try:
+    d = json.loads(path.read_text())
+    print(len(d.get("orders", [])))
+except: print(0)
+' "$WIX_ORDERS_FILE")
+        echo "[5/6] Wix MCP gaf 0 orders, fallback naar handmatige wix-orders.json (${WIX_ORDER_COUNT} orders)" >> "$LOG_FILE" 2>&1
+    else
+        echo "[5/6] Wix MCP: ${WIX_ORDER_COUNT} betaalde orders opgehaald" >> "$LOG_FILE" 2>&1
+    fi
 else
     echo "[5/6] Wix MCP fetch mislukt, fallback naar ${WIX_ORDERS_FALLBACK}" >> "$LOG_FILE" 2>&1
     if [ -f "$WIX_ORDERS_FALLBACK" ]; then
