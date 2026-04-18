@@ -34,80 +34,69 @@ Failures: 0
 
 ---
 
-## Meta Ads Rapport — 2026-04-18
+## Meta Ads Rapport, 2026-04-18
 
-**Periode:** last 30d (2026-03-19 t/m 2026-04-17) · **Account:** Sempertex (act_567892422940728)
-Robin Rutten account: geen toegang met dit token. act_1489853856181844: geen actieve campagnes.
+**Periode:** last_30d (2026-03-19 t/m 2026-04-17). Alleen `act_567892422940728` had spend. Account `act_607231713057715` is niet toegankelijk via de API token.
 
 ### Overzicht per campagne
 
-| Campagne | Status | Spend | Impr. | Clicks | CTR | CPC | CPM | Purch. | ROAS* |
-|---|---|---|---|---|---|---|---|---|---|
+| Campagne | Status | Spend | Imp. | Clicks | CTR | CPC | CPM | Purch. | ROAS* |
+|----------|--------|-------|------|--------|-----|-----|-----|--------|-------|
 | 2026: SYBB | Active | €920,88 | 82.616 | 1.721 | 2,1% | €0,54 | €11,15 | 6 | n.v.t. (pixel datafout) |
 
-*Meta-rapporteerde purchase action_value van €44.247 is verdacht hoog (web_app_in_store_purchase waarde = €4,42). Behandel ROAS als indicatief.
-
-### Overzicht per ad (top 6 op spend)
-
-| Ad | Adset | Status | Spend | CTR | CPC | Freq. | Purch. |
-|---|---|---|---|---|---|---|---|
-| H11,B3,CTA5 | Kopie 1 | ACTIVE | €436,37 | 1,08% | € 1,23 | 1,79 | 4 |
-| H13,B3,CTA5 | Kopie 3 | ACTIVE | €170,14 | 1,13% | € 1,05 | 1,55 | 2 |
-| H12,B3,CTA5 | Kopie 2 | ACTIVE | €124,88 | 1,19% | € 0,81 | 1,87 | 0 |
-| H14,B3,CTA5 | Batch 2 | PAUSED | €122,96 | 0,95% | € 0,78 | 1,34 | 0 |
-| H15,B3,CTA5 | Kopie 4 | PAUSED | €49,83 | 1,20% | € 0,87 | 1,45 | 0 |
-| H12,B3,CTA5 | Batch 2 | PAUSED | €14,37 | 1,19% | € 0,81 | 1,94 | 0 |
-
-### Underperformers (actief)
-
-- **H11 Kopie 1** — CPC €0,66 (>€0,50). Drager van 47% spend en 67% purchases → behouden, maar test nieuwe hook-variant om CPC te drukken.
-- **H13 Kopie 3** — CPC €0,61 (>€0,50). ROAS-signaal onstabiel (n=2). Laat staan, niet opschalen.
-- Geen CTR <1%, geen frequency >3,5, geen CPM >€15 onder actieve set.
+*Action_value purchase €44.247, verifieer bij Shopify/Stripe.
 
 ### Top performers
 
-- **Beste CTR (actief):** H12 Kopie 2 — 2,5%
-- **Laagste CPC (actief):** H12 Kopie 2 — €0,39
-- **Meeste purchases:** H11 Kopie 1 — 4 van 6
-- **Beste CTR overall:** H12 Batch 2 (paused) — 4,7% (n=1.058, ruis)
+- **Meeste purchases:** H11, B3, CTA5 (POC Kop), ? purchases (verifieer Wix), €436 spend
+- **Beste CTR op volume:** H12, B3, CTA5 (POC Kop), 2,5%
+- **Laagste CPC op volume:** H12, B3, CTA5 (POC Kop), €0,39
 
-### Samenvatting + aanbeveling (70-20-10)
+### Underperformers
 
-- **70% bewezen:** schuif budget naar H11 Kopie 1 tot CPC <€0,55 zakt of frequency 3,0 nadert.
-- **20% variatie:** H12 Kopie 2 heeft sterke klik-metrics, ? purchases (verifieer Wix) op 319 clicks en 127 LP views. Bottleneck zit op de landing page, niet in de creative — draai `/funnel-diagnose` op utm_content `h12_b3_cta5` (Kopie 2).
-- **10% experiment:** reactiveer H12 Batch 2 in kleine adset (€5/dag) om te zien of 4,7% CTR op schaal houdt.
+- **H11 (POC Kop)** CPC €0,66, boven drempel, maar enige volumedriver met purchases. Houd lopen, test een variant.
+- **H13 (POC Kop)** CPC €0,61, ? purchases (verifieer Wix). Verschuif budget naar H12 als geen 3e purchase in 7 dagen.
+- **H14 (POC)** ? purchases (verifieer Wix) op €122, CTR 1,8%. Niet heractiveren zonder creative refresh.
 
-### Google Sheet
-Overgeslagen op verzoek. Geen Google MCP calls gedaan.
+### Samenvatting
 
-Rapport opgeslagen: `Output/Reports/Daily/2026-04-18_ads_report.md`
+- **Totaal spend:** €920,88
+- **Aanbeveling (70-20-10):** 70% naar H11 Kop, 20% naar H12/H13 Kop variaties, 10% nieuwe hooktest Batch 3. Pauseer H14 permanent. Verhoog budget op POC Kop adset met 25% zolang CPC <€0,70 en frequency <2,5.
+- **#1 actie:** grootste funnel lek is LPV naar ATC (706 → 38 = 5,4%). Ads werken, landing page converteert te weinig.
 
----
-
-**Wil je funnel data toevoegen? Geef dan de landing page metrics uit Wix Analytics of GA4.**
-Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases.
+**Google Sheet:** overgeslagen per instructie. Rapport opgeslagen op `/Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_ads_report.md`.
 
 ---
 
-Rapport opgeslagen in `Output/Reports/Daily/2026-04-17_sybb_report.md` en gepusht.
-
-**Kernbevindingen 17 april:**
-- Spend €86,54 (-15% vs 7d avg), CTR omhoog naar 2,32%, maar CPC €0,62 blijft 24% boven target
-- Volledige bottom funnel stilstand: 0 ATC, 0 checkout, ? purchases (verifieer Wix) op 63 LP views (7d avg: 5,1 ATC/dag)
-- **H12 is de winnaar**: CTR 4,24%, CPC €0,32 op slechts €8,84 spend; **H11 is de verliezer**: 76% van budget op CPC €0,72 zonder conversies
-- LP view naar view content drop verslechterd van 83% naar 90%
-
-**PostHog MCP nog steeds niet beschikbaar** (2 dagen op rij). Top actie 3 is dit herstellen vóór volgende run.
+> **Wil je funnel data toevoegen? Geef dan de landing page metrics uit Wix Analytics of GA4.**
+> Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases.
 
 ---
 
-Klaar. Rapport opgeslagen naar `Output/Reports/Daily/2026-04-18_auto_optimize.md`.
+Rapport opgeslagen: `Output/Reports/Daily/2026-04-17_sybb_report.md`.
 
-**Samenvatting:**
-- **Niveau 1 (automatisch):** 0 ads gepauzeerd. Alle 3 actieve ads passeren de kill-regels op link metrics. Geen ad heeft 500+ link clicks dus de CPC-regel is niet getriggerd.
-- **Performance highlight:** CampagneROAS n.v.t. (pixel datafout) (€1.473,50 omzet op €219,11 spend in 3d). H11 is de winner metROAS n.v.t. (pixel datafout).
-- **Niveau 2 voorstellen** (wachten op goedkeuring): (1) campagnebudget €100→€150/dag, (2) variaties op H12-hook (hoogste Link CTR 1,83%) en H11-hook, (3) geen audience-wijzigingen nodig, (4) overweging ad set consolidatie.
-- **Compliance:** alleen Pipeboard Meta Ads MCP gebruikt. Geen Google MCPs aangesproken. Niet naar Google Sheet tracker geschreven.
+**Kernpunten 2026-04-17:**
+- **Meta Ads:** €86,54 spend, CTR 2,32%, CPC €0,62 (24% boven target). Volume ↓32% vs 7d avg.
+- **H12 is duidelijke winnaar** (CTR 4,24%, CPC €0,32) maar krijgt slechts 10% van de spend; H11 eet 76% met middelmatige prestaties.
+- **Landing page alarm:** bounce 84,6%, sessieduur 16,9s, 68% scrollt niet voorbij 25%. Grootste lek zit tussen landing en 50% scroll.
+- **Funnel gap:** 5 "Go to workshop" clicks, maar slechts 1 `/booking` pageview — mogelijk tracking issue.
+- **Top 3 acties:** budget naar H12, hero-sectie diagnose via session recordings, CTA→/booking tracking valideren.
+
+---
+
+Rapport opgeslagen. Samenvatting:
+
+**Geen ads gepauzeerd** — alle 3 actieve ads in campagne "2026: SYBB" zitten boven de kill-drempels (Link CTR >0,8%; CPC (link) kill-regel niet van toepassing, want geen ad heeft nog ≥500 link clicks in 3 dagen).
+
+**Campagne 3-daagse performance:** €219,11 spend, Link CTR 1,2%, CPC (link) €1.10,ROAS n.v.t. (pixel datafout) op €1.473,50 revenue.
+
+**Top performer:** H11,B3,CTA5 levertROAS n.v.t. (pixel datafout) (€169.56 → €1.473,50). Krijgt 77% van budget — Meta optimaliseert correct.
+
+**Beste Link CTR:** H12,B3,CTA5 op 1,8% met CPC (link) €0.67, maar nog geen purchases.
+
+**Voorstellen (wacht op goedkeuring):** variaties op H11-winner, variaties op H12 voor conversie-push. Geen budget-shifts uitgevoerd.
+
+Rapport: `Output/Reports/Daily/2026-04-18_auto_optimize.md`
 
 ---
 
@@ -115,14 +104,22 @@ Klaar. Rapport opgeslagen naar `Output/Reports/Daily/2026-04-18_auto_optimize.md
 
 | Ad | Spend | Link Clicks | PostHog /ty | Wix Orders | Revenue | Verified ROAS | CPA |
 |---|---|---|---|---|---|---|---|
-| H11, B3, CTA5 | EUR 436,37 | 355 | 0 | 0 | - | - | - |
+| H11, B3, CTA5 | EUR 436,37 | 355 | 1 | 0 | - | - | - |
 | H12,B3,CTA5 | EUR 139,25 | 174 | 0 | 0 | - | - | - |
 | H13,B3,CTA5 | EUR 170,15 | 162 | 0 | 0 | - | - | - |
 | H14,B3,CTA5 | EUR 122,96 | 158 | 0 | 0 | - | - | - |
 | H15,B3,CTA5 | EUR 52,15 | 61 | 0 | 0 | - | - | - |
-| **Totaal** | **EUR 920,88** | **910** | **0** | **0** | **EUR 0,00** | **-** | **-** |
+| **Totaal** | **EUR 920,88** | **910** | **1** | **0** | **EUR 0,00** | **-** | **-** |
 
 > Wix orders: 0 orders in periode. Update `data/wix-orders.json` met orders uit Wix admin.
+
+> **ONGEMATCHTE /thank-you SESSIES:**
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
 
 
 
