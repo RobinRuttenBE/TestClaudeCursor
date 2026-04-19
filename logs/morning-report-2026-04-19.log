@@ -1,14 +1,14 @@
-=== Morning Report gestart: Sun Apr 19 08:00:53 CEST 2026 ===
+=== Morning Report gestart: Sun Apr 19 08:00:00 CEST 2026 ===
 Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [1/6] /ads-report uitvoeren...
   [poging 1/2] /ads-report (timeout 600s)...
-[1/6] klaar (2854 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_ads_report.md)
+[1/6] klaar (2476 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_ads_report.md)
 [2/6] SYBB daily report uitvoeren...
   [poging 1/2] SYBB daily report (timeout 600s)...
-[2/6] klaar (767 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_sybb_report.md)
+[2/6] klaar (1068 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-18_sybb_report.md)
 [3/6] /ads-auto-optimize uitvoeren...
   [poging 1/2] /ads-auto-optimize (timeout 600s)...
-[3/6] klaar (797 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_auto_optimize.md)
+[3/6] klaar (895 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_auto_optimize.md)
 [4/6] sanity + link metrics fetch (campagne + per-ad + active days)...
   [poging 1/2] sanity + link metrics + per-ad (timeout 600s)...
 [4/6] extracted JSON: 793 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-19.data.json
@@ -19,18 +19,18 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [5/6] Wix orders ophalen via MCP (2026-03-20 t/m 2026-04-19)...
   [poging 1/2] Wix orders fetch (timeout 600s)...
 [fetch-wix-orders] 0 orders parsed, 0 with manual attribution, written to /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-19.wix-orders.json
-[5/6] Wix MCP gaf 0 orders, fallback naar handmatige wix-orders.json (2 orders)
+[5/6] Wix MCP: 0 betaalde orders opgehaald
 [6/6] PostHog /thank-you sessies ophalen (2026-03-20 t/m 2026-04-19)...
   [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
-[6/6] extracted JSON: 1669 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-19.posthog-sessions.json
-[6/6] /thank-you sessies gevonden: 9
+[6/6] extracted JSON: 0 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-19.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 0
 [done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_morning_report_full.md
 [pixel-rewrite] mode=datafout link_rewrite=True link_ctr=1.12% link_cpc=EUR1.02 avg_daily=EUR84.62/12d ads=8 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_morning_report_full.md
 [verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
-[verified-funnel] ads=8 posthog_ty=9 wix_orders=2 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_morning_report_full.md
+[verified-funnel] ads=8 posthog_ty=0 wix_orders=0 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_morning_report_full.md
 [push] Commit + push reports naar main...
-[main acfea22] Morning report: 2026-04-19
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+[main 6d15fe2] Morning report: 2026-04-19
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -43,29 +43,29 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 4 files changed, 340 insertions(+)
- create mode 100644 Output/Reports/Daily/2026-04-18_sybb_report.md
+ 3 files changed, 183 insertions(+)
  create mode 100644 Output/Reports/Daily/2026-04-19_ads_report.md
  create mode 100644 Output/Reports/Daily/2026-04-19_auto_optimize.md
  create mode 100644 Output/Reports/Daily/2026-04-19_morning_report_full.md
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
+To github.com:RobinRuttenBE/testclaudecursor.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:RobinRuttenBE/testclaudecursor.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 [push] eerste push failed, retry met rebase --autostash...
-From https://github.com/RobinRuttenBE/TestClaudeCursor
+From github.com:RobinRuttenBE/testclaudecursor
  * branch            main       -> FETCH_HEAD
-   20f9578..d5e00e6  main       -> origin/main
-Created autostash: e755208
-Rebasing (1/1)Applying autostash resulted in conflicts.
-Your changes are safe in the stash.
-You can run "git stash pop" or "git stash drop" at any time.
-                                                                                Successfully rebased and updated refs/heads/main.
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   d5e00e6..ee0b3b4  main -> main
-[imessage] verstuurd naar +32468236146
-=== Morning Report afgerond: Sun Apr 19 08:13:12 CEST 2026 — 0 failures ===
+Created autostash: d3124ca
+Rebasing (1/50)Rebasing (2/50)Rebasing (3/50)Rebasing (4/50)Rebasing (5/50)Rebasing (6/50)Rebasing (7/50)Rebasing (8/50)Rebasing (9/50)Rebasing (10/50)Rebasing (11/50)Rebasing (12/50)Rebasing (13/50)Rebasing (14/50)Rebasing (15/50)Rebasing (16/50)Rebasing (17/50)Rebasing (18/50)Rebasing (19/50)Rebasing (20/50)Rebasing (21/50)Rebasing (22/50)Rebasing (23/50)Rebasing (24/50)Rebasing (25/50)Rebasing (26/50)Rebasing (27/50)Rebasing (28/50)Rebasing (29/50)Rebasing (30/50)Rebasing (31/50)Rebasing (32/50)Rebasing (33/50)Rebasing (34/50)Rebasing (35/50)Rebasing (36/50)Rebasing (37/50)Rebasing (38/50)Rebasing (39/50)Rebasing (40/50)Rebasing (41/50)Rebasing (42/50)Rebasing (43/50)Rebasing (44/50)Rebasing (45/50)Rebasing (46/50)Rebasing (47/50)Rebasing (48/50)Rebasing (49/50)Rebasing (50/50)Applied autostash.
+Successfully rebased and updated refs/heads/main.
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   20f9578..d5e00e6  main -> main
+send-imessage: osascript failed (exit 1)
+stderr: 50:91: execution error: Messages got an error: AppleEvent timed out. (-1712)
+
+[imessage] FAILED — check Messages.app permissions of of de helper draait
+=== Morning Report afgerond: Sun Apr 19 08:12:55 CEST 2026 — 0 failures ===
