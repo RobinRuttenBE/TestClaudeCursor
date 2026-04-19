@@ -372,6 +372,261 @@ def build_funnel_section(
     return "\n".join(lines)
 
 
+def build_verified_recommendations(
+    meta: dict,
+    sessions: list,
+    orders: list,
+    wix_available: bool,
+) -> tuple:
+    """Build a verified-ROAS-based budget recommendation section.
+
+    Returns (section_text, ranking) where ranking is a list of dicts
+    (sorted by verified ROAS desc) used by the override detector.
+
+    HARD RULES (zie CLAUDE.md + MORNING_REPORT_COMMAND_v2):
+      1. Ranking op Verified ROAS (Wix), hoogste eerst.
+      2. 70% budget ALTIJD naar ad met hoogste verified ROAS.
+      3. Ad met 0 Wix orders mag NOOIT "best performer" heten.
+      4. Ad met hoogste verified ROAS mag NOOIT "pauzeren" advies krijgen.
+      5. Als verified data beschikbaar is, Meta pixel purchase data wordt
+         GENEGEERD voor budget advies.
+    """
+    lines = []
+    ranking = []
+
+    if not wix_available:
+        lines.append("## BUDGET AANBEVELINGEN (VERIFIED)")
+        lines.append("")
+        lines.append("> Wix order data niet beschikbaar. Budget aanbevelingen "
+                     "kunnen NIET verified worden. Geen aanbeveling uitgevoerd.")
+        lines.append("")
+        return "\n".join(lines), ranking
+
+    ads = meta.get("ads", [])
+    if not ads:
+        return "", ranking
+
+    # Merge duplicate normalized ad names (same HXX in multiple adsets)
+    ad_lookup = {}
+    for ad in ads:
+        name = ad.get("name", "")
+        norm = normalize_ad_id(name)
+        if norm in ad_lookup:
+            existing = ad_lookup[norm]
+            existing["spend"] += float(ad.get("spend", 0) or 0)
+            existing["link_clicks"] += int(ad.get("link_clicks", 0) or 0)
+        else:
+            ad_lookup[norm] = {
+                "name": name,
+                "spend": float(ad.get("spend", 0) or 0),
+                "link_clicks": int(ad.get("link_clicks", 0) or 0),
+            }
+
+    # Recompute orders_by_utm from scratch so this function is self-contained.
+    _, _ = match_orders_to_sessions(orders, sessions)  # for side-effect parity
+    orders_by_utm, _ = match_orders_to_sessions(orders, sessions)
+
+    # Build ranking
+    for norm_id, ad in ad_lookup.items():
+        spend = ad["spend"]
+        wix_ord = orders_by_utm.get(norm_id, [])
+        wix_count = len(wix_ord)
+        wix_rev = sum(float(o.get("amount_eur", 0) or 0) for o in wix_ord)
+        roas = (wix_rev / spend) if spend > 0 and wix_count > 0 else 0.0
+        ranking.append({
+            "norm_id": norm_id,
+            "name": ad["name"],
+            "short": extract_ad_short(ad["name"]),
+            "spend": spend,
+            "wix_orders": wix_count,
+            "wix_revenue": wix_rev,
+            "verified_roas": roas,
+        })
+
+    # Sort: ads WITH orders first (by ROAS desc), then ads without orders
+    # (by spend desc so biggest wasters surface).
+    ranking.sort(
+        key=lambda r: (
+            0 if r["wix_orders"] > 0 else 1,
+            -r["verified_roas"],
+            -r["spend"],
+        )
+    )
+
+    has_any_orders = any(r["wix_orders"] > 0 for r in ranking)
+
+    lines.append("## 🎯 BUDGET AANBEVELINGEN (VERIFIED — OVERRULES EERDERE ADVIEZEN)")
+    lines.append("")
+    lines.append("**Bron:** Wix Orders + Verified ROAS. Meta pixel purchase data "
+                 "wordt genegeerd voor budget beslissingen. Waar deze sectie "
+                 "conflicteert met adviezen elders in dit rapport, heeft DEZE "
+                 "sectie voorrang.")
+    lines.append("")
+
+    if not has_any_orders:
+        lines.append("> Geen van de ads heeft verified Wix orders in de periode. "
+                     "GEEN budget herverdeling op basis van verified funnel mogelijk. "
+                     "Wacht op meer data — negeer Meta pixel 'best performer' claims tot die tijd.")
+        lines.append("")
+        return "\n".join(lines), ranking
+
+    # Build ranking table
+    lines.append("**Ranking op Verified ROAS:**")
+    lines.append("")
+    lines.append("| Rank | Ad | Verified ROAS | Wix Orders | Revenue | Spend | Advies |")
+    lines.append("|---|---|---|---|---|---|---|")
+
+    rank_icons = ["🥇", "🥈", "🥉"]
+    winners = [r for r in ranking if r["wix_orders"] > 0]
+
+    for idx, r in enumerate(ranking):
+        if r["wix_orders"] > 0:
+            # Determine budget allocation
+            winner_idx = next(
+                (i for i, w in enumerate(winners) if w["norm_id"] == r["norm_id"]),
+                -1,
+            )
+            if winner_idx == 0:
+                advice = "**70% budget** — hoogste verified ROAS · NIET pauzeren"
+                icon = rank_icons[0]
+            elif winner_idx == 1:
+                advice = "20% budget — tweede verified winner · houd actief"
+                icon = rank_icons[1]
+            elif winner_idx == 2:
+                advice = "10% budget — test & monitor"
+                icon = rank_icons[2]
+            else:
+                advice = "Behoud op klein budget, monitor verified ROAS"
+                icon = str(winner_idx + 1)
+            roas_str = f"{r['verified_roas']:.2f}x"
+            rev_str = f"EUR {_fmt_eur(r['wix_revenue'])}"
+            orders_str = str(r["wix_orders"])
+        else:
+            icon = "—"
+            roas_str = "0 orders"
+            rev_str = "—"
+            orders_str = "0"
+            if r["spend"] > 50:
+                advice = ("NIET als best performer labelen · 0 Wix orders ondanks "
+                          f"EUR {_fmt_eur(r['spend'])} spend · heroverweeg")
+            else:
+                advice = "NIET als best performer labelen · 0 Wix orders"
+
+        display = r["name"] if len(r["name"]) < 25 else f"{r['short']},..."
+        lines.append(
+            f"| {icon} | {display} | {roas_str} | {orders_str} | "
+            f"{rev_str} | EUR {_fmt_eur(r['spend'])} | {advice} |"
+        )
+
+    lines.append("")
+
+    # Explicit rules block so future readers (humans + sub-claudes) can't miss it
+    lines.append("**Verified funnel regels (hard):**")
+    top_winner = winners[0]
+    zero_order_ads = [r for r in ranking if r["wix_orders"] == 0]
+
+    lines.append(f"- Top verified performer: **{top_winner['short']}** "
+                 f"(verified ROAS {top_winner['verified_roas']:.2f}x, "
+                 f"{top_winner['wix_orders']} Wix order(s), "
+                 f"EUR {_fmt_eur(top_winner['wix_revenue'])} revenue).")
+    lines.append(f"- {top_winner['short']} mag NIET gepauzeerd worden en "
+                 f"krijgt 70% van het budget.")
+    if zero_order_ads:
+        zero_names = ", ".join(r["short"] for r in zero_order_ads)
+        lines.append(f"- Ads zonder verified orders ({zero_names}) mogen NIET "
+                     f"als 'beste performer' of 'winner' gelabeld worden, "
+                     f"ongeacht Meta pixel CTR/IC/purchase cijfers.")
+    lines.append("")
+
+    return "\n".join(lines), ranking
+
+
+# ---------------------------------------------------------------------------
+# Override annotator: mark conflicting advice earlier in the report
+# ---------------------------------------------------------------------------
+
+def annotate_conflicting_advice(text: str, ranking: list) -> str:
+    """Scan the report text for pause/shift advice that conflicts with the
+    verified ROAS ranking and prepend an override warning block.
+
+    Conflict detected when:
+      - Text recommends pausing the top-verified-ROAS ad, OR
+      - Text recommends shifting budget TO an ad with 0 Wix orders,
+        OR labels a 0-order ad as "beste" / "winner" / "best performer".
+    """
+    if not ranking:
+        return text
+
+    winners = [r for r in ranking if r["wix_orders"] > 0]
+    if not winners:
+        return text
+
+    top = winners[0]
+    zero_order = [r for r in ranking if r["wix_orders"] == 0]
+
+    conflicts = []
+
+    top_short = top["short"]
+    top_ci_patterns = [
+        rf"pauzeer\s+{re.escape(top_short)}\b",
+        rf"{re.escape(top_short)}[^\n.]{{0,40}}\bpauzeren\b",
+        rf"{re.escape(top_short)}[^\n.]{{0,60}}\bkandidaat\s+om\s+te\s+pauzeren\b",
+        rf"\bpauzeer\b[^\n.]{{0,40}}{re.escape(top_short)}\b",
+    ]
+    for pat in top_ci_patterns:
+        if re.search(pat, text, re.IGNORECASE):
+            conflicts.append(
+                f"❌ **Pauzeer {top_short}** advies in dit rapport conflicteert met "
+                f"verified ROAS {top['verified_roas']:.2f}x. {top_short} is de top "
+                f"performer — NIET pauzeren."
+            )
+            break
+
+    for z in zero_order:
+        z_short = z["short"]
+        winner_patterns = [
+            rf"{re.escape(z_short)}[^\n.]{{0,80}}\b(beste|winner|best performer|wint)\b",
+            rf"\b(beste|winner|best performer)\b[^\n.]{{0,40}}{re.escape(z_short)}\b",
+            rf"\bschaal\s+{re.escape(z_short)}\b",
+            rf"\bschuif\s+[^.\n]{{0,60}}\s+{re.escape(z_short)}\b",
+            rf"\bbudget\s+[^.\n]{{0,40}}\s+{re.escape(z_short)}\b\s*\+",
+            rf"{re.escape(z_short)}\s*\+\d+%",
+        ]
+        for pat in winner_patterns:
+            if re.search(pat, text, re.IGNORECASE):
+                conflicts.append(
+                    f"❌ **{z_short}** wordt elders in dit rapport als winnaar/best "
+                    f"performer gelabeld of krijgt extra budget, maar heeft "
+                    f"**0 Wix orders** op EUR {_fmt_eur(z['spend'])} spend. Negeer dat advies."
+                )
+                break
+
+    if not conflicts:
+        return text
+
+    header = "\n".join([
+        "> 🚨 **OVERRIDE — VERIFIED FUNNEL CONFLICT**",
+        "> De budget aanbevelingen in de Ads Report / SYBB / Auto-Optimize secties "
+        "hieronder zijn gebaseerd op Meta pixel data en conflicteren met de verified "
+        "Wix order funnel. Volg ALLEEN de 'BUDGET AANBEVELINGEN (VERIFIED)' sectie "
+        "verderop in dit rapport.",
+        ">",
+        *[f"> {c}" for c in conflicts],
+        ">",
+        f"> **Top verified performer:** {top_short} · ROAS {top['verified_roas']:.2f}x · "
+        f"{top['wix_orders']} order(s) · EUR {_fmt_eur(top['wix_revenue'])} revenue.",
+        "",
+        "",
+    ])
+
+    # Insert after the front-matter (first `---` separator). Fallback: prepend.
+    first_sep = text.find("\n---\n")
+    if first_sep >= 0:
+        insert_pos = first_sep + len("\n---\n")
+        return text[:insert_pos] + "\n" + header + text[insert_pos:]
+    return header + text
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -401,11 +656,18 @@ def main() -> int:
     sessions = load_posthog_sessions(posthog_path)
     orders, wix_last_updated, wix_available = load_wix_orders(wix_path, period_from, period_to)
 
-    # Build section
+    # Build sections
     section = build_funnel_section(
         meta, sessions, orders, wix_available, wix_last_updated,
         period_from, period_to,
     )
+    recs_section, ranking = build_verified_recommendations(
+        meta, sessions, orders, wix_available,
+    )
+
+    combined = section
+    if recs_section:
+        combined = combined.rstrip() + "\n\n" + recs_section
 
     # Insert into report: after the last `---` separator before the
     # "Voorstellen uit auto-optimize" line, or at the end if not found.
@@ -414,14 +676,17 @@ def main() -> int:
     insert_marker = "Voorstellen uit auto-optimize"
     if insert_marker in text:
         idx = text.index(insert_marker)
-        # Find the `---` before it
         sep_idx = text.rfind("---", 0, idx)
         if sep_idx >= 0:
-            text = text[:sep_idx] + "---\n\n" + section + "\n" + text[sep_idx + 3:]
+            text = text[:sep_idx] + "---\n\n" + combined + "\n" + text[sep_idx + 3:]
         else:
-            text = text[:idx] + section + "\n" + text[idx:]
+            text = text[:idx] + combined + "\n" + text[idx:]
     else:
-        text = text.rstrip() + "\n\n---\n\n" + section
+        text = text.rstrip() + "\n\n---\n\n" + combined
+
+    # Prepend an override warning block when the earlier report sections
+    # advise actions that contradict the verified ROAS ranking.
+    text = annotate_conflicting_advice(text, ranking)
 
     report_path.write_text(text, encoding="utf-8")
 
