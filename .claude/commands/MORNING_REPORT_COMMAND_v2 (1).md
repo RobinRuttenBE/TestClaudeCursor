@@ -191,10 +191,15 @@ Bij verschil Meta IC/Purchase count >> Wix Orders: toon blok:
 2. [Actie]
 3. [Actie]
 
-**Budget-aanbevelingen regels (HARD):**
-- Budget aanbevelingen MOETEN gebaseerd zijn op de VERIFIED FUNNEL data (Wix orders), NIET op Meta pixel purchases.
-- Als de pixel datafout flag actief is, gebruik ALLEEN Wix orders voor ROAS en CPA berekeningen.
-- Ads zonder verified Wix orders mogen NIET als "beste performer" gelabeld worden puur op basis van Meta pixel data.
+**Budget-aanbevelingen regels (HARD — NIET ONDERHANDELBAAR):**
+- Input voor aanbevelingen is ALTIJD de verified funnel tabel (Wix orders + verified ROAS), NIET Meta pixel purchases, NIET Meta pixel IC, NIET Meta ad CTR.
+- Sorteer ads op **Verified ROAS (hoogste eerst)**. Ads met 0 Wix orders staan onderaan, ongeacht Meta pixel metrics.
+- **70% van het budget gaat ALTIJD naar de ad met de hoogste verified ROAS.** Geen uitzondering.
+- Een ad met **0 Wix orders** mag NOOIT als "beste performer", "winner" of "best front-of-funnel" gelabeld worden, ook niet als CTR/CPC/IC op Meta het hoogst scoren.
+- Een ad met de **hoogste verified ROAS** mag NOOIT "pauzeren" als advies krijgen. Ook niet "heroverwegen", ook niet "afbouwen".
+- Als verified funnel data beschikbaar is (Wix orders opgehaald), **negeer Meta pixel purchase/IC data volledig** voor budget aanbevelingen. Meta pixel is uitsluitend voor trend-context, niet voor beslissingen.
+- Als je recommendations schrijft, check ELKE aanbeveling tegen de verified funnel tabel. Als een aanbeveling het tegenovergestelde zegt van wat verified ROAS laat zien: schrap hem en herschrijf.
+- De sectie "BUDGET AANBEVELINGEN (VERIFIED)" wordt automatisch toegevoegd door `scripts/verified-funnel.py`. Die sectie overrulet altijd eerdere adviezen.
 ```
 
 ## Data Integriteit Regels (KRITIEK)
