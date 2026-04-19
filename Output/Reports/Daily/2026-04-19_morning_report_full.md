@@ -17,14 +17,14 @@
 > 
 > | Ad | Spend | Impressions | Link Clicks | Link CTR | CPC (link) |
 > |---|---|---|---|---|---|
+> | H12,B3,CTA5 | EUR 14,37 | 1.058 | 20 | 1,89% | EUR 0,72 |
+> | H13,B3,CTA5 | EUR 0,01 | 1 | 0 | 0,00% | EUR 0,00 |
+> | H14,B3,CTA5 | EUR 122,96 | 16.551 | 158 | 0,95% | EUR 0,78 |
+> | H15,B3,CTA5 | EUR 2,32 | 157 | 4 | 2,55% | EUR 0,58 |
+> | H15,B3,CTA5 | EUR 49,83 | 4.737 | 57 | 1,20% | EUR 0,87 |
 > | H11, B3, CTA5 | EUR 503,89 | 37.483 | 410 | 1,09% | EUR 1,23 |
 > | H13,B3,CTA5 | EUR 184,72 | 15.357 | 179 | 1,17% | EUR 1,03 |
 > | H12,B3,CTA5 | EUR 137,38 | 13.719 | 172 | 1,25% | EUR 0,80 |
-> | H14,B3,CTA5 | EUR 122,96 | 16.551 | 158 | 0,95% | EUR 0,78 |
-> | H15,B3,CTA5 | EUR 49,83 | 4.737 | 57 | 1,20% | EUR 0,87 |
-> | H12,B3,CTA5 | EUR 14,37 | 1.058 | 20 | 1,89% | EUR 0,72 |
-> | H15,B3,CTA5 | EUR 2,32 | 157 | 4 | 2,55% | EUR 0,58 |
-> | H13,B3,CTA5 | EUR 0,01 | 1 | 0 | 0,00% | EUR 0,00 |
 > 
 > Dit zijn de ENIGE betrouwbare CTR/CPC/dagspend cijfers in dit rapport. Kale `CTR`/`CPC` waarden in het rapport hieronder zijn waar mogelijk hardcoded overschreven.
 
@@ -34,80 +34,83 @@ Failures: 0
 
 ---
 
+Rapport hieronder en opgeslagen op `/Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_ads_report.md`.
+
 ## Meta Ads Rapport — 2026-04-19
+
+**Periode:** last_30d (2026-03-20 t/m 2026-04-18) · **Account:** Sempertex Ad Account
 
 ### Overzicht per campagne
 
-| Campagne   | Status | Spend    | Impressions | Clicks | CTR  | CPC   | CPM    | Conv. | ROAS   |
-|------------|--------|----------|-------------|--------|------|-------|--------|-------|--------|
-| 2026: SYBB | Active | €1015,48 | 89.063      | 1.873  | 2,1% | €0,54 | €11,40 | 6     | n.v.t. (pixel datafout) |
+| Campagne | Status | Spend | Impressions | Clicks | CTR | CPC | CPM | Conv. | ROAS |
+|----------|--------|-------|-------------|--------|-----|-----|-----|-------|------|
+| 2026: SYBB | Active | €1.015,48 | 89.063 | 1.873 | 2,1% | €0,54 | €11,40 | 6 | n.v.t. (pixel datafout)* |
 
-### Actieve ads
+*ROAS wordt vertekend door 1 outlier purchase van €42.773,50 op H13 (Kopie 3). Realistic ROAS exclusief outlier: ~n.v.t. (pixel datafout).
 
-| Ad (adset)            | Spend   | CTR  | CPC   | CPM    | Purch. | ROAS    | Flag                |
-|-----------------------|---------|------|-------|--------|--------|---------|---------------------|
-| H11,B3,CTA5 (Kopie 1) | €503,89 | 1,09% | € 1,23 | €13,44 | 4      | n.v.t. (pixel datafout)   | CPC te hoog         |
-| H13,B3,CTA5 (Kopie 3) | €184,72 | 1,17% | € 1,03 | €12,03 | 2      | n.v.t. (pixel datafout)  | CPC hoog, top ROAS  |
-| H12,B3,CTA5 (Kopie 2) | €137,38 | 1,89% | € 0,72 | €10,01 | 0      | —       | Sterke CTR, 0 conv. |
+### Ad-level (gesorteerd op spend)
+
+| Ad | Adset | Status | Spend | CTR | CPC | Freq | LPV | ATC | Purch. | ROAS |
+|----|-------|--------|-------|-----|-----|------|-----|-----|--------|------|
+| H11,B3,CTA5 | Kopie 1 | ACTIVE | €503,89 | 1,09% | € 1,23 | 1,84 | 325 | 23 | 4 | n.v.t. (pixel datafout) |
+| H13,B3,CTA5 | Kopie 3 | ACTIVE | €184,72 | 1,17% | € 1,03 | 1,58 | 155 | 8 | 2 | 231x* |
+| H12,B3,CTA5 | Kopie 2 | ACTIVE | €137,38 | 1,25% | € 0,80 | 1,92 | 139 | 10 | 0 | 0x |
+| H14,B3,CTA5 | Batch 2 | PAUSED | €122,96 | 0,95% | € 0,78 | 1,34 | 108 | 0 | 0 | 0x |
+| H15,B3,CTA5 | Kopie 4 | ACTIVE | €49,83 | 1,20% | € 0,87 | 1,45 | 36 | 1 | 0 | 0x |
 
 ### Underperformers
 
-- **H11 (Kopie 1)** — CPC €0,67 (drempel €0,50), slokt 50% budget op met slechts ROAS n.v.t. (pixel datafout) → halveren of pauzeren.
-- **H13 (Kopie 3)** — CPC €0,61 maar **niet pauzeren**: draagt 97% van revenue. Test nieuwe hooks om CPC te drukken.
-- **Campagne-CPC €0,54** ligt 8% boven drempel, getrokken door H11 en H13.
+- **H11,B3,CTA5 (Kopie 1, ACTIVE)** — CPC €0,67 (drempel: €0,50) → pauzeer of verlaag bid; slokt 50% budget tegen te hoge CPC.
+- **H13,B3,CTA5 (Kopie 3, ACTIVE)** — CPC €0,61 (drempel: €0,50) → laat aan zolang ROAS data accuraat is; valideer purchase value handmatig.
+- **Campagne avg CPC €0,54** boven 30d-target. Geen CTR <1%, geen freq >3,5, geen CPM >€15 in active set.
 
 ### Top performers
 
 - **Beste CTR:** H12 (Kopie 2) — 2,6%
 - **Laagste CPC:** H12 (Kopie 2) — €0,39
-- **Beste ROAS:** H13 (Kopie 3) — n.v.t. (pixel datafout) (€42.773 revenue op €184,72 spend)
+- **Beste ROAS:** H13 (Kopie 3) 231x outlier; realistisch winnaar = H11 (Kopie 1) n.v.t. (pixel datafout)
 
 ### Samenvatting
 
-- **Totaal spend:** €1.015,48 (30d, ≈€34/dag — daily budget van €100 niet vol benut)
-- **Beste performer:** H13 genereert bijna alle purchase revenue — één duidelijke winner.
-- **Slechtste performer:** H11 — hoog budget, lage ROAS, dure CPC.
-- **Paradox:** H12 heeft beste front-end ratios maar ? purchases (verifieer Wix) → click-to-purchase lek.
-
-**Aanbeveling (70-20-10):** 70% budget verhoging op H13 (winner), 20% varianten van H13 met nieuwe hooks om CPC onder €0,50 te krijgen, 10% experiment: H11 pauzeren en budget verschuiven naar nieuwe adset of LP-test om H12's conversiegat te diagnosticeren.
+- **Totaal spend:** €1.015,48 · **Purchases:** 6 (€44.247 incl. outlier)
+- **Beste performer:** H12 (Kopie 2) — beste front-of-funnel, maar ? purchases (verifieer Wix) (conversie nog te bewijzen)
+- **Slechtste performer (active):** H11 (Kopie 1) — 50% budget tegen CPC 34% boven drempel
+- **Aanbeveling (70-20-10):**
+  1. **70%:** Schuif €100-150/dag van H11 → H12 (Kopie 2). Beste front-of-funnel; verdient kans op purchases.
+  2. **20%:** Houd H13 (Kopie 3) actief, maar valideer €42k purchase in Meta. Als echt → schaal. Als artefact → heroverweeg.
+  3. **10%:** Test 1-2 nieuwe hooks als variant op H12 voordat freq omhoog gaat.
 
 ### Google Sheet
 
-Niet geschreven — stap 6 overgeslagen conform regels (alleen Meta/PostHog MCP). Rapport lokaal opgeslagen: `/Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-19_ads_report.md`
+Overgeslagen op verzoek (geen Google MCP gebruikt deze run).
 
 ---
 
-**Wil je funnel data toevoegen? Geef dan de landing page metrics uit Wix Analytics of GA4.**
-Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases.
+**Wil je funnel data toevoegen?** Geef dan de landing page metrics uit Wix Analytics of GA4. Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases.
 
 ---
 
-The local branch has 49 commits while origin has 90 different commits - a significant divergence. This needs your decision, I'm not going to auto-resolve this. The report is committed locally but not yet pushed.
+Rapport opgeslagen op `Output/Reports/Daily/2026-04-18_sybb_report.md`.
 
-Status:
-- ✅ Report saved to `Output/Reports/Daily/2026-04-18_sybb_report.md`
-- ✅ Committed locally (commit `01d8b16`)
-- ❌ Push blocked: branches have diverged (49 local vs 90 remote commits). Rebase hit conflicts in auto-sync log files.
+**Highlights 2026-04-18:**
+- Spend €94,47 (-10% vs 7d), CPC €0,62 (boven target), CPM €14,68 (+18% vs 7d, slechter)
+- **Doorbraak op funnel-bottom:** 7 initiate checkouts en 1 voltooide aankoop (`/thank-you-page`) — eerste echte conversie in dagen
+- **H12 wint** (CTR 4,21%, CPC €0,38, 3/7 IC's met 13% van de spend), maar krijgt nog steeds te weinig budget
+- **H13 onderpresteert**: 88,9% bounce, scroll 50% slechts 20% — kandidaat om te pauzeren
+- Bounce 80,4% en scroll 25% van 41,9% bevestigen dat hero-sectie het grootste lek blijft
+- CTA → `/booking` tracking gap nog steeds open (10 clicks → 1 PV)
 
-**Report summary:**
-- Meta Ads: €94,47 spend, CTR 2,36%, CPC €0,62, 152 clicks, 78 LPV, 7 Initiate Checkouts, **? purchases (verifieer Wix)**
-- Top red flag: 7 IC → ? purchases (verifieer Wix) (7d baseline was 27% conversie) — likely checkout/payment issue
-- H11 slokt 71% van het budget tegen CPC €0,73; H12 is efficiëntst (CPC €0,38, CTR 4,21%) maar krijgt slechts 13%
-- PostHog MCP niet beschikbaar in deze sessie — LP health sectie leeg, cross-reference beperkt
-
-**Aanbevolen:** los de git divergentie handmatig op (bijvoorbeeld `git merge origin/main` met conflict resolution op logs/), of geef akkoord om de merge te doen.
+Top acties: schaal H12 / pauzeer H13, fix CTA tracking, plan hero-test.
 
 ---
 
 Rapport opgeslagen: `Output/Reports/Daily/2026-04-19_auto_optimize.md`.
 
-**Samenvatting:**
-- **0 ads gepauzeerd** — alle 3 actieve ads (H11, H12, H13) passen de kill-regels op Link CTR (>0,8%) en zijn nog onder de 500-link-click-drempel voor CPC-kill.
-- **Budget mismatch:** H11 verbruikt 73,2% van de spend (€174,87) met zwakste economics (Link CTR 1,25%, CPC €1,16). H12 is de winner (Link CTR 2,11%, CPC €0,65, 6 IC / 44 clicks = 13,6% IC-rate) maar krijgt slechts 12,0% budget.
-- **Waarschuwing:** H11 trekt richting CPC-kill-drempel; met huidige spend bereikt hij binnen 7–10 dagen de 500 link clicks — bij volgende run kan kill triggeren.
-- **Voorstellen (wachten op jouw goedkeuring):** adset-budget cap op Kopie 1 (H11) + floor op Kopie 2 (H12), variaties op H12-hook, audience-uitbreiding voor Kopie 2 (reach slechts 1.071).
+**Niveau 1 (automatisch):** 0 ads gepauzeerd — alle 3 actieve ads in `2026: SYBB` passeren Link CTR > 0,8% (laagste is H11 op 1,2%). CPC kill-rule kan niet triggeren want geen ad heeft 500+ link clicks in 3d.
 
-Laat weten welke voorstellen je wilt uitvoeren.
+**Belangrijkste bevinding:** budget mismatch. H11 absorbeert 73% van de spend (€175 van €239) maar heeft de zwakste conv rate (2,6%) en hoogste cost per IC (€43,72). H12 — beste op vrijwel elke metric (Link CTR 2,1%, conv rate 13,6%, cost per IC €4,79) — krijgt slechts 12%.
+
+**Niveau 2 voorstellen** (wachten op goedkeuring): (1) budget herverdeling H12 +300% / H11 -40%, (2) nieuwe variaties op winnende H12 hook, (3) audience-uitbreiding bij opschaling H12. Geef de nummers door om uit te voeren.
 
 ---
 
@@ -115,14 +118,28 @@ Laat weten welke voorstellen je wilt uitvoeren.
 
 | Ad | Spend | Link Clicks | PostHog /ty | Wix Orders | Revenue | Verified ROAS | CPA |
 |---|---|---|---|---|---|---|---|
-| H11, B3, CTA5 | EUR 503,89 | 410 | 0 | 0 | - | - | - |
+| H11, B3, CTA5 | EUR 503,89 | 410 | 1 | 1 (EUR 350,00) | EUR 350,00 | 0.69x | EUR 503,89 |
 | H12,B3,CTA5 | EUR 151,75 | 192 | 0 | 0 | - | - | - |
-| H13,B3,CTA5 | EUR 184,73 | 179 | 0 | 0 | - | - | - |
+| H13,B3,CTA5 | EUR 184,73 | 179 | 0 | 1 (EUR 423,50) | EUR 423,50 | 2.29x | EUR 184,73 |
 | H14,B3,CTA5 | EUR 122,96 | 158 | 0 | 0 | - | - | - |
 | H15,B3,CTA5 | EUR 52,15 | 61 | 0 | 0 | - | - | - |
-| **Totaal** | **EUR 1.015,48** | **1000** | **0** | **0** | **EUR 0,00** | **-** | **-** |
+| **Totaal** | **EUR 1.015,48** | **1000** | **1** | **2** | **EUR 773,50** | **0.76x** | **EUR 507,74** |
 
-> Wix orders: 0 orders in periode. Update `data/wix-orders.json` met orders uit Wix admin.
+> **CROSS-REFERENCE: Meta Pixel vs Wix Orders**
+> - Meta pixel: 18 purchases (EUR 132.741,00)
+> - Wix orders: 2 orders (EUR 773,50)
+> - Verschil: +16 pixel purchases, +EUR 131.967,50 pixel waarde
+> - **Verdict: PIXEL OVERSTELT.** Gebruik Wix orders als bron van waarheid.
+> - Mogelijke oorzaken: Conversions API duplicaten, test purchases, cross-domain pixel fires
+
+> **ONGEMATCHTE /thank-you SESSIES:**
+> - Sessie op 2026-04-18, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
+> - Sessie op 2026-04-12, utm_content=(geen utm_content)
 
 
 
