@@ -16,7 +16,7 @@ Deze skill produceert emails voor Sempertex Europe die het Hormozi Reward Framew
 3. Lees `Kennis/Brand/tone-of-voice.md` voor de STX EU schrijfstijl
 4. Raadpleeg `Kennis/Klantprofielen/klantprofielen.md` als je het doelsegment moet begrijpen
 5. Raadpleeg `Kennis/Products/producten-overzicht.md` als de mail productkennis vereist
-6. Raadpleeg `Content/Scripts/Balloon Content/` bij emails over technieken, producttoepassingen, of "techniek spotlight" content
+6. Raadpleeg `Kennis/Balloon Knowledge/` bij emails over technieken, producttoepassingen, pricing, of brand heritage. Open eerst `Kennis/Balloon Knowledge/INDEX.md`, pak het meest relevante bestand (techniek/product/business/brand) en gebruik de "Business Applications" en "Content angles" secties als input voor hook, probleem en CTA.
 7. Raadpleeg `Kennis/Email Marketing/mozi-minute-email-structures.md` voor structurele referentie (Hormozi Mozi Minute emails) — gebruik de STRUCTUUR, niet de toon
 
 ## Het Reward Framework (verplicht in elke mail)

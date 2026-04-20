@@ -15,6 +15,7 @@ Genereer platform-optimale social media content voor alle STX EU kanalen. Elk st
 2. `Kennis/Klantprofielen/klantprofielen.md` — doelgroep segmenten
 3. Indien productgerelateerd: `Kennis/Products/producten-overzicht.md`
 4. Indien campagnegerelateerd: `Kennis/Voorgaande campagnes/campagne-historie.md`
+5. Indien techniek/tutorial/inspiratie/brand pilaar: open `Kennis/Balloon Knowledge/INDEX.md`, pak het juiste bestand en gebruik de "Content angles" sectie voor caption hooks, carrousel frames en CTA richting. `sempertex-company-heritage-and-vision.md` en `interview-sofie-ceo-stx-eu.md` leveren brand storytelling posts.
 
 ---
 

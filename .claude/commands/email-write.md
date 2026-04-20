@@ -30,6 +30,7 @@ Optioneel (afhankelijk van de email):
 - `Kennis/Products/producten-overzicht.md` — bij product-gerelateerde emails
 - `Kennis/Voorgaande campagnes/campagne-historie.md` — bij SYBB emails
 - `Bronnen/Alex Hormozi/100m-lead-nurture-playbook.md` — bij nurture emails
+- `Kennis/Balloon Knowledge/INDEX.md` — bij techniek/product/pricing/brand emails. Kies het juiste bestand en gebruik "Business Applications" en "Content angles" als input voor hook en CTA.
 
 ### 3. Schrijf de email
 

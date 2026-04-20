@@ -18,6 +18,7 @@ Ontwerp complete, gestructureerde marketingcampagnes voor STX EU. Van strategisc
 5. `Kennis/Klantprofielen/klantprofielen.md` — doelgroep segmenten
 6. `Kennis/Brand/tone-of-voice.md` — tone of voice regels
 7. Indien productgerelateerd: `Kennis/Products/producten-overzicht.md`
+8. Indien techniek/product/business/brand-angle relevant voor de campagne: raadpleeg `Kennis/Balloon Knowledge/INDEX.md` voor content pijlers en hooks (bv. pricing campagne → `pricing-balloons-strategy.md`; brand heritage → `sempertex-company-heritage-and-vision.md`; product education → `latex-balloons-explained.md`).
 
 ---
 

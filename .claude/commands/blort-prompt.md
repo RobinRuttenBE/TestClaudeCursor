@@ -22,6 +22,7 @@ Gebruik de kennisbestanden alleen om de juiste productnamen, eventnamen of speci
 - `Kennis/Products/producten-overzicht.md` — productnamen en specificaties
 - `Kennis/Voorgaande campagnes/campagne-historie.md` — campagne- en eventnamen
 - `Content/Scripts/filming-plan-referentie-denise-maart2025.md` — bestaande content formats
+- `Kennis/Balloon Knowledge/INDEX.md` — specifieke technieken, producttoepassingen (bv. "glass balloon", "diamond weave"), brand heritage details voor accurate briefing
 
 ## Output format
 

@@ -40,6 +40,13 @@ Email strategie, Hormozi-frameworks voor email, en segment-specifieke waarde. **
 ### Kennis/Concurrentie/
 - `concurrenten.md` — Kalisan, Gemar, Tuftex. Sterkte/zwakte. **Nooit publiek benoemen.**
 
+### Kennis/Balloon Knowledge/
+Ballontechnieken, productkennis, business en brand achtergrond. **Raadpleeg bij elke content-taak die technieken, producttoepassingen, tutorials, pricing, of brand storytelling raakt** (emails, video scripts, social posts, blog, workshop, ads).
+- 32+ bestanden: technieken (20-bubble-star, diamond-weave, pinch-twist, spiral-garlands, …), productkennis (`latex-balloons-explained.md`, `balloon-sizing.md`, `round-balloons.md`, `choosing-a-transparent-globe.md`), business (`pricing-balloons-strategy.md`), brand (`sempertex-company-heritage-and-vision.md`, `interview-sofie-ceo-stx-eu.md`)
+- Elk bestand bevat: techniek/onderwerp uitleg, business applications, content angles, key vocabulary
+- Zie `Kennis/Balloon Knowledge/INDEX.md` voor volledige index per bestand (techniek, moeilijkheid, categorie, segmenten)
+- Merknaam is altijd Sempertex, geen andere merken noemen
+
 ---
 
 ## Bronnen (frameworks & referentiemateriaal)
@@ -68,11 +75,9 @@ Marketing frameworks van Alex Hormozi. **Lees bij content-, ads- en strategietak
 - `filming-plan-referentie-denise-maart2025.md` — template voor filming sessies, 9 content types, hook/CTA patronen
 
 ### Content/Scripts/Balloon Content/
-Ballontechnieken & productkennis. **Raadpleeg bij elke content-taak die technieken, producttoepassingen of tutorials raakt.**
-- Alle bestanden bevatten: techniek uitleg, business applications, content angles, en key vocabulary
-- Bruikbaar voor: email content, video scripts, social media posts, blog content, workshop materiaal, klantcommunicatie
-- Merknaam is altijd Sempertex — geen andere merken noemen
-- Zie `Content/Scripts/Balloon Content/INDEX.md` voor volledige index per bestand met techniek, moeilijkheid, categorie en segmenten
+Legacy locatie (grotendeels gemirrord naar `Kennis/Balloon Knowledge/`). Bevat nog een aantal unieke bestanden die niet in de Kennis-versie staan: `covering-base-pole-360.md`, `fantasy-flower-hat-box.md`, `jungle-balloon-builds.md`, `remove-vinyl-foil-balloons.md`, `teddy-bear-mouse-head.md`, `vinyl-application-balloons.md`.
+- Voor nieuwe content-taken: gebruik eerst `Kennis/Balloon Knowledge/` (canoniek). Val alleen terug op deze folder voor de 6 unieke bestanden.
+- Zie `Content/Scripts/Balloon Content/INDEX.md` voor de legacy index.
 
 ### Content/Transcripts/
 - `no1-video-leverage-focus-better.md` — werk = output, leverage > uren, focus, better is boring
@@ -168,5 +173,5 @@ Bij het schrijven van content, emails, of ad copy gericht op startende ballonart
 4. Gebruik de SOLUTIONS sectie voor waarde — maar alleen het "what," nooit het volledige "how"
 5. Het "how" is gereserveerd voor de SYBB workshop — eindig altijd met een SYBB CTA
 6. Gebruik de content hooks per pilaar als startpunt
-7. Cross-refereer `Content/Scripts/Balloon Content/pricing-balloons-strategy.md` wanneer Pillar 7 (Pricing) relevant is
+7. Cross-refereer `Kennis/Balloon Knowledge/pricing-balloons-strategy.md` wanneer Pillar 7 (Pricing) relevant is
 8. CTA-structuur: erken waarde → creëer gap → positioneer workshop → directe actie → future-pace

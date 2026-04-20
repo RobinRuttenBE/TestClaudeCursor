@@ -14,6 +14,7 @@ Lees voor je begint:
 2. `Bronnen/Alex Hormozi/100m-hooks-playbook.md` — hook formule
 3. `Bronnen/Alex Hormozi/goated-ads-playbook-summary.md` — ad/content structuur
 4. `Content/Scripts/filming-plan-referentie-denise-maart2025.md` — referentie voor hook/CTA patronen
+5. Indien techniek/product/brand/pricing onderwerp: open `Kennis/Balloon Knowledge/INDEX.md` en lees het meest relevante bestand (zoals `latex-balloons-explained.md`, `pricing-balloons-strategy.md`, `sempertex-company-heritage-and-vision.md`) voor hooks, demo structuur en CTA input. Geef WHAT en WHY, bewaar HOW voor workshop/SYBB CTA.
 
 ## Script structuur
 

@@ -16,6 +16,7 @@ Genereer complete, publish-ready video scripts voor alle STX EU videoformats. El
 3. `Content/Scripts/filming-plan-referentie-denise-maart2025.md` — referentie hooks/CTA patronen
 4. Indien productgerelateerd: `Kennis/Products/producten-overzicht.md`
 5. Indien campagnegerelateerd: `Kennis/Voorgaande campagnes/campagne-historie.md`
+6. Indien techniek-, tutorial-, pricing-, of brand heritage-gerelateerd: open `Kennis/Balloon Knowledge/INDEX.md`, kies het juiste bestand en gebruik de "Business Applications" en "Content angles" secties voor hook input, demo structuur en CTA richting. Volg de Hormozi-regel: geef WHAT en WHY, bewaar HOW voor betaald (workshops/SYBB).
 
 ---
 
