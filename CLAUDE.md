@@ -42,9 +42,14 @@ Email strategie, Hormozi-frameworks voor email, en segment-specifieke waarde. **
 
 ### Kennis/Balloon Knowledge/
 Ballontechnieken, productkennis, business en brand achtergrond. **Raadpleeg bij elke content-taak die technieken, producttoepassingen, tutorials, pricing, of brand storytelling raakt** (emails, video scripts, social posts, blog, workshop, ads).
-- 32+ bestanden: technieken (20-bubble-star, diamond-weave, pinch-twist, spiral-garlands, …), productkennis (`latex-balloons-explained.md`, `balloon-sizing.md`, `round-balloons.md`, `choosing-a-transparent-globe.md`), business (`pricing-balloons-strategy.md`), brand (`sempertex-company-heritage-and-vision.md`, `interview-sofie-ceo-stx-eu.md`)
+- **Heavy hitters (universele referenties — overweeg eerst):**
+  - `latex-balloons-explained.md` — complete Sempertex range, maten, texturen (productpositionering)
+  - `pricing-balloons-strategy.md` — pricing formule, mindset, klantmanagement (B2B + starter)
+  - `interview-sofie-ceo-stx-eu.md` — bedrijfsachtergrond, markt, visie (bron voor brand storytelling en quotes)
+  - `sempertex-company-heritage-and-vision.md` — geschiedenis, productie, duurzaamheid, certificering (autoriteit en proof)
+- 35 bestanden: technieken (20-bubble-star, diamond-weave, pinch-twist, spiral-garlands, link-o-loon-football-player, geometric-floral, …), productkennis (`balloon-sizing.md`, `round-balloons.md`, `choosing-a-transparent-globe.md`, `helium-balloon-prep.md`), business (`pricing-balloons-strategy.md`)
 - Elk bestand bevat: techniek/onderwerp uitleg, business applications, content angles, key vocabulary
-- Zie `Kennis/Balloon Knowledge/INDEX.md` voor volledige index per bestand (techniek, moeilijkheid, categorie, segmenten)
+- Zie `Kennis/Balloon Knowledge/INDEX.md` voor volledige index per bestand (techniek, moeilijkheid, categorie, segmenten Artist/Decorator/Twister/Shop/Problem Solver)
 - Merknaam is altijd Sempertex, geen andere merken noemen
 
 ---
@@ -162,6 +167,7 @@ Wordt opgebouwd in Fase 2-5 van het implementatieplan.
 5. **Better is leverage:** Saai werk (split tests, CRM, follow-up) levert het meeste geld op
 6. **Brand = goodwill:** Compound effect van educatie, community, gratis waarde
 7. **Nooit concurrenten noemen in publieke content**
+8. **Balloon Knowledge first:** Bij elke content-taak (email, script, ad, post, blog) eerst vragen — welk techniek-, product-, of pricing-bestand uit `Kennis/Balloon Knowledge/` voedt deze taak? Inhoudelijke autoriteit is leverage; algemene marketing zonder ballonkennis voelt leeg en verzandt.
 
 ---
 
@@ -173,5 +179,12 @@ Bij het schrijven van content, emails, of ad copy gericht op startende ballonart
 4. Gebruik de SOLUTIONS sectie voor waarde — maar alleen het "what," nooit het volledige "how"
 5. Het "how" is gereserveerd voor de SYBB workshop — eindig altijd met een SYBB CTA
 6. Gebruik de content hooks per pilaar als startpunt
-7. Cross-refereer `Kennis/Balloon Knowledge/pricing-balloons-strategy.md` wanneer Pillar 7 (Pricing) relevant is
+7. Cross-refereer Balloon Knowledge per pilaar voor inhoudelijke onderbouwing (geef WHAT, niet HOW):
+   - **Pillar 1 Mindset** → `interview-sofie-ceo-stx-eu.md` (ondernemers-visie, brand mindset)
+   - **Pillar 2 Market Knowledge** → `latex-balloons-explained.md` (productrange = marktsegmenten), `klantprofielen.md`
+   - **Pillar 3 USP** → distinctieve techniek-bestanden als inspiratie voor signature style: `diamond-weave-technique.md`, `geometric-floral-balloon-design.md`, `link-o-loon-football-player.md`, `luxury-nye-hoop.md`
+   - **Pillar 4 Business Setup** → `sempertex-company-heritage-and-vision.md` (autoriteit/proof in copy)
+   - **Pillar 6 Materials & Quality** → `latex-balloons-explained.md`, `choosing-a-transparent-globe.md`, `sempertex-company-heritage-and-vision.md` (certificering EU), `interview-sofie-ceo-stx-eu.md` (kwaliteitsverhaal)
+   - **Pillar 7 Pricing** → `pricing-balloons-strategy.md` (formule + mindset)
+   - **Pillar 8 Techniques & Skills** → kies één relevant techniek-bestand uit `Balloon Knowledge/INDEX.md` per content-stuk; matching op moeilijkheid en segment
 8. CTA-structuur: erken waarde → creëer gap → positioneer workshop → directe actie → future-pace
