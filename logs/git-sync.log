@@ -21567,19 +21567,8 @@ remote: This repository moved. Please use the new location:
 remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
 To github.com:RobinRuttenBE/testclaudecursor.git
    e8b5587..3f28cd3  main -> main
-On branch main
-Your branch is up to date with 'origin/main'.
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-  (commit or discard the untracked or modified content in submodules)
-	modified:   remotion-stx (modified content, untracked content)
-
-no changes added to commit (use "git add" and/or "git commit -a")
-Everything up-to-date
-[main 3177a66] Auto-sync: 2026-04-21 13:45
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
+[main 9481585] Auto-sync: 2026-04-21 12:26
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -21592,125 +21581,8 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 11 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   9ea10a2..3177a66  main -> main
-[main ea99b85] Auto-sync: 2026-04-21 14:15
- Committer: Robin Rutten <robinrutten@Mac.localdomain>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   3177a66..ea99b85  main -> main
-[main 8dc9ad9] Auto-sync: 2026-04-21 20:49
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   ea99b85..8dc9ad9  main -> main
-[main 3ef87a7] Auto-sync: 2026-04-21 21:19
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   8dc9ad9..3ef87a7  main -> main
-[main d165584] Auto-sync: 2026-04-21 21:50
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   3ef87a7..d165584  main -> main
-[main a6b498b] Auto-sync: 2026-04-21 22:20
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   d165584..a6b498b  main -> main
-[main ac9b6d5] Auto-sync: 2026-04-21 22:50
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   a6b498b..ac9b6d5  main -> main
-[main 2e4e5c0] Auto-sync: 2026-04-21 23:20
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   ac9b6d5..2e4e5c0  main -> main
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   3f28cd3..9481585  main -> main
