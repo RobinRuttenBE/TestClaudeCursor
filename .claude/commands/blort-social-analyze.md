@@ -65,6 +65,8 @@ Voordat je de BLORT prompt genereert, toon eerst het data-overzicht aan Robin:
 
 ## Stap 4: Genereer BLORT prompt
 
+**Voor je de prompt opbouwt:** scan `Kennis/Balloon Knowledge/INDEX.md` en herken welke techniek/product een top of bottom performer toont (bv. diamond weave, Link-O-Loon, pinch twist, deco bubble). Voeg de juiste vakterm toe aan de captions/beschrijving in de BLORT prompt zodat BLORT visueel beter herkent en classificeert.
+
 Genereer de volgende BLORT prompt in het Engels. Vul de [variabelen] in met de echte data en links.
 
 ```

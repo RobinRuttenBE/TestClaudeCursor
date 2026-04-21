@@ -27,6 +27,7 @@ De gebruiker geeft:
    - `.claude/skills/auto-video-editor/video-log.md` — leerpunten uit eerdere video's (filter op `[SHORT]` tag voor short form inzichten)
    - `.claude/rules/video-asset-checklist.md` — asset checklist
    - `CLAUDE.md` voor brand context
+   - `Kennis/Balloon Knowledge/INDEX.md` — herken de getoonde techniek/product en gebruik de exacte vakterm in de hook-caption en stx-tip overlays (bv. "20-bubble star", "diamond weave", "Link-O-Loon column", "deep tulip twist"). Vakterm in 3 woorden hoofd hook = scroll-stopper voor de juiste audience.
 
 2. **Lees het transcript volledig** voordat je iets voorstelt. Identificeer:
    - **De hook** (eerste 1-3 seconden) — wat is de opener? Een statement, vraag, belofte, of cijfer?

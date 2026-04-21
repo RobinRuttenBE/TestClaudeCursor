@@ -15,6 +15,7 @@ Als $ARGUMENTS een bestandspad is, lees dat bestand eerst.
 Lees voor je begint:
 1. `.claude/skills/remotion-templates/SKILL.md` — alle beschikbare Remotion templates en hun parameters
 2. `Kennis/Brand/tone-of-voice.md` — voor het beoordelen van key quotes
+3. `Kennis/Balloon Knowledge/INDEX.md` — gebruik om techniek/product-momenten in het transcript correct te benoemen in text overlays en feature bars (juiste vakterm = hogere autoriteit). Bv. "Diamond Weave", "Pinch Twist", "Link-O-Loon", "Ultra Pump", "Reflex Crystal".
 
 ## Stap 1: Analyse
 

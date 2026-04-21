@@ -20,6 +20,7 @@ De gebruiker geeft:
    - `.claude/skills/auto-video-editor/video-log.md` — leerpunten uit eerdere video's
    - `.claude/rules/video-asset-checklist.md` — asset checklist
    - `CLAUDE.md` voor brand context
+   - `Kennis/Balloon Knowledge/INDEX.md` — gebruik om techniek/product-momenten in het transcript te herkennen en correct te benoemen in overlay teksten (bv. "diamond weave", "20-bubble star", "Link-O-Loon column", "deep tulip twist"). Zorgt voor accurate vakterm in lower thirds, tips en feature bars.
 
 2. **Lees het transcript volledig** voordat je iets voorstelt. Identificeer:
    - Hoofdonderwerp en doelpubliek

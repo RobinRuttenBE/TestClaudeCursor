@@ -283,6 +283,7 @@ Dit laat tijdens ontwikkeling de safe zones zien zodat overlays niet per ongeluk
 - **stx-overlay-style** blijft de authority voor code-patronen per overlay type. Deze skill voegt alleen de short form uitzonderingen toe.
 - **auto-video-editor** — zelfde rol, zelfde regels, zelfde branding. Alleen format en pacing wijken af.
 - **video-log** — short form learnings taggen met `[SHORT]` prefix zodat ze niet vermengd raken met long form inzichten.
+- **Kennis/Balloon Knowledge/INDEX.md** — bij hook-caption en stx-tip overlays voor techniek/product content: gebruik de exacte vakterm uit het juiste bestand (bv. "20-bubble star", "Diamond Weave", "Link-O-Loon Column", "Deep Tulip Twist", "Pinch Twist") in plaats van algemene beschrijvingen. Vakterm in 3-6 woorden hook = scroll-stopper voor de juiste audience (artists, twisters, decorators). Match Hook content type (zie tabel boven) met de techniek-categorie uit INDEX.md.
 
 ## Workflow voor nieuwe short form overlay type
 

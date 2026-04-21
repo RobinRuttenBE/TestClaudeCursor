@@ -126,6 +126,7 @@ Maak duidelijk onderscheid: **"DIT HEB IK VAN JOU NODIG"** vs **"DIT DOE IK ZELF
 ### Productnamen (STRIKT)
 
 - Sempertex balloon sizes: altijd `N260`, `N350`, `N160`, `N646`, etc. **NOOIT** een `Q` suffix gebruiken (`260Q`, `350Q`) — dat is Qualatex (concurrent). Robin heeft dit expliciet geflagd in Denise Twisting Compilation M4. Geldt voor overlays, captions, ad copy, emails, scripts — alles.
+- **Techniek- en producttermen:** raadpleeg `Kennis/Balloon Knowledge/INDEX.md` voor de juiste vakterm bij elke techniek/product die in beeld komt. Gebruik exacte termen ("Diamond Weave", "20-bubble Star", "Pinch Twist", "Deep Tulip Twist", "Link-O-Loon", "Reflex Crystal", "Deco Bubble") in lower thirds, tip overlays en step-overlays. Generieke beschrijvingen ("die ene techniek", "die ronde ballon") = autoriteit kwijt. Vakterm = autoriteit.
 
 ### Fonts (STRIKT — alleen Rethink Sans)
 

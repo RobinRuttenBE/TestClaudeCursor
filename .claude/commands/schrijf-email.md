@@ -9,6 +9,7 @@ Schrijf een email voor Sempertex Europe.
    - `Kennis/Email Marketing/email-marketing-waarde.md` (segment-specifieke waarde)
    - `Kennis/Brand/tone-of-voice.md` (STX EU schrijfstijl)
    - `.claude/skills/email-schrijven/SKILL.md` (email skill met structuur en regels)
+   - Indien techniek/product/pricing/brand onderwerp: open `Kennis/Balloon Knowledge/INDEX.md` en lees het meest relevante bestand voor inhoudelijke autoriteit (hooks, voorbeelden, vocab). Hormozi-regel: WHAT en WHY in de mail, HOW achter de CTA.
 
 2. Vraag de gebruiker (als niet opgegeven):
    - Segment: balloon artist / decorator / starter / twister / distributeur / fysieke shop / webshop

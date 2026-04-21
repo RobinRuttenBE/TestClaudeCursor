@@ -26,6 +26,7 @@ Lees indien relevant om specifieke namen/details op te zoeken:
 - `Kennis/Voorgaande campagnes/campagne-historie.md` — campagnenamen en details
 - `Kennis/Products/producten-overzicht.md` — productnamen
 - `.claude/skills/content-memory/SKILL.md` — raadpleeg Content Learnings voor context
+- `Kennis/Balloon Knowledge/INDEX.md` — gebruik om techniek-namen/product-vocab correct te benoemen in de BLORT prompt (bv. "diamond weave panel", "20-bubble star", "Link-O-Loon column"). BLORT analyseert beter als de juiste vakterm in de instructie staat.
 
 ## Hoe de prompt op te bouwen
 

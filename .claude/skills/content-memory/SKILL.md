@@ -134,6 +134,8 @@ Wijs per post een of meer tags toe op basis van de caption:
 - **community**: user content, testimonials, reposts
 - **announcement**: bedrijfsnieuws, launches
 
+**Sub-tagging met Balloon Knowledge:** voor `tutorial`, `product-demo` en `community` posts — scan `Kennis/Balloon Knowledge/INDEX.md` en voeg een specifieke techniek/product sub-tag toe (bv. `tutorial:diamond-weave`, `tutorial:pinch-twist`, `product-demo:link-o-loon`, `tutorial:pricing-strategy`). Maakt het later mogelijk om te zien welke techniek/product cluster consistent presteert — sterker signaal dan de generieke tag alleen.
+
 ---
 
 ## 5. WEEKLY SNAPSHOTS

@@ -27,6 +27,7 @@ Lees de volgende bestanden voor context:
 - `Kennis/Brand/tone-of-voice.md` — schrijfstijl
 - `Kennis/Klantprofielen/klantprofielen.md` — doelgroep context
 - `Kennis/Products/producten-overzicht.md` — productkennis
+- `Kennis/Balloon Knowledge/INDEX.md` — kies per email één relevant techniek-, product- of pricing-bestand voor inhoudelijke onderbouwing (hooks, mini-tip, demo verwijzing). Match op flow-segment (Artist/Decorator/Twister/Shop/Starter). Heavy hitters voor flows: `latex-balloons-explained.md`, `pricing-balloons-strategy.md`, `interview-sofie-ceo-stx-eu.md`. Hormozi-regel: WHAT en WHY in de email, HOW in de workshop/CTA.
 
 ### 3. Check of de flow al uitgeschreven is
 Zoek in `Content/Email Flows/` of er al een uitgeschreven versie bestaat van deze flow. Als die bestaat, lees die en bied aan om te updaten in plaats van opnieuw te schrijven.

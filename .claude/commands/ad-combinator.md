@@ -21,6 +21,7 @@ Lees de volgende bestanden:
 - `Kennis/Brand/tone-of-voice.md` — tone of voice richtlijnen
 - `Kennis/Products/producten-overzicht.md` — productkennis (indien relevant voor het onderwerp)
 - `Kennis/Klantprofielen/klantprofielen.md` — doelgroepkennis
+- `Kennis/Balloon Knowledge/INDEX.md` — kies bij techniek-, product-, of pricing-campagnes het meest relevante bestand voor inhoudelijke hooks (specifieke vocab, demo-momenten, problem statements). Heavy hitters: `latex-balloons-explained.md`, `pricing-balloons-strategy.md`, `interview-sofie-ceo-stx-eu.md`, `sempertex-company-heritage-and-vision.md`. Hormozi-regel: WHAT en WHY in de hook, HOW achter de CTA.
 
 ### 2. Analyseer de bestaande ad database
 Uit de campagne-historie, extraheer:

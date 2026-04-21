@@ -15,6 +15,7 @@ Analyseer bestaande content (captions, scripts, video's, posts) op kwaliteit, ef
 2. `Bronnen/Alex Hormozi/100m-hooks-playbook.md` — hook types, 70-20-10, testing
 3. `Content/Transcripts/social-media-strategy-spcl.md` — SPCL framework
 4. Indien productgerelateerd: `Kennis/Products/producten-overzicht.md`
+5. Indien techniek/product/pricing/brand inhoud: `Kennis/Balloon Knowledge/INDEX.md` + relevant bestand. Gebruik om: (a) inhoudelijke claims te toetsen op correctheid (techniek, pricing, product spec), (b) de SPCL Credibility-score te onderbouwen (klopt het of niet), (c) verbeteringen voor te stellen met juiste vakterm in plaats van generieke beschrijving.
 
 ---
 

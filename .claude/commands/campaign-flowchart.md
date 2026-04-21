@@ -16,6 +16,7 @@ Lees voor je begint:
 Indien relevant voor het onderwerp, lees ook:
 - `Kennis/Products/producten-overzicht.md`
 - `Kennis/Klantprofielen/klantprofielen.md`
+- `Kennis/Balloon Knowledge/INDEX.md` — bij techniek-, product- of pricing-campagnes: kies het centrale Balloon Knowledge bestand dat de campagne-spil vormt (bv. `diamond-weave-technique.md` voor een Diamond Weave masterclass campagne, `pricing-balloons-strategy.md` voor pricing workshop, `latex-balloons-explained.md` voor Sempertex range awareness). Gebruik dit voor inhoudelijke onderbouwing van content touchpoints en lead magnet keuze.
 
 ## Flowchart structuur
 

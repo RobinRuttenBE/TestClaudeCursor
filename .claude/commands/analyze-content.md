@@ -14,6 +14,7 @@ Lees voor je begint:
 2. `Kennis/Brand/tone-of-voice.md` — tone of voice regels
 3. `Bronnen/Alex Hormozi/100m-hooks-playbook.md` — hook types en scoring
 4. `Content/Transcripts/social-media-strategy-spcl.md` — SPCL framework
+5. Indien de content techniek/product/pricing/brand raakt: open `Kennis/Balloon Knowledge/INDEX.md` en lees het relevante bestand. Gebruik dit om inhoudelijke claims te toetsen (klopt de techniek, klopt het pricing-advies, klopt het product-detail) en om de SPCL Credibility-score te onderbouwen.
 
 ## Analyse
 
