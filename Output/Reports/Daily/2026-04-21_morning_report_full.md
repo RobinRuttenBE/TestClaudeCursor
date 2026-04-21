@@ -5,33 +5,38 @@ Failures: 0
 
 ---
 
-Ads rapport niet beschikbaar. Campagnes staan momenteel op pauze.
+## Meta Ads Rapport — 2026-04-21
+
+**Status: niet gegenereerd — Pipeboard Meta Ads MCP is niet geladen in deze sessie.**
+
+Beschikbare MCPs in deze run zijn Google, Instagram/Facebook Graph, GA4 en Lottiefiles. De strikte run-regels verbieden Google MCPs, en de Facebook Graph MCP dekt Pages/IG, geen Ads insights. Daardoor konden stap 1 t/m 5 niet worden uitgevoerd. Stap 6 was per instructie al overgeslagen.
+
+Status-rapport opgeslagen in `Output/Reports/Daily/2026-04-21_ads_report.md` met daarin:
+- Welke MCP-calls faalden en waarom
+- Laatst bekende staat uit het 2026-04-20 rapport (H12 winnaar, H13 pauzeer-kandidaat, account `act_607231713057715` niet toegankelijk)
+- Aanbevolen fix: Pipeboard Meta Ads MCP server opnieuw verbinden, dan `/ads-report` herhalen
+
+Geen verzonnen cijfers, geen funnel-vraag — er is geen verse data om aan te koppelen.
 
 ---
 
-Rapport aangemaakt en lokaal gecommit (commit `08eca6d`). 
+Status-rapport opgeslagen in `Output/Reports/Daily/2026-04-20_sybb_report.md`. 
 
-**Rapport:** `/Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-20_sybb_report.md`
+Kortaf: geen verse data, want (1) Pipeboard Meta Ads MCP vereist OAuth-auth die niet-interactief niet te voltooien is, en (2) PostHog MCP staat niet in de deferred tool lijst van deze sessie. Het rapport bevat de laatst bekende staat uit 2026-04-19 (H12 winnaar, H13 pauzeer-kandidaat) en drie concrete herstel-acties. Geen Google MCPs gebruikt, geen verzonnen cijfers.
 
-**Kerninzichten:**
-- Hoofdcampagne "2026: SYBB" stond gepauzeerd; "2026: SYBB Kopie" draaide gisteren (€77.85 spend, CTR 2.78%, CPC €0.65, 0 purchases)
-- Bounce rate 89.3% (target <55%), slechts 2 "Book Your Spot" klikken / 71 sessies
-- H13 ad is een outlier: CPC €1.02 en 0 checkouts. H11 (€0.51) en H12 (CTR 4.14%) presteren beter
-- PostHog scroll depth en session duration geven 0% data → tracking config is kapot
-
-**Push niet uitgevoerd:** branch is sterk gedivergeerd (20 lokale commits vs 106 remote). Push vereist een rebase/merge met potentiële conflicten, dat is een aparte beslissing die ik niet eigenhandig neem. Wil je dat ik dit oplos?
+Wil je de Pipeboard-auth nu interactief afronden zodat ik 2026-04-20 alsnog met echte data kan backfillen?
 
 ---
 
-Rapport opgeslagen op `Output/Reports/Daily/2026-04-21_auto_optimize.md`.
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-21_auto_optimize.md`.
 
-**TL;DR:**
-- **0 ads gepauzeerd** — er zijn momenteel geen actieve campagnes op `act_567892422940728` of `act_1489853856181844`. Alle campagnes staan PAUSED (inclusief `2026: SYBB` en de `- Kopie` variant).
-- **Wel spend last_3d:** €262.87 / 16.825 imp / 251 link clicks → **Link CTR 1.49%**, **CPC (link) €1.05**. Beide ruim binnen de drempels — de gepauzeerde ads waren geen kill-candidaten.
-- **Geen purchase-events** in de data (alleen ICO/ATC) → ROAS kan niet gemeten worden; tracking-check nodig vóór re-launch.
-- **Kernvraag voor jou:** is deze pauze-staat bewust (kopie-refresh, 2026-04-19 timestamps wijzen daar op) of vergeten? Bij bewuste pauze geen actie; bij vergeten herstart: activeer `2026: SYBB`.
+**Samenvatting:**
+- **0 ads gepauzeerd** — Pipeboard Meta Ads MCP niet geauthenticeerd, PostHog MCP niet geladen. Zonder `impressions` / `actions.link_click` kunnen kill-regels niet worden geëvalueerd.
+- **Geen 70-20-10 classificatie** — vereist per-ad Link CTR / CPC (link) / ROAS.
+- **Geen voorstellen** — advies zonder verse cijfers zou teruggrijpen op 24+ uur oude data uit het 2026-04-20 rapport; dat is niet verantwoord voor budget-shifts.
+- **Geen writes naar Google Sheet tracker** (conform run-regel), geen Google MCPs aangeroepen.
 
-Niveau 2 voorstellen (bevestig pauze-intentie, pre-flight tracking, zachtere drempels in learning phase) staan in het rapport — wacht op jouw goedkeuring.
+**Fix:** verbind Pipeboard Meta Ads MCP opnieuw via `/mcp` → selecteer `claude.ai Pipeboard Meta Ads` → rond OAuth flow af. Herhaal daarna `/ads-auto-optimize`. Los ook de pixel datafout (€7.374,50 per purchase) op voordat ROAS-voorstellen bruikbaar zijn.
 
 ---
 

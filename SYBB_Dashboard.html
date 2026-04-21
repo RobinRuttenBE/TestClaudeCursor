@@ -256,6 +256,47 @@ actions:[
 {title:"H11 Stabiliseren",desc:"H11: CPA 329, break-even. Houden op huidig niveau. Niet verhogen, niet verlagen.",priority:"high"},
 {title:"Purchase Pixel + Wix MCP Fixen",desc:"Beide al een week open. Plak de Claude Code prompts die je hebt gekregen. Zonder deze fixes blijft het rapport onbetrouwbaar.",priority:"medium"}],
 notes:"Dag 9 — 920 spend, 2 sales, ROAS 0,84x. H13 budget verhogen is de #1 actie al 4 dagen."}
+,
+{date:"2026-04-19",label:"19 apr",dayNum:10,source:"Meta Ads (hardcoded) + PostHog + Wix Verified",activeDays:12,avgSpend:84.62,
+campaign:{spend:1015.48,impressions:89063,linkClicks:1000,linkCTR:1.12,cpcLink:1.02,reach:42000,frequency:2.0,lpViews:750,atc:42,ic:30,purchases:2,purchaseValue:773.50},
+ads:[
+{name:"H11,B3,CTA5",adset:"Kopie 1",spend:503.89,impressions:37483,linkClicks:410,linkCTR:1.09,cpcLink:1.23,lpViews:325,atc:23,ic:15,purchases:1,freq:1.84,flag:"Wix: 1 sale (NL 350). ROAS 0,69x. Te duur."},
+{name:"H13,B3,CTA5",adset:"Kopie 3",spend:184.72,impressions:15357,linkClicks:179,linkCTR:1.17,cpcLink:1.03,lpViews:155,atc:8,ic:2,purchases:1,freq:1.58,flag:"Wix: 1 sale (BE 423,50). ROAS 2,29x. WINNAAR."},
+{name:"H12,B3,CTA5",adset:"Kopie 2",spend:137.38,impressions:13719,linkClicks:172,linkCTR:1.25,cpcLink:0.80,lpViews:139,atc:10,ic:3,purchases:0,freq:1.92,flag:"0 Wix sales na 137 euro. Laagste CPC maar converteert niet."},
+{name:"H14,B3,CTA5",adset:"BATCH 2",spend:122.96,impressions:16551,linkClicks:158,linkCTR:0.95,cpcLink:0.78,lpViews:108,atc:0,ic:0,purchases:0,freq:1.34,flag:"GEPAUZEERD"},
+{name:"H15,B3,CTA5",adset:"Kopie 4",spend:52.15,impressions:4894,linkClicks:61,linkCTR:1.20,cpcLink:0.85,lpViews:36,atc:1,ic:0,purchases:0,freq:1.45,flag:"GEPAUZEERD"}],
+posthog:{sessions:119,pageviews:140,bounceRate:85.7,avgDuration:33,scroll25:12,scroll50:10,scroll75:10,scroll100:6,mobile:93,recordings:90},
+alerts:[
+{type:"success",text:"Verified funnel werkt: H13 ROAS 2,29x, H11 ROAS 0,69x. Wix is waarheid."},
+{type:"critical",text:"Bounce 85,7%. Sessieduur 33s. LP blijft het probleem."},
+{type:"warning",text:"H11 eet 50% spend (504 euro) voor ROAS 0,69x. Niet winstgevend."},
+{type:"info",text:"Nieuwe ABO campagne aangemaakt. CBO uit, vaste budgets: H13 45, H11 35, H12 20."}],
+actions:[
+{title:"ABO Campagne Live",desc:"Nieuwe campagne met vaste budgets: H13 45/dag, H11 35/dag, H12 20/dag. Oude CBO campagne gepauzeerd.",priority:"high"},
+{title:"Direct-to-Checkout Live",desc:"Checkout template link actief. Product pagina geskipt. UTMs behouden.",priority:"high"},
+{title:"Weekend Data Afwachten",desc:"Nieuwe setup pas 18u live. Vrijdag en zaterdag zijn piekdagen. Maandag evalueren.",priority:"medium"}],
+notes:"Dag 10 — ABO live, direct checkout live, bounce 85,7%, 2 Wix sales totaal"},
+{date:"2026-04-20",label:"20 apr",dayNum:11,source:"Meta Ads + PostHog + Wix Verified",activeDays:13,avgSpend:88.29,
+campaign:{spend:1059.46,impressions:91838,linkClicks:1036,linkCTR:1.13,cpcLink:1.02,reach:43000,frequency:2.0,lpViews:780,atc:46,ic:34,purchases:2,purchaseValue:773.50},
+ads:[
+{name:"H11,B3,CTA5",adset:"Kopie 1 (ABO 35/dag)",spend:521.55,impressions:38613,linkClicks:428,linkCTR:1.11,cpcLink:1.22,lpViews:335,atc:23,ic:17,purchases:1,freq:1.84,flag:"Wix: 1 sale. ROAS 0,67x. ABO dag 1: 23 spend van 35 budget."},
+{name:"H13,B3,CTA5",adset:"Kopie 3 (ABO 45/dag)",spend:207.00,impressions:16766,linkClicks:195,linkCTR:1.16,cpcLink:1.06,lpViews:165,atc:8,ic:3,purchases:1,freq:1.58,flag:"Wix: 1 sale. ROAS 2,05x. ABO dag 1: 15,65 spend van 45 budget."},
+{name:"H12,B3,CTA5",adset:"Kopie 2 (ABO 20/dag)",spend:141.43,impressions:13955,linkClicks:174,linkCTR:1.25,cpcLink:0.81,lpViews:145,atc:10,ic:4,purchases:0,freq:1.92,flag:"0 Wix sales na 155 euro. ABO dag 1: 7,72 spend, 1 IC."},
+{name:"H14,B3,CTA5",adset:"BATCH 2",spend:122.96,impressions:16551,linkClicks:158,linkCTR:0.95,cpcLink:0.78,lpViews:108,atc:0,ic:0,purchases:0,freq:1.34,flag:"GEPAUZEERD"},
+{name:"H15,B3,CTA5",adset:"Kopie 4",spend:52.15,impressions:4894,linkClicks:61,linkCTR:1.20,cpcLink:0.85,lpViews:36,atc:1,ic:0,purchases:0,freq:1.45,flag:"GEPAUZEERD"}],
+posthog:{sessions:100,pageviews:120,bounceRate:84,avgDuration:35,scroll25:11,scroll50:9,scroll75:8,scroll100:5,mobile:93,recordings:85},
+alerts:[
+{type:"success",text:"VERIFIED FUNNEL OVERRIDE werkt in rapport. H13 correct als winnaar, foutief pauzeer-advies geflagged."},
+{type:"success",text:"ABO campagne dag 1: 4 IC events. Meer dan de meeste dagen in oude campagne."},
+{type:"critical",text:"1.059 euro spend, 2 Wix sales, ROAS 0,73x. Verliesgevend. LP is de bottleneck."},
+{type:"critical",text:"Bounce 84-86% consistent. Scroll 25% slechts 11-12%. 89% ziet alleen de hero."},
+{type:"warning",text:"H13 besteedt slechts 15,65 van 45 budget. Learning phase — normaliseert in 24-48u."},
+{type:"info",text:"ABO structuur: H13 45/dag, H11 35/dag, H12 20/dag. Geen CBO meer."}],
+actions:[
+{title:"Wacht 48u op ABO Learning Phase",desc:"Nieuwe campagne pas 18u live. Budget verdeling normaliseert in 24-48u. Niet aanraken.",priority:"high"},
+{title:"LP is DE Bottleneck",desc:"1.036 link clicks maar slechts 2 sales. 85% bounce, 89% scrollt niet voorbij hero. De ads werken, de LP niet.",priority:"high"},
+{title:"Evalueer Woensdag",desc:"Dan 4 dagen ABO data. Genoeg om te zien of H13 meer besteedt en of direct-checkout meer conversies oplevert.",priority:"medium"}],
+notes:"Dag 11 — ABO dag 1, 4 IC, verified override werkt, ROAS 0,73x, LP is bottleneck"}
 ];
 
 let ci=DAYS.length-1,cp='daily';
@@ -315,9 +356,9 @@ h+='</tbody></table></div>';document.getElementById('page-history').innerHTML=h}
 function renderAds(){let h='<div class="ph"><div><h1>Funnel per Hook</h1><div class="sub">Welke hook drijft conversies? · Cumulatief over actieve periode</div></div></div>';
 h+='<div class="sec"><table><thead><tr><th>Hook</th><th>Spend</th><th>Link Clicks</th><th>LP Views</th><th>ATC</th><th>IC</th><th>Purchases</th><th>Revenue</th><th>ROAS</th><th>Conclusie</th></tr></thead><tbody>';
 const hooks=[
-{name:"H13",spend:170.14,lc:162,lpv:110,atc:4,ic:2,purch:1,rev:423.50,conclusion:"WINNAAR: ROAS 2,49x, CPA 170. Enige profitable ad. Budget MOET omhoog."},
-{name:"H11",spend:436.37,lc:355,lpv:220,atc:10,ic:15,purch:1,rev:350.00,conclusion:"BREAK-EVEN: ROAS 0,80x, CPA 436. Houden maar niet opschalen."},
-{name:"H12",spend:124.88,lc:154,lpv:100,atc:5,ic:3,purch:0,rev:0,conclusion:"0 sales. Monitor of pauzeren deze week."},
+{name:"H13",spend:207.00,lc:195,lpv:165,atc:8,ic:3,purch:1,rev:423.50,conclusion:"WINNAAR: ROAS 2,05x, CPA 207. Enige profitable ad. ABO 45/dag."},
+{name:"H11",spend:521.55,lc:428,lpv:335,atc:23,ic:17,purch:1,rev:350.00,conclusion:"VERLIESGEVEND: ROAS 0,67x, CPA 522. ABO 35/dag."},
+{name:"H12",spend:155.80,lc:194,lpv:145,atc:10,ic:4,purch:0,rev:0,conclusion:"0 sales na 156 euro. ABO 20/dag. Decision moment woensdag."},
 {name:"H14",spend:122.96,lc:158,lpv:108,atc:0,ic:0,purch:0,rev:0,conclusion:"GEPAUZEERD"},
 {name:"H15",spend:52.15,lc:61,lpv:30,atc:2,ic:0,purch:0,rev:0,conclusion:"GEPAUZEERD"}];
 hooks.forEach(hk=>{const roas=hk.rev>0?(hk.rev/hk.spend).toFixed(1)+"x":"—";

@@ -1,107 +1,92 @@
 # SYBB Daily Report, 2026-04-19
 
 ## 1. Samenvatting
-SYBB draaide gisteren op 2 campagnes: de originele "2026: SYBB" werd om 14:29 gepauzeerd, en "2026: SYBB - Kopie" startte om 14:25 (overlap van enkele minuten). Gecombineerd was het volume vergelijkbaar met het 7d gemiddelde (€89,58 spend, 136 clicks, 6 initiate checkouts). De grote zorg zit op de landing page: bounce rate steeg naar 85,7% (vs 80% 7d), avg session zakte naar 33s (vs 44s), en scroll depth viel terug naar 17,5% (vs 44%). Ads doen hun werk, de pagina vangt het verkeer niet op.
+
+Eerste live dag van de hernieuwde SYBB campagne (2026: SYBB, actief onder de naam "2026: SYBB - Kopie" sinds 2026-04-19 14:25). €45,65 spend voor 3.320 impressies en 75 clicks, CTR 2,26%, CPC €0,61. 4 initiate checkouts gerapporteerd door de Meta pixel met een totale action value van €1.400. De campagne start is goed, maar de CPC ligt 22% boven de target van €0,50. H12 is direct de beste variant op CTR, CPC en LPV-rate.
+
+> **Data notitie:** PostHog MCP is in deze omgeving niet beschikbaar. Landing Page metrics in dit rapport (bounce proxy, LPV rate, IC rate) komen uit de Meta Ads pixel, niet uit PostHog. Zodra de PostHog MCP weer draait vullen we sectie 3 en 4 aan met session duration, scroll depth distribution en funnel drop-off per UTM.
 
 ## 2. Meta Ads Performance
 
-### Campagne setup
-- "2026: SYBB" (oud, ID 120239435987290239): PAUSED sinds 14:29 op 19/04
-- "2026: SYBB - Kopie" (nieuw, ID 120243293329420239): ACTIVE sinds 14:25 op 19/04
+Campagne: **2026: SYBB - Kopie** (ID 120243293329420239), Sempertex Ad Account (act_567892422940728). De originele "2026: SYBB" campagne staat op PAUSED sinds 2026-04-19 14:29 en wordt niet meegeteld.
 
-Cijfers hieronder zijn gecombineerd voor beide campagnes (gisteren), en het 7d gemiddelde komt uit alleen de oude campagne (Kopie bestond nog niet).
+| Metric | Gisteren (19-04) | 7d Gemiddelde | Trend |
+|--------|------------------|---------------|-------|
+| Spend | €45,65 | €45,65 | n.v.t. |
+| Impressions | 3.320 | 3.320 | n.v.t. |
+| Clicks (all) | 75 | 75 | n.v.t. |
+| Link clicks | 49 | 49 | n.v.t. |
+| CTR | 2,26% | 2,26% | n.v.t. |
+| CPC (all) | €0,61 | €0,61 | n.v.t. |
+| Cost per link click | €0,93 | €0,93 | n.v.t. |
+| CPM | €13,75 | €13,75 | n.v.t. |
+| Reach | 2.745 | 2.745 | n.v.t. |
+| Frequency | 1,21 | 1,21 | n.v.t. |
+| Landing Page Views | 37 | 37 | n.v.t. |
+| Initiate Checkout | 4 | 4 | n.v.t. |
+| IC action value | €1.400 | €1.400 | n.v.t. |
+| Cost per IC | €11,41 | €11,41 | n.v.t. |
 
-| Metric | Gisteren (combined) | 7d Avg/dag (oud) | Trend |
-|--------|---------------------|------------------|-------|
-| Spend | €89,58 | €84,89 | → |
-| Impressions | 6.079 | 6.110 | → |
-| Clicks | 136 | 134 | → |
-| Link clicks | 85 | 74 | ↑ |
-| Landing page views | 71 | 60 | ↑ |
-| CTR | 2,24% | 2,20% | → |
-| CPC | €0,66 | €0,63 | → |
-| Frequency (per camp.) | 1,21 / 1,35 | 2,13 (cumul. 7d) | n.v.t. |
-| Initiate checkouts | 6 | 3,3 | ↑↑ |
-| Cost per IC | €14,93 | €25,84 | ↓ goed |
+Trend is nog niet bruikbaar: 1 dag live, 7d gemiddelde = dag 1. Vanaf dag 3 wordt de rolling gemiddelde informatief.
 
-### Ad Variant Performance (gisteren, gecombineerd)
+### Ad Variant Performance
 
-| Ad (utm_content) | Impr | Clicks | CTR | CPC | LPV | LP Sessions | LP Bounce |
-|------------------|------|--------|-----|-----|-----|-------------|-----------|
-| h11_b3_cta5 | 2.925 | 71 | 2,43% | €0,57 | 38 | 58 | 86,2% |
-| h13_b3_cta5 | 2.353 | 46 | 1,95% | €0,81 | 28 | 46 | 89,1% |
-| h12_b3_cta5 | 801 | 19 | 2,37% | €0,62 | 5 | 10 | 60,0% |
-| h14_b3_cta5 | (geen actieve levering) | | | | | 1 | 100% |
+Let op: bij "Clicks" staan hier link clicks (niet alle clicks), omdat alleen link clicks relevant zijn voor landing page behavior. "LPV rate" = landing_page_view / link_click als proxy voor het omgekeerde van bounce/page-load-failure. Zuivere bounce en scroll depth per UTM vragen PostHog.
 
-**Beste variant:** h12_b3_cta5. Beste bounce rate (60%) en redelijke CPC (€0,62). Klein volume (801 impr) maar de bezoekers zijn het meest gekwalificeerd.
-**Slechtste variant:** h13_b3_cta5. Hoogste CPC (€0,81, ver boven target €0,50) en hoogste bounce (89,1%). De hoge session duration (71s) suggereert dat de paar bezoekers die niet bouncen wel engaged zijn, maar de cost-efficiency is slecht.
-**Hoogste volume:** h11_b3_cta5 levert het meeste verkeer maar bezoekers vertrekken binnen 7,4s gemiddeld.
+| Ad (utm_content proxy) | Impr. | Link clicks | CTR | CPC (link) | LPV | LPV rate | IC |
+|------------------------|-------|-------------|-----|-----------|-----|----------|----|
+| H11,B3,CTA5 | 1.806 | 25 | 2,21% | €0,92 | 20 | 80,0% | 2 |
+| H12,B3,CTA5 | 567 | 8 | 2,82% | €0,96 | 5 | 62,5% | 1 |
+| H13,B3,CTA5 | 947 | 16 | 2,01% | €0,93 | 12 | 75,0% | 1 |
 
-## 3. Landing Page Health (www.startyourballoonbusiness.com)
+**Beste variant: H12,B3,CTA5.** Hoogste CTR (2,82% vs 2,21% en 2,01%), laagste all-clicks CPC (€0,48), en genereerde 1 IC op het laagste budget (€7,70 spend). Kleinste delivery, dus statistisch vroeg om conclusies, maar signaal is duidelijk positief.
 
-| Metric | Gisteren | 7d Gemiddelde | Target | Status |
-|--------|----------|---------------|--------|--------|
-| Pageviews | 140 | 134/dag | n.v.t. | → |
-| Unique visitors | 115 | 94/dag | n.v.t. | ↑ |
-| Sessions | 119 | 98/dag | n.v.t. | ↑ |
-| Bounce Rate | 85,71% | 79,97% | <55% | 🔴 |
-| Avg Session Duration | 33,2s | 43,9s | >90s | 🔴 |
-| Avg Scroll % | 17,5% | 44,2% | n.v.t. | 🔴 |
-| Scroll 25% | 17,6% (3/17) | 47,4% | >80% | 🔴 |
-| Scroll 50% | 17,6% (3/17) | 41,5% | >60% | 🔴 |
-| Scroll 75% | 17,6% (3/17) | 36,6% | >40% | 🔴 |
-| Scroll 100% | 5,9% (1/17) | 22,0% | >20% | 🔴 |
-| CTA Click Rate ("Book Your Spot" / LP views) | 5,4% (7/130) | n.b. | >4% | 🟢 |
+**Slechtste variant: H13,B3,CTA5.** Laagste CTR (2,01%), hoogste all-clicks CPC (€0,79) en hoogste CPM (€15,79). Verbrandt budget relatief snel zonder bovengemiddeld te leveren.
 
-Let op: scroll-data komt uit pageleave events. Gisteren slechts 17 leave events op 140 pageviews (12% trigger rate), dus de scroll-cijfers zijn weinig betrouwbaar maar wijzen wel op een trend.
+**H11,B3,CTA5** levert het meeste volume en de beste LPV rate (80%), dus de ad-naar-pagina overgang werkt. Maakt 50% van alle IC conversies (2 van 4).
 
-### Landing Page UTM Breakdown (sessies vs gedrag)
+## 3. Landing Page Health
 
-| utm_content | Sessions | Bounce | Avg Duration |
-|-------------|----------|--------|--------------|
-| h11_b3_cta5 | 58 | 86,2% | 7,4s |
-| h13_b3_cta5 | 46 | 89,1% | 71,1s |
-| h12_b3_cta5 | 10 | 60,0% | 25,0s |
-| (geen utm) | 4 | 100% | 0s |
-| h14_b3_cta5 | 1 | 100% | 0s |
+**PostHog MCP niet beschikbaar in deze omgeving. Deze sectie gebruikt daarom alleen Meta pixel data.**
 
-## 4. Funnel Drop-off (gisteren)
+| Metric | Gisteren | Target | Status | Bron |
+|--------|----------|--------|--------|------|
+| Link click naar LPV rate | 75,5% (37/49) | >75% | Groen | Meta pixel |
+| LPV naar IC rate | 10,8% (4/37) | >5% | Groen | Meta pixel |
+| Bounce Rate | geen data | <55% | Onbekend | PostHog |
+| Avg Session Duration | geen data | >90s | Onbekend | PostHog |
+| Scroll 25% / 50% / 75% / 100% | geen data | >80/60/40/20% | Onbekend | PostHog |
+| CTA Click Rate | geen data | >4% | Onbekend | PostHog |
+
+Het feit dat 24,5% van de link clicks nooit als LPV binnenkomt bij Meta (49 link clicks, 37 LPV) is een signaal om scherp in de gaten te houden. Dit kan duiden op trage pageload, ad blockers, of bounces voordat het pixel fires. Zodra PostHog weer draait: cross-check met PostHog pageviews per utm_content.
+
+## 4. Funnel Drop-off (Meta pixel)
 
 ```
-Landing page (/)        130  (100%)
-   ↓
-CTA click "Book Spot"     7    (5,4%)   ← drop -94,6%
-   ↓
-Pageview /booking         2    (1,5%)   ← drop -71%
-   ↓
-Pageview /checkout        7    (5,4%)*
-   ↓
-Initiate Checkout (Meta)  6    (4,6%)
+Impressie          3.320  (100%)
+Link click            49  (1,5%   van impressies)
+Landing page view     37  (75,5%  van link clicks, CTR * LPV rate = 1,11% impressie > LPV)
+Initiate checkout      4  (10,8%  van LPV, 0,12% van impressies)
+Purchase          geen data (niet gemeten als IC ≠ purchase)
 ```
 
-*Checkout-pageviews komen ook via /product-page/start-your-balloon-business-professional binnen, niet alleen via /booking.
+**Grootste lek:** impressie > link click (1,5% CTR), standaard voor koude verkeer. Hierna LPV > IC (10,8%) is feitelijk sterker dan target. De rij om zorgen over te maken is link click > LPV (75,5%), omdat hier zonder PostHog niet zichtbaar is of het technisch verlies (pageload, blockers) of gedrag (instant bounce) is.
 
-**Grootste lek:** stap 1 → 2. Van 130 landing page views komen er maar 7 tot een CTA click, en slechts 2 daarvan landen op /booking. De CTR op de CTA zelf is OK (5,4%), maar de absolute conversie is laag omdat 86% bouncet voordat ze überhaupt scrollen.
+## 5. Rode Vlaggen
 
-## 5. Rode Vlaggen 🚩
-
-1. **Bounce rate 85,71% (target <55%, 7d avg 80%).** Yesterday was 5,7 ppt slechter dan het al hoge weekgemiddelde. Hero-sectie + first-fold faalt voor het grootste deel van het verkeer.
-2. **Avg session duration 33,2s (target >90s).** Daling van 24% vs 7d. Mensen krijgen niet genoeg om vast te bijten.
-3. **h11_b3_cta5: 86,2% bounce + 7,4s session.** Hoogste volume-ad maar levert "instant exits". Sterke ad/page mismatch: de hook trekt aandacht maar de pagina vervult de belofte niet.
-4. **h13_b3_cta5: CPC €0,81 (target <€0,50, +62% boven).** Duurste klikker met slechtste bounce.
-5. **Scroll depth gecollapseerd:** avg 17,5% gisteren vs 44,2% over 7d. Steekproef is klein (17 pageleaves) maar 14 van de 17 raken niet eens 25% scroll.
-6. **Frequency oude campagne 2,13 cumulatief over 7d.** Nog niet kritiek, maar de campagne is logischerwijs gepauzeerd vanwege fatigue. Goede beslissing, monitor frequency van de Kopie.
+- **CPC €0,61 boven target €0,50.** Campagne zit in leerfase (dag 1), dus houd aan; als CPC op dag 3 nog boven €0,55 blijft, budget shiften naar H12.
+- **H13 CPM €15,79, CPC €0,79, laagste CTR.** Al één flag bij dag 1. Herhaalt dit patroon op dag 2, overweeg pauze.
+- **Link click naar LPV gat 24,5%.** Zonder PostHog niet te diagnosticeren. Controleer zodra PostHog beschikbaar is of de echte pageviews op startyourballoonbusiness.com overeenkomen met de 37 LPV van Meta.
+- **Frequency 1,21 is niet kritisch** (target <3). Nog geen fatigue risico.
 
 ## 6. Top 3 Acties voor Vandaag
 
-1. **Onderzoek de h11_b3_cta5 ad-naar-page mismatch.** Wat: bekijk 5 session recordings van h11 sessies in PostHog en de h11 ad creative in Meta. Waarom: 58 sessies, 86% bounce, 7s session. Mensen klikken massaal maar verlaten direct. Hoe: PostHog → Recordings → filter op utm_content=h11_b3_cta5, vergelijk de hook in de ad met wat ze als eerste op de pagina zien. Verwachte impact: als de mismatch boven water komt, kunnen we de hero-sectie aanpassen of de ad-copy bijschaven, doel bounce naar <70%. Escalatie: Geel (Robin goedkeuring nadat de oorzaak duidelijk is).
-2. **Pauzeer of vervang h13_b3_cta5 in de Kopie-campagne.** Wat: zet h13 op pause, laat h11 en h12 doorlopen, en lanceer 1 nieuwe variant (bv. h15) als test. Waarom: h13 kost €0,81/click (62% boven target) en heeft 89% bounce. We betalen premium voor het slechtste verkeer. Verwachte impact: campagne-CPC zakt richting €0,57 (gewogen avg van h11+h12), bespaart ~€8 per dag. Escalatie: Geel.
-3. **Fix scroll-tracking en/of voeg scroll-trigger toe aan de pagina.** Wat: controleer in Wix of de PostHog autocapture pageleave/scroll-tracking volledig actief is op alle viewports (vooral mobile). Waarom: maar 17 van 140 pageviews (12%) leveren scroll-data, dus we kunnen de hero-performance niet betrouwbaar meten en kunnen niet onderbouwd optimaliseren. Hoe: PostHog Toolbar live op de pagina + check of pageleave event beforeunload wordt afgevuurd. Verwachte impact: bredere dataset (target >50% trigger rate), waardoor de scroll-KPIs uit het rapport bruikbaar worden voor optimalisatie. Escalatie: Geel (Robin goedkeuring) → mogelijk Oranje (Wix Editor).
+1. **PostHog MCP herstellen.** Zonder PostHog verliezen we bounce, scroll, CTA click rate en session recordings, allemaal de helft van de waarde van dit rapport. Actie: check MCP configuratie in `.claude/settings.json` of relevante config, en verifieer dat het PostHog project "Default project" bereikbaar is.
+2. **Dag 1 observeren, nog niet optimaliseren.** Laat alle 3 ads draaien tot en met vanavond 2026-04-20 om voldoende signaal per variant op te bouwen. Eerste optimalisatie call op 2026-04-21 ochtend op basis van 48 uur data. Impact: voorkomt premature pauzes bij variance.
+3. **Voorbereiden H12 budget shift.** Als H12 op 2026-04-21 nog steeds hoogste CTR en laagste CPC heeft, shift 50% van H13 budget naar H12 en houd H11 gelijk. Verwachte impact: CPC campagne breed omlaag richting €0,50 target.
 
 ---
 
-### Cross-reference samenvatting
-- **Ad CTR (2,24%) vs LP Bounce (85,7%):** ads doen het goed, pagina vangt het verkeer niet op. Ad-page mismatch is het hoofdprobleem.
-- **CPC daalt licht maar bounce stijgt:** goedkoper verkeer, slechtere kwaliteit. Prijs is geen probleem, fit is dat wel.
-- **h12 wint op kwaliteit, h11 op volume, h13 verliest op alles.** Volgende batch: schaal h11 + h12, dood h13, test 2 nieuwe hooks die het patroon van h12 (lagere bounce) imiteren.
-- **Initiate checkouts up (+71% vs 7d avg).** Ondanks slechte LP-engagement halen meer mensen dan gemiddeld de checkout. Mogelijk effect van de campagnewissel of een batch betere bezoekers laat in de avond. Houd morgen in de gaten of dit een trend is.
+**Rapport opgeslagen in:** `Output/Reports/Daily/2026-04-19_sybb_report.md`
+**Data bronnen:** Meta Ads MCP (Pipeboard), PostHog MCP niet beschikbaar.
+**Geen Google MCPs gebruikt.**

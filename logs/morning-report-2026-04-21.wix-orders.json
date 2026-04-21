@@ -1,38 +1,34 @@
 {
-  "last_updated": "2026-04-18T20:15:00+02:00",
+  "last_updated": "2026-04-21T08:08:13.400063",
   "period": {
-    "from": "2026-03-19",
-    "to": "2026-04-18"
+    "from": "2026-03-22",
+    "to": "2026-04-21"
   },
-  "source": "manual_fallback_while_mcp_subprocess_broken",
+  "source": "wix_mcp_api",
   "orders": [
-    {
-      "order_id": "WIX-10001",
-      "date": "2026-04-11",
-      "time": "18:31:19",
-      "amount_eur": 423.50,
-      "amount_ex_btw": 350.00,
-      "tax": 73.50,
-      "tickets": 1,
-      "product": "Start Your Balloon Business Professional 21/09/2026-22/09/2026",
-      "customer_country": "Belgium",
-      "payment_status": "PAID",
-      "manual_ad_attribution": "h13_b3_cta5",
-      "notes": "Handmatig geverifieerd via sessie tracking: utm_content=h13_b3_cta5, 20:12 CEST, 25 min sessie, mobile. Geen PostHog match (pas geinstalleerd)."
-    },
     {
       "order_id": "WIX-10002",
       "date": "2026-04-15",
       "time": "16:19:28",
-      "amount_eur": 350.00,
-      "amount_ex_btw": 350.00,
-      "tax": 0.00,
+      "amount_eur": 350.0,
+      "amount_ex_btw": 350.0,
+      "tax": 0.0,
       "tickets": 1,
       "product": "Start Your Balloon Business Professional 11/05/2026-12/05/2026",
       "customer_country": "Netherlands",
-      "payment_status": "PAID",
-      "manual_ad_attribution": "h11_b3_cta5",
-      "notes": "Ineke Quint, Roosendaal NL. Handmatig toegewezen aan h11_b3_cta5."
+      "payment_status": "PAID"
+    },
+    {
+      "order_id": "WIX-10001",
+      "date": "2026-04-11",
+      "time": "18:31:19",
+      "amount_eur": 423.5,
+      "amount_ex_btw": 350.0,
+      "tax": 73.5,
+      "tickets": 1,
+      "product": "Start Your Balloon Business Professional 21/09/2026-22/09/2026",
+      "customer_country": "Belgium",
+      "payment_status": "PAID"
     }
   ]
 }
