@@ -5,3 +5,62 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [1/6] klaar (2293 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-22_ads_report.md)
 [2/6] SYBB daily report uitvoeren...
   [poging 1/2] SYBB daily report (timeout 600s)...
+[2/6] klaar (861 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-21_sybb_report.md)
+[3/6] /ads-auto-optimize uitvoeren...
+  [poging 1/2] /ads-auto-optimize (timeout 600s)...
+[3/6] klaar (894 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-22_auto_optimize.md)
+[4/6] sanity + link metrics fetch (campagne + per-ad + active days)...
+  [poging 1/2] sanity + link metrics + per-ad (timeout 600s)...
+[4/6] extracted JSON: 793 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-22.data.json
+[4/6] verdict: FAIL|132741.00|18|7374.50|1059.47|91839|1036|1.13|1.02|12|88.29
+[4/6] 🚨 PIXEL DATAFOUT — EUR 7374.50/purchase bij 18 purchases
+[4/6] link metrics: Link CTR 1.13% · CPC (link) EUR 1.02 (spend=1059.47 imp=91839 lc=1036)
+[4/6] daily spend: EUR 88.29 over 12 actieve dagen (van 30)
+[5/6] Wix orders ophalen via MCP (2026-03-23 t/m 2026-04-22)...
+  [poging 1/2] Wix orders fetch (timeout 600s)...
+[fetch-wix-orders] 2 orders parsed, 2 with manual attribution, written to /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-22.wix-orders.json
+[5/6] Wix MCP: 2 betaalde orders opgehaald
+[6/6] PostHog /thank-you sessies ophalen (2026-03-23 t/m 2026-04-22)...
+  [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
+[6/6] extracted JSON: 1795 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-22.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 9
+[done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-22_morning_report_full.md
+[pixel-rewrite] mode=datafout link_rewrite=True link_ctr=1.13% link_cpc=EUR1.02 avg_daily=EUR88.29/12d ads=8 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-22_morning_report_full.md
+[verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
+[verified-funnel] ads=8 posthog_ty=9 wix_orders=2 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-22_morning_report_full.md
+[push] Commit + push reports naar main...
+[main 3f2cd75] Morning report: 2026-04-22
+ Committer: Robin Rutten <robinrutten@Mac.localdomain>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 320 insertions(+)
+ create mode 100644 Output/Reports/Daily/2026-04-21_sybb_report.md
+ create mode 100644 Output/Reports/Daily/2026-04-22_auto_optimize.md
+ create mode 100644 Output/Reports/Daily/2026-04-22_morning_report_full.md
+To https://github.com/RobinRuttenBE/TestClaudeCursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[push] eerste push failed, retry met rebase --autostash...
+From https://github.com/RobinRuttenBE/TestClaudeCursor
+ * branch            main       -> FETCH_HEAD
+   4363d35..5205a09  main       -> origin/main
+[push] rebase faalde, aborting
+fatal: No rebase in progress?
+[push] FAILED — link in iMessage werkt mogelijk pas na de volgende auto-sync run
+[imessage] verstuurd naar +32468236146
+=== Morning Report afgerond: Wed Apr 22 11:15:17 CEST 2026 — 0 failures ===
