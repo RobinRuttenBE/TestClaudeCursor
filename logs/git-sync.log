@@ -25498,3 +25498,22 @@ remote: This repository moved. Please use the new location:
 remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
 To github.com:RobinRuttenBE/testclaudecursor.git
    2c1a7ae..50f1143  main -> main
+[main 1d655c7] Auto-sync: 2026-04-25 16:05
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   50f1143..1d655c7  main -> main
