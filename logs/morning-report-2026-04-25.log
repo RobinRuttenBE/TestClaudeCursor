@@ -18,3 +18,47 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [4/6] daily spend: EUR 88.29 over 12 actieve dagen (van 30)
 [5/6] Wix orders ophalen via MCP (2026-03-26 t/m 2026-04-25)...
   [poging 1/2] Wix orders fetch (timeout 600s)...
+[fetch-wix-orders] 2 orders parsed, 2 with manual attribution, written to /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-25.wix-orders.json
+[5/6] Wix MCP: 2 betaalde orders opgehaald
+[6/6] PostHog /thank-you sessies ophalen (2026-03-26 t/m 2026-04-25)...
+  [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
+[6/6] extracted JSON: 1795 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-04-25.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 9
+[done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-25_morning_report_full.md
+[pixel-rewrite] mode=datafout link_rewrite=True link_ctr=1.13% link_cpc=EUR1.02 avg_daily=EUR88.29/12d ads=5 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-25_morning_report_full.md
+[verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
+[verified-funnel] ads=5 posthog_ty=9 wix_orders=2 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-25_morning_report_full.md
+[push] Commit + push reports naar main...
+[main f57b8b8] Morning report: 2026-04-25
+ Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 131 insertions(+)
+ create mode 100644 Output/Reports/Daily/2026-04-25_morning_report_full.md
+To https://github.com/RobinRuttenBE/TestClaudeCursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/RobinRuttenBE/TestClaudeCursor.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[push] eerste push failed, retry met rebase --autostash...
+From https://github.com/RobinRuttenBE/TestClaudeCursor
+ * branch            main       -> FETCH_HEAD
+   e8dac52..4898aa9  main       -> origin/main
+[push] rebase faalde, aborting
+fatal: No rebase in progress?
+[push] FAILED — link in iMessage werkt mogelijk pas na de volgende auto-sync run
+[imessage] verstuurd naar +32468236146
+=== Morning Report afgerond: Sat Apr 25 11:12:24 CEST 2026 — 0 failures ===
