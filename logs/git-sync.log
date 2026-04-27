@@ -23636,11 +23636,13 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   4e144cf..25041de  main -> main
-[main 9f018a3] Auto-sync: 2026-04-27 18:40
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   a471d7d..9b5836a  main -> main
+[main 2f5fc82] Auto-sync: 2026-04-27 13:38
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
 You can suppress this message by setting them explicitly. Run the
@@ -23653,91 +23655,8 @@ After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author
 
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   25041de..9f018a3  main -> main
-[main e8e0a73] Auto-sync: 2026-04-27 19:10
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   9f018a3..e8e0a73  main -> main
-[main 9d2d4a1] Auto-sync: 2026-04-27 19:40
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   e8e0a73..9d2d4a1  main -> main
-[main b4f5625] Auto-sync: 2026-04-27 20:10
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   9d2d4a1..b4f5625  main -> main
-[main e64defc] Auto-sync: 2026-04-27 20:40
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   b4f5625..e64defc  main -> main
-[main 3cadf8d] Auto-sync: 2026-04-27 21:10
- Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 1 file changed, 17 insertions(+)
-To https://github.com/RobinRuttenBE/TestClaudeCursor.git
-   e64defc..3cadf8d  main -> main
+ 1 file changed, 19 insertions(+)
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   9b5836a..2f5fc82  main -> main
