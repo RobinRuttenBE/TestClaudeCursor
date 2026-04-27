@@ -17,6 +17,10 @@ Genereer platform-optimale social media content voor alle STX EU kanalen. Elk st
 4. Indien campagnegerelateerd: `Kennis/Voorgaande campagnes/campagne-historie.md`
 5. Indien techniek/tutorial/inspiratie/brand pilaar: open `Kennis/Balloon Knowledge/INDEX.md`, pak het juiste bestand en gebruik de "Content angles" sectie voor caption hooks, carrousel frames en CTA richting. `sempertex-company-heritage-and-vision.md` en `interview-sofie-ceo-stx-eu.md` leveren brand storytelling posts.
 
+## Taalregel
+
+**Engelstalige social content: altijd UK spelling.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Geldt voor captions, alt-text, YouTube titels en descriptions, Pinterest pin titels, alle hooks. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
+
 ---
 
 ## Content Pilaren

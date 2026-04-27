@@ -129,6 +129,7 @@ Standaard `contrast(1.08) saturate(1.20)`. Bij specifieke sfeer pas aan.
 - **Geen overlay plaatsen op y < 150 of y > 1620** — safe zones
 - **Hook is verplicht** — elke short begint met een hook-caption binnen 0-3 seconden
 - **Stick tot bestaande overlay types waar mogelijk** — consistentie met branding is cruciaal
+- **Overlay tekst (hook-caption, follow-cta, stx-tip, etc.) in UK English.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling, tenzij het transcript specifiek anderstalig is en de gebruiker dat behouden wil. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 
 ## Na goedkeuring
 

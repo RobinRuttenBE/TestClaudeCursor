@@ -111,6 +111,7 @@ Als ja, sla het bestand op.
 ## Regels
 
 - Schrijf alle email copy in het **Engels** (Europees publiek) tenzij de gebruiker anders aangeeft
+- **UK spelling, altijd.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 - Gebruik Sempertex tone of voice: professioneel maar warm, als een ervaren collega
 - Elke email moet standalone waarde bieden — ook zonder click
 - Nooit concurrenten noemen

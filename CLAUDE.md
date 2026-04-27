@@ -9,6 +9,7 @@ Head of Marketing. Bouwt dit volledige marketing automation systeem. Niet-techni
 ## Taal
 - Interne communicatie & content: Nederlands (tenzij anders aangegeven)
 - Klantcommunicatie: Engels (Europees publiek)
+- **Alle Engelstalige content: UK spelling, altijd.** Colour niet color, favourite niet favorite, realise niet realize, centre niet center, behaviour niet behavior, catalogue niet catalog. Datumformaat 26 May 2026 (niet May 26, 2026). Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 - Nooit concurrenten bij naam noemen in publieke content
 
 ---

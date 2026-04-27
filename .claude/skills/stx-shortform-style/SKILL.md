@@ -4,6 +4,10 @@ Deze skill bevat alle short form specifieke regels, patronen, overlay types en u
 
 Als je long form editing doet, negeer deze skill — gebruik alleen `stx-overlay-style`.
 
+## Taalregel voor short form overlay tekst
+
+**Alle Engelstalige short form overlay tekst (hook captions, follow-cta, stx-tip, etc.): UK spelling, altijd.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
+
 ## Short Form vs Long Form — Kernverschillen
 
 | Aspect | Long Form | Short Form |

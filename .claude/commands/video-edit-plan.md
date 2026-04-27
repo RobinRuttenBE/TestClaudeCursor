@@ -96,6 +96,7 @@ Creatieve suggesties die de video naar een hoger niveau tillen — los van de st
 - Wees specifiek over assets — geen "een foto" maar "close-up van de twist techniek met linker hand zichtbaar"
 - Als een moment niet in een bestaand overlay type past, **stel een nieuw type voor** met korte beschrijving — documenteer pas na goedkeuring
 - Pacing volgen uit `auto-video-editor/SKILL.md` — eerste 30-60s veel energie, daarna 1 effect per 30-60s, laatste 30s sluit de loop
+- **Overlay tekst in UK English.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling, tenzij het transcript specifiek anderstalig is en de gebruiker dat behouden wil. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 
 ## Na goedkeuring
 

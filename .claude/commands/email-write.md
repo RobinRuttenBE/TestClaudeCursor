@@ -113,6 +113,7 @@ Na het schrijven, toon de email en vraag:
 ## Regels
 
 - Schrijf in het **Engels** (Europees publiek) tenzij anders aangegeven
+- **UK spelling, altijd.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 - Sempertex tone of voice: professioneel maar warm, als een ervaren collega
 - Nooit concurrenten noemen
 - Geen "goedkoop" of "budget" — we zijn premium

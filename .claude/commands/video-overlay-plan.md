@@ -145,4 +145,5 @@ Na het schrijven van de code:
 - Zooms: spaarzaam gebruiken voor maximaal effect
 - Transities: alleen bij duidelijke topic wisselingen
 - Alle tekst in het Engels (tenzij het transcript in een andere taal is en de gebruiker dat wil behouden)
+- **UK spelling, altijd.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 - Gebruik altijd Sempertex brand kleuren en fonts via de BRAND config

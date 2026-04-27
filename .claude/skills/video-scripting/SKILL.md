@@ -145,6 +145,7 @@ Elke hook MOET bevatten:
 
 ### Taal
 - **Standaard: Engels** (Europees publiek)
+- **Engels = UK spelling, altijd.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 - Nederlands alleen als expliciet gevraagd
 - Frans alleen als expliciet gevraagd
 - Bij vertaling: hertaal, niet letterlijk vertalen

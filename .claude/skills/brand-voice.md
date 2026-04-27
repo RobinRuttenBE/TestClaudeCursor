@@ -21,6 +21,9 @@ Sempertex Europe is het **#1 merk voor professionele ballongebruikers** in Europ
 
 ## Taalregels
 
+### Engelstalige content: altijd UK spelling
+**Alle Engelse content schrijven we in British English.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Geldt voor emails, social posts, ad copy, video scripts, overlays, landing pages. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
+
 ### Wel doen
 - Spreek de professional aan als gelijke
 - "Je/jij" in informele content, "u" enkel in formele zakelijke communicatie
@@ -28,7 +31,7 @@ Sempertex Europe is het **#1 merk voor professionele ballongebruikers** in Europ
 - Toon het product in professionele settings
 - Social proof: laat klanten en artiesten aan het woord
 - Wees specifiek: "Deze techniek bespaart je 20 minuten per installatie" > "Dit is handig"
-- Vakjargon waar gepast — onze doelgroep begrijpt het
+- Vakjargon waar gepast, onze doelgroep begrijpt het
 - Wissel af tussen Nederlands, Engels, en Frans waar relevant (Europees publiek)
 
 ### Niet doen

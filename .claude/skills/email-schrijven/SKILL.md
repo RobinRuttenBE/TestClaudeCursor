@@ -85,6 +85,7 @@ STX EU communiceert als "van artiesten, voor artiesten":
 - Spreek de lezer aan als gelijke in het vak
 - Gebruik vakjargon waar gepast (ze zijn professionals)
 - Engels voor internationale lijsten, Nederlands/Frans/Duits per taalsegment
+- **Engelse emails: altijd UK spelling.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 
 Sofie ondertekent de mails. Varieer de signoff: "Sofie, Sempertex Europe", "Sofie & the STX EU Team", "Sofie from Sempertex Europe". Houd de signoff consistent binnen een flow.
 

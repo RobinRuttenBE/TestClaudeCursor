@@ -113,6 +113,7 @@ Per combinatie:
 
 ## Regels
 - Hooks in het **Engels** (Europees publiek), tenzij de gebruiker Nederlands aangeeft
+- **UK spelling, altijd.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 - Test suggestie: een aantal hooks ook in het Nederlands testen voor Benelux markt
 - Body sketches zijn richtinggevend, niet volledig uitgeschreven
 - Nooit concurrenten bij naam noemen

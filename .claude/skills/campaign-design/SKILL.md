@@ -20,6 +20,10 @@ Ontwerp complete, gestructureerde marketingcampagnes voor STX EU. Van strategisc
 7. Indien productgerelateerd: `Kennis/Products/producten-overzicht.md`
 8. Indien techniek/product/business/brand-angle relevant voor de campagne: raadpleeg `Kennis/Balloon Knowledge/INDEX.md` voor content pijlers en hooks (bv. pricing campagne → `pricing-balloons-strategy.md`; brand heritage → `sempertex-company-heritage-and-vision.md`; product education → `latex-balloons-explained.md`).
 
+## Taalregel
+
+**Engelstalige campagne-output (ad copy, landing page koppen, email subjects, social hooks): altijd UK spelling.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
+
 ---
 
 ## Campagne Template

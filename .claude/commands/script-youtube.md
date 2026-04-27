@@ -59,6 +59,7 @@ Nooit een harde sell. Altijd: waarde → community → producten beschikbaar.
 - Positief en enthousiast
 - Nooit concurrenten bij naam noemen
 - Engels voor het script (Europees publiek)
+- **UK spelling, altijd.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
 - Vakjargon mag waar gepast
 
 ## Output format

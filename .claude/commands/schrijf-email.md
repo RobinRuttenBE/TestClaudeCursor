@@ -24,6 +24,10 @@ Schrijf een email voor Sempertex Europe.
 
 5. Als de gebruiker een reeks/flow vraagt: schrijf elke mail individueel met timing-indicatie.
 
+## Taalregel
+
+**Engelstalige emails: altijd UK spelling.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Datumformaat: 26 May 2026. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
+
 ## Snelstart voorbeelden
 
 ```

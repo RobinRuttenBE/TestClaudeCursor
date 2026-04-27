@@ -13,6 +13,12 @@ Gebaseerd op de goedgekeurde stijl uit `remotion-stx/src/overlays/denise-overlay
 
 ---
 
+## Taalregel voor overlay tekst
+
+**Alle Engelstalige overlay tekst (titles, lower thirds, feature bars, stx-tip, hook captions, follow-cta): UK spelling, altijd.** Colour, favourite, realise, organise, centre, behaviour, catalogue. Nooit US spelling. Volledige regels in `Kennis/Brand/tone-of-voice.md`.
+
+---
+
 ## 1. ALGEMENE STIJL
 
 ### Easing Curves
