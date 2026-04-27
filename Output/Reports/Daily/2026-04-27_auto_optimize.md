@@ -1,13 +1,11 @@
-Rapport opgeslagen: `Output/Reports/Daily/2026-04-27_auto_optimize.md`.
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-27_auto_optimize.md`.
 
-**Kernbevinding:** Er zijn 0 actieve campagnes en €0,00 spend over de afgelopen 3 dagen op beide toegankelijke accounts (`act_567892422940728` en `act_1489853856181844`). Het derde account `act_607231713057715` is niet meer beschikbaar via de huidige API token. Alle 5 campagnes in het Sempertex account staan op PAUSED, inclusief `2026: SYBB` (laatst geüpdatet 2026-04-19).
+**Samenvatting:**
+- **0 ads gepauzeerd** — er zijn geen actieve campagnes/adsets/ads op de toegankelijke accounts. Kill-regels niet van toepassing.
+- Hoofdcampagne **2026: SYBB** (act_567892422940728) staat sinds **2026-04-19 PAUSED** met €100/dag budget nog ingesteld; alle 6 adsets en 26 ads PAUSED.
+- Tweede toegestane account `act_1489853856181844` heeft 0 actieve campagnes.
+- `act_607231713057715` (genoemd in commando) is **niet toegankelijk** met de huidige Pipeboard token.
+- 70-20-10 classificatie niet uitvoerbaar bij nul actieve ads.
+- Drie open strategische beslissingen geformuleerd: (1) heractiveer of sluit SYBB, (2) refresh creatives vóór heractivatie, (3) los token-scope op voor het ontbrekende account.
 
-**Niveau 1 (automatisch):** geen acties uitgevoerd. Geen ads om te pauzeren.
-
-**Niveau 2 voorstellen (wachten op jouw goedkeuring):**
-1. Relaunch-beslissing voor `2026: SYBB` (3 opties A/B/C)
-2. Archiveer de drie oude Nozzle Up campagnes om ruis te verminderen
-3. Kalibreer 70-20-10 drempels op link-metrics (open TODO in het command)
-4. Pre-launch checklist (creatives, UTM, landing page health)
-
-Geef aan welke voorstellen je wilt uitvoeren.
+Geen Google MCPs aangeroepen, geen schrijfacties naar de tracker Google Sheet — uitsluitend Meta Ads MCP gebruikt en lokaal markdown weggeschreven.

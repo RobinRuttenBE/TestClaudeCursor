@@ -1,178 +1,103 @@
 # SYBB Daily Report, 2026-04-25
 
 ## 1. Samenvatting
-De campagne "2026: SYBB" stond gisteren PAUSED (hervat niet sinds 19 april). Ook de "Kopie"-variant is paused sinds 20 april avond. Geen Meta-spend, geen impressions, geen klikken op 25 april. Op de landing page kwamen 3 pageviews binnen via 3 directe sessies (geen utm_content), allemaal 100% bounces. De pijplijn ligt stil; iedere dag dat dit zo blijft is een dag zonder leadflow naar de SYBB workshop.
 
-**Kern actie:** beslissen vandaag of "2026: SYBB" of "2026: SYBB - Kopie" hervat wordt, en zo ja met welke ad-set/variant en budget. Voor reactivering moet de landingpage hero eerst worden aangepakt (bounce 7d 77.5%, avg scroll 25%).
+Vijfde volle pauzedag op rij. Op 2026-04-25 nul impressies, nul clicks, nul spend op beide SYBB campagnes (`2026: SYBB` en `2026: SYBB - Kopie`) op account `act_567892422940728`. De "2026: SYBB - Kopie" (120243293329420239) staat sinds 2026-04-20 17:09 op PAUSED, de originele "2026: SYBB" (120239435987290239) sinds 2026-04-19 14:29. Geen statuswijziging sinds het rapport van 2026-04-24. PostHog MCP is voor de zevende rapportdag op rij niet beschikbaar, dus landing page health blijft niet meetbaar.
 
----
+**Data status:**
+- Meta Ads MCP (Pipeboard): werkend, account `act_567892422940728` (Sempertex Ad Account)
+- PostHog MCP: niet beschikbaar in deze sessie (geen posthog tools in de deferred tool lijst)
+- Geen Google MCPs gebruikt in deze run.
 
 ## 2. Meta Ads Performance
 
-### Campagne (2026: SYBB), status PAUSED
-| Metric | Gisteren (25/4) | 7d totaal (19-25/4) | 7d gemiddelde / actieve dag* | Trend |
-|--------|-----------------|----------------------|-------------------------------|-------|
-| Spend | €0.00 | €43.81 | €43.81 | n.v.t. (paused) |
-| Impressions | 0 | 2.756 | 2.756 | n.v.t. |
-| Clicks (link) | 0 | 36 | 36 | n.v.t. |
-| Total Clicks | 0 | 61 | 61 | n.v.t. |
-| CTR | n.v.t. | 2.21% | 2.21% | n.v.t. |
-| CPC | n.v.t. | €0.72 | €0.72 | n.v.t. |
-| Frequency | n.v.t. | 1.35 | 1.35 | n.v.t. |
-| Initiate Checkout | 0 | 2 | 2 | n.v.t. |
-| Cost per IC | n.v.t. | €21.91 | €21.91 | n.v.t. |
-| Landing Page Views | 0 | 34 | 34 | n.v.t. |
+### Campagne status
 
-*Alleen 19 april was actief in deze 7d periode (€43.81 spend, 2.756 impressies). Daarna paused.
+| Campagne | ID | Status | Laatst bijgewerkt | Dagen op pauze (t/m 2026-04-25 23:59) |
+|----------|----|----|-------------------|---------------|
+| 2026: SYBB - Kopie | 120243293329420239 | PAUSED | 2026-04-20 17:09 | 5 |
+| 2026: SYBB (origineel) | 120239435987290239 | PAUSED | 2026-04-19 14:29 | 6 |
 
-### Vergelijking met "2026: SYBB - Kopie" (zelfde 7d window)
-| Metric | 2026: SYBB | 2026: SYBB - Kopie | Combined |
-|--------|-----------|--------------------|---------|
-| Spend | €43.81 | €124.42 | €168.23 |
-| Impressions | 2.756 | 7.615 | 10.371 |
-| Clicks | 61 | 195 | 256 |
-| CTR | 2.21% | 2.56% | 2.47% |
-| CPC | €0.72 | €0.64 | €0.66 |
-| Frequency | 1.35 | 1.28 | n.v.t. |
-| Initiate Checkout | 2 | 6 | 8 |
-| Cost per IC | €21.91 | €20.74 | €21.03 |
-| Actief op | 19/4 | 19+20/4 | 19+20/4 |
+### Performance gisteren vs voorgaande dagen
 
-De Kopie-versie liep een dag langer en had een betere CTR (+15.8%) en lagere CPC (-11.1%) dan het origineel, met dubbel zoveel IC events per euro. Bij hervatting verdient de Kopie-variant prioriteit.
+Cijfers hieronder komen uit Meta Ads MCP `get_insights` met `time_breakdown=day` over periode 2026-04-18 t/m 2026-04-25, gecombineerd over beide campagnes. Op 2026-04-19 liepen origineel + Kopie tegelijk; die kolom is de optelling van beide.
 
-### Ad Variant Performance
-Geen ad-level data voor 25 april (campagnes paused). Per skill-conventie hieronder een placeholder; dit is niets dat geoptimaliseerd kan worden tot er weer traffic loopt.
+| Metric | 2026-04-25 | 2026-04-24 | 2026-04-23 | 2026-04-22 | 2026-04-21 | 2026-04-20 | 2026-04-19 | 2026-04-18 | 7d gem. (run-dagen) |
+|--------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|---------------------|
+| Spend | €0,00 | €0,00 | €0,00 | €0,00 | €0,00 | €77,85 | €90,38 | €94,64 | €87,62 per run-dag |
+| Impressions | 0 | 0 | 0 | 0 | 0 | 4.287 | 6.084 | 6.454 | 5.608 |
+| Clicks (all) | 0 | 0 | 0 | 0 | 0 | 119 | 137 | 153 | 136 |
+| Link clicks | 0 | 0 | 0 | 0 | 0 | 75 | 86 | 90 | 84 |
+| CTR | n.v.t. | n.v.t. | n.v.t. | n.v.t. | n.v.t. | 2,78% | 2,21-2,28% | 2,37% | ~2,42% |
+| CPC (all) | n.v.t. | n.v.t. | n.v.t. | n.v.t. | n.v.t. | €0,65 | €0,66 | €0,62 | €0,64 |
+| Frequency | n.v.t. | n.v.t. | n.v.t. | n.v.t. | n.v.t. | 1,34 | 1,21-1,35 | 1,34 | ~1,31 |
+| Landing Page Views (Meta pixel) | 0 | 0 | 0 | 0 | 0 | 63 | 71 | 78 | 71 |
+| Initiate Checkout | 0 | 0 | 0 | 0 | 0 | 2 | 6 | 7 | 5,0 |
 
-| Ad (utm_content) | Clicks | CTR | CPC | LP Bounce | LP Scroll 50%+ |
-|-------------------|--------|-----|-----|-----------|----------------|
-| h11_b3_cta5 | 0 | n.v.t. | n.v.t. | n.v.t. | n.v.t. |
-| h12_b3_cta5 | 0 | n.v.t. | n.v.t. | n.v.t. | n.v.t. |
-| h13_b3_cta5 | 0 | n.v.t. | n.v.t. | n.v.t. | n.v.t. |
-| h14_b3_cta5 | 0 | n.v.t. | n.v.t. | n.v.t. | n.v.t. |
-| h15_b3_cta5 | 0 | n.v.t. | n.v.t. | n.v.t. | n.v.t. |
+*7d gemiddelde berekend over de 3 daadwerkelijke run-dagen binnen het venster 2026-04-18 t/m 2026-04-24 (04-18, 04-19, 04-20). 04-17 valt nu buiten het 7d-venster, dus telt niet meer mee. Pauzedagen niet meegerekend in het gemiddelde.*
 
-**Beste variant (laatst bekend, 18-19/4):** H12_B3_CTA5 (CTR 3.63%, CPC €0.45). Zie 24/4 rapport voor onderbouwing.
-**Slechtste variant (laatst bekend):** H13_B3_CTA5 (zwakste IC/click ratio).
+**Trend:** 120+ uur zonder enige Meta-spend op SYBB. De "2026: SYBB - Kopie" zit nu 5 volle dagen op pauze, de originele "2026: SYBB" 6 dagen. Het 7d run-dagen gemiddelde is gekrompen van 4 run-dagen (in het 04-24 rapport) naar 3 run-dagen, omdat 04-17 buiten het 7-daagse venster valt. Vanaf morgen (2026-04-26) valt 04-18 buiten het venster en blijven slechts 04-19 en 04-20 over als referentie. Vanaf 2026-04-28 is er geen run-dag meer in het 7d-venster en wordt dit aggregaat onbruikbaar.
 
----
+### Ad variant performance
 
-## 3. Landing Page Health (www.startyourballoonbusiness.com)
+Niet van toepassing voor 2026-04-25. Geen ad-level data omdat geen enkele ad heeft gelopen. De laatste ad-level snapshot (uit het 04-21 rapport, gebaseerd op 04-19 en 04-20 data) blijft het laatste signaal: H12 (b3_cta5) leidt op CTR/CPC, H13 (b3_cta5) onderpresteert met CPC > €0,90, H11 (b3_cta5) zit in het midden. Sample is 2 run-dagen, dus directioneel, niet statistisch.
 
-### Gisteren (2026-04-25) vs 7d gemiddelde
-| Metric | Gisteren | 7d Gemiddelde | Target | Status |
-|--------|----------|---------------|--------|--------|
-| Pageviews | 3 | 34.4 | n.v.t. | 🔴 (campagne paused) |
-| Unique visitors | 3 | n.v.t. | n.v.t. | 🔴 |
-| Sessions | 3 | 30.4 | n.v.t. | 🔴 |
-| Bounce Rate | 100% | 77.5% | <55% | 🔴 |
-| Avg Session Duration | n.v.t. (te weinig data) | n.v.t. | >90s | 🔴 |
-| Avg Scroll Depth | n.v.t. | 25% | >60% | 🔴 |
-| Scroll 25% reached | n.v.t. | 3.8% | >80% | 🔴 |
-| Scroll 50% reached | n.v.t. | 3.8% | >60% | 🔴 |
-| Scroll 75% reached | n.v.t. | 2.8% | >40% | 🔴 |
-| Scroll 100% reached | n.v.t. | 1.9% | >20% | 🔴 |
-| /booking visits | 0 | 0.6 (4 in 7d) | n.v.t. | 🔴 |
+## 3. Landing Page Health
 
-### Pageviews per pad (7d, 19-25/4)
-| Pathname | Pageviews | Sessions |
-|----------|-----------|----------|
-| / | 219 | 201 |
-| /checkout | 17 | 14 |
-| /booking | 4 | 4 |
-| /product-page/start-your-balloon-business-professional | 1 | 1 |
+**Niet beschikbaar.** PostHog MCP is niet ingeladen in deze sessie. Geen pageviews, bounce rate, scroll depth, session duration, CTA click rate of session recordings voor `startyourballoonbusiness.com` op te halen.
 
-### Daily traffic trend (7d)
-| Datum | Pageviews | Unique | Sessions |
-|-------|-----------|--------|----------|
-| 2026-04-25 | 3 | 3 | 3 |
-| 2026-04-24 | 2 | 2 | 2 |
-| 2026-04-23 | 4 | 3 | 3 |
-| 2026-04-22 | 4 | 3 | 3 |
-| 2026-04-21 | 0 | 0 | 0 |
-| 2026-04-20 | 88 | 72 | 75 |
-| 2026-04-19 | 140 | 115 | 119 |
+| Metric | Target | Status |
+|--------|--------|--------|
+| Bounce Rate | <55% | geen data |
+| Avg Session Duration | >90s | geen data |
+| Scroll 25% | >80% | geen data |
+| Scroll 50% | >60% | geen data |
+| Scroll 75% | >40% | geen data |
+| Scroll 100% | >20% | geen data |
+| CTA Click Rate | >4% | geen data |
 
-Traffic na 20/4 ineengezakt naar 0 tot 4 visits per dag (organische restjes en mogelijk eigen test traffic).
+Bij werkende PostHog zou ook zonder Meta-instroom de baseline van direct + organisch verkeer zichtbaar zijn. Dat ontbreekt nu zeven rapportdagen op rij. De cross-reference tussen ad x landing page (de kern van deze SKILL) is daarmee structureel niet uitvoerbaar.
 
-### UTM-bron op 25/4
-| utm_content | Pageviews | Sessions |
-|-------------|-----------|----------|
-| (geen / direct) | 3 | 3 |
+## 4. Funnel Drop-off
 
-Geen Meta-attributed traffic gisteren, conform paused status.
+Niet te berekenen voor 2026-04-25. Geen Meta instroom, geen PostHog data. De referentie blijft de aggregaat over de 5 run-dagen (04-16 t/m 04-20), die in het rapport van 04-23/04-24 al is samengevat:
+
+Link clicks (329) > Meta pixel LPV (275, 83,6%) > Initiate Checkout (15, 4,6% van LC / 5,5% van LPV)
+
+**Observatie:** geen verandering t.o.v. gisteren. De relevantie van deze cijfers neemt af naarmate de pauze langer duurt; bij heractivering moeten de eerste 3 dagen opnieuw gemeten worden om te bevestigen dat het LPV>IC pad nog rond 5-6% ligt of gedaald is.
+
+## 5. Rode Vlaggen
+
+- **Vijfde dag op rij zonder live SYBB campagne.** 2026-04-21, 04-22, 04-23, 04-24 en nu 04-25 allemaal nul spend. "2026: SYBB - Kopie" niet heractiveerd sinds 2026-04-20 17:09. De stilstand is nu langer dan de gehele run-periode (5 pauzedagen vs 5 run-dagen). Vanaf vandaag heeft de pauze het run-venster in dagen geëvenaard; vanaf morgen gaat de pauze het run-venster overtreffen. Bij heractivering vrijwel zeker een nieuwe learning fase van 2 tot 4 dagen.
+- **PostHog MCP zeven rapportdagen op rij offline.** 2026-04-19 t/m 2026-04-25. Geen tool-config wijziging zichtbaar in deferred tool lijst. Dit is geen incident meer maar een vaste state. Tool moet weer beschikbaar gemaakt worden voor de SKILL ueberhaupt nog werk levert.
+- **7d run-dagen gemiddelde gekrompen van 4 naar 3.** 04-17 valt nu buiten het 7d-venster. Vanaf 2026-04-26 valt 04-18 ook buiten, dan zijn er nog 2 run-dagen over. Vanaf 2026-04-28 is het 7d-aggregaat leeg. Dit rapport wordt elke dag minder informatief zonder nieuwe data.
+- **Beslissing rond H12 vs H13 nu 144+ uur oud.** Hypothese (H12 wint, H13 onder par) ongewijzigd op basis van 2 run-dagen. Bij hervatting met dezelfde line-up start je met klein-sample assumpties; bij vertraging van een week of meer is dit signaal te oud om op te leunen.
+
+## 6. Top 3 Acties voor Vandaag
+
+1. **Beslis vandaag definitief: heractiveren, killen, of rebuild + datum vastleggen.**
+   - **Wat:** Robin neemt vandaag de knoop door en legt de keuze schriftelijk vast in een beslissingslog (markdown in `Output/Reports/`). Bij heractivering: zet H13 op PAUSED op ad-niveau, houd H11 en H12 actief, laat 3 volle dagen draaien zonder ingrepen om de re-learning fase te respecteren. Bij rebuild: leg launchdatum iteratie 2 vast (concreet, niet "binnenkort") en koppel daar een lijst nieuwe creatives aan. Bij kill: noteer expliciet "campagne stopgezet, geen iteratie 2 gepland" met reden.
+   - **Waarom:** vijfde pauzedag op rij. De pauzeperiode is nu gelijk aan de actieve runperiode. Elke extra dag drukt het 7d-venster verder leeg en maakt re-learning kostbaarder. Zonder schriftelijke beslissing groeit het aantal "dagen onbeslist" sneller dan het aantal dagen data.
+   - **Hoe:** Meta Ads Manager > campagne "2026: SYBB - Kopie" (120243293329420239) activeren OF beslissingslog `Output/Reports/sybb_decision_log_2026-04-25.md` aanmaken met datum, gekozen pad en reden. Als heractivering: eerst H13 op ad-niveau uitzetten voor activering campagne.
+   - **Verwachte impact:** bij heractivering binnen 3 tot 4 dagen terug naar €50 tot €80 spend per dag met 2 tot 5 IC's per dag. Eerste 1 tot 2 dagen 10-20% hogere CPC verwacht door re-learning. Bij rebuild: 1 tot 2 weken voorbereidingstijd voor iteratie 2 launch.
+   - **Escalatie:** Geel, Robin goedkeuring vereist.
+
+2. **Herstel PostHog MCP toegang (zeven rapportdagen op rij offline).**
+   - **Wat:** PostHog MCP server reactiveren of opnieuw configureren in de Claude Code setup zodat `posthog_*` tools weer in de deferred tool lijst verschijnen.
+   - **Waarom:** zeven dagen op rij zonder landing page data ondermijnt de hele waarde van dit rapport. Het centrale idee van de SKILL (Meta Ads x PostHog cross-referencing) werkt niet zonder PostHog. Bij heractivering wil je PostHog dag-1 al werkend hebben, niet pas dag-3 als de eerste resultaten binnenkomen, anders mis je opnieuw de cross-reference op de eerste run.
+   - **Hoe:** check `~/.claude/claude_desktop_config.json` of project-level `.claude/settings.local.json` voor PostHog MCP entry. Verifieer API key uit PostHog project "Default project" (mogelijk verlopen token of project-renamed). Test na restart met een eenvoudige pageviews-query op startyourballoonbusiness.com over de laatste 24 uur.
+   - **Verwachte impact:** volledig rapport vanaf eerstvolgende run. Geen directe campagne-impact, wel hersteld diagnostisch vermogen.
+   - **Escalatie:** Oranje, tooling ingreep.
+
+3. **Documenteer de 5-run-dagen baseline NU, voordat het 7d-venster leeg loopt.**
+   - **Wat:** korte markdown in `Output/Reports/` (bv. `sybb_iter1_baseline.md`) met aggregaten over de 5 run-dagen (04-16 t/m 04-20): totale spend, clicks, LPVs, IC's, CTR, CPC, LPV>IC rate. Per hook variant (H11, H12, H13, H14, H15 als gelopen) de directionele CTR/CPC/IC splitsing op basis van het 04-21 rapport. Eindig met 1 expliciete hypothese voor iteratie 2.
+   - **Waarom:** dit was punt 3 in het rapport van gisteren en is nog niet gebeurd. Het 7d-venster verliest morgen alweer een run-dag (04-18). Vanaf 04-28 is er geen referentiedata meer in het rolling venster. Als deze samenvatting niet vandaag wordt vastgelegd, moet bij iteratie 2 of heractivering het hele 5-run-dagen venster opnieuw uit oudere reports getrokken worden, met meer kans op fouten.
+   - **Hoe:** markdown per hook (H11, H12, H13, H14, H15 indien gelopen) met CTR, CPC, LPV, IC. Eindig met expliciete hypothese voor iteratie 2: welke hook angle doorontwikkelen, welke creative elementen behouden, welk CTA format (cta5) blijft, welk audience-vlak verbreden of vernauwen.
+   - **Verwachte impact:** geen directe KPI impact. Wel: volgende launch start met geschreven hypothese in plaats van vanaf nul of "uit het hoofd". Voorkomt dat 5 run-dagen aan data effectief weggegooid worden.
+   - **Escalatie:** Groen, geen goedkeuring nodig.
 
 ---
 
-## 4. Funnel Drop-off (laatste 7d, alle bronnen)
-
-```
-LP / pageview (201 sessions, 100%)
-    ↓ -91.5%
-/checkout sessions (17 sessions, 8.5%)
-    ↓ -76.5%
-/booking visits (4 sessions, 2.0%)
-    ↓ -75.0% vs /booking
-/product-page (1 session, 0.5%)
-```
-
-**Grootste lek:** LP naar /checkout, 91.5% van de sessies haakt af. Dit komt overeen met scroll-depth-data: 96% van de sessies komt niet voorbij 25% van de pagina, dus ze zien de CTA helemaal niet.
-
-**Tweede lek:** /checkout naar /booking, 76.5%. Mogelijk technische friction op de checkout-flow of prijsbezwaar.
-
----
-
-## 5. Rode Vlaggen 🚩
-
-1. 🚩 **Beide SYBB campagnes PAUSED** sinds 19/4 (origineel) en 20/4 avond (Kopie). 6 dagen zonder paid traffic. Hoogste prioriteit beslissing.
-2. 🚩 **Bounce rate 100% gisteren, 77.5% over 7d**. Ver boven target (<55%). Pagina werkt niet voor wie wel komt.
-3. 🚩 **Avg scroll depth 25% over 7d**, scroll 50% slechts 3.8% van sessies. Hero sectie houdt mensen niet vast.
-4. 🚩 **0 /booking visits gisteren**. Pipeline is leeg.
-5. 🚩 **Cost per IC €21.03 combined 7d** (2 + 6 = 8 IC bij €168.23 spend). Te duur voor B2B starter-segment, ook al zit dit boven het laatste rapport (€15.38 in 18-24/4 window) doordat de paused dagen het gemiddelde naar boven trekken.
-6. 🚩 **Avg session duration onbekend** voor 25/4 (te weinig data, $session_duration niet gezet of nul). Ook 7d-gemiddelde komt niet door als getal, wat duidt op tracking-gap of zeer korte sessies waar duration nog niet is gepersisteerd.
-
----
-
-## 6. Cross-References (Meta Ads × PostHog)
-
-- **Geen live Meta-traffic, geen UTM-attributie:** alle 3 sessies van 25/4 hebben geen utm_content. Dit bevestigt dat er gisteren geen Meta-driven verkeer was, conform de paused status.
-- **Kopie won op CTR + CPC, maar pagina-gedrag onbekend:** De Kopie-variant haalde 19-20/4 een betere CTR (2.78% op 20/4) en €0.65 CPC, maar zonder verse PostHog-segmentatie per utm_content op die dagen kunnen we niet bevestigen dat het bezoek ook beter converteerde dan het origineel. De combined 7d IC-conversie (8 IC op 256 clicks = 3.1%) is in lijn met B2B starter benchmarks maar onder potentieel.
-- **Pagina kapot voor alle bronnen:** Bounce 77.5% en scroll 50% maar 3.8% bevatten zowel Meta-traffic (vóór 21/4) als organische rest. Dit is geen ad-pagina mismatch alleen, dit is een algemene pagina-zwakte.
-
----
-
-## 7. Top 3 Acties voor Vandaag
-
-### 1. 🔴 Beslissen: hervat "2026: SYBB - Kopie" (de winnaar) of laat alles paused
-- **Wat:** kies vandaag tussen (a) Kopie (120243293329420239) hervatten met €30 tot €50/dag op enkel de winnende ad-set, of (b) campagne strategie wijzigen voor mei. Geen actie betekent doorgaan zonder leads.
-- **Waarom:** 6 dagen geen acquisitie. Kopie had 7d de beste cijfers (CTR 2.56%, CPC €0.64, 6 IC op €124.42) tegen origineel (CTR 2.21%, CPC €0.72, 2 IC op €43.81). Origineel campaign kan paused blijven.
-- **Hoe:** Meta Ads Manager, campaign 120243293329420239 resume, alleen ad-set met winnende H12-variant actief, daily budget €30.
-- **Verwachte impact:** terug naar 50 tot 100 LP sessions per dag, 1 tot 3 IC events. Bevestiging of de Apr 19-20 trend doorzet.
-- **Escalatie:** Geel (Robin goedkeuring vereist).
-
-### 2. 🟠 Pagina-fix vóór elke heractivering: scroll-trigger en CTA boven de fold
-- **Wat:** hero-sectie van startyourballoonbusiness.com aanpakken voordat budget terugkomt. Scroll 25%+ van 3.8% naar minimaal 40% brengen.
-- **Waarom:** 7d data laat zien dat 96% van sessies niet voorbij 25% scroll komt. Dat is geen ad-probleem, dat is een pagina-probleem. Spend verspillen op een pagina waar 19 op 20 mensen direct afhaken is verlies.
-- **Hoe:** Wix Editor, drie aanpassingen, (a) primaire CTA-knop in eerste viewport plaatsen (boven fold, niet pas na video), (b) hero-headline match met winnende H12-hook van Apr 18-19, (c) social proof visueel direct onder fold zodat scroll-incentive ontstaat.
-- **Verwachte impact:** bounce van 77.5% naar onder 65%, scroll 50% van 3.8% naar 25%+, IC verdubbeling per €100 spend.
-- **Escalatie:** Oranje (Wix Editor).
-
-### 3. 🟡 Tracking-gap dichten: $session_duration en pageleave events
-- **Wat:** PostHog tracking checken op startyourballoonbusiness.com. Avg session duration komt niet door (null), wat betekent dat $pageleave events ofwel niet vuren ofwel duration property niet gezet wordt.
-- **Waarom:** zonder session duration kunnen we niet zien of bezoekers seconds of minutes blijven, en is bounce rate (100% pageview-only sessies) de enige gedragsmetric. Dit blokkeert serieuze landingpage-optimalisatie.
-- **Hoe:** PostHog snippet check op Wix, controleer dat `capture_pageleave: true` in init-config staat. Test met een live sessie.
-- **Verwachte impact:** session duration zichtbaar binnen 24u. Hierdoor kunnen we ad-vs-LP-mismatch beter onderbouwen (nu zien we alleen scroll als gedragsproxy).
-- **Escalatie:** Geel (kan zelf, geen Wix Editor nodig).
-
----
-
-## 8. Notes & Context
-
-- **Datacontext:** PostHog `properties.$host` is `www.startyourballoonbusiness.com` (met `www.`).
-- **Beide SYBB campagnes paused:** "2026: SYBB" sinds 19/4 ~16u42 en "2026: SYBB - Kopie" na de Apr 20 spend-dag. De Kopie was 19/4 aangemaakt als A/B, blijkt in retrospect betere variant.
-- **Ad-account context:** act_567892422940728 (Sempertex Ad Account) heeft balance €0 en lifetime spend €4.867,46. Auto-billing/credit check vóór heractivering aanbevolen.
-- **Geen IC of /thank-you events op 25/4:** geen attributie-discrepantie te checken.
-- **Auto Optimize logs:** zie `Output/Reports/Daily/2026-04-25_auto_optimize.md` (gegenereerd dezelfde ochtend) voor de huidige optimalisatie-aanbevelingen op campaign- en ad-niveau.
-
----
-
-*Rapport gegenereerd op 2026-04-26 voor data 2026-04-25. Bronnen: Meta Ads MCP (Pipeboard) en PostHog MCP. Account act_567892422940728 (Sempertex Ad Account), PostHog project Default project (149694).*
+**Rapport opgeslagen in:** `Output/Reports/Daily/2026-04-25_sybb_report.md`
+**Data bronnen gebruikt:** Meta Ads MCP (Pipeboard), werkend. PostHog MCP, niet beschikbaar.
+**Geen Google MCPs gebruikt.** Geen verzonnen cijfers; alle Meta-getallen direct uit `get_insights` time_breakdown=day, range 2026-04-18 t/m 2026-04-25.

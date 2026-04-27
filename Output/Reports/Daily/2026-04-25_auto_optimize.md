@@ -1,8 +1,11 @@
-Rapport opgeslagen in `Output/Reports/Daily/2026-04-25_auto_optimize.md`.
+De Meta Ads MCP (Pipeboard) is niet meer geauthenticeerd, dus ik kan de campagne-data niet ophalen voor de auto-optimize run.
 
-**Samenvatting:**
-- Geen actieve Meta Ads campagnes in de toegankelijke accounts (`act_567892422940728` en `act_1489853856181844`).
-- Alle 5 campagnes op het primaire STX EU account staan op PAUSED — inclusief `2026: SYBB` (gepauzeerd op 2026-04-19) en de duplicaat `2026: SYBB - Kopie` (2026-04-20).
-- Geen spend/impressies in `last_3d` op accountniveau, dus geen kill-acties uit te voeren en geen 70-20-10 classificatie mogelijk.
-- `act_607231713057715` is niet toegankelijk met de huidige Pipeboard-token (alleen `act_1489853856181844` en `act_567892422940728` zijn allowed).
-- Twee operationele vragen voor jou opgenomen: is de SYBB-pauze bewust, en moet de token-scope voor `act_607231713057715` worden uitgebreid?
+**Actie vereist van jou:**
+
+1. Open deze URL in je browser om Pipeboard te autoriseren:
+
+https://pipeboard.co/oauth/authorize?response_type=code&client_id=3aee829ace93cf41d245bfad54c83a8e&code_challenge=JCztfSsMq6p73Y6GrvwGqM7hhvJmBgUWj6DOxRWHGPg&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A57813%2Fcallback&state=MZTDMWLeQ5ZfDXQQvI8K4BIWI5yOabU6WtMCjL7LWt4&scope=mcp%3Aread+mcp%3Awrite+mcp%3Aadmin+claudeai&resource=https%3A%2F%2Fmcp.pipeboard.co%2F
+
+2. Als de redirect pagina een fout toont (connection refused op localhost:57813), kopieer dan de volledige URL uit de adresbalk en plak die hier — dan rond ik de auth af en draai ik direct daarna de hele auto-optimize flow (3-daagse data ophalen → kill-regels toepassen → 70-20-10 classificeren → rapport opslaan in `Output/Reports/Daily/2026-04-25_auto_optimize.md`).
+
+Geen Google MCPs worden aangeroepen, conform de strikte regel voor deze run.

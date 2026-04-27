@@ -17,14 +17,14 @@
 > 
 > | Ad | Spend | Impressions | Link Clicks | Link CTR | CPC (link) |
 > |---|---|---|---|---|---|
+> | H12,B3,CTA5 | EUR 14,37 | 1.058 | 20 | 1,89% | EUR 0,72 |
+> | H13,B3,CTA5 | EUR 0,01 | 1 | 0 | 0,00% | EUR 0,00 |
+> | H14,B3,CTA5 | EUR 122,96 | 16.551 | 158 | 0,95% | EUR 0,78 |
+> | H15,B3,CTA5 | EUR 2,32 | 157 | 4 | 2,55% | EUR 0,58 |
+> | H15,B3,CTA5 | EUR 49,83 | 4.737 | 57 | 1,20% | EUR 0,87 |
 > | H11, B3, CTA5 | EUR 521,56 | 38.614 | 428 | 1,11% | EUR 1,22 |
 > | H13,B3,CTA5 | EUR 206,99 | 16.766 | 195 | 1,16% | EUR 1,06 |
 > | H12,B3,CTA5 | EUR 141,43 | 13.955 | 174 | 1,25% | EUR 0,81 |
-> | H14,B3,CTA5 | EUR 122,96 | 16.551 | 158 | 0,95% | EUR 0,78 |
-> | H15,B3,CTA5 | EUR 49,83 | 4.737 | 57 | 1,20% | EUR 0,87 |
-> | H12,B3,CTA5 | EUR 14,37 | 1.058 | 20 | 1,89% | EUR 0,72 |
-> | H15,B3,CTA5 | EUR 2,32 | 157 | 4 | 2,55% | EUR 0,58 |
-> | H13,B3,CTA5 | EUR 0,01 | 1 | 0 | 0,00% | EUR 0,00 |
 > 
 > Dit zijn de ENIGE betrouwbare CTR/CPC/dagspend cijfers in dit rapport. Kale `CTR`/`CPC` waarden in het rapport hieronder zijn waar mogelijk hardcoded overschreven.
 
@@ -34,83 +34,49 @@ Failures: 0
 
 ---
 
-> 🚨 **OVERRIDE — VERIFIED FUNNEL CONFLICT**
-> De budget aanbevelingen in de Ads Report / SYBB / Auto-Optimize secties hieronder zijn gebaseerd op Meta pixel data en conflicteren met de verified Wix order funnel. Volg ALLEEN de 'BUDGET AANBEVELINGEN (VERIFIED)' sectie verderop in dit rapport.
->
-> ❌ **Pauzeer H13** advies in dit rapport conflicteert met verified ROAS 2.05x. H13 is de top performer — NIET pauzeren.
-> ❌ **H12** wordt elders in dit rapport als winnaar/best performer gelabeld of krijgt extra budget, maar heeft **0 Wix orders** op EUR 155,80 spend. Negeer dat advies.
-> ❌ **H14** wordt elders in dit rapport als winnaar/best performer gelabeld of krijgt extra budget, maar heeft **0 Wix orders** op EUR 122,96 spend. Negeer dat advies.
-> ❌ **H15** wordt elders in dit rapport als winnaar/best performer gelabeld of krijgt extra budget, maar heeft **0 Wix orders** op EUR 52,15 spend. Negeer dat advies.
->
-> **Top verified performer:** H13 · ROAS 2.05x · 1 order(s) · EUR 423,50 revenue.
+Ik kan het rapport nu niet genereren met live data. Hier is wat er aan de hand is:
 
+**Blokkers:**
+- **Meta Ads MCP (Pipeboard)** — niet geauthenticeerd. Tools zoals `get_ad_accounts`, `get_campaigns`, `get_insights`, `get_ads` zijn niet beschikbaar tot je de OAuth flow afrondt.
+- **PostHog MCP** — niet geladen in deze sessie. Geen tools voor pageviews, bounce rate, CTA clicks etc.
 
-Rapport opgeslagen. Hier het Meta Ads rapport voor 2026-04-26:
+De strikte regel voor deze run sluit Google MCPs (Sheets/Drive/GA4) en alle andere bronnen uit, dus ik heb geen alternatieve databron.
 
-## Meta Ads Rapport — 2026-04-26
+**Actie nodig van jou:**
 
-**Status:** Geen ACTIVE campagnes. Alle 5 campagnes op `act_567892422940728` staan PAUSED. Het tweede toegestane account `act_1489853856181844` heeft geen campagnes. `act_607231713057715` is niet toegankelijk via deze API token.
+1. Open deze URL in je browser om Pipeboard Meta Ads te autoriseren:
 
-### Overzicht per campagne (last 30d)
+   https://pipeboard.co/oauth/authorize?response_type=code&client_id=f02ce0c1ed6d5c6e8b6b52ebb1c2c101&code_challenge=1UUuwNVTZBbkIn44iJuZbhiqPkF26_LbIdzxrO7uVNk&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A55426%2Fcallback&state=bP87qLjhruG5uLJ2rG8hpGpq-aLc0Tbi27CJFlD6QWU&scope=mcp%3Aread+mcp%3Awrite+mcp%3Aadmin+claudeai&resource=https%3A%2F%2Fmcp.pipeboard.co%2F
 
-| Campagne | Status | Spend | Impr. | Clicks | CTR | CPC | CPM | Purch. | Init. CO |
-|----------|--------|-------|-------|--------|------|------|------|--------|------|
-| 2026: SYBB | PAUSED | €1.059,47 | 91.839 | 1.935 | 2,1% | €0,55 | €11,54 | 6 | 33 |
-| 2026: SYBB - Kopie | PAUSED | €124,42 | 7.615 | 195 | 2,6% | €0,64 | €16,34 | 0 | 6 |
-| Last push Nozzle Up | PAUSED | geen data | — | — | — | — | — | — | — |
+2. Als de redirect-pagina een connection error toont, plak de volledige URL uit je adresbalk hier — dan rond ik de auth af.
 
-### Underperformers
-- **2026: SYBB - Kopie (campagne)** — CPC €0,64 + CPM €16,34, ? purchases (verifieer Wix) → consolideren met hoofdcampagne
-- **H13,B3,CTA5 (Kopie campagne)** — CPC €0,93 → pauzeren
-- **H11,B3,CTA5 (Kopie 1)** — CPC €0,67 maar hoogste spend → CPC-optimalisatie ipv afschalen
-- Geen frequency-issues (max 2,19 campagne, 1,95 ad)
+3. Voor PostHog: laat weten of de MCP geconfigureerd moet worden, of dat ik dit rapport mag draaien zonder PostHog cross-reference (alleen Meta Ads data).
 
-### Top performers
-- **Beste CTR**: H15,B3,CTA5 — 6,4% (klein sample) | met volume: H12,B3,CTA5 — 4,7%
-- **Laagste CPC**: H15 — €0,23 | met volume: H12,B3,CTA5 (Kopie 2) — €0,40
-- **Beste CPM**: H14,B3,CTA5 — €7,43
-- **Meeste purchases**: H11,B3,CTA5 (Kopie 1) — ? purchases (verifieer Wix)
-
-### Tracking-waarschuwing
-Meta `purchase` action_values zijn afwijkend hoog (€42.773 voor ? purchases (verifieer Wix)) terwijl `web_app_in_store_purchase` waarden in centen staan. Pixel value-mapping in Wix → Meta integratie checken; ROAS uit Meta is nu niet betrouwbaar.
-
-### Samenvatting & aanbeveling (Hormozi 70-20-10)
-- **Totaal spend:** €1.183,89 / ? purchases (verifieer Wix) (te valideren via Wix)
-- **70% bewezen winnaars:** H12 en H14 (BATCH 2 origineel) — bouw nieuwe ACTIVE campagne hierop
-- **20% variaties:** H11 thumbnail/openingsframe varianten testen voor CPC <€0,50
-- **10% experimenten:** H15 budget verhogen voor signifcant volume
-- **Direct:** "2026: SYBB - Kopie" campagne pauzeren; H13 in beide kopie-adsets pauzeren
-- **Beslismoment:** geen enkele campagne ACTIVE — bewust besluit nodig om aan te zetten of nieuwe campagne op winnende creatives te bouwen
-
-### Google Sheet
-Niet geschreven (stap 6 overgeslagen per instructie).
-
-Rapport opgeslagen naar `/Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-26_ads_report.md`.
-
-> **Wil je funnel data toevoegen? Geef dan de landing page metrics uit Wix Analytics of GA4.**
-> Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases.
+Zodra Pipeboard geautoriseerd is, draai ik het rapport en sla op naar `Output/Reports/Daily/2026-04-26_ads_report.md`.
 
 ---
 
-Lokaal gecommit. Push overgeslagen omdat `main` 57 commits ahead én 195 commits behind `origin/main` is. Een gewone push wordt geweigerd, en force push zou 195 remote commits overschrijven, dat is niet veilig zonder jouw bevestiging.
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-25_sybb_report.md`.
 
-**Rapport:** `Output/Reports/Daily/2026-04-25_sybb_report.md`
+**Kernpunten:**
+- Vijfde pauzedag op rij voor beide SYBB campagnes. "2026: SYBB - Kopie" PAUSED sinds 2026-04-20 17:09, "2026: SYBB" PAUSED sinds 2026-04-19 14:29. Nul spend, nul impressies, nul clicks op 2026-04-25.
+- 7d run-dagen aggregaat gekrompen van 4 naar 3 run-dagen (04-17 valt uit het venster); morgen valt 04-18 ook weg.
+- PostHog MCP zeven rapportdagen op rij offline, geen landing page health beschikbaar.
+- Top actie: vandaag definitieve beslissing vastleggen (heractiveren / rebuild + datum / kill) voordat het 7d-venster volledig leeg loopt op 2026-04-28.
 
-**Kern:** Beide SYBB campagnes paused sinds 19/20 april. Gisteren 0 Meta spend, 3 organische LP-sessies (100% bounce). 7d-data laat de "Kopie"-variant winnen (CTR 2.56% vs 2.21%, CPC €0.64 vs €0.72, 6 IC vs 2). Top-actie: vóór heractivering eerst de landingpage hero fixen (96% van sessies komt niet voorbij 25% scroll).
-
-Wil je dat ik de divergentie met origin/main onderzoek (pull/merge of reset) zodat de push alsnog kan?
+Geen Google MCPs aangeroepen. Alle Meta-cijfers direct uit `get_insights` met dag-breakdown.
 
 ---
 
-## Samenvatting
+Rapport opgeslagen in `Output/Reports/Daily/2026-04-26_auto_optimize.md`.
 
-**Geen automatische acties uitgevoerd** — er zijn geen actieve campagnes in het Sempertex Ad Account. Beide SYBB-campagnes (2026: SYBB en 2026: SYBB - Kopie) staan op PAUSED sinds 19/20 april. Ad-niveau insights voor `last_3d` zijn leeg, wat bevestigt dat er geen recente spend is.
+**Samenvatting:**
+- **0 automatische acties uitgevoerd** — er zijn geen actieve campagnes om te optimaliseren
+- **act_567892422940728**: alle 5 campagnes staan PAUSED. De hoofd-campagne `2026: SYBB` is sinds 2026-04-19 gepauzeerd; een duplicaat `2026: SYBB - Kopie` is op 2026-04-20 aangemaakt (ook PAUSED)
+- **act_1489853856181844**: geen campagnes aanwezig
+- **act_607231713057715**: token heeft geen toegang tot dit account
 
-Alleen Pipeboard Meta Ads MCP gebruikt, geen Google MCPs aangeroepen, niets naar de tracker Google Sheet geschreven.
-
-**Rapport opgeslagen:** `Output/Reports/Daily/2026-04-26_auto_optimize.md`
-
-Het rapport bevat ook context uit de laatste run-periode (last_7d en last_30d) met link-metrics als referentie voor heractivatie, plus drie voorgestelde vervolgstappen die op jouw goedkeuring wachten.
+Geen Google MCPs aangeroepen, geen Sheets writes uitgevoerd. Voorstellen in het rapport vragen om beslissing over relaunch-planning en eventuele tijdelijke skip van auto-optimize in het morning report.
 
 ---
 
@@ -118,12 +84,13 @@ Het rapport bevat ook context uit de laatste run-periode (last_7d en last_30d) m
 
 | Ad | Spend | Link Clicks | PostHog /ty | Wix Orders | Revenue | Verified ROAS | CPA |
 |---|---|---|---|---|---|---|---|
-| H11, B3, CTA5 | EUR 521,56 | 428 | 1 | 1 (EUR 350,00) | EUR 350,00 | 0.67x | EUR 521,56 |
+| H11, B3, CTA5 | EUR 521,56 | 428 | 0 | 0 | - | - | - |
 | H12,B3,CTA5 | EUR 155,80 | 194 | 0 | 0 | - | - | - |
-| H13,B3,CTA5 | EUR 207,00 | 195 | 0 | 1 (EUR 423,50) | EUR 423,50 | 2.05x | EUR 207,00 |
+| H13,B3,CTA5 | EUR 207,00 | 195 | 0 | 0 | - | - | - |
 | H14,B3,CTA5 | EUR 122,96 | 158 | 0 | 0 | - | - | - |
 | H15,B3,CTA5 | EUR 52,15 | 61 | 0 | 0 | - | - | - |
-| **Totaal** | **EUR 1.059,47** | **1036** | **1** | **2** | **EUR 773,50** | **0.73x** | **EUR 529,74** |
+| (geen ad match) | - | - | - | 2 (EUR 773,50) | EUR 773,50 | - | - |
+| **Totaal** | **EUR 1.059,47** | **1036** | **0** | **2** | **EUR 773,50** | **0.73x** | **EUR 529,74** |
 
 > **CROSS-REFERENCE: Meta Pixel vs Wix Orders**
 > - Meta pixel: 18 purchases (EUR 132.741,00)
@@ -132,33 +99,11 @@ Het rapport bevat ook context uit de laatste run-periode (last_7d en last_30d) m
 > - **Verdict: PIXEL OVERSTELT.** Gebruik Wix orders als bron van waarheid.
 > - Mogelijke oorzaken: Conversions API duplicaten, test purchases, cross-domain pixel fires
 
-> **ONGEMATCHTE /thank-you SESSIES:**
-> - Sessie op 2026-04-18, utm_content=(geen utm_content)
-> - Sessie op 2026-04-12, utm_content=(geen utm_content)
-> - Sessie op 2026-04-12, utm_content=(geen utm_content)
-> - Sessie op 2026-04-12, utm_content=(geen utm_content)
-> - Sessie op 2026-04-12, utm_content=(geen utm_content)
-> - Sessie op 2026-04-12, utm_content=(geen utm_content)
-> - Sessie op 2026-04-12, utm_content=(geen utm_content)
-
 ## 🎯 BUDGET AANBEVELINGEN (VERIFIED — OVERRULES EERDERE ADVIEZEN)
 
 **Bron:** Wix Orders + Verified ROAS. Meta pixel purchase data wordt genegeerd voor budget beslissingen. Waar deze sectie conflicteert met adviezen elders in dit rapport, heeft DEZE sectie voorrang.
 
-**Ranking op Verified ROAS:**
-
-| Rank | Ad | Verified ROAS | Wix Orders | Revenue | Spend | Advies |
-|---|---|---|---|---|---|---|
-| 🥇 | H13,B3,CTA5 | 2.05x | 1 | EUR 423,50 | EUR 207,00 | **70% budget** — hoogste verified ROAS · NIET pauzeren |
-| 🥈 | H11, B3, CTA5 | 0.67x | 1 | EUR 350,00 | EUR 521,56 | 20% budget — tweede verified winner · houd actief |
-| — | H12,B3,CTA5 | 0 orders | 0 | — | EUR 155,80 | NIET als best performer labelen · 0 Wix orders ondanks EUR 155,80 spend · heroverweeg |
-| — | H14,B3,CTA5 | 0 orders | 0 | — | EUR 122,96 | NIET als best performer labelen · 0 Wix orders ondanks EUR 122,96 spend · heroverweeg |
-| — | H15,B3,CTA5 | 0 orders | 0 | — | EUR 52,15 | NIET als best performer labelen · 0 Wix orders ondanks EUR 52,15 spend · heroverweeg |
-
-**Verified funnel regels (hard):**
-- Top verified performer: **H13** (verified ROAS 2.05x, 1 Wix order(s), EUR 423,50 revenue).
-- H13 mag NIET gepauzeerd worden en krijgt 70% van het budget.
-- Ads zonder verified orders (H12, H14, H15) mogen NIET als 'beste performer' of 'winner' gelabeld worden, ongeacht Meta pixel CTR/IC/purchase cijfers.
+> Geen van de ads heeft verified Wix orders in de periode. GEEN budget herverdeling op basis van verified funnel mogelijk. Wacht op meer data — negeer Meta pixel 'best performer' claims tot die tijd.
 
 
 

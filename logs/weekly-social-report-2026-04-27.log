@@ -1,6 +1,6 @@
-=== Weekly Social Report gestart: Mon Apr 27 08:09:45 CEST 2026 ===
+=== Weekly Social Report gestart: Mon Apr 27 08:00:00 CEST 2026 ===
 [1/4] Claude Code /social-report uitvoeren...
-[2/4] Social report ontvangen (1278 bytes)
+[2/4] Social report ontvangen (1894 bytes)
 [3/4] Claude Code /blort-social-analyze uitvoeren...
 [4/4] Email versturen...
 /Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
@@ -28,4 +28,4 @@ Traceback (most recent call last):
     _client._handle_error_response(response_data, retryable_error)
   File "/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/oauth2/_client.py", line 69, in _handle_error_response
     raise exceptions.RefreshError(
-google.auth.exceptions.RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+google.auth.exceptions.RefreshError: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})

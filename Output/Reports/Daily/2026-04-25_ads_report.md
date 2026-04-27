@@ -1,13 +1,9 @@
-Ik kan het rapport niet draaien zonder Meta Ads data. De Pipeboard Meta Ads MCP is niet geauthenticeerd in deze sessie.
+Ik kan het rapport niet draaien zonder Meta Ads data, en de Pipeboard MCP staat momenteel op niet-geauthenticeerd. De enige beschikbare tools zijn `authenticate` en `complete_authentication` — de daadwerkelijke `get_ad_accounts`, `get_campaigns`, `get_insights` en `get_ads` calls verschijnen pas na een succesvolle OAuth flow.
 
-**Actie vereist van Robin:**
+**Twee opties:**
 
-1. Open deze URL in je browser om Pipeboard te autoriseren:
+1. **Authenticeren nu** — ik start de OAuth flow, jij klikt door in de browser, plakt de callback URL terug, en ik draai meteen het volledige rapport voor `act_567892422940728` (Sempertex) en `act_607231713057715` (Robin Rutten) over de laatste 30 dagen, met output naar `Output/Reports/Daily/2026-04-25_ads_report.md`.
 
-```
-https://pipeboard.co/oauth/authorize?response_type=code&client_id=bbf49e8178e1e0bcbf36968f22198fe1&code_challenge=KqPxdXlmYVH8iUtTNyohdEDBMID28xJuglAo-N5GKsU&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A61314%2Fcallback&state=pEMWYzX6HGcZvixBbxsR2xaCtpHHQBTAPeKvWxFs0mA&scope=mcp%3Aread+mcp%3Awrite+mcp%3Aadmin+claudeai&resource=https%3A%2F%2Fmcp.pipeboard.co%2F
-```
+2. **Overslaan** — als je nu geen tijd hebt voor de auth flow, sla ik het rapport over en pakken we het op zodra Pipeboard weer geauth'd is. Geen sense in een leeg of gefantaseerd rapport schrijven.
 
-2. Na autorisatie zou je naar `http://localhost:61314/callback?code=...&state=...` worden geredirect. Als die pagina niet laadt: kopieer de volledige URL uit de adresbalk en plak hem hier, dan rond ik de auth af en draai het rapport meteen.
-
-**Status van de strikte regels:** ik blijf binnen Meta Ads MCP + PostHog MCP, geen Google MCPs aangeroepen, en het rapport zal worden opgeslagen naar `/Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-04-25_ads_report.md` zodra de data binnen is.
+Welke wil je? Als je voor optie 1 gaat, zeg "ga", dan start ik de auth.
