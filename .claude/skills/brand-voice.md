@@ -99,3 +99,4 @@ Controleer voor elke output:
 - [ ] Valt het onder een van de 6 content pilaren?
 - [ ] Is het positief en enthousiast?
 - [ ] Wordt er geen valse urgentie gecreëerd?
+- [ ] Engelstalig? UK spelling toegepast (colour/favourite/realise, geen color/favorite/realize)?
