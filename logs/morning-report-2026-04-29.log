@@ -31,3 +31,8 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [push] Commit + push reports naar main...
 fatal: pathspec 'Output/Reports/Daily/2026-04-28_sybb_report.md' did not match any files
 [push] geen nieuwe report files om te committen
+send-imessage: osascript failed (exit 1)
+stderr: 50:91: execution error: Messages got an error: AppleEvent timed out. (-1712)
+
+[imessage] FAILED — check Messages.app permissions of of de helper draait
+=== Morning Report afgerond: Wed Apr 29 08:11:52 CEST 2026 — 0 failures ===
