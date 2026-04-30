@@ -1,0 +1,1 @@
+{"thank_you_sessions": [], "error": "PostHog MCP not available in current environment — no posthog tools registered (only Meta Ads MCP, Google MCPs, and other social MCPs are loaded). Cannot execute HogQL query."}
