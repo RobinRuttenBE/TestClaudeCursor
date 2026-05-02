@@ -1,0 +1,34 @@
+{
+  "last_updated": "2026-05-02T08:11:46.439071",
+  "period": {
+    "from": "2026-04-02",
+    "to": "2026-05-02"
+  },
+  "source": "wix_mcp_api",
+  "orders": [
+    {
+      "order_id": "WIX-10002",
+      "date": "2026-04-15",
+      "time": "16:19:28",
+      "amount_eur": 350.0,
+      "amount_ex_btw": 350.0,
+      "tax": 0.0,
+      "tickets": 1,
+      "product": "Start Your Balloon Business Professional 11/05/2026-12/05/2026",
+      "customer_country": "Netherlands",
+      "payment_status": "PAID"
+    },
+    {
+      "order_id": "WIX-10001",
+      "date": "2026-04-11",
+      "time": "18:31:19",
+      "amount_eur": 423.5,
+      "amount_ex_btw": 350.0,
+      "tax": 73.5,
+      "tickets": 1,
+      "product": "Start Your Balloon Business Professional 21/09/2026-22/09/2026",
+      "customer_country": "Belgium",
+      "payment_status": "PAID"
+    }
+  ]
+}
