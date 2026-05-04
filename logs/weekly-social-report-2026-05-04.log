@@ -1,0 +1,31 @@
+=== Weekly Social Report gestart: Mon May  4 08:00:00 CEST 2026 ===
+[1/4] Claude Code /social-report uitvoeren...
+[2/4] Social report ontvangen (1226 bytes)
+[3/4] Claude Code /blort-social-analyze uitvoeren...
+[4/4] Email versturen...
+/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:246: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+Traceback (most recent call last):
+  File "/Users/robinrutten/TestClaudeCursor/scripts/send-gmail.py", line 45, in <module>
+    send_email(sys.argv[1], sys.argv[2], sys.argv[3])
+  File "/Users/robinrutten/TestClaudeCursor/scripts/send-gmail.py", line 36, in send_email
+    result = service.users().messages().send(userId="me", body={"raw": raw}).execute()
+  File "/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/googleapiclient/http.py", line 923, in execute
+    resp, content = _retry_request(
+  File "/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/googleapiclient/http.py", line 191, in _retry_request
+    resp, content = http.request(uri, method, *args, **kwargs)
+  File "/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google_auth_httplib2.py", line 242, in request
+    self.credentials.refresh(self._request)
+  File "/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+  File "/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/oauth2/reauth.py", line 370, in refresh_grant
+    _client._handle_error_response(response_data, retryable_error)
+  File "/Users/robinrutten/Library/Python/3.9/lib/python/site-packages/google/oauth2/_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
