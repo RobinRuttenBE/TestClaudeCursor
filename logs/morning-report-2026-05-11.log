@@ -5,3 +5,54 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [1/6] klaar (2044 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-11_ads_report.md)
 [2/6] SYBB daily report uitvoeren...
   [poging 1/2] SYBB daily report (timeout 600s)...
+[2/6] klaar (745 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-10_sybb_report.md)
+[3/6] /ads-auto-optimize uitvoeren...
+  [poging 1/2] /ads-auto-optimize (timeout 600s)...
+[3/6] klaar (884 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-11_auto_optimize.md)
+[4/6] sanity + link metrics fetch (campagne + per-ad + active days)...
+  [poging 1/2] sanity + link metrics + per-ad (timeout 600s)...
+[4/6] extracted JSON: 552 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-05-11.data.json
+[4/6] verdict: FAIL|132741.00|18|7374.50|872.28|68069|774|1.14|1.13|9|96.92
+[4/6] 🚨 PIXEL DATAFOUT — EUR 7374.50/purchase bij 18 purchases
+[4/6] link metrics: Link CTR 1.14% · CPC (link) EUR 1.13 (spend=872.28 imp=68069 lc=774)
+[4/6] daily spend: EUR 96.92 over 9 actieve dagen (van 30)
+[5/6] Wix orders ophalen via MCP (2026-04-11 t/m 2026-05-11)...
+  [poging 1/2] Wix orders fetch (timeout 600s)...
+[fetch-wix-orders] 2 orders parsed, 0 with manual attribution, written to /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-05-11.wix-orders.json
+[5/6] Wix MCP: 2 betaalde orders opgehaald
+[6/6] PostHog /thank-you sessies ophalen (2026-04-11 t/m 2026-05-11)...
+  [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
+[6/6] extracted JSON: 1783 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-05-11.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 9
+[done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-11_morning_report_full.md
+[pixel-rewrite] mode=datafout link_rewrite=True link_ctr=1.14% link_cpc=EUR1.13 avg_daily=EUR96.92/9d ads=5 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-11_morning_report_full.md
+[verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
+[verified-funnel] ads=5 posthog_ty=9 wix_orders=2 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-11_morning_report_full.md
+[push] Commit + push reports naar main...
+[main 8485b03] Morning report: 2026-05-11
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 297 insertions(+)
+ create mode 100644 Output/Reports/Daily/2026-05-10_sybb_report.md
+ create mode 100644 Output/Reports/Daily/2026-05-11_auto_optimize.md
+ create mode 100644 Output/Reports/Daily/2026-05-11_morning_report_full.md
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   c854c9d..8485b03  main -> main
+send-imessage: osascript failed (exit 1)
+stderr: 50:91: execution error: Messages got an error: AppleEvent timed out. (-1712)
+
+[imessage] FAILED — check Messages.app permissions of of de helper draait
+=== Morning Report afgerond: Mon May 11 08:15:50 CEST 2026 — 0 failures ===
