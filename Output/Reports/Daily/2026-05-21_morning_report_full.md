@@ -1,3 +1,10 @@
+# Morning Report — 2026-05-21
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
 Klaar. Hieronder de samenvatting voor in de console:
 
 ## Meta Ads Rapport — 21 May 2026
@@ -31,3 +38,30 @@ Klaar. Hieronder de samenvatting voor in de console:
 - **Google Sheet:** overgeslagen per run-instructie
 
 > **Wil je funnel data toevoegen?** Geef dan PostHog of Wix Analytics metrics: landing page visitors, opt-in/booking clicks, add to cart, completed purchases. Met die data draai ik `/funnel-diagnose`.
+
+---
+
+Report `Output/Reports/Daily/2026-05-20_sybb_report.md` aangemaakt, gecommit en gepusht.
+
+**Belangrijkste bevindingen:**
+- Meta Ads campagne **"2026: SYBB" staat op PAUSED** — geen spend, impressies of clicks op 2026-05-20 én in de 7-daagse window
+- Landing page kreeg 3 organische bezoeken (2× Instagram bio link, 1× Facebook bio link), allemaal op `/`, gem. duur ~19s
+- **Scroll-depth en CTA-click events ontbreken in de event taxonomy** van dit PostHog project — die delen van de SKILL-structuur zijn als "niet gemeten" gemarkeerd met een aparte actie om ze aan te zetten
+
+**Top 3 acties in het rapport:** beslissen over heractivatie campagne, scroll/CTA tracking aanzetten in Wix, session recordings van bio link verkeer reviewen.
+
+---
+
+Rapport opgeslagen in `Output/Reports/Daily/2026-05-21_auto_optimize.md`.
+
+**Samenvatting:** geen actieve Meta Ads campagnes op de toegankelijke accounts (`act_567892422940728` en `act_1489853856181844`), dus geen kill-acties of 70-20-10 optimalisatie mogelijk. `act_607231713057715` gaf een auth-error — token mist toegang. SYBB campagne staat sinds 2026-04-19 op PAUSED met €100/dag budget gereed; vraagt om een heractivatie- of refresh-besluit voordat dit command weer iets te doen heeft.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
