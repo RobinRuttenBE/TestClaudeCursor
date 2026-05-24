@@ -1,3 +1,10 @@
+# Morning Report — 2026-05-24
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
 Hier is het rapport.
 
 ## Meta Ads Rapport, 2026-05-24
@@ -50,3 +57,36 @@ Hier is het rapport.
 ---
 
 **Wil je funnel data toevoegen?** Geef dan landing page metrics uit PostHog of GA4 (landing page visitors, opt-in/booking clicks, add to cart, completed purchases). Ik kan ook direct PostHog data ophalen voor startyourballoonbusiness.com, zeg het maar.
+
+---
+
+Rapport opgeslagen op `Output/Reports/Daily/2026-05-23_sybb_report.md`.
+
+**Belangrijkste bevindingen:**
+- **Meta Ads:** `2026: SYBB` staat sinds 19 april op PAUSED — 0 spend/impressies/clicks gisteren, geen insights data.
+- **Landing page:** 0 pageviews op 23 mei (eerste nul-dag in 14 dagen; 7d-gemiddelde 3,3 pv/dag).
+- **Funnel 7d:** 20 homepage sessies → 1 booking → 1 checkout (95% drop-off op homepage).
+- **Verkeersbronnen:** instagram bio (9 pv) + direct (9 pv) + facebook bio (5 pv); geen Meta Ads attributie.
+- **Meetgap:** scroll depth, CTA clicks en sessieduur worden niet getrackt — 4 van de 7 KPI rijen leeg.
+
+**Top 3 acties:** (1) go/no-go op campagne hervatten, (2) scroll + CTA tracking implementeren in Wix/PostHog, (3) session recordings reviewen voor homepage drop-off oorzaak.
+
+Geen Google MCPs aangeroepen, geen sheet updates uitgevoerd — conform strikte run-regel.
+
+---
+
+Rapport opgeslagen, gecommit en gepusht.
+
+**Auto-Optimize 2026-05-24 — no-op run.** Er staan geen actieve campagnes in act_567892422940728 (5 campagnes, allemaal PAUSED) of act_1489853856181844 (leeg). act_607231713057715 uit het commando is niet toegankelijk voor de API token. Geen kill-regels getriggerd, geen 70-20-10 mogelijk.
+
+Het rapport (`Output/Reports/Daily/2026-05-24_auto_optimize.md`) bevat in plaats daarvan 4 strategische voorstellen voor de relaunch, gebaseerd op de bevindingen uit het ads-report van vanochtend: pixel value fix voor SYBB, Nozzle Up 2025 1 als hoogste-ROAS template, SYBB-hooks combineren met de Nozzle Up funnel, en Last push Nozzle Up niet hergebruiken. Geen Google MCPs of Sheet-writes aangeroepen.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
