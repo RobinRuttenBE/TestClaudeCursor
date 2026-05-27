@@ -1,0 +1,56 @@
+=== Morning Report gestart: Wed May 27 08:00:00 CEST 2026 ===
+Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+[1/6] /ads-report uitvoeren...
+  [poging 1/2] /ads-report (timeout 600s)...
+[1/6] klaar (1453 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-27_ads_report.md)
+[2/6] SYBB daily report uitvoeren...
+  [poging 1/2] SYBB daily report (timeout 600s)...
+[2/6] klaar (1080 bytes, sub-Claude schrijft naar /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-26_sybb_report.md)
+[3/6] /ads-auto-optimize uitvoeren...
+  [poging 1/2] /ads-auto-optimize (timeout 600s)...
+[3/6] klaar (628 bytes, opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-27_auto_optimize.md)
+[4/6] sanity + link metrics fetch (campagne + per-ad + active days)...
+  [poging 1/2] sanity + link metrics + per-ad (timeout 600s)...
+[4/6] extracted JSON: 119 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-05-27.data.json
+[4/6] verdict: NO_PURCHASES|0.00|0|0.00|0.00|0|0|0.00|0.00|0|0.00
+[4/6] ✅ geen purchases in periode — niets te verifiëren
+[4/6] link metrics: Link CTR 0.00% · CPC (link) EUR 0.00 (spend=0.00 imp=0 lc=0)
+[4/6] daily spend: EUR 0.00 over 0 actieve dagen (van 30)
+[5/6] Wix orders ophalen via MCP (2026-04-27 t/m 2026-05-27)...
+  [poging 1/2] Wix orders fetch (timeout 600s)...
+[fetch-wix-orders] 2 orders parsed, 0 with manual attribution, written to /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-05-27.wix-orders.json
+[5/6] Wix MCP: 2 betaalde orders opgehaald
+[6/6] PostHog /thank-you sessies ophalen (2026-04-27 t/m 2026-05-27)...
+  [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
+[6/6] extracted JSON: 26 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-05-27.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 0
+[done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-27_morning_report_full.md
+[pixel-rewrite] mode=linkfix link_rewrite=False link_ctr=0.00% link_cpc=EUR0.00 avg_daily=EUR0.00/0d ads=0 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-27_morning_report_full.md
+[verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
+[verified-funnel] ads=0 posthog_ty=0 wix_orders=0 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-05-27_morning_report_full.md
+[push] Commit + push reports naar main...
+[main 79c99d1] Morning report: 2026-05-27
+ Committer: Robin Rutten <robinrutten@Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 4 files changed, 210 insertions(+)
+ create mode 100644 Output/Reports/Daily/2026-05-26_sybb_report.md
+ create mode 100644 Output/Reports/Daily/2026-05-27_ads_report.md
+ create mode 100644 Output/Reports/Daily/2026-05-27_auto_optimize.md
+ create mode 100644 Output/Reports/Daily/2026-05-27_morning_report_full.md
+remote: This repository moved. Please use the new location:        
+remote:   git@github.com:RobinRuttenBE/TestClaudeCursor.git        
+To github.com:RobinRuttenBE/testclaudecursor.git
+   7b91735..79c99d1  main -> main
+[imessage] verstuurd naar +32468236146
+=== Morning Report afgerond: Wed May 27 08:12:55 CEST 2026 — 0 failures ===
