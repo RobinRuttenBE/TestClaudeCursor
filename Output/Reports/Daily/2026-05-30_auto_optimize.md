@@ -1,74 +1,20 @@
-# Auto-Optimize Rapport — 30 mei 2026
+Klaar. Hier is wat er gebeurde:
 
-**Databron:** Meta Ads MCP (Pipeboard) — uitsluitend
-**Periode:** afgelopen 3 dagen (`last_3d`)
-**Primair account:** `act_567892422940728` (Sempertex)
-**Status run:** Geen optimalisaties uitgevoerd — geen actieve campagnes
+## Auto-Optimize — 30 mei 2026
 
----
+**Er draaien geen actieve Meta Ads campagnes**, dus er is niets te optimaliseren. De run is correct gestopt na de data-check.
 
-## Samenvatting
+**Bevindingen:**
+- **`act_567892422940728` (Sempertex, primair):** 0 actieve campagnes. Alles staat op PAUSED, inclusief `2026: SYBB` (dagbudget €100,00, gepauzeerd sinds 19 april). Dit klopt met het SYBB dagrapport van 29 mei ("campaign paused, no LP traffic").
+- **`act_607231713057715` (secundair, uit het command):** **niet toegankelijk** met de huidige token. De token kent alleen `act_567892422940728` en `act_1489853856181844`. → Het account-ID in het command lijkt verouderd, het melden waard.
+- **`act_1489853856181844` (extra toegankelijk):** ook 0 actieve campagnes.
 
-**Er draaien op dit moment geen actieve Meta Ads campagnes.** Alle campagnes op het Sempertex account staan op PAUSED. Daardoor zijn er geen actieve ads om tegen de kill-regels te toetsen, geen 70-20-10 classificatie te maken, en geen budget te herverdelen. De run stopt na de data-check.
+**Acties:**
+- ⚡ Niveau 1 (automatisch pauzeren): **0 ads** — geen actieve ads om tegen de kill-regels te toetsen.
+- 💡 Niveau 2 (voorstellen): geen data-gedreven voorstellen mogelijk zonder live performance. Enig operationeel signaal: als SYBB weer moet draaien, moet jij de campagne reactiveren.
 
----
+Alleen de Meta Ads MCP is gebruikt; geen Google MCPs, geen schrijfacties naar de tracker-sheet. Rapport opgeslagen op `Output/Reports/Daily/2026-05-30_auto_optimize.md` en gecommit + gepusht.
 
-## ⚡ Automatische acties uitgevoerd
-
-Geen ads gepauzeerd — er zijn geen actieve ads. ✅
-
-**Totaal gepauzeerd: 0 ads**
-
----
-
-## ⚠️ Waarschuwingen
-
-Geen waarschuwingen — geen actieve ads om te beoordelen op creative fatigue, dure reach of dalende Link CTR.
-
----
-
-## 📊 70-20-10 Classificatie
-
-Niet van toepassing — geen actieve ads om te classificeren.
-
-**Budget mismatch:** Nee (geen actief budget in omloop).
-
----
-
-## 💡 Voorstellen (wacht op goedkeuring)
-
-Geen data-gedreven voorstellen mogelijk zonder live performance. Eén operationeel signaal:
-
-**1. Campagne staat uit**
-- De hoofdcampagne `2026: SYBB` (`120239435987290239`, dagbudget €100,00) staat op PAUSED sinds de laatste update op 19 april 2026.
-- Dit is consistent met het SYBB dagrapport van 29 mei 2026 ("campaign paused, no LP traffic").
-- **Actie vereist van Robin:** als SYBB weer moet draaien, reactiveer de campagne. Daarna kan dit command weer zinvol optimaliseren.
-
----
-
-## Account- & campagne-overzicht (controle)
-
-### `act_567892422940728` (Sempertex — primair)
-Actieve campagnes: **0**. Alle campagnes staan op PAUSED:
-
-| Campagne | ID | Objective | Status | Dagbudget |
-|----------|-----|-----------|--------|-----------|
-| 2026: SYBB | 120239435987290239 | OUTCOME_SALES | PAUSED | €100,00 |
-| 2026: SYBB - Kopie | 120243293329420239 | OUTCOME_SALES | PAUSED | — |
-| Last push Nozzle Up | 120233295855990239 | OUTCOME_SALES | PAUSED | — |
-| Nozzle Up END OF AUGUST | 120232324822740239 | OUTCOME_SALES | PAUSED | €70,00 |
-| Campagne Nozzle Up 2025 1 | 120230372047970239 | OUTCOME_SALES | PAUSED | €30,00 |
-
-### `act_607231713057715` (secundair — uit command)
-**Niet toegankelijk** met de huidige API-token. Foutmelding: token heeft alleen toegang tot `act_1489853856181844` en `act_567892422940728`. Deze mismatch (command verwijst naar een account dat de token niet kan zien) is het melden waard — mogelijk verouderd account-ID in het command.
-
-### `act_1489853856181844` (extra toegankelijk account)
-Actieve campagnes: **0**.
-
----
-
-## Conclusie
-
-Geen actie ondernomen. Het auto-optimize systeem werkt zoals bedoeld: bij afwezigheid van actieve ads worden er geen kill-regels getriggerd en geen budget-wijzigingen voorgesteld. Zodra `2026: SYBB` (of een andere campagne) weer ACTIVE is en minimaal 24 uur draait, levert dit command bruikbare optimalisaties.
-
-**Volgende stap:** Robin beslist of/wanneer SYBB heractiveert. Draai dit command opnieuw zodra de campagne ≥24 uur live is.
+Twee dingen om over te beslissen:
+1. Wil je `2026: SYBB` heractiveren? Draai dit command dan opnieuw zodra de campagne ≥24 uur live is.
+2. Klopt het secundaire account-ID in het command nog? Mogelijk moet `act_607231713057715` vervangen worden door `act_1489853856181844`.
