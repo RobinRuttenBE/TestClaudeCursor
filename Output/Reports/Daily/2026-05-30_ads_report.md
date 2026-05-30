@@ -1,7 +1,7 @@
 # Meta Ads Rapport — 30 May 2026
 
 **Bron:** Pipeboard Meta Ads MCP (alleen). Geen Google MCPs gebruikt, niet naar Google Sheet geschreven.
-**Periode opvraag:** last_30d (zie waarschuwing hieronder). Alle cijfers in onderstaande tabel zijn lifetime (zie punt 2).
+**Periode opvraag:** last_30d (zie waarschuwing hieronder). Alle cijfers in de tabel zijn lifetime (zie punt 2).
 
 ## Belangrijke bevindingen vooraf
 
@@ -13,15 +13,15 @@
 
 | Campagne | Status | Spend | Impressions | Clicks | CTR | CPC | CPM | Aankopen | ROAS |
 |----------|--------|-------|-------------|--------|-----|-----|-----|------|------|
-| 2026: SYBB | PAUSED | €1.484,33 | 180.664 | 5.953 | 3,3% | €0,25 | €8,22 | 6 | 29,8x* |
+| 2026: SYBB | PAUSED | €2.485,04 | 297.174 | 12.067 | 4,1% | €0,21 | €8,36 | 6 | 17,8x* |
 | Campagne Nozzle Up 2025 1 | PAUSED | €853,19 | 129.558 | 3.291 | 2,5% | €0,26 | €6,59 | 6 | 8,3x |
 | Last push Nozzle Up | PAUSED | €800,78 | 109.869 | 2.786 | 2,5% | €0,29 | €7,29 | 3 | 0,8x |
 | Nozzle Up END OF AUGUST | PAUSED | €604,03 | 369.136 | 3.638 | 1,0% | €0,17 | €1,64 | 6 | 6,4x |
 | 2026: SYBB - Kopie | PAUSED | €124,42 | 7.615 | 195 | 2,6% | €0,64 | €16,34 | 0 | n.b. |
 
-\* De purchase-waarde van "2026: SYBB" (€44.247 op slechts 6 aankopen) is vrijwel zeker opgeblazen of testdata (gem. €7.374 per order). Behandel de 29,8x ROAS als onbetrouwbaar. De Nozzle Up ROAS-cijfers zijn realistischer.
+\* De purchase-waarde van "2026: SYBB" (€44.247 op slechts 6 aankopen, gem. €7.374 per order) is vrijwel zeker opgeblazen of testdata. Behandel de 17,8x ROAS als onbetrouwbaar. De Nozzle Up ROAS-cijfers zijn realistischer.
 
-**Totaal spend (5 campagnes, lifetime): €3.866,75.** Account amount_spent all-time is €4.867,46; het verschil (~€1.000) zit in oudere/gearchiveerde campagnes die niet in de huidige lijst staan.
+**Totaal spend (5 campagnes, lifetime): €4.867,46** — komt exact overeen met het account amount_spent (€4.867,46).
 
 ## Underperformers (drempelwaarden)
 
@@ -34,7 +34,7 @@ Getoetst op CPC > €0,50, CTR < 1%, Frequency > 3,5, CPM > €15.
 
 ## Top performers
 
-- **Beste CTR:** 2026: SYBB — 3,3%
+- **Beste CTR:** 2026: SYBB — 4,1%
 - **Laagste CPC:** Nozzle Up END OF AUGUST — €0,17
 - **Beste (betrouwbare) ROAS:** Campagne Nozzle Up 2025 1 — 8,3x
 - **Meeste aankopen:** gedeeld op 6 (2026: SYBB, Campagne Nozzle Up 2025 1, Nozzle Up END OF AUGUST)
@@ -44,7 +44,7 @@ Getoetst op CPC > €0,50, CTR < 1%, Frequency > 3,5, CPM > €15.
 - **Totaal spend last 30 days:** €0,00 (alles gepauzeerd).
 - **Beste performer:** "Campagne Nozzle Up 2025 1" — beste betrouwbare ROAS (8,3x), 6 aankopen op €853 spend, gezonde CPC (€0,26) en CTR (2,5%).
 - **Slechtste performer:** "Last push Nozzle Up" — ROAS 0,8x, onder break-even. "2026: SYBB - Kopie" is qua kosten het duurst (CPC €0,64, CPM €16,34) en leverde geen aankopen.
-- **Aanbeveling (Hormozi 70-20-10):** zet bij heractivatie je 70% bewezen budget op de Nozzle Up winnaars (Campagne Nozzle Up 2025 1 als anker, 8,3x ROAS) en op "2026: SYBB" voor top-of-funnel verkeer (laagste-cost engagement, sterke CTR). Gebruik "2026: SYBB - Kopie" alleen als bewuste 20%-variatie met een nieuwe hypothese, niet als kopie. **Eerst de SYBB purchase-tracking fixen**, want de €44k purchase-waarde vervuilt elke ROAS-vergelijking en maakt budgetsturing op die campagne blind.
+- **Aanbeveling (Hormozi 70-20-10):** zet bij heractivatie je 70% bewezen budget op de Nozzle Up winnaars (Campagne Nozzle Up 2025 1 als anker, 8,3x ROAS) en op "2026: SYBB" voor top-of-funnel verkeer (laagste-cost engagement, sterkste CTR 4,1%, CPC €0,21). Gebruik "2026: SYBB - Kopie" alleen als bewuste 20%-variatie met een nieuwe hypothese, niet als kopie. **Eerst de SYBB purchase-tracking fixen**, want de €44k purchase-waarde vervuilt elke ROAS-vergelijking en maakt budgetsturing op die campagne blind.
 
 ## Google Sheet
 
