@@ -30,7 +30,7 @@ Geen actieve ads, dus geen variant-data (h11 t/m h15) beschikbaar. Zodra de camp
 ## 3. Landing Page Health
 Bron: PostHog, host `www.startyourballoonbusiness.com`.
 
-Pageviews per dag deze week: 23 mei 0, 24 mei 0, 25 mei 0, 26 mei 3, 27 mei 1, 28 mei 3, 29 mei 0, **30 mei 0**. Alle 7 pageviews van de week waren zonder UTM-tags (direct/organisch); geen enkele kwam van `utm_source=meta`. Dat klopt met een gepauzeerde campagne.
+Pageviews per dag deze week: 23 mei 0, 24 mei 0, 25 mei 0, 26 mei 3, 27 mei 1, 28 mei 3, 29 mei 0, **30 mei 0**. De 7 pageviews van de week kwamen uit: 3 zonder UTM (direct/organisch), 2 met `utm_source=facebook` + `utm_campaign=sybb`, en 2 met `utm_source=youtube` + `utm_campaign=sybb`. Geen enkele view kwam van `utm_source=meta`, en geen enkele was van 30 mei. Dat klopt met een gepauzeerde Meta-campagne.
 
 Met 0 bezoekers op 30 mei is er geen betrouwbare bounce rate, scroll depth of CTA click rate te berekenen. De statussen hieronder staan daarom op "geen data", niet rood: er is simpelweg geen verkeer om te meten.
 
