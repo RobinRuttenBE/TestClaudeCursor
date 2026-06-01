@@ -1,0 +1,1 @@
+{"error": "posthog_mcp_unavailable", "detail": "PostHog MCP server did not register any tools this session (query-run not callable). HogQL query not executed.", "thank_you_sessions": null}
