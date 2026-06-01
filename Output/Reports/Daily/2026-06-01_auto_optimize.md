@@ -1,61 +1,25 @@
-# Auto-Optimize Rapport — 1 June 2026
+## Auto-Optimize Rapport — 1 June 2026
 
-**Run-modus:** Alleen Meta Ads MCP (Pipeboard) gebruikt. Geen Google MCPs, geen PostHog-call nodig (geen actieve ads om te kruisen). Output uitsluitend lokaal opgeslagen.
-**Primaire bron:** Sempertex Ad Account `act_567892422940728`
-**Periode:** laatste 3 dagen (`last_3d`)
+**Conclusie: er was niets te optimaliseren — het hele account staat op pauze.**
 
----
+Wat ik vond in `act_567892422940728`:
 
-## ⛔ Status: geen actieve campagnes
+| Campagne | Status | Dagbudget |
+|----------|--------|-----------|
+| 2026: SYBB | PAUSED | €100,00 |
+| 2026: SYBB - Kopie | PAUSED | — |
+| Last push Nozzle Up | PAUSED | — |
+| Nozzle Up END OF AUGUST | PAUSED | €70,00 |
+| Campagne Nozzle Up 2025 1 | PAUSED | €30,00 |
 
-Alle campagnes in het Sempertex Ad Account staan op **PAUSED**. Er draaien op dit moment geen advertenties, dus er is geen live performance-data over de laatste 3 dagen om tegen de kill-regels of de 70-20-10 classificatie te leggen.
+Alle 5 campagnes staan op PAUSED. Daardoor:
 
-| Campagne | ID | Objective | Status | Dagbudget | Laatst gewijzigd |
-|----------|-----|-----------|--------|-----------|------------------|
-| 2026: SYBB | 120239435987290239 | OUTCOME_SALES | PAUSED | €100,00 | 19 Apr 2026 |
-| 2026: SYBB - Kopie | 120243293329420239 | OUTCOME_SALES | PAUSED | — | 20 Apr 2026 |
-| Last push Nozzle Up | 120233295855990239 | OUTCOME_SALES | PAUSED | — | 21 Sep 2025 |
-| Nozzle Up END OF AUGUST | 120232324822740239 | OUTCOME_SALES | PAUSED | €70,00 | 15 Sep 2025 |
-| Campagne Nozzle Up 2025 1 | 120230372047970239 | OUTCOME_SALES | PAUSED | €30,00 | 15 Sep 2025 |
+- **⚡ Niveau 1 (automatisch):** 0 ads gepauzeerd — de kill-regels (Link CTR < 0.8%, CPC (link) > €1,50) hebben geen live levering om op te triggeren.
+- **📊 70-20-10:** niet van toepassing — geen actieve ads om te classificeren.
+- **💡 Niveau 2 (voorstellen):** geen data-gedreven voorstellen mogelijk zonder live performance. Geen gokwerk.
 
-> Tweede account `act_607231713057715` is niet toegankelijk met het huidige token (alleen `act_1489853856181844` en `act_567892422940728` toegestaan). Overgeslagen conform scope.
+Het tweede account `act_607231713057715` is niet toegankelijk met dit token (alleen `act_1489853856181844` en `act_567892422940728` toegestaan) — correct overgeslagen. PostHog was niet nodig: zonder actieve ads valt er niets te kruisen.
 
----
+**Enige relevante actie:** de hoofdcampagne **2026: SYBB** (€100/dag) staat gepauzeerd sinds 19 Apr 2026. Zolang die uit staat, levert dit dagelijkse rapport geen nieuwe inzichten. Zodra je SYBB weer activeert en er ≥24 u data is, draait de volledige optimalisatie-flow weer.
 
-## ⚡ Automatische acties uitgevoerd
-
-Geen ads gepauzeerd — er zijn geen actieve ads. De kill-regels (Link CTR < 0.8% na ≥1.000 impressions, CPC (link) > €1,50 na ≥500 link clicks) zijn niet van toepassing zonder live levering. ✅
-
-**Totaal gepauzeerd: 0 ads**
-
----
-
-## ⚠️ Waarschuwingen
-
-Geen waarschuwingen mogelijk (creative fatigue, dure reach, dalende Link CTR) — deze vereisen actieve levering en zijn niet te berekenen op gepauzeerde campagnes.
-
----
-
-## 📊 70-20-10 Classificatie
-
-Niet van toepassing. Classificatie vereist live Link CTR / CPC (link) data van actieve ads. Geen actieve ads = geen classificatie.
-
-**Budget mismatch:** n.v.t. — geen actief budget in markt.
-
----
-
-## 💡 Voorstellen (wacht op goedkeuring)
-
-Er zijn geen data-gedreven optimalisatievoorstellen mogelijk zonder live performance-data. De enige relevante actie is strategisch, niet optimalisatie-technisch:
-
-**1. Campagne (her)activeren**
-- De hoofdcampagne **2026: SYBB** (€100,00/dag, OUTCOME_SALES) staat sinds 19 Apr 2026 gepauzeerd.
-- Zolang deze gepauzeerd blijft, levert dit dagelijkse auto-optimize rapport geen nieuwe inzichten op.
-- Actie voor Robin: beslis of SYBB weer live moet. Zodra de campagne draait en ≥24 uur data heeft, draait dit rapport weer volwaardig (kill-regels + 70-20-10 + budgetvoorstellen).
-
-**2. Geen kunstmatige acties**
-- Conform de regels worden er geen budget-shifts, variaties of audience-wijzigingen voorgesteld op basis van nul-data. Dat zou gokwerk zijn.
-
----
-
-**Geen acties uitgevoerd en geen voorstellen om goed te keuren. Het account staat volledig op pauze. Laat weten zodra je SYBB (of een andere campagne) weer activeert, dan pak ik de volledige optimalisatie-flow op.**
+Rapport opgeslagen in `Output/Reports/Daily/2026-06-01_auto_optimize.md` en gepusht naar GitHub (`9592c929`).
