@@ -24,3 +24,30 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [5/6] Wix MCP gaf 0 orders, fallback naar handmatige wix-orders.json (2 orders)
 [6/6] PostHog /thank-you sessies ophalen (2026-05-24 t/m 2026-06-23)...
   [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
+[6/6] extracted JSON: 26 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-06-23.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 0
+[done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-06-23_morning_report_full.md
+[pixel-rewrite] mode=linkfix link_rewrite=False link_ctr=0.00% link_cpc=EUR0.00 avg_daily=EUR0.00/0d ads=0 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-06-23_morning_report_full.md
+[verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
+[verified-funnel] ads=0 posthog_ty=0 wix_orders=0 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-06-23_morning_report_full.md
+[push] Commit + push reports naar main...
+[main 23e21eb3] Morning report: 2026-06-23
+ Committer: Robin Rutten <robinrutten@Mac.localdomain>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 87 insertions(+)
+ create mode 100644 Output/Reports/Daily/2026-06-23_morning_report_full.md
+To https://github.com/RobinRuttenBE/TestClaudeCursor.git
+   64f1a9ab..23e21eb3  main -> main
+[imessage] verstuurd naar +32468236146
+=== Morning Report afgerond: Tue Jun 23 09:00:04 CEST 2026 — 0 failures ===
