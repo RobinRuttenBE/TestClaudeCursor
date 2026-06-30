@@ -1,3 +1,18 @@
+# Morning Report — 2026-06-30
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
+API Error: Connection closed mid-response. The response above may be incomplete.
+
+---
+
+API Error: Connection closed mid-response. The response above may be incomplete.
+
+---
+
 Klaar. Rapport opgeslagen, gecommit en gepusht.
 
 ## Samenvatting — Auto-Optimize 30 juni 2026
@@ -18,3 +33,13 @@ Daardoor:
 Rapport: `Output/Reports/Daily/2026-06-30_auto_optimize.md`
 
 Alleen Meta Ads MCP gebruikt; geen Google MCPs aangeroepen en niets naar de Google Sheet geschreven.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
