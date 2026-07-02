@@ -18,3 +18,34 @@ Scope: Meta Ads MCP + PostHog MCP. Geen Google integraties.
 [4/6] daily spend: EUR 0.00 over 0 actieve dagen (van 30)
 [5/6] Wix orders ophalen via MCP (2026-06-02 t/m 2026-07-02)...
   [poging 1/2] Wix orders fetch (timeout 600s)...
+[fetch-wix-orders] 2 orders parsed, 2 with manual attribution, written to /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-07-02.wix-orders.json
+[5/6] Wix MCP: 2 betaalde orders opgehaald
+[6/6] PostHog /thank-you sessies ophalen (2026-06-02 t/m 2026-07-02)...
+  [poging 1/2] PostHog /thank-you sessions (timeout 600s)...
+[6/6] extracted JSON: 26 bytes in /Users/robinrutten/TestClaudeCursor/logs/morning-report-2026-07-02.posthog-sessions.json
+[6/6] /thank-you sessies gevonden: 0
+[done] Gecombineerd rapport opgeslagen in /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-07-02_morning_report_full.md
+[pixel-rewrite] mode=linkfix link_rewrite=False link_ctr=0.00% link_cpc=EUR0.00 avg_daily=EUR0.00/0d ads=0 /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-07-02_morning_report_full.md
+[verified-funnel] Cross-referencing Meta Ads + PostHog sessions + Wix orders...
+[verified-funnel] ads=0 posthog_ty=0 wix_orders=0 wix_available=True /Users/robinrutten/TestClaudeCursor/Output/Reports/Daily/2026-07-02_morning_report_full.md
+[push] Commit + push reports naar main...
+[main 44018879] Morning report: 2026-07-02
+ Committer: Robin Rutten <robinrutten@Robins-MacBook-Air.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 95 insertions(+)
+ create mode 100644 Output/Reports/Daily/2026-07-02_morning_report_full.md
+To https://github.com/RobinRuttenBE/TestClaudeCursor.git
+   066adc47..44018879  main -> main
+[imessage] verstuurd naar +32468236146
+=== Morning Report afgerond: Thu Jul  2 10:52:18 CEST 2026 — 0 failures ===
