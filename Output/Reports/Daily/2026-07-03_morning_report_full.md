@@ -1,3 +1,10 @@
+# Morning Report — 2026-07-03
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
 ## Meta Ads Rapport: 3 juli 2026
 
 ⚠️ **Er draaien op dit moment GEEN actieve campagnes.** Alle campagnes staan op PAUSED. Hieronder de laatste bekende performance van de meest recente gepauzeerde campagnes (lifetime data, want `last_30d` is leeg). Het account `act_607231713057715` uit het command is niet toegankelijk met dit token; AmbitionAvenue heeft €0 spend.
@@ -40,3 +47,56 @@
 > **Wil je funnel data toevoegen?** Geef dan de landing page metrics uit Wix Analytics of GA4. Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases. Dan draai ik automatisch een `/funnel-diagnose` erbovenop.
 
 Zal ik daarnaast de PostHog landing page data van startyourballoonbusiness.com ophalen om de funnel-kant af te maken?
+
+---
+
+Klaar. Rapport staat op `Output/Reports/Daily/2026-07-02_sybb_report.md` en is gecommit + gepusht.
+
+## Samenvatting van deze run
+
+Twee harde bevindingen bepaalden het rapport:
+
+**1. Meta Ads — campagne staat op pauze.** De campagne `2026: SYBB` (ID `120239435987290239`, account `act_567892422940728`) heeft status **PAUSED** en gaf voor 2 juli én de hele week 26 jun–2 jul lege data terug. Nul spend, impressies, clicks. De funnel krijgt dus geen instroom. (Er bestaat ook een duplicaat `2026: SYBB - Kopie`, eveneens paused — niet gebruikt.)
+
+**2. PostHog MCP was niet beschikbaar.** De server stond op "connecting" maar er zijn ondanks meerdere zoekacties geen PostHog-tools beschikbaar gekomen. Landing page data (bounce, scroll, CTA, sessies) kon ik niet ophalen. Secties 3 en 4 zijn daarom leeg gemarkeerd (⚪).
+
+Ik heb me strikt aan je regel gehouden: alleen Meta Ads MCP en PostHog MCP geraadpleegd, geen Google-diensten, en niets naar de Google Sheet tracker geschreven.
+
+**De 3 acties die er nu toe doen:**
+1. Beslis of `2026: SYBB` weer aan moet (sinds april op pauze) — zonder dit blijft de funnel leeg.
+2. Herstel de PostHog MCP-koppeling (via `/mcp` in een interactieve sessie of `claude mcp`) zodat landing page monitoring terugkomt.
+3. Plan een scherpe 48u-check voor het moment dat de campagne weer live gaat.
+
+Wil je dat ik help met het opnieuw activeren van de campagne, of eerst de PostHog-koppeling nakijken?
+
+---
+
+Klaar. Rapport opgeslagen, gecommit en gepusht.
+
+## Resultaat auto-optimize — 3 juli 2026
+
+**Geen actieve campagnes → geen optimalisatie mogelijk of nodig.** Alle campagnes staan op PAUSED, dus er zijn geen ads om tegen de kill-regels of de 70-20-10 classificatie te toetsen. Geen automatische acties uitgevoerd, geen voorstellen.
+
+**Account-scan (alleen Meta Ads MCP gebruikt, geen Google MCPs):**
+
+| Account | Bevinding |
+|---------|-----------|
+| `act_567892422940728` (primair) | 5 campagnes, **allemaal PAUSED** (2× SYBB, 3× Nozzle Up) |
+| `act_1489853856181844` | 0 campagnes |
+| `act_607231713057715` | **Geen toegang** met deze token |
+
+⚠️ **Twee aandachtspunten:**
+1. Het account `act_607231713057715` uit het command is niet bereikbaar met de huidige Pipeboard-token (toegestaan zijn alleen `act_1489853856181844` en `act_567892422940728`). Als dit account meegenomen moet worden, moet de tokenkoppeling in Pipeboard uitgebreid worden.
+2. Zodra `2026: SYBB` weer live gaat, draai dit command opnieuw na minimaal 24 uur delivery — dan pas kunnen de kill-regels en classificatie op échte link-metrics draaien.
+
+Rapport staat in `Output/Reports/Daily/2026-07-03_auto_optimize.md`.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
