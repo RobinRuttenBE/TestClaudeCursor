@@ -1,58 +1,19 @@
-# Auto-Optimize Rapport — 4 juli 2026
+Klaar. Rapport opgeslagen in `Output/Reports/Daily/2026-07-04_auto_optimize.md` en gecommit/gepusht.
 
-**Databron:** Meta Ads MCP (Pipeboard) — uitsluitend. Geen Google MCPs gebruikt, niet naar de Tracker Sheet geschreven.
-**Periode:** laatste 3 dagen (`last_3d`)
-**Metric-conventie:** kill-regels draaien op Link CTR en CPC (link), nooit op all-clicks.
+## Samenvatting
 
----
+**Er zijn geen actieve campagnes om te optimaliseren.** De auto-optimize kon dus geen kill-regels of voorstellen toepassen.
 
-## ⛔ Geen actieve campagnes gevonden
+**Wat ik vond (alleen Meta Ads MCP / Pipeboard gebruikt, geen Google MCPs):**
 
-Er zijn **geen actieve Meta Ads campagnes** om te optimaliseren. Alle bereikbare campagnes staan op PAUSED, dus er lopen geen ads en er is geen 3-daagse performance data om tegen de drempelwaarden te toetsen.
+| Account | Resultaat |
+|---------|-----------|
+| `act_567892422940728` (primair) | 5 campagnes, **allen PAUSED** — 0 actief |
+| `act_1489853856181844` (toegestaan) | 0 actieve campagnes |
+| `act_607231713057715` (in command) | **Geen token-toegang** |
 
-### Accountstatus
+De kerncampagne **`2026: SYBB` staat op PAUSED** (net als de Kopie en alle Nozzle Up-campagnes). Zolang die niet ACTIVE is, is er geen live performance data voor `/ads-auto-optimize`, `/ads-report` of het SYBB daily report.
 
-| Account | Rol | Resultaat |
-|---------|-----|-----------|
-| `act_567892422940728` | Primair (Sempertex) | 5 campagnes, **allen PAUSED** — 0 actief |
-| `act_1489853856181844` | Toegestaan via token | **0 actieve** campagnes |
-| `act_607231713057715` | In command genoemd | **Geen toegang** — token staat alleen `act_1489853856181844` en `act_567892422940728` toe |
-
-### Campagnes in primair account (`act_567892422940728`)
-
-| Campagne | Status | Daily budget | Laatst gewijzigd |
-|----------|--------|--------------|------------------|
-| 2026: SYBB - Kopie | PAUSED | — | 20 Apr 2026 |
-| 2026: SYBB | PAUSED | €100,00 | 19 Apr 2026 |
-| Last push Nozzle Up | PAUSED | — | 21 Sep 2025 |
-| Nozzle Up END OF AUGUST | PAUSED | €70,00 | 15 Sep 2025 |
-| Campagne Nozzle Up 2025 1 | PAUSED | €30,00 | 15 Sep 2025 |
-
----
-
-## ⚡ Automatische acties uitgevoerd
-
-Geen ads gepauzeerd — er zijn geen actieve ads. ✅
-
-## ⚠️ Waarschuwingen
-
-Geen — geen actieve ads om op te evalueren.
-
-## 📊 70-20-10 Classificatie
-
-Niet van toepassing — geen actieve ads om te classificeren.
-
-## 💡 Voorstellen (wacht op goedkeuring)
-
-Geen budget-, variatie- of audience-voorstellen mogelijk zonder lopende campagnes.
-
----
-
-## Aandachtspunten voor Robin
-
-1. **`2026: SYBB` staat op PAUSED.** Dit is de kerncampagne voor het SYBB-rapport. Zolang deze niet ACTIVE staat, levert `/ads-auto-optimize`, `/ads-report` en het SYBB daily report geen live data. Wil je de campagne (opnieuw) activeren?
-2. **Account `act_607231713057715` is niet bereikbaar** met de huidige Pipeboard token (alleen `act_567892422940728` en `act_1489853856181844` zijn toegestaan). Als deze account relevant is voor optimalisatie, moet de token-toegang in Pipeboard worden uitgebreid.
-
----
-
-*Rapport gegenereerd via Meta Ads MCP (Pipeboard). Kill-regels: Link CTR < 0,8% (≥1.000 impressions) of CPC (link) > €1,50 (≥500 link clicks). Geen acties uitgevoerd omdat er geen actieve ads waren.*
+**Twee dingen om te beslissen:**
+1. Wil je `2026: SYBB` (opnieuw) activeren? Dan kan ik de optimalisatie morgen tegen echte data draaien.
+2. Account `act_607231713057715` is niet bereikbaar met de huidige Pipeboard-token (alleen de twee bovenstaande accounts zijn toegestaan). Als die account meetelt, moet de toegang in Pipeboard worden uitgebreid.
