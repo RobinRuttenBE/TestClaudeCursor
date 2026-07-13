@@ -1,3 +1,18 @@
+# Morning Report — 2026-07-13
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
+API Error: Connection closed mid-response. The response above may be incomplete.
+
+---
+
+API Error: Connection closed mid-response. The response above may be incomplete.
+
+---
+
 Klaar. Rapport opgeslagen in `Output/Reports/Daily/2026-07-13_auto_optimize.md` en gecommit + gepusht.
 
 ## Uitkomst: geen optimalisaties mogelijk
@@ -14,3 +29,13 @@ Er zijn **geen actieve Meta Ads campagnes** om te optimaliseren. Alle campagnes 
 2. De **SYBB-campagne staat op pauze**. Zolang dat zo is levert dit dagelijkse command niets op. Laat me weten of dit bewust is, of dat de campagne weer live moet — dat activeren is een niveau-2 actie die ik alleen na jouw expliciete goedkeuring uitvoer.
 
 Ter info: de MCP-verbinding was in het begin een paar keer instabiel (socket closed), maar de data hierboven is bevestigd via succesvolle calls.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
