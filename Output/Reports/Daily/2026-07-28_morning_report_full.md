@@ -1,3 +1,20 @@
+# Morning Report — 2026-07-28
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
+Meta data is complete. Let me add a quick PostHog landing page check for context.
+API Error: Connection closed mid-response. The response above may be incomplete.
+
+---
+
+Two important findings emerging. Let me verify both.
+API Error: Connection closed mid-response. The response above may be incomplete.
+
+---
+
 Rapport staat in `Output/Reports/Daily/2026-07-28_auto_optimize.md`, gecommit en gepusht.
 
 ## Wat ik vond
@@ -15,3 +32,13 @@ Drie dingen die wel opvielen:
 Ter voorbereiding op een herstart heb ik de lifetime performance per campagne op link-basis uitgerekend (`actions.link_click`, niet Meta's all-clicks velden). SYBB is de duidelijke winnaar: 3,7% Link CTR bij €0,23 CPC (link) over 297k impressies. Ik heb daarnaast een voorstel opgenomen voor link-gebaseerde 70-20-10 drempels, want de huidige waarden zouden de helft van de historische campagnes als Core classificeren.
 
 Twee kanttekeningen bij het committen: git had geen identity geconfigureerd, dus ik heb per-commit de auteur van de vorige auto-sync commits gebruikt (`Robin Rutten <robinrutten@Robins-MacBook-Air.local>`) in plaats van global config aan te passen. En omdat er al veel bestanden gestaged stonden van een onafgemaakte auto-sync, zijn die meegegaan in dezelfde commit (26 bestanden, vooral logs en de rapporten van 26 en 27 juli).
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
