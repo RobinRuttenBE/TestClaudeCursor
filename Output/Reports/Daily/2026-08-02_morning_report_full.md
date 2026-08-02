@@ -1,3 +1,20 @@
+# Morning Report — 2026-08-02
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
+I'll pull the Meta Ads data. Let me load the Pipeboard MCP tools first.
+API Error: Connection closed mid-response. The response above may be incomplete.
+
+---
+
+Meta MCP leeft weer. Ik zoek het account ID.
+API Error: Connection closed mid-response. The response above may be incomplete.
+
+---
+
 Rapport staat in `Output/Reports/Daily/2026-08-02_auto_optimize.md`, gecommit en gepusht.
 
 ## Kernpunt: er viel niets te optimaliseren
@@ -28,3 +45,13 @@ April brak weg, maar dat was CPM-gedreven, niet creative-gedreven. Dezelfde hook
 Mijn advies bij heropstart: originele BATCH 2 ad set terug met de vier Core ads, nieuwe of verbrede audience, en starten op EUR 30,00 per dag in plaats van de EUR 100,00 die nu klaarstaat. Nieuwe creatives op een verzadigde audience lossen het April-probleem niet op.
 
 Voorstellen staan genummerd in het rapport, niets uitgevoerd zonder jouw akkoord. Het eerdere `/ads-report` van vandaag was overigens halverwege afgebroken op een API-fout, dus dit is de eerste run met echte data.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
