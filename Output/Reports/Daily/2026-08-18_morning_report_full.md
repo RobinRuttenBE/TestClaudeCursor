@@ -1,3 +1,10 @@
+# Morning Report — 2026-08-18
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
 ## Meta Ads Rapport, 18 augustus 2026
 
 **Pipeboard is niet geautoriseerd, elfde dag op rij.** Stap 1 tot en met 4 konden niet draaien. Geen spend, impressions, CTR, CPC, CPM of ROAS. Autoriseren gaat via je claude.ai connector instellingen of `/mcp` in een interactieve sessie, niet vanuit deze sessie. Stap 6 en alle Google MCPs overgeslagen zoals gevraagd.
@@ -39,3 +46,22 @@ Rapport staat in `Output/Reports/Daily/2026-08-18_ads_report.md`, gecommit en ge
 
 > **Wil je funnel data toevoegen? Geef dan de landing page metrics uit Wix Analytics of GA4.**
 > Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases.
+
+---
+
+`SELECT 1` returns instantly, so the connection is fine — the event scans are what's timing out. Trying a minimal aggregation.
+API Error: Your computer went to sleep mid-response. The response above may be incomplete.
+
+---
+
+API Error: Your computer went to sleep mid-response. The response above may be incomplete.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
