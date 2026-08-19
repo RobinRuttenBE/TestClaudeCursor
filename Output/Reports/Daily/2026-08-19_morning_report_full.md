@@ -1,3 +1,18 @@
+# Morning Report — 2026-08-19
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
+API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)
+
+---
+
+Request timed out
+
+---
+
 ## Auto-Optimize, 19 augustus 2026
 
 **Geen optimalisatie uitgevoerd. Nul ads gepauzeerd.** Niet omdat alles goed presteert, maar omdat er niets is om te optimaliseren.
@@ -21,3 +36,13 @@ Ik doe geen budget-, variatie- of audiencevoorstellen. Die zijn allemaal afgelei
 Eén punt voor als Pipeboard weer werkt: de 70-20-10 drempels in het command staan nog gemarkeerd als niet gekalibreerd voor link metrics. Die moeten opnieuw vastgesteld worden voordat er budget verschuift.
 
 Rapport staat in `Output/Reports/Daily/2026-08-19_auto_optimize.md`, gecommit en gepusht (`8129df95`). Geen Google MCPs aangeroepen, niets naar de Tracker Sheet geschreven.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
