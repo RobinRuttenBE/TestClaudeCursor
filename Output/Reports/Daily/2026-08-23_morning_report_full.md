@@ -1,3 +1,19 @@
+# Morning Report — 2026-08-23
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
+API Error: Your computer went to sleep mid-response. The response above may be incomplete.
+
+---
+
+No PostHog MCP surfaced. Let me check the configured MCP servers and test the Pipeboard direct call in parallel.
+API Error: Your computer went to sleep mid-response. The response above may be incomplete.
+
+---
+
 Rapport staat in `Output/Reports/Daily/2026-08-23_auto_optimize.md`, gecommit en gepusht.
 
 ## Kort: er viel niets te optimaliseren, maar er is wel iets gevonden
@@ -26,3 +42,13 @@ Opvallend detail: dezelfde hook H13 scoorde 10,6% in de originele ad set en 1,2%
 Ook goed om te weten: de MCP negeert `time_increment`, dus een dagelijkse uitsplitsing kon ik niet ophalen. De maandcijfers heb ik via losse queries per maandvenster afgeleid.
 
 De voorstellen in het rapport (creative-selectie herstellen, 70-20-10 budgetverdeling bij herstart) wachten op je goedkeuring, zoals het command voorschrijft. Ik heb niets gewijzigd aan de campagnestructuur.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
