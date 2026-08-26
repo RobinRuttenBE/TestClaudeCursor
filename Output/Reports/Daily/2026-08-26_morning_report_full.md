@@ -1,3 +1,10 @@
+# Morning Report — 2026-08-26
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
 ## Meta Ads Rapport, 26 augustus 2026
 
 **TLDR: er draait momenteel niets.** Alle 5 campagnes in het Sempertex Ad Account staan op PAUSED en de spend van de laatste 30 dagen is €0,00. De laatste activiteit was de SYBB campagne, gepauzeerd rond 19-20 april. Hieronder de lifetime performance van de gepauzeerde campagnes. Het rapport staat in `Output/Reports/Daily/2026-08-26_ads_report.md` en is gecommit en gepusht.
@@ -37,3 +44,42 @@ De Google Sheet stap heb ik volledig overgeslagen zoals gevraagd, en PostHog heb
 
 > **Wil je funnel data toevoegen? Geef dan de landing page metrics uit Wix Analytics of GA4.**
 > Ik heb nodig: landing page visitors, opt-in/booking clicks, add to cart, completed purchases. Dan draai ik er een /funnel-diagnose overheen.
+
+---
+
+Het rapport staat in `Output/Reports/Daily/2026-08-25_sybb_report.md` en is gecommit en gepusht (commit 78598f08). De kern: **er was gisteren geen SYBB-activiteit aan beide kanten van de funnel.**
+
+**Meta Ads:** de campagne "2026: SYBB" staat sinds 19 april op PAUSED. Een insights-call op de campagne én op accountniveau voor 25 augustus gaf een lege dataset terug, dus nul spend, nul impressies, nul clicks. De Pipeboard MCP zelf was niet geauthenticeerd in deze sessie; ik heb de bekende workaround met directe JSON-RPC calls gebruikt, die werkte gewoon.
+
+**PostHog:** startyourballoonbusiness.com had gisteren 0 bezoekers en over de hele afgelopen week slechts 2 (beiden 100% bounce, 0s sessieduur). Het enige domein dat nog pageviews stuurt is www.sempertexeurope.com. Er bestaan bovendien geen scroll depth- of CTA click-events in het project, en geen utm_campaign property met recente waarden.
+
+Daardoor zijn de secties Ad Variant Performance en Funnel Drop-off in het rapport leeg gelaten (geen data om te rapporteren). In plaats van performance-vlaggen heb ik twee structurele rode vlaggen opgenomen:
+
+1. De skill meet het verkeerde domein: SYBB verkoopt via de event-pagina's op sempertexeurope.com, terwijl het rapport naar de oude, dode landing page kijkt.
+2. Er is geen on-page tracking (scroll/CTA events) klaar voor als de ads weer live gaan.
+
+De top 3 acties in het rapport sluiten daarop aan: beslissen over herstart van de campagne (en de bestemming), de daily-sybb-report skill updaten naar de werkelijke funnel, en tracking op de event-pagina's inrichten. Zoals gevraagd zijn er geen Google MCPs aangeraakt en is er niets naar de tracker-sheet geschreven.
+
+---
+
+De auto-optimize run is klaar: **geen acties uitgevoerd, want er draait momenteel niets in het ad account.**
+
+Wat ik heb gecontroleerd via Pipeboard (directe HTTP calls, de MCP zelf meldt onterecht "requires authentication"):
+
+- **0 actieve campagnes** op act_567892422940728. Alle 5 campagnes staan op PAUSED, inclusief "2026: SYBB" (sinds 19 april, dagbudget €100,00) en de drie Nozzle Up campagnes uit 2025.
+- **€0,00 spend en 0 impressions** in de afgelopen 3 dagen op account-niveau, dus geen data voor kill-regels, waarschuwingen of 70-20-10 classificatie.
+- Het tweede account uit het command (act_607231713057715) bestaat niet binnen deze token, dat bevestigt wat al in memory stond. Alleen het Sempertex account bevat data.
+
+Er waren dus geen Niveau 1 acties (niets om te pauzeren). Als Niveau 2 punten om later over te beslissen: de SYBB campagne heractiveren vraagt om een verse creative-batch (creatives zijn ruim 4 maanden oud), en de afgeronde Nozzle Up campagnes zouden gearchiveerd kunnen worden voor schonere rapportages.
+
+Rapport opgeslagen in `Output/Reports/Daily/2026-08-26_auto_optimize.md` en gepusht naar GitHub (commit `f57bbc41`). Geen Google services aangeroepen, niets naar de Tracker Sheet geschreven, conform de run-regels.
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
