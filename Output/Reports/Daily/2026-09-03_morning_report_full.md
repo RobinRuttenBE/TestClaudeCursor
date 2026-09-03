@@ -1,3 +1,31 @@
+# Morning Report — 2026-09-03
+
+Bronnen: Meta Ads MCP + PostHog MCP. Geen Google integraties.
+Failures: 0
+
+---
+
+API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)
+
+---
+
+Het rapport staat in `Output/Reports/Daily/2026-09-02_sybb_report.md` en is gecommit en gepusht naar main (0f68a0d6).
+
+**Databronnen.** De Pipeboard MCP meldde een auth-fout en de PostHog MCP verbond niet (DNS fout, daarna HTTP 405). Beide geconfigureerde tokens werkten wel via directe calls op dezelfde endpoints, dus de data komt uit Pipeboard en PostHog project STX EU. Geen Google MCPs aangeroepen, niets naar de Google Sheet geschreven.
+
+**Belangrijkste bevindingen voor 2 september:**
+- **Campagne 2026: SYBB staat nog op PAUSED** sinds 19 april. Nul spend en nul impressies over de hele week, ook voor de kopie-campagne.
+- **Landing page startyourballoonbusiness.com kreeg 0 bezoekers.** Geen scroll-, CTA- of recording-data beschikbaar.
+- **De event registratiepagina's op sempertexeurope.com kregen 5 bezoekers in 6 sessies**, tegen een 7-daags gemiddelde van 5,7. Alles via site navigatie, geen UTM's. Editie 7 trekt 4 van de 5 bezoekers.
+- **Valse conversiepagina ontmaskerd.** De pagina `/registratie-voltooid` dook op in een SYBB sessie, maar is de B2B accountregistratie van de webshop, niet de workshopinschrijving. Conversie blijft dus onmeetbaar.
+- **Nieuw kruisverband.** In 30 dagen eindigden 4 van 148 SYBB sessies in een voltooide accountregistratie. Mogelijk vereist de event-inschrijving een klantaccount. Dat is niet bevestigd en vraagt een handmatige check.
+
+**Top 3 acties in het rapport:** een registratie-voltooid event op de event funnel toevoegen, als uitgelogde bezoeker testen of inschrijven een account vereist, en de skill herdefiniëren op de registratiepagina's in plaats van de dode landing page.
+
+**Memory bijgewerkt.** Nieuwe referentie voor de directe PostHog API (host, project id, HogQL endpoint) en een aanvulling op de SYBB funnel notitie dat `/registratie` de accountflow is.
+
+---
+
 Rapport staat in `Output/Reports/Daily/2026-09-03_auto_optimize.md`, gecommit en gepusht (493bbaa5). Alleen Meta Ads via Pipeboard en PostHog gebruikt, geen Google MCPs, niets naar de Sheet geschreven.
 
 ## Auto-Optimize, 3 september 2026
@@ -29,3 +57,13 @@ Rapport staat in `Output/Reports/Daily/2026-09-03_auto_optimize.md`, gecommit en
 5. **Statisch 1 (LIT)**: A laten draaien met audience-fix en de kill-regel voor lead-campagnes aanpassen naar "Link CTR < 0,8% én 0 inzendingen in 3 dagen" (aanbevolen), of B strikt pauzeren.
 
 Geef aan welke nummers je wilt uitvoeren (1, 2, 3, 4, 5A of 5B).
+
+---
+
+## VERIFIED FUNNEL PER AD (30 dagen)
+
+> Geen per-ad Meta data beschikbaar.
+
+
+
+Voorstellen uit auto-optimize vereisen je goedkeuring — open Claude Code en bevestig daar.
