@@ -24,8 +24,9 @@ Gebruik `mcp__instagram__instagram_get_media` met:
 ### Per post: insights
 Voor elke post, gebruik `mcp__instagram__instagram_get_media_insights` met:
 - mediaId: [post ID]
-- metric: `engagement,impressions,reach,saved,shares` (IMAGE/CAROUSEL)
-- metric: `engagement,impressions,reach,saved,shares,plays` (VIDEO)
+- metric: `reach,saved,shares,views,total_interactions` (alle media types)
+- **Let op:** de Graph API accepteert `engagement`, `impressions` en `plays` niet meer. `views` vervangt impressions/plays.
+- **Te weinig posts:** als de laatste 7 dagen minder dan 10 posts opleveren, verbreed naar 14 dagen zodat top 5 en bottom 5 niet overlappen. Meld dit aan Robin.
 
 ### Reels
 Gebruik `mcp__instagram__instagram_get_reels` met:
