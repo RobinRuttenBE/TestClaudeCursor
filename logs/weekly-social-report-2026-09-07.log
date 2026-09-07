@@ -1,0 +1,4 @@
+=== Weekly Social Report gestart: Mon Sep  7 08:10:00 CEST 2026 ===
+[1/4] Claude Code /social-report uitvoeren...
+Permission allow rule (.claude/settings.local.json): Bash(cp -r ~/Desktop/sempertex-marketing/* ~/TestClaudeCursor/) has a wildcard before the rest of the command, so it also matches any options inserted at that position and approves them without a prompt. Replace that * with the exact value you mean, or only use * after the subcommand.
+Permission allow rule (.claude/settings.local.json): Bash(grep -r "posthog_api_key\\|posthog.*token\\|ph_.*" /Users/robinrutten --include=.env* --include=*.json) has a wildcard before the rest of the command, so it also matches any options inserted at that position and approves them without a prompt. Replace that * with the exact value you mean, or only use * after the subcommand.
