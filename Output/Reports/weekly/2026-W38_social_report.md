@@ -10,7 +10,7 @@ Vergelijkingsperiode: week 37 (7 t/m 13 september 2026), hermeten op 21 septembe
 
 ---
 
-## INSTAGRAM — @sempertexeurope
+## INSTAGRAM: @sempertexeurope
 
 Totaal volgers op 20 september: **31.021** (Metricool). Eind week 37: 30.916.
 
@@ -135,7 +135,7 @@ Het late slot wint op alle drie de maten. Zonder de side quest reel staat het la
 
 ---
 
-## FACEBOOK — Sempertex Europe
+## FACEBOOK: Sempertex Europe
 
 Page followers op 20 september: **49.316** (Metricool). Eind week 37: 49.300 (hermeten; 49.314 op 14 september).
 
@@ -236,4 +236,4 @@ Week 37 hermeten ter vergelijking: 15.276 post-reach, 785 engagement, 14 posts, 
 4. **Facebook Page token blijft verlopen.** Metricool vangt dit op, maar levert geen page reach en geen reel reach. Procedure staat in memory `reference_facebook_token.md`.
 5. **Social Media Tracker** heeft één tabblad (Blad1); de Google Sheets MCP kan geen tabbladen aanmaken. Week 38 is bovenaan de weektabel en als postblok toegevoegd, plus een Facebook-weekblok.
 
-⚠️ **Inhoudelijke analyse (hooks, visuele stijl, waarom iets werkt) kan Claude Code NIET doen — gebruik /blort-social-analyze voor video-analyse door BLORT.**
+⚠️ **Inhoudelijke analyse (hooks, visuele stijl, waarom iets werkt) kan Claude Code NIET doen. Gebruik /blort-social-analyze voor video-analyse door BLORT.**
